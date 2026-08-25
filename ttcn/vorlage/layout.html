@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Setzt die Klasse, bevor CSS greift. Nur wenn sie da ist, werden
+     .reveal-Elemente versteckt — ohne JavaScript bleibt alles sichtbar. -->
+<script>document.documentElement.className += " js";</script>
+
+<title>{{titel}}</title>
+<meta name="description" content="{{beschreibung}}">
+<link rel="canonical" href="{{url}}">
+<meta name="theme-color" content="#0A111D">
+
+<!-- Vorschau beim Teilen: WhatsApp, Instagram, Facebook, LinkedIn. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TTC Neuhausen">
+<meta property="og:locale" content="de_CH">
+<meta property="og:title" content="{{titel}}">
+<meta property="og:description" content="{{beschreibung}}">
+<meta property="og:url" content="{{url}}">
+<meta property="og:image" content="{{ogbild}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="TTC Neuhausen — Tischtennis für alle, seit 1975">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="{{basis}}assets/img/favicon-512.png">
+<link rel="apple-touch-icon" href="{{basis}}assets/img/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,88..112,400..800;1,88..112,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{basis}}assets/css/tokens.css">
+<link rel="stylesheet" href="{{basis}}assets/css/base.css">
+<link rel="stylesheet" href="{{basis}}assets/css/komponenten.css">
+<link rel="stylesheet" href="{{basis}}assets/css/seiten.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsClub",
+  "name": "Tischtennisclub Neuhausen am Rheinfall",
+  "alternateName": "TTC Neuhausen",
+  "url": "{{basisurl}}",
+  "logo": "{{basisurl}}assets/img/logo-blau.svg",
+  "image": "{{ogbild}}",
+  "foundingDate": "1975",
+  "sport": "Tischtennis",
+  "areaServed": "Neuhausen am Rheinfall, Schaffhausen",
+  "sameAs": [
+    "https://www.instagram.com/ttcneuhausen/",
+    "https://www.facebook.com/ttcnh/"
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
+
+<header class="kopf sektion--dunkel">
+  <div class="wrap kopf__innen">
+    <a class="kopf__logo logo" href="{{basis}}index.html" aria-label="Startseite TTC Neuhausen">
+      {{signet}}
+      <span class="kopf__name">TTC Neuhausen<span>am Rheinfall</span></span>
+    </a>
+
+    <nav class="nav" id="hauptnavigation" aria-label="Hauptnavigation" data-offen="false">
+      <ul class="nav__liste">
+{{navigation}}
+      </ul>
+    </nav>
+
+    <a class="btn btn--klein" href="{{basis}}verein-mitglied-werden.html">Schnuppern</a>
+
+    <button class="menu-knopf" type="button" aria-label="Menü öffnen"
+            aria-controls="hauptnavigation" aria-expanded="false">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main id="inhalt">
+{{inhalt}}
+</main>
+
+<footer class="fuss sektion--dunkel">
+  <div class="wrap">
+    <div class="fuss__raster">
+      <div class="fuss__logo">
+        <img src="{{basis}}assets/img/logo-weiss.svg" width="1459" height="352"
+             alt="Tischtennisclub Neuhausen">
+        <p class="leise" style="font-size:var(--grad-sm);max-width:34ch">
+          Gegründet 1975. Training in der Rhyfallhalle Neuhausen und im
+          Tischtenniszentrum Ebnat in Schaffhausen.
+        </p>
+      </div>
+      <div>
+        <h4>Verein</h4>
+        <ul>
+          <li><a href="{{basis}}verein.html">Über den Verein</a></li>
+          <li><a href="{{basis}}verein-vorstand.html">Vorstand</a></li>
+          <li><a href="{{basis}}verein-trainerteam.html">Trainerteam</a></li>
+          <li><a href="{{basis}}verein-mitglied-werden.html">Mitglied werden</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Hallen</h4>
+        <ul>
+          <li><a href="{{basis}}hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
+          <li><a href="{{basis}}hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
+          <li><a href="{{basis}}hallen-neue-halle.html">Neue Halle</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="{{basis}}kontakt.html">Kontakt</a></li>
+          <li><a href="{{basis}}partner.html">Für Partner</a></li>
+          <li><a href="https://www.instagram.com/ttcneuhausen/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/ttcnh/" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fuss__klein">
+      <span>&copy; <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
+      <span>
+        <a href="{{basis}}impressum.html">Impressum</a> &nbsp;·&nbsp;
+        <a href="{{basis}}datenschutz.html">Datenschutz</a> &nbsp;·&nbsp;
+        Gestaltung und Umsetzung: Wendico
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="{{basis}}assets/js/main.js"></script>
+</body>
+</html>

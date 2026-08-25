@@ -1,0 +1,262 @@
+/* ==========================================================================
+   TTC Neuhausen – Farb-Tokens
+   Abgeleitet aus dem Vereinslogo. Quellfarbe: #204E94
+   Alle Werte teilen den Farbton 258.8° (OKLCH), damit die Skala
+   in sich stimmig bleibt und nicht aus zufällig gewählten Blautönen besteht.
+   Kontraste sind gegen WCAG 2.1 AA geprüft; Werte stehen als Kommentar dabei.
+   ========================================================================== */
+
+:root {
+  /* --- Markenfarben: Vereinsblau und seine Nachbarn ---------------------- */
+  --ttc-blau-50:   #F0F6FF;
+  --ttc-blau-100:  #DAE8FF;
+  --ttc-blau-200:  #B8D1F9;
+  --ttc-blau-300:  #8CB3F0;   /* Akzent auf dunklem Grund – 8.84 auf --flaeche-dunkel */
+  --ttc-blau-400:  #598CDB;
+  --ttc-blau-500:  #204E94;   /* Vereinsblau, direkt aus dem Logo gemessen */
+  --ttc-blau-600:  #163E7A;   /* Hover für Flächen in Vereinsblau */
+  --ttc-blau-700:  #0F2F5F;
+
+  /* --- Tinte: entsättigte Skala im selben Farbton ------------------------ */
+  --ttc-tinte-0:   #FFFFFF;
+  --ttc-tinte-50:  #F5F7FB;
+  --ttc-tinte-100: #E9EDF4;
+  --ttc-tinte-200: #D5DBE4;
+  --ttc-tinte-500: #979FAB;
+  --ttc-tinte-600: #636974;
+  --ttc-tinte-700: #3B434E;
+  --ttc-tinte-800: #212935;
+  --ttc-tinte-900: #131B28;
+  --ttc-tinte-950: #0A111D;
+
+  /* --- Flächen ----------------------------------------------------------
+     Vier Flächen, mehr nicht. Abwechslung entsteht über den Wechsel
+     zwischen ihnen, nicht über neue Farbwerte.                            */
+  --flaeche-dunkel:      var(--ttc-tinte-950);  /* Hero, Erzählsektionen   */
+  --flaeche-dunkel-hoch: var(--ttc-tinte-900);  /* Karten auf Dunkel       */
+  --flaeche-hell:        var(--ttc-tinte-50);   /* Funktionssektionen      */
+  --flaeche-weiss:       var(--ttc-tinte-0);    /* Sponsorenkacheln, click-tt */
+  --flaeche-marke:       var(--ttc-blau-500);   /* nur in hellen Sektionen */
+
+  /* --- Text auf hellem Grund -------------------------------------------- */
+  --text-hell-primaer:   var(--ttc-tinte-900);  /* 16.11 auf --flaeche-hell */
+  --text-hell-sekundaer: var(--ttc-tinte-700);  /*  9.33                    */
+  --text-hell-marke:     var(--ttc-blau-500);   /*  7.59                    */
+
+  /* --- Text auf dunklem Grund ------------------------------------------- */
+  --text-dunkel-primaer:   var(--ttc-tinte-200); /* 13.58 auf --flaeche-dunkel */
+  --text-dunkel-sekundaer: var(--ttc-tinte-500); /*  7.08                      */
+  --text-dunkel-akzent:    var(--ttc-blau-300);  /*  8.84                      */
+
+  /* --- Text auf Vereinsblau --------------------------------------------- */
+  --text-auf-marke: var(--ttc-tinte-0);          /*  8.14 auf --ttc-blau-500 */
+
+  /* --- Aktionen ---------------------------------------------------------
+     Auf Hell trägt Vereinsblau die Aktion. Auf Dunkel geht das nicht:
+     #204E94 erreicht dort nur 2.32 und wäre als Fläche unsichtbar.
+     Deshalb kehrt sich die Aktion auf Dunkel um – helle Fläche,
+     dunkler Text. Die Hierarchie entsteht über Helligkeit, nicht Farbton. */
+  --aktion-hell-flaeche:       var(--ttc-blau-500);
+  --aktion-hell-flaeche-hover: var(--ttc-blau-600);
+  --aktion-hell-text:          var(--ttc-tinte-0);
+
+  --aktion-dunkel-flaeche:       var(--ttc-blau-300);
+  --aktion-dunkel-flaeche-hover: var(--ttc-blau-200);
+  --aktion-dunkel-text:          var(--ttc-tinte-950); /* 8.84 */
+
+  /* --- Linien ------------------------------------------------------------ */
+  --linie-hell:   var(--ttc-tinte-100);
+  --linie-dunkel: var(--ttc-tinte-800);
+
+  /* --- Schleier über Fotos ------------------------------------------------
+     Fotos aus der Halle sind nie gleich hell. Damit heller Text darauf
+     trotzdem verlässlich lesbar bleibt, liegt immer ein Schleier dazwischen
+     — abgestuft, aber immer aus derselben dunklen Fläche gemischt.
+
+     --schleier-klar ist bewusst kein `transparent`: ein Verlauf nach
+     `transparent` blendet in manchen Browsern über Schwarz aus und
+     hinterlässt einen grauen Schmutzrand.                                  */
+  --schleier-voll:   color-mix(in srgb, var(--ttc-tinte-950) 94%, transparent);
+  --schleier-stark:  color-mix(in srgb, var(--ttc-tinte-950) 76%, transparent);
+  --schleier-mittel: color-mix(in srgb, var(--ttc-tinte-950) 50%, transparent);
+  --schleier-leicht: color-mix(in srgb, var(--ttc-tinte-950) 22%, transparent);
+  --schleier-klar:   color-mix(in srgb, var(--ttc-tinte-950)  0%, transparent);
+
+  /* --- Schraffur ----------------------------------------------------------
+     Zweite Kodierung neben der Farbe. Im Wochenraster trägt sie die
+     Rhyfallhalle, damit die Zuordnung auch ankommt, wo Farbe es nicht tut:
+     bei Farbfehlsichtigkeit, im Schwarzweissdruck, im Kontrastmodus.
+     Mischt sich aus einem bestehenden Ton, erfindet also keinen neuen.    */
+  --schraffur: repeating-linear-gradient(135deg,
+    transparent 0 7px,
+    color-mix(in srgb, var(--ttc-tinte-500) 42%, transparent) 7px 8px);
+
+  /* --- Radien -------------------------------------------------------------
+     Vier Stufen. Je grösser die Fläche, desto grösser der Radius.          */
+  --radius-s:  10px;
+  --radius-m:  14px;
+  --radius-l:  20px;
+  --radius-xl: 28px;
+
+  /* --- Fokus -------------------------------------------------------------
+     Ein Wert für beide Modi, sichtbar auf Hell wie auf Dunkel.            */
+  --fokus: var(--ttc-blau-400);
+}
+
+/* Sektionen setzen ihren Kontext, Komponenten darin erben ihn.
+   So braucht kein Button eine Dark-Variante. */
+.sektion--hell {
+  background: var(--flaeche-hell);
+  color: var(--text-hell-primaer);
+  --logo-farbe: var(--ttc-blau-500);
+  --aktion-flaeche: var(--aktion-hell-flaeche);
+  --aktion-flaeche-hover: var(--aktion-hell-flaeche-hover);
+  --aktion-text: var(--aktion-hell-text);
+  --linie: var(--linie-hell);
+}
+
+.sektion--weiss {
+  background: var(--flaeche-weiss);
+  color: var(--text-hell-primaer);
+  --logo-farbe: var(--ttc-blau-500);
+  --aktion-flaeche: var(--aktion-hell-flaeche);
+  --aktion-flaeche-hover: var(--aktion-hell-flaeche-hover);
+  --aktion-text: var(--aktion-hell-text);
+  --linie: var(--linie-hell);
+}
+
+.sektion--marke {
+  background: var(--flaeche-marke);
+  color: var(--text-auf-marke);
+  --logo-farbe: var(--ttc-tinte-0);
+  --aktion-flaeche: var(--ttc-tinte-0);
+  --aktion-flaeche-hover: var(--ttc-blau-50);
+  --aktion-text: var(--ttc-blau-500);
+  --linie: var(--ttc-blau-400);
+}
+
+.sektion--dunkel {
+  background: var(--flaeche-dunkel);
+  color: var(--text-dunkel-primaer);
+  --logo-farbe: var(--ttc-tinte-0);
+  --aktion-flaeche: var(--aktion-dunkel-flaeche);
+  --aktion-flaeche-hover: var(--aktion-dunkel-flaeche-hover);
+  --aktion-text: var(--aktion-dunkel-text);
+  --linie: var(--linie-dunkel);
+}
+
+/* Das Logo-SVG nutzt fill="currentColor" und folgt damit --logo-farbe. */
+.logo { color: var(--logo-farbe); }
+
+/* Sichtbarer Fokus, in beiden Modi. */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 3px solid var(--fokus);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Typografie
+   Drei Rollen, aus dem Logo begründet:
+
+   Archivo   – Display. Das Logo-Wortzeichen ist eine fette, leicht schmale
+               Grotesk mit echter Schrägstellung. Archivo ist die nächste frei
+               lizenzierte Verwandte davon und bringt eine Breitenachse mit,
+               sodass grosse Zeilen enger laufen können, ohne die Form zu
+               verzerren. Überschriften wirken damit wie aus dem Logo gesetzt.
+
+   Atkinson  – Fliesstext. Bewusst eine Lesbarkeitsschrift: die Leserschaft
+   Hyperlegible reicht vom Jugendtraining bis zu den Senioren. Offene Punzen und
+               unterscheidbare Formen (I/l/1) sind hier kein Verzicht auf
+               Charakter, sondern der Charakter.
+
+   Newsreader – Akzent, kursiv, sparsam. Spiegelt die kursive Serifenzeile im
+               Logo und trägt die Jubiläums- und Vereinsgeschichte-Momente.
+               Nirgends sonst.
+
+   Alle drei sind SIL Open Font License, also selbst hostbar und ohne Kosten –
+   passend zur Vorgabe, keine kostenpflichtigen Abhängigkeiten aufzunehmen.
+   ========================================================================== */
+
+:root {
+  --schrift-display: "Archivo", system-ui, sans-serif;
+  --schrift-text:    "Atkinson Hyperlegible", system-ui, sans-serif;
+  --schrift-akzent:  "Newsreader", Georgia, serif;
+
+  /* Fluide Skala. Unten flach, oben steil – Fliesstext bleibt ruhig,
+     die Display-Grade holen auf grossen Schirmen wirklich aus. */
+  --grad-xs:   clamp(12.5px, 0.75rem + 0.1vw,  13px);
+  --grad-sm:   clamp(14.5px, 0.88rem + 0.1vw,  15px);
+  --grad-base: clamp(17px,   1.02rem + 0.2vw,  18px);
+  --grad-lg:   clamp(19px,   1.12rem + 0.4vw,  21px);
+  --grad-xl:   clamp(22px,   1.26rem + 0.8vw,  26px);
+  --grad-2xl:  clamp(26px,   1.42rem + 1.6vw,  34px);
+  --grad-3xl:  clamp(32px,   1.65rem + 2.8vw,  46px);
+  --grad-4xl:  clamp(40px,   1.90rem + 4.8vw,  64px);
+  /* Der oberste Grad war 92px und die untere Schwelle 48px. Bei 390px Breite
+     ergab das rund 66px, und damit passte «Schnuppern» in der Hero-Zeile
+     nicht mehr in den Bildschirm — das Wort lief rechts aus dem Bild.
+     Flacher gestellt: unten schmaler, oben ruhiger. */
+  --grad-5xl:  clamp(36px,   1.35rem + 7.8vw,  84px);
+
+  --zeile-eng:   1.05;   /* grosse Display-Zeilen */
+  --zeile-knapp: 1.25;
+  --zeile-text:  1.65;   /* Fliesstext, bewusst luftig */
+
+  --sperr-eng:   -0.03em;
+  --sperr-null:  0;
+  --sperr-weit:   0.12em;  /* Kapitälchen-Labels */
+}
+
+body {
+  font-family: var(--schrift-text);
+  font-size: var(--grad-base);
+  line-height: var(--zeile-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .display {
+  font-family: var(--schrift-display);
+  font-weight: 800;
+  line-height: var(--zeile-eng);
+  letter-spacing: var(--sperr-eng);
+  font-stretch: 92%;          /* Breitenachse leicht eingezogen, wie im Logo */
+  text-wrap: balance;
+}
+
+/* Die kinetische Zeile: Schrägstellung greift die Haltung der Spielerfigur
+   im Logo auf. Nur im Hero und in Sektionsauftakten, sonst wird es Effekt. */
+.kinetisch { font-style: italic; }
+
+/* Sektionslabels. Kein 01 / 02 / 03 – die Sektionen sind keine Reihenfolge. */
+.label {
+  font-family: var(--schrift-display);
+  font-size: var(--grad-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--sperr-weit);
+  font-stretch: 100%;
+}
+
+/* Die Vereinsgeschichte-Stimme. */
+.akzent {
+  font-family: var(--schrift-akzent);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: var(--sperr-null);
+}
+
+/* Ranglisten, Trainingszeiten, Resultate: gleiche Ziffernbreite, sonst
+   flackern die Spalten. */
+.daten, table {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

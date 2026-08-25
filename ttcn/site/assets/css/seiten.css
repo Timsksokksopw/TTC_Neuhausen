@@ -1,0 +1,550 @@
+/* ==========================================================================
+   seiten.css — seitenspezifische Bausteine
+   Nur was auf einer oder zwei Seiten vorkommt. Alles Wiederverwendbare
+   gehört nach komponenten.css.
+   ========================================================================== */
+
+/* --- Hero (Startseite) ----------------------------------------------------
+   Das Hallenfoto trägt die Fläche, der Text liegt darauf. Damit heller Text
+   auf jedem Foto lesbar bleibt — und ein Foto ist nie so dunkel, wie man
+   beim Aussuchen denkt — liegt ein doppelter Schleier dazwischen: einer von
+   links für die Textspalte, einer von unten für das Zahlenband. Beide aus
+   derselben dunklen Fläche gemischt, damit kein neuer Farbwert entsteht.  */
+.hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  padding: 0;
+  min-height: min(86svh, 880px);
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.hero__bild { position: absolute; inset: 0; z-index: -1; }
+.hero__bild img { width: 100%; height: 100%; object-fit: cover; }
+.hero__bild::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(96deg,
+      var(--schleier-voll) 0%, var(--schleier-voll) 34%,
+      var(--schleier-stark) 62%, var(--schleier-mittel) 86%,
+      var(--schleier-leicht) 100%),
+    linear-gradient(to top, var(--schleier-voll) 0%, var(--schleier-klar) 42%);
+}
+
+.hero__innen { padding: clamp(88px, 15vh, 168px) 0 clamp(36px, 5vw, 60px); }
+.hero__seit { font-size: var(--grad-lg); color: var(--text-akzent); margin: 0 0 14px; }
+/* «Schnuppern» ist das längste unteilbare Wort im Hero und bestimmt damit,
+   wie schmal die Seite werden darf. hyphens trennt es notfalls an einer
+   richtigen Stelle (die Seite ist lang="de"), overflow-wrap fängt den Rest
+   ab. Ohne beides lief das Wort auf dem Handy aus dem Bild. */
+.hero h1 {
+  font-size: var(--grad-5xl); margin: 0 0 26px;
+  max-width: 19ch; hyphens: auto; overflow-wrap: break-word;
+}
+.hero h1 em { font-style: italic; color: var(--ttc-blau-300); }
+.hero__text {
+  font-size: var(--grad-lg); color: var(--text-dunkel-primaer);
+  max-width: 44ch; margin: 0 0 34px;
+}
+.hero__aktionen { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* --- Zahlenband -----------------------------------------------------------
+   Sitzt als eigenes Band am Fuss des Heros, auf dem Foto.                  */
+.hero__band {
+  background: var(--schleier-stark);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--linie);
+  padding: clamp(22px, 3vw, 32px) 0;
+}
+.zahlen { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.zahl__wert {
+  font-family: var(--schrift-display); font-weight: 800; font-stretch: 92%;
+  font-size: var(--grad-3xl); line-height: 1; letter-spacing: -.04em;
+  color: var(--ttc-tinte-0);
+}
+.zahl__label { font-size: var(--grad-sm); color: var(--text-leise); margin-top: 6px; }
+
+/* --- Bildsplit ------------------------------------------------------------
+   Foto bis an den Bildschirmrand, Text auf der anderen Hälfte am Raster
+   ausgerichtet. Bricht den immer gleichen Sektionsrhythmus auf und füllt
+   die Hälfte, die vorher leer stand.                                      */
+.sektion--randlos { padding: 0; }
+.bildsplit { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+.bildsplit__bild { min-height: clamp(340px, 44vw, 600px); }
+.bildsplit__bild img { width: 100%; height: 100%; object-fit: cover; }
+.bildsplit__text {
+  display: flex; flex-direction: column; justify-content: center;
+  padding-block: clamp(56px, 7vw, 104px);
+  padding-left: clamp(32px, 5vw, 72px);
+  padding-right: max(24px, calc(50vw - 570px));
+}
+/* Gespiegelt: Foto rechts. Die Reihenfolge im HTML bleibt Bild, Text —
+   so steht auf dem Handy immer zuerst das Bild und danach der Text. */
+.bildsplit--rechts .bildsplit__bild { order: 2; }
+.bildsplit--rechts .bildsplit__text {
+  order: 1;
+  padding-left: max(24px, calc(50vw - 570px));
+  padding-right: clamp(32px, 5vw, 72px);
+}
+.bildsplit__text .intro { margin-bottom: 28px; }
+
+/* --- Ballbogen ------------------------------------------------------------
+   Das Leitmotiv: die Flugbahn des Balls. Zeichnet sich beim Scrollen, wo
+   der Browser scroll-gesteuerte Animationen kennt. Wo nicht, steht der
+   Bogen einfach fertig da — deshalb ist der gezeichnete Zustand der
+   Normalfall und nur die Animation steht im @supports.                    */
+.sektion--motiv { position: relative; overflow: hidden; }
+.sektion--motiv > .wrap { position: relative; z-index: 1; }
+
+.bogen {
+  position: absolute; inset: auto 0 0 0; width: 100%;
+  height: clamp(90px, 12vw, 150px);
+  pointer-events: none; opacity: .38;
+}
+/* currentColor statt fester Farbe: der Bogen nimmt die Textfarbe der
+   Sektion an und funktioniert damit auf Dunkel, Hell und Vereinsblau. */
+.bogen path {
+  fill: none; stroke: currentColor; stroke-width: 2;
+  vector-effect: non-scaling-stroke; stroke-linecap: round;
+  stroke-dasharray: 1; stroke-dashoffset: 0;
+}
+@supports (animation-timeline: view()) {
+  .bogen path {
+    animation: bogen-zeichnen linear both;
+    animation-timeline: view();
+    animation-range: entry 25% cover 65%;
+  }
+}
+@keyframes bogen-zeichnen { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
+/* --- Trainingsplan: Tabellenteile ----------------------------------------- */
+td.tag { font-weight: 700; white-space: nowrap; }
+td.zeit { font-family: var(--schrift-display); font-weight: 600; white-space: nowrap; }
+.halle {
+  display: inline-block; padding: 2px 9px; border-radius: 999px;
+  font-size: var(--grad-xs); white-space: nowrap;
+  background: var(--ttc-blau-50); color: var(--ttc-blau-600);
+}
+.halle--rhyfall { background: var(--ttc-tinte-100); color: var(--text-hell-sekundaer); }
+
+/* ==========================================================================
+   Wochenraster
+   Die Trainingszeiten standen in drei gestapelten Tabellen. Wer wissen
+   wollte, was am Donnerstagabend läuft, musste alle drei durchgehen. Hier
+   ist die Woche eine Fläche: Tage untereinander, die Zeit von links nach
+   rechts. Damit sieht man auf einen Blick, was die Tabelle verbarg — dass
+   der Vormittag den Senioren gehört, der Abend dem Rest, dass mittwochs
+   und sonntags nichts läuft, und dass sich Nachwuchs und Breitensport an
+   drei Abenden um eine halbe Stunde überschneiden.
+
+   Tage als Zeilen, nicht als Spalten: eine Zeile bietet den Blöcken die
+   volle Breite, sodass Gruppenname und Zeit hineinpassen. Bei sieben
+   Spalten bliebe je Block ein Streifen von rund 140 px.
+
+   FARBE. Die Halle trägt die Farbe, weil sie nur zwei Werte hat und im
+   Design-System schon eine Zuordnung besteht (.halle / .halle--rhyfall).
+   Geprüft gegen Weiss: Vereinsblau #204E94 zu Tinte #979FAB trennt mit
+   ΔE 28.8 für normales Sehen und 27.0 bei Rotschwäche — deutlich über der
+   Schwelle von 8. Der Tinte-Ton liegt bewusst unter dem Buntheitsminimum
+   und unter 3:1 Kontrast: er ist der Neutralton der Marke. Beides ist
+   aufgefangen, weil die Halle nie allein über Farbe läuft — die
+   Rhyfallhalle ist zusätzlich schraffiert, jeder ausreichend breite Block
+   nennt sie im Text, es gibt eine Legende, und unter dem Raster stehen
+   alle Angaben als Tabelle.
+
+   Das Angebot läuft nicht über Farbe, sondern über den Filter. Drei
+   nominale Kategorien liessen sich in einer bewusst einfarbigen Palette
+   nur über Helligkeitsstufen trennen — und die lesen sich als Rangfolge,
+   die es hier nicht gibt.
+   ========================================================================== */
+
+.woche {
+  --bahnhoehe: 72px;
+  --namebreite: 116px;
+  --bruch: 34px;          /* Breite der übersprungenen Mittagsstunden */
+  /* --spalten setzt build.py als Inline-Wert: die Spaltenvorlage ergibt
+     sich aus RASTER_BAENDER und ändert sich mit den Trainingszeiten. */
+}
+
+/* --- Filter und Legende --------------------------------------------------- */
+.woche__steuerung {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 16px 32px;
+  margin-bottom: 28px;
+}
+
+/* Ohne JavaScript filtert nichts — dann stehen die Knöpfe auch nicht da. */
+.filter { display: none; flex-wrap: wrap; gap: 8px; }
+.js .filter { display: flex; }
+
+.filter__knopf {
+  padding: 9px 18px; border-radius: 999px; cursor: pointer;
+  font-family: var(--schrift-display); font-weight: 700; font-size: var(--grad-sm);
+  background: transparent; color: var(--text-leise);
+  border: 1.5px solid var(--linie);
+  transition: background .18s ease, color .18s ease, border-color .18s ease;
+}
+.filter__knopf:hover { color: var(--text-hell-primaer); border-color: var(--text-akzent); }
+.filter__knopf[aria-pressed="true"] {
+  background: var(--aktion-flaeche); border-color: var(--aktion-flaeche);
+  color: var(--aktion-text);
+}
+
+.legende {
+  display: flex; flex-wrap: wrap; gap: 8px 22px; list-style: none; margin: 0; padding: 0;
+  font-size: var(--grad-sm); color: var(--text-leise);
+}
+.legende li { display: flex; align-items: center; gap: 9px; }
+.legende__probe {
+  width: 30px; height: 16px; border-radius: 4px; border-left: 3px solid;
+  flex: none;
+}
+.legende__probe--ebnat {
+  background-color: var(--ttc-blau-100); border-left-color: var(--ttc-blau-500);
+}
+.legende__probe--rhyfall {
+  background-color: var(--ttc-tinte-100); border-left-color: var(--ttc-tinte-500);
+  background-image: var(--schraffur);
+}
+
+/* --- Zeitachse ------------------------------------------------------------ */
+.woche__rollen { overflow-x: auto; overscroll-behavior-x: contain; }
+.woche__innen { min-width: 700px; border-bottom: 1px solid var(--linie); }
+
+.skala { display: grid; grid-template-columns: var(--namebreite) 1fr; }
+.skala__spur {
+  grid-column: 2;
+  display: grid; grid-template-columns: var(--spalten);
+  padding-bottom: 6px;
+}
+.skala__marke, .skala__bruch {
+  grid-column: var(--pos); grid-row: 1;
+  font-size: var(--grad-xs); color: var(--text-leise);
+  font-variant-numeric: tabular-nums;
+}
+.skala__bruch { text-align: center; letter-spacing: .1em; opacity: .7; }
+
+/* --- Ein Tag -------------------------------------------------------------- */
+.wochentag {
+  display: grid; grid-template-columns: var(--namebreite) 1fr;
+  border-top: 1px solid var(--linie);
+}
+.wochentag__name {
+  grid-column: 1; margin: 0; align-self: center;
+  padding: 12px 18px 12px 0;
+  font-family: var(--schrift-display); font-weight: 700; font-stretch: 100%;
+  font-size: var(--grad-sm); letter-spacing: var(--sperr-null);
+  color: var(--text-hell-primaer);
+  /* Bleibt beim seitlichen Rollen am linken Rand stehen. */
+  position: sticky; left: 0; z-index: 2;
+  background: var(--flaeche-hell);
+}
+.wochentag__flaeche {
+  grid-column: 2; padding: 7px 0;
+  display: grid;
+  grid-template-columns: var(--spalten);
+  grid-template-rows: repeat(var(--bahnen, 1), var(--bahnhoehe));
+  row-gap: 5px;
+}
+
+/* Stundenlinien liegen als eigene Ebene über der ganzen Tagesfläche und
+   nutzen dieselbe Spaltenvorlage — so sitzen sie auch dann richtig, wenn
+   die Bänder die Spalten unterschiedlich breit machen. */
+.stundenlinien {
+  grid-column: 1 / -1; grid-row: 1 / -1;
+  display: grid; grid-template-columns: var(--spalten);
+  pointer-events: none;
+}
+.stundenlinien i { grid-column: var(--pos); grid-row: 1; border-left: 1px solid var(--linie); }
+.stundenlinien .bruch {
+  border-left: 0;
+  background: repeating-linear-gradient(to bottom,
+    var(--linie) 0 4px, transparent 4px 9px);
+  background-position: center;
+  background-size: 1px 100%;
+  background-repeat: no-repeat;
+}
+.wochentag--leer .wochentag__flaeche { display: block; padding: 14px 0; }
+.wochentag__frei {
+  margin: 0; font-size: var(--grad-sm); color: var(--text-leise);
+  padding-left: 12px;
+}
+
+/* --- Eine Trainingseinheit ------------------------------------------------ */
+.einheit {
+  grid-column: var(--von) / var(--bis);
+  grid-row: var(--bahn);
+  display: flex; flex-direction: column; justify-content: center; gap: 2px;
+  min-width: 0; overflow: hidden;
+  margin-right: 2px;               /* Fuge zwischen zwei Blöcken derselben Bahn */
+  padding: 9px 13px; border-radius: var(--radius-s);
+  border-left: 3px solid;
+  text-decoration: none; color: var(--text-hell-primaer);
+  transition: transform .16s ease, box-shadow .16s ease, opacity .22s ease;
+}
+.einheit--ebnat {
+  background-color: var(--ttc-blau-100); border-left-color: var(--ttc-blau-500);
+}
+/* Zweite Kodierung neben der Farbe: die Rhyfallhalle ist schraffiert.
+   Damit bleibt sie unterscheidbar, wenn Farbe nicht ankommt — bei
+   Farbfehlsichtigkeit, im Schwarzweissdruck, im Kontrastmodus. */
+.einheit--rhyfall {
+  background-color: var(--ttc-tinte-100); border-left-color: var(--ttc-tinte-500);
+  background-image: var(--schraffur);
+}
+.einheit:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,.10); }
+
+/* Zwei Zeilen, dann Schluss. hyphens fängt ab, was auch als Kurzform noch
+   zu lang ist — sonst wird mitten im Wort gekappt, ohne dass man es dem
+   Block ansieht. */
+.einheit__gruppe {
+  font-family: var(--schrift-display); font-weight: 700; font-size: var(--grad-xs);
+  line-height: 1.22; letter-spacing: var(--sperr-null);
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+  overflow: hidden; hyphens: auto;
+}
+.einheit__zeit {
+  font-size: var(--grad-xs); color: var(--text-hell-sekundaer);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.einheit__halle {
+  font-size: var(--grad-xs); color: var(--text-hell-sekundaer);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Der Hallenname steht nur da, wo der Block breit genug ist. Ein
+   abgeschnittenes «Rhyfallh…» hilft niemandem; wo er fehlt, tragen
+   Farbe, Schraffur und Legende die Zuordnung. */
+@supports (container-type: inline-size) {
+  .einheit { container-type: inline-size; }
+  .einheit__halle { display: none; }
+  @container (min-width: 152px) { .einheit__halle { display: block; } }
+}
+
+/* Gefiltert: zurückgenommen statt ausgeblendet, damit die Woche ihre
+   Form behält und man sieht, was daneben läuft. */
+.einheit--gedimmt { opacity: .26; }
+.einheit--gedimmt:focus-visible, .einheit--gedimmt:hover { opacity: 1; }
+
+/* --- Fussnoten und Tabelle ------------------------------------------------ */
+.woche__stand {
+  margin: 18px 0 0; font-size: var(--grad-sm); color: var(--text-leise);
+}
+.woche__fussnote { margin: 18px 0 0; font-size: var(--grad-sm); color: var(--text-leise); }
+
+.notizen {
+  list-style: none; margin: 26px 0 0; padding: 0;
+  display: grid; gap: 9px; font-size: var(--grad-sm); color: var(--text-leise);
+}
+.notizen b { color: var(--text-hell-primaer); }
+.notizen b::after { content: " — "; color: var(--text-leise); font-weight: 400; }
+
+.volltabelle { margin-top: 26px; }
+.volltabelle summary {
+  cursor: pointer; font-family: var(--schrift-display); font-weight: 700;
+  font-size: var(--grad-sm); color: var(--text-akzent);
+  padding: 10px 0; list-style-position: outside;
+}
+.volltabelle summary:hover { text-decoration: underline; }
+.volltabelle .tabelle-huelle { margin-top: 12px; }
+
+/* --- Handy: kein Zeitstrahl, sondern Tag für Tag -------------------------- */
+@media (max-width: 760px) {
+  .woche__rollen { overflow-x: visible; }
+  .woche__innen { min-width: 0; border-bottom: 0; }
+  .skala { display: none; }
+
+  .wochentag { display: block; border-top: 0; margin-bottom: 30px; }
+  .wochentag--leer { margin-bottom: 22px; }
+  .wochentag__name {
+    position: static; padding: 0 0 12px; background: none;
+    font-size: var(--grad-xl); font-weight: 800; font-stretch: 92%;
+    letter-spacing: var(--sperr-eng);
+  }
+  .wochentag__flaeche {
+    display: flex; flex-direction: column; gap: 10px;
+    padding: 0;
+  }
+  .stundenlinien { display: none; }
+  .einheit { margin-right: 0; padding: 14px 16px; gap: 3px; }
+  .einheit__gruppe { font-size: var(--grad-base); -webkit-line-clamp: 3; }
+  .einheit__zeit, .einheit__halle { font-size: var(--grad-sm); }
+}
+
+/* --- Beitragstabelle (auf Markenfläche) ----------------------------------
+   overflow:hidden hielt die abgerundeten Ecken sauber, schnitt auf dem
+   Handy aber die Spalten «Monat» und «Jahr» einfach ab — die Beiträge
+   waren dort nicht mehr zu sehen und auch nicht zu erreichen. overflow-x
+   auf auto behält die Ecken und macht die Tabelle stattdessen
+   seitlich scrollbar. */
+.beitraege { border-radius: 16px; overflow-x: auto; overflow-y: hidden; background: rgba(255,255,255,.09); }
+.beitraege table { color: inherit; }
+.beitraege th { background: rgba(0,0,0,.16); color: var(--ttc-blau-100); border-bottom-color: var(--ttc-blau-400); }
+.beitraege td { border-bottom-color: rgba(255,255,255,.16); }
+.beitraege .kat { font-weight: 700; }
+.beitraege .was { font-size: var(--grad-xs); color: var(--ttc-blau-100); display: block; font-weight: 400; }
+.beitraege__fuss { padding: 14px 18px; font-size: var(--grad-xs); color: var(--ttc-blau-100); background: rgba(0,0,0,.16); margin: 0; }
+
+/* ==========================================================================
+   Mannschaftsübersicht (Teams)
+   Jede Zeile führt auf die Ligatabelle bei click-tt. Bewusst kein Embed:
+   dort gibt es weder Widget noch Schnittstelle, und ein iframe brächte
+   fremdes Layout, feste Höhe und Cookies eines Dritten mit.
+
+   Als Liste und nicht als Kachelraster, weil die Mannschaften eine
+   Rangordnung haben — von der Nationalliga bis zur 6. Liga. Eine Liste
+   liest man von oben nach unten, ein Raster nicht.
+   ========================================================================== */
+.teams { display: grid; gap: clamp(32px, 4vw, 48px); }
+
+.teamgruppe__titel { font-size: var(--grad-xl); margin-bottom: 2px; }
+.teamgruppe__unter {
+  font-size: var(--grad-sm); color: var(--text-leise); margin: 0 0 16px;
+}
+
+.teamliste { list-style: none; margin: 0; padding: 0; }
+.teamliste li + li { margin-top: 6px; }
+
+.team {
+  display: grid; grid-template-columns: minmax(0, 13rem) 1fr auto;
+  align-items: baseline; gap: 8px 20px;
+  padding: 15px 20px; border-radius: var(--radius-m);
+  border: 1px solid var(--linie); background: var(--karte-flaeche);
+  text-decoration: none; color: inherit;
+  transition: border-color .18s ease, background .18s ease, transform .18s ease;
+}
+.team:hover {
+  border-color: var(--text-akzent); transform: translateX(3px);
+  background: var(--ttc-blau-50);
+}
+.team__name {
+  font-family: var(--schrift-display); font-weight: 700; font-stretch: 92%;
+  font-size: var(--grad-base); letter-spacing: var(--sperr-null);
+}
+.team__liga { font-size: var(--grad-sm); color: var(--text-leise); }
+.team__ziel {
+  font-family: var(--schrift-display); font-weight: 700; font-size: var(--grad-sm);
+  color: var(--text-akzent); white-space: nowrap;
+}
+/* Der Pfeil kündigt an, dass der Link die Seite verlässt. */
+.team__ziel::after { content: "\00a0↗"; display: inline-block; transition: transform .18s ease; }
+.team:hover .team__ziel::after { transform: translate(2px, -2px); }
+
+@media (max-width: 640px) {
+  .team { grid-template-columns: 1fr auto; gap: 4px 16px; }
+  .team__name { grid-column: 1; }
+  .team__ziel { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+  .team__liga { grid-column: 1; }
+}
+
+/* --- Sponsoren ------------------------------------------------------------
+   Kacheln stehen bereit für die Logos der Partner. Bis die als SVG
+   vorliegen, trägt jede Kachel den Firmennamen. Sobald ein Logo da ist,
+   kommt es als <img> in die Kachel — das Raster bleibt gleich.            */
+.sponsoren { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 16px; }
+.sponsor {
+  aspect-ratio: 3/2; border: 1px solid var(--linie-hell); border-radius: var(--radius-m);
+  display: grid; place-items: center; background: var(--flaeche-weiss);
+  font-size: var(--grad-xs); color: var(--text-hell-sekundaer);
+  text-align: center; padding: 14px; text-decoration: none; font-weight: 600;
+  line-height: 1.35;
+  transition: border-color .18s ease, color .18s ease, transform .18s ease, background .18s ease;
+}
+.sponsor img { max-height: 56%; width: auto; object-fit: contain; }
+a.sponsor:hover {
+  border-color: var(--ttc-blau-300); color: var(--ttc-blau-500);
+  background: var(--ttc-blau-50); transform: translateY(-2px);
+}
+
+/* --- Termine ------------------------------------------------------------- */
+.termine { display: grid; gap: 12px; margin-top: 8px; }
+.termin {
+  display: flex; gap: 18px; align-items: center; padding: 16px 20px;
+  border: 1px solid var(--linie); border-radius: 12px; background: var(--karte-flaeche);
+}
+.termin__datum {
+  font-family: var(--schrift-display); font-weight: 800; line-height: 1;
+  text-align: center; min-width: 54px; color: var(--text-akzent);
+}
+.termin__datum b { display: block; font-size: var(--grad-xl); letter-spacing: -.03em; }
+.termin__datum span { font-size: var(--grad-xs); text-transform: uppercase; letter-spacing: .1em; }
+.termin__titel { font-weight: 700; }
+.termin__zeit { font-size: var(--grad-sm); color: var(--text-leise); }
+
+/* --- Zeitleiste (Geschichte) --------------------------------------------- */
+.zeitleiste { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.zeitleiste li {
+  display: grid; grid-template-columns: 92px 1fr; gap: 24px;
+  padding: 22px 0; border-bottom: 1px solid var(--linie);
+}
+.zeitleiste li:last-child { border-bottom: 0; }
+.zeitleiste b {
+  font-family: var(--schrift-display); font-weight: 800; font-stretch: 92%;
+  font-size: var(--grad-xl); letter-spacing: -.03em; color: var(--text-akzent);
+}
+.zeitleiste p { margin: 0; font-size: var(--grad-sm); color: var(--text-leise); }
+.zeitleiste h3 { font-size: var(--grad-base); margin-bottom: 4px; }
+
+/* --- Newsliste ----------------------------------------------------------- */
+.newsliste { display: grid; gap: 16px; }
+.newseintrag {
+  display: grid; grid-template-columns: 110px 1fr; gap: 24px;
+  padding: 22px 24px; border: 1px solid var(--linie); border-radius: 14px;
+  background: var(--karte-flaeche); text-decoration: none;
+  transition: border-color .18s ease;
+}
+.newseintrag:hover { border-color: var(--text-akzent); }
+.newseintrag time { font-size: var(--grad-xs); color: var(--text-leise); text-transform: uppercase; letter-spacing: .08em; }
+.newseintrag h3 { font-size: var(--grad-lg); margin-bottom: 6px; }
+.newseintrag p { margin: 0; font-size: var(--grad-sm); color: var(--text-leise); }
+
+/* --- Hinweisbox ---------------------------------------------------------- */
+.hinweis {
+  padding: 20px 24px; border-radius: 12px;
+  border: 1px dashed var(--linie); background: var(--karte-flaeche);
+  font-size: var(--grad-sm); color: var(--text-leise);
+}
+.hinweis strong { color: var(--text-akzent); }
+
+/* --- Kontaktraster ------------------------------------------------------- */
+.kontaktliste { display: grid; gap: 0; margin: 0; }
+.kontaktliste > div {
+  padding: 18px 0; border-bottom: 1px solid var(--linie);
+}
+.kontaktliste dt {
+  font-family: var(--schrift-display); font-size: var(--grad-xs); font-weight: 600;
+  text-transform: uppercase; letter-spacing: var(--sperr-weit);
+  color: var(--text-leise); margin-bottom: 6px;
+}
+.kontaktliste dd { margin: 0; font-size: var(--grad-base); }
+.kontaktliste dd a { text-decoration: none; }
+.kontaktliste dd a:hover { text-decoration: underline; }
+
+/* --- Rechtstext ---------------------------------------------------------- */
+.rechtstext { max-width: 72ch; }
+.rechtstext h2 { font-size: var(--grad-xl); margin-top: 40px; }
+.rechtstext h2:first-child { margin-top: 0; }
+.rechtstext p, .rechtstext li { color: var(--text-leise); font-size: var(--grad-sm); }
+.rechtstext ul { padding-left: 20px; }
+
+/* --- Schmale Viewports --------------------------------------------------- */
+@media (max-width: 900px) {
+  .hero { min-height: 0; }
+  .hero__innen { padding-top: clamp(64px, 12vh, 110px); }
+  .hero h1 { max-width: none; }
+  /* Auf schmalen Schirmen steht der Text nicht mehr seitlich neben dem
+     Motiv, sondern darüber. Der Schleier muss deshalb von unten kommen. */
+  .hero__bild::after {
+    background: linear-gradient(to top,
+      var(--schleier-voll) 0%, var(--schleier-stark) 55%, var(--schleier-mittel) 100%);
+  }
+  .zahlen { grid-template-columns: repeat(2, 1fr); gap: 24px 20px; }
+
+  .bildsplit { grid-template-columns: 1fr; }
+  .bildsplit__bild, .bildsplit--rechts .bildsplit__bild { order: 0; min-height: 0; aspect-ratio: 16 / 10; }
+  .bildsplit__text, .bildsplit--rechts .bildsplit__text {
+    order: 1;
+    padding: clamp(40px, 8vw, 64px) max(24px, calc(50vw - 570px));
+  }
+}
+@media (max-width: 560px) {
+  .zeitleiste li, .newseintrag { grid-template-columns: 1fr; gap: 8px; }
+  .zahlen { gap: 20px 16px; }
+}

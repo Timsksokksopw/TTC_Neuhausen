@@ -1,0 +1,305 @@
+/* ==========================================================================
+   komponenten.css — wiederverwendbare Bausteine
+   Kopfzeile, Navigation, Buttons, Karten, Tabellen, Fuss.
+   Alle Farben stammen aus dem Flächenkontext der umgebenden Sektion.
+   ========================================================================== */
+
+/* --- Kopfzeile ----------------------------------------------------------- */
+.kopf {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--flaeche-dunkel) 90%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--linie);
+}
+.kopf__innen { display: flex; align-items: center; gap: 28px; min-height: 72px; }
+
+.kopf__logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.kopf__logo svg { height: 32px; width: auto; }
+.kopf__name {
+  font-family: var(--schrift-display); font-weight: 800; font-stretch: 92%;
+  font-size: var(--grad-sm); letter-spacing: .01em; line-height: 1.15;
+  color: var(--text-dunkel-primaer);
+}
+.kopf__name span {
+  display: block; font-weight: 500; font-size: var(--grad-xs);
+  color: var(--text-leise); letter-spacing: .06em; text-transform: uppercase;
+}
+
+/* --- Navigation ---------------------------------------------------------- */
+.nav { margin-left: auto; }
+.nav__liste { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.nav__punkt { position: relative; }
+
+.nav__link {
+  display: inline-block; padding: 10px 14px; text-decoration: none;
+  font-size: var(--grad-sm); font-weight: 500; color: var(--text-leise);
+  border-radius: 8px; white-space: nowrap;
+  transition: color .18s ease, background .18s ease;
+}
+.nav__link:hover { color: var(--text-dunkel-primaer); background: rgba(255,255,255,.06); }
+.nav__link[aria-current="page"],
+.nav__punkt--aktiv > .nav__link { color: var(--ttc-blau-300); }
+
+/* Aufklapper: erscheint bei Hover und bei Tastaturfokus im Punkt. */
+.nav__unter {
+  position: absolute; top: calc(100% + 6px); left: 0; z-index: 60;
+  min-width: 250px; padding: 8px; margin: 0; list-style: none;
+  background: var(--ttc-tinte-900);
+  border: 1px solid var(--linie-dunkel); border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.4);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .16s ease, transform .16s ease, visibility .16s;
+}
+.nav__punkt:hover > .nav__unter,
+.nav__punkt:focus-within > .nav__unter {
+  opacity: 1; visibility: visible; transform: none;
+}
+.nav__unter a {
+  display: block; padding: 9px 12px; border-radius: 8px;
+  text-decoration: none; font-size: var(--grad-sm);
+  color: var(--text-dunkel-primaer);
+}
+.nav__unter a:hover { background: rgba(255,255,255,.08); color: var(--ttc-blau-300); }
+.nav__unter a[aria-current="page"] { color: var(--ttc-blau-300); font-weight: 700; }
+
+.menu-knopf {
+  display: none; margin-left: auto; background: none; border: 0; cursor: pointer;
+  color: var(--text-dunkel-primaer); padding: 8px;
+}
+
+/* --- Aktionen ------------------------------------------------------------ */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 26px; border-radius: 999px; text-decoration: none;
+  background: var(--aktion-flaeche); color: var(--aktion-text);
+  font-family: var(--schrift-display); font-weight: 700; font-size: var(--grad-sm);
+  letter-spacing: .01em; border: 0; cursor: pointer;
+  transition: background .18s ease, transform .18s ease;
+}
+.btn:hover { background: var(--aktion-flaeche-hover); transform: translateY(-1px); }
+.btn--leise {
+  background: transparent; color: inherit;
+  box-shadow: inset 0 0 0 1.5px var(--linie);
+}
+.btn--leise:hover { background: color-mix(in srgb, currentColor 8%, transparent); }
+.btn--klein { padding: 10px 20px; }
+.btn-reihe { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
+/* --- Seitenkopf (Unterseiten) -------------------------------------------- */
+.seitenkopf { padding: clamp(48px, 6vw, 84px) 0 clamp(40px, 5vw, 64px); }
+.seitenkopf h1 { margin-bottom: 18px; }
+.seitenkopf__lead { font-size: var(--grad-lg); color: var(--text-leise); max-width: 58ch; }
+
+.brotkrumen { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 18px; padding: 0; list-style: none;
+  font-size: var(--grad-xs); color: var(--text-leise); }
+.brotkrumen li + li::before { content: "› "; opacity: .6; }
+.brotkrumen a { text-decoration: none; }
+.brotkrumen a:hover { text-decoration: underline; }
+
+/* --- Sektionsauftakt ----------------------------------------------------- */
+.eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  margin: 0 0 18px; color: var(--text-akzent);
+}
+.eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--linie); }
+.intro { font-size: var(--grad-lg); max-width: 58ch; margin: 0 0 40px; color: var(--text-leise); }
+
+/* Zweispaltiger Auftakt: Titel links, Einleitung rechts. Füllt die Breite,
+   die bei gestapelten Auftakten rechts leer blieb, und unterscheidet die
+   Sektion von der davor.                                                  */
+.sektionskopf {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 4vw, 56px); align-items: end;
+  margin-bottom: clamp(32px, 4vw, 48px);
+}
+.sektionskopf h2 { margin-bottom: 0; }
+.sektionskopf .intro { margin-bottom: 0; }
+@media (max-width: 860px) {
+  .sektionskopf { grid-template-columns: 1fr; align-items: start; }
+}
+
+/* --- Karten -------------------------------------------------------------- */
+.karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); gap: 20px; }
+.karte {
+  padding: 28px; border-radius: 16px;
+  border: 1px solid var(--linie); background: var(--karte-flaeche);
+}
+.karte p { font-size: var(--grad-sm); color: var(--text-leise); }
+.karte h3 { margin-bottom: 8px; }
+
+/* Verlinkte Karte, z. B. Übersichtsraster einer Rubrik. */
+a.karte { text-decoration: none; display: block; transition: border-color .18s ease, transform .18s ease; }
+a.karte:hover { border-color: var(--text-akzent); transform: translateY(-2px); }
+a.karte h3 { color: var(--text-akzent); }
+
+/* --- Definitionsliste für Fakten ----------------------------------------- */
+.fakten { display: grid; gap: 0; margin: 0; }
+.fakten > div {
+  display: flex; justify-content: space-between; gap: 20px;
+  padding: 13px 0; border-bottom: 1px solid var(--linie);
+}
+.fakten dt { color: var(--text-leise); font-size: var(--grad-sm); }
+.fakten dd { margin: 0; font-weight: 700; text-align: right; }
+
+/* --- Tabellen ------------------------------------------------------------ */
+.tabelle-huelle {
+  border: 1px solid var(--linie); border-radius: 14px; overflow: hidden;
+  background: var(--flaeche-weiss); color: var(--text-hell-primaer);
+}
+table { width: 100%; border-collapse: collapse; font-size: var(--grad-sm); }
+th, td { padding: 13px 18px; text-align: left; border-bottom: 1px solid var(--linie-hell); }
+th {
+  font-family: var(--schrift-display); font-size: var(--grad-xs); font-weight: 600;
+  text-transform: uppercase; letter-spacing: var(--sperr-weit);
+  color: var(--text-hell-sekundaer); background: var(--ttc-tinte-50);
+}
+tbody tr:last-child td { border-bottom: 0; }
+tr.hervor td { background: var(--ttc-blau-50); font-weight: 700; }
+td.num, th.num { text-align: right; }
+
+.tabellen-notiz {
+  padding: 14px 18px; font-size: var(--grad-xs);
+  color: var(--text-hell-sekundaer); background: var(--ttc-tinte-50);
+  border-top: 1px solid var(--linie-hell);
+}
+
+/* --- Personenliste (Vorstand, Trainerteam) ------------------------------- */
+.personen { display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); gap: 18px; }
+.person {
+  padding: 24px; border-radius: 14px;
+  border: 1px solid var(--linie); background: var(--karte-flaeche);
+}
+.person__rolle {
+  font-family: var(--schrift-display); font-size: var(--grad-xs); font-weight: 600;
+  text-transform: uppercase; letter-spacing: var(--sperr-weit);
+  color: var(--text-akzent); margin-bottom: 6px;
+}
+.person__name { font-family: var(--schrift-display); font-weight: 800; font-stretch: 92%;
+  font-size: var(--grad-lg); letter-spacing: -.02em; margin-bottom: 8px; }
+.person__zeile { font-size: var(--grad-sm); color: var(--text-leise); margin: 0; }
+.person__zeile a { text-decoration: none; }
+.person__zeile a:hover { text-decoration: underline; }
+
+/* --- Fuss ---------------------------------------------------------------- */
+.fuss { padding: 64px 0 32px; border-top: 1px solid var(--linie); }
+.fuss__raster { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 36px; }
+.fuss h4 {
+  font-family: var(--schrift-display); font-size: var(--grad-xs); font-weight: 600;
+  text-transform: uppercase; letter-spacing: var(--sperr-weit);
+  color: var(--text-leise); margin: 0 0 14px;
+}
+.fuss ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.fuss a { text-decoration: none; font-size: var(--grad-sm); }
+.fuss a:hover { color: var(--ttc-blau-300); }
+.fuss__logo img { height: 40px; width: auto; margin-bottom: 14px; }
+.fuss__klein {
+  margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--linie);
+  display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+  font-size: var(--grad-xs); color: var(--text-leise);
+}
+
+/* --- Foto -----------------------------------------------------------------
+   Rahmen für jedes Foto der Website. Das Bild füllt die Fläche über
+   object-fit, damit Hoch- und Querformat im selben Raster funktionieren
+   und ein anders zugeschnittenes Bild das Layout nicht verzieht.
+
+   Solange die Vereinsfotos fehlen, liegen unter assets/img/fotos/ erzeugte
+   Platzhalter mit genau diesen Dateinamen. Zum Auswechseln: gleicher Name,
+   Datei ersetzen, fertig. Die Seitenverhältnisse stehen im README.        */
+.foto {
+  position: relative; overflow: hidden;
+  background: var(--flaeche-dunkel-hoch);
+}
+.foto > img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .5s cubic-bezier(.2, .7, .3, 1);
+}
+.foto--16x9 { aspect-ratio: 16 / 9; }
+.foto--4x3  { aspect-ratio: 4 / 3; }
+.foto--hoch { aspect-ratio: 4 / 5; }
+.foto--rund { border-radius: var(--radius-l); }
+
+/* --- Bildkarte ------------------------------------------------------------
+   Karte mit Foto oben, Text unten. Ersetzt die reine Textkarte überall
+   dort, wo es etwas zu zeigen gibt.                                       */
+.bildkarte {
+  display: flex; flex-direction: column;
+  border-radius: var(--radius-l); overflow: hidden;
+  border: 1px solid var(--linie); background: var(--karte-flaeche);
+  text-decoration: none; color: inherit;
+  transition: border-color .2s ease, transform .2s ease;
+}
+.bildkarte__text { padding: 22px 24px 24px; flex: 1; display: flex; flex-direction: column; }
+.bildkarte h3 { color: var(--text-akzent); margin-bottom: 8px; }
+.bildkarte p { margin: 0; font-size: var(--grad-sm); color: var(--text-leise); }
+.bildkarte time {
+  display: block; margin-bottom: 10px;
+  font-size: var(--grad-xs); color: var(--text-leise);
+  text-transform: uppercase; letter-spacing: .08em;
+}
+
+/* Der Pfeil sitzt unten und rutscht beim Überfahren nach rechts. Kleine
+   Bewegung, aber sie macht klar, dass die Karte weiterführt. */
+.bildkarte__mehr {
+  margin-top: auto; padding-top: 16px;
+  font-family: var(--schrift-display); font-weight: 700;
+  font-size: var(--grad-sm); color: var(--text-akzent);
+}
+.bildkarte__mehr::after {
+  content: "\00a0→"; display: inline-block;
+  transition: transform .2s ease;
+}
+a.bildkarte:hover { transform: translateY(-3px); border-color: var(--text-akzent); }
+a.bildkarte:hover .foto > img { transform: scale(1.05); }
+a.bildkarte:hover .bildkarte__mehr::after { transform: translateX(5px); }
+
+/* --- Bildraster ---------------------------------------------------------- */
+.bildraster { display: grid; grid-template-columns: repeat(auto-fit, minmax(252px, 1fr)); gap: 20px; }
+
+/* --- Reveal beim Scrollen ------------------------------------------------
+   Nur wenn JavaScript läuft, wird überhaupt etwas versteckt. Die Klasse
+   `js` setzt das Inline-Skript im <head>, bevor dieses Stylesheet greift.
+   Ohne JavaScript steht alles sofort da, als gäbe es diese Regel nicht.  */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.js .reveal.sichtbar { opacity: 1; transform: none; }
+
+/* Gestaffelt statt gleichzeitig: die Reihe baut sich von links auf. */
+.karten > .reveal:nth-child(2), .bildraster > .reveal:nth-child(2) { transition-delay: 80ms; }
+.karten > .reveal:nth-child(3), .bildraster > .reveal:nth-child(3) { transition-delay: 160ms; }
+.karten > .reveal:nth-child(4), .bildraster > .reveal:nth-child(4) { transition-delay: 240ms; }
+.zahlen > .reveal:nth-child(2) { transition-delay: 90ms; }
+.zahlen > .reveal:nth-child(3) { transition-delay: 180ms; }
+.zahlen > .reveal:nth-child(4) { transition-delay: 270ms; }
+
+/* --- Schmale Viewports --------------------------------------------------- */
+@media (max-width: 1000px) {
+  .menu-knopf { display: inline-flex; }
+  .kopf .btn { display: none; }
+
+  .nav {
+    position: fixed; inset: 72px 0 0; z-index: 40;
+    background: var(--flaeche-dunkel);
+    padding: 20px 24px 48px; overflow-y: auto;
+    display: none;
+  }
+  .nav[data-offen="true"] { display: block; }
+  .nav__liste { flex-direction: column; gap: 2px; }
+  .nav__link { display: block; padding: 14px 12px; font-size: var(--grad-lg); }
+
+  .nav__unter {
+    position: static; opacity: 1; visibility: visible; transform: none;
+    min-width: 0; background: none; border: 0; box-shadow: none;
+    padding: 0 0 10px 12px; display: grid; gap: 2px;
+  }
+  .nav__unter a { padding: 10px 12px; color: var(--text-leise); }
+}
+
+@media (max-width: 860px) {
+  .fuss__raster { grid-template-columns: 1fr 1fr; }
+  .tabelle-huelle { overflow-x: auto; }
+  table { min-width: 560px; }
+}
+@media (max-width: 560px) {
+  .kopf__name span { display: none; }
+  .fuss__raster { grid-template-columns: 1fr; }
+}
