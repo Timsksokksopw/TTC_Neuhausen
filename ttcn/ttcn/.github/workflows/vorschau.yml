@@ -1,0 +1,63 @@
+# Baut die Website und veröffentlicht sie als GitHub-Pages-Vorschau.
+#
+# Läuft bei jedem Push auf main. Die Adresse der Vorschau kommt von
+# GitHub selbst (configure-pages), sie muss also nirgends eingetragen
+# werden — auch nicht, wenn das Repository umbenannt wird.
+#
+# Gebaut wird mit --vorschau: dadurch zeigen canonical, og:url und
+# og:image auf die Pages-Adresse statt auf ttc-neuhausen.ch, jede Seite
+# trägt noindex und robots.txt sperrt Suchmaschinen aus. Ein Entwurf der
+# Vereinsseite soll nicht bei Google landen.
+
+name: Vorschau veröffentlichen
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:        # erlaubt Starten von Hand im Reiter «Actions»
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Immer nur eine Veröffentlichung gleichzeitig. Laufende nicht abbrechen,
+# sonst bleibt die Seite bei schnellen Pushes in einem halben Zustand.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  bauen:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Projekt holen
+        uses: actions/checkout@v4
+
+      - name: Python bereitstellen
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Pages vorbereiten
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Website bauen
+        run: python3 build.py --vorschau "${{ steps.pages.outputs.base_url }}"
+
+      - name: Ergebnis hochladen
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  veroeffentlichen:
+    needs: bauen
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.veroeffentlichung.outputs.page_url }}
+    steps:
+      - name: Auf GitHub Pages veröffentlichen
+        id: veroeffentlichung
+        uses: actions/deploy-pages@v5

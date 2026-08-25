@@ -18,7 +18,6 @@ footer.php, aus den Fragmenten in inhalt/ die Seiteninhalte.
 
 import html
 import re
-import shutil
 import sys
 import urllib.parse
 from pathlib import Path
@@ -36,7 +35,37 @@ INHALT = WURZEL / "inhalt"
 VORLAGE = WURZEL / "vorlage"
 ZIEL = WURZEL / "site"
 
-OG_BILD = SEITE_URL + "assets/img/og-standard.jpg"
+def _vorschau_adresse():
+    """Liest `--vorschau <Adresse>` von der Kommandozeile.
+
+    Eine Vorschau liegt unter einer anderen Adresse als die spätere
+    Website. Bleibt SEITE_URL stehen, zeigt `canonical` auf das Original
+    und `og:image` auf eine Datei, die es dort noch nicht gibt — der Link
+    hat dann in WhatsApp und Instagram keine Vorschau.
+
+    Gibt None zurück, wenn ohne Schalter gebaut wird.
+    """
+    if "--vorschau" not in sys.argv:
+        return None
+    stelle = sys.argv.index("--vorschau")
+    if stelle + 1 >= len(sys.argv) or sys.argv[stelle + 1].startswith("-"):
+        sys.exit("Fehler: --vorschau braucht die Adresse, unter der die "
+                 "Vorschau liegt.\n"
+                 "  python3 build.py --vorschau https://name.github.io/repo/")
+    adresse = sys.argv[stelle + 1]
+    return adresse if adresse.endswith("/") else adresse + "/"
+
+
+VORSCHAU_URL = _vorschau_adresse()
+IST_VORSCHAU = VORSCHAU_URL is not None
+BASIS_URL = VORSCHAU_URL or SEITE_URL
+
+OG_BILD = BASIS_URL + "assets/img/og-standard.jpg"
+
+# Eine öffentlich erreichbare Vorschau soll nicht bei Google landen —
+# sonst konkurriert ein Entwurf der Vereinsseite mit der echten.
+ROBOTS_META = ('\n<meta name="robots" content="noindex, nofollow">'
+               if IST_VORSCHAU else "")
 
 
 def _minuten(hhmm):
@@ -401,9 +430,10 @@ def main():
             seite = seite.replace("{{clicktt:%s}}" % name, adresse)
         seite = re.sub(r"\{\{zeiten:([a-z]+)\}\}",
                        lambda m: zeitentabelle_html(m.group(1)), seite)
-        seite = seite.replace("{{url}}", SEITE_URL + ("" if datei == "index.html" else datei))
-        seite = seite.replace("{{basisurl}}", SEITE_URL)
+        seite = seite.replace("{{url}}", BASIS_URL + ("" if datei == "index.html" else datei))
+        seite = seite.replace("{{basisurl}}", BASIS_URL)
         seite = seite.replace("{{ogbild}}", OG_BILD)
+        seite = seite.replace("{{robots}}", ROBOTS_META)
         seite = seite.replace("{{basis}}", "")   # flache Struktur, alles im selben Ordner
 
         (ZIEL / datei).write_text(seite, encoding="utf-8")
@@ -424,9 +454,38 @@ def main():
         for d in sorted(verwaist):
             print("  " + d)
 
+    schreibe_serverdateien()
     pruefe_farben()
     pruefe_dateien(gebaut)
     melde_trainingsumfang()
+
+    if IST_VORSCHAU:
+        print("\nVORSCHAU-FASSUNG für %s" % BASIS_URL)
+        print("  Alle Seiten tragen noindex, robots.txt sperrt Suchmaschinen aus.")
+        print("  Für die echte Website ohne --vorschau neu bauen.")
+
+
+def schreibe_serverdateien():
+    """Legt die zwei Dateien an, die der Server erwartet.
+
+    .nojekyll — GitHub Pages schickt Seiten sonst durch Jekyll und
+    überspringt dabei alles, was mit einem Unterstrich beginnt. Wir haben
+    solche Dateien zwar nicht, aber die Datei kostet nichts und macht das
+    Verhalten unabhängig davon, was später dazukommt.
+
+    robots.txt — wird bei jedem Lauf neu geschrieben, passend zum Modus.
+    Sonst bliebe nach einer Vorschau ein «Disallow» stehen und die echte
+    Website wäre für Google gesperrt.
+    """
+    (ZIEL / ".nojekyll").write_text("", encoding="utf-8")
+
+    if IST_VORSCHAU:
+        robots = ("# Vorschau-Fassung, nicht die Website des Vereins.\n"
+                  "User-agent: *\nDisallow: /\n")
+    else:
+        robots = ("User-agent: *\nAllow: /\n\nSitemap: %ssitemap.xml\n"
+                  % SEITE_URL)
+    (ZIEL / "robots.txt").write_text(robots, encoding="utf-8")
 
 
 def melde_trainingsumfang():

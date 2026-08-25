@@ -1,0 +1,13 @@
+# Python legt beim Import der Dateien aus vorlage/ Zwischenstände an.
+__pycache__/
+*.py[cod]
+
+# Betriebssystem-Beifang
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Sicherungskopien, die beim Zurückspielen entstehen
+ttcn-vorher-*/
+_to_delete/
+*.zip

@@ -13,6 +13,7 @@ laufen direkt vom Dateisystem.
 ```
 ttcn-website/
 ├── build.py              Setzt die Seiten zusammen und prüft sie
+├── .github/workflows/    Veröffentlicht die Vorschau auf GitHub Pages
 ├── vorlage/
 │   ├── layout.html       Kopfzeile, Fuss, <head> — steht genau einmal im Projekt
 │   ├── seiten.py         Adresse der Website, Navigation, Seitenverzeichnis
@@ -154,6 +155,50 @@ Wichtig ist nur, dass das Motiv nicht ganz am Rand sitzt.
 Für das Hero-Foto: querformatig, eher dunkel, Hauptmotiv rechts. Links liegt
 ein Schleier, damit die Schrift lesbar bleibt — was dort steht, ist ohnehin
 verdeckt.
+
+## Vorschau auf GitHub Pages
+
+Für Entwürfe, die jemand ansehen soll, bevor die Seite live geht.
+
+```
+python3 build.py --vorschau https://name.github.io/ttcn-vorschau/
+```
+
+Der Schalter ändert drei Dinge gegenüber dem normalen Bau:
+
+- `canonical`, `og:url` und `og:image` zeigen auf die Vorschauadresse.
+  Ohne das zeigt canonical auf `ttc-neuhausen.ch` — Google hielte den
+  Entwurf für eine Kopie — und das Vorschaubild läge unter einer Adresse,
+  die es dort noch nicht gibt: der Link hätte in WhatsApp und Instagram
+  keine Vorschau.
+- Jede Seite bekommt `<meta name="robots" content="noindex, nofollow">`.
+- `site/robots.txt` sperrt Suchmaschinen komplett aus.
+
+Ohne Schalter wird alles davon zurückgenommen. `robots.txt` wird bei
+jedem Lauf neu geschrieben, damit nach einer Vorschau kein «Disallow» auf
+der echten Website stehen bleibt.
+
+**Einrichten (einmalig):**
+
+1. Auf github.com ein Repository anlegen, zum Beispiel `ttcn-vorschau`.
+   Es muss **öffentlich** sein — GitHub Pages funktioniert mit einem
+   kostenlosen Konto nur bei öffentlichen Repositories. Deshalb das
+   noindex: die Seite ist erreichbar, wer den Link hat, kommt rein.
+2. Den Inhalt dieses Ordners hochladen (inklusive `.github/`).
+3. Unter *Settings → Pages → Build and deployment → Source* auf
+   **GitHub Actions** stellen.
+4. Fertig. `.github/workflows/vorschau.yml` baut bei jedem Push neu und
+   veröffentlicht `site/`. Die Adresse holt sich der Ablauf von GitHub
+   selbst; sie muss nirgends eingetragen werden und stimmt auch nach
+   einer Umbenennung noch.
+
+Die Adresse steht danach unter *Settings → Pages* und im Reiter
+*Actions* beim grünen Häkchen.
+
+**Wenn die Vorschau nicht öffentlich sein darf:** GitHub Pages kann das
+mit einem kostenlosen Konto nicht. Cloudflare Pages und Netlify können
+eine Vorschau mit Passwort schützen — dort lädt man denselben `site/`-
+Ordner hoch.
 
 ## Design-System
 
