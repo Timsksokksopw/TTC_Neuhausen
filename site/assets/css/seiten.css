@@ -57,7 +57,9 @@
 .zahl__wert {
   font-family: var(--schrift-display); font-weight: 800; font-stretch: 92%;
   font-size: var(--grad-3xl); line-height: 1; letter-spacing: -.04em;
-  color: var(--ttc-tinte-0);
+  /* Vorher fest Weiss — das ging, solange das Band nur im dunklen Hero
+     stand. Seit es auch hell sein kann, folgt es dem Sektionskontext. */
+  color: var(--text-akzent);
 }
 .zahl__label { font-size: var(--grad-sm); color: var(--text-leise); margin-top: 6px; }
 
@@ -399,59 +401,169 @@ td.zeit { font-family: var(--schrift-display); font-weight: 600; white-space: no
   font-size: var(--grad-sm); color: var(--text-leise); margin: 0 0 16px;
 }
 
-.teamliste { list-style: none; margin: 0; padding: 0; }
-.teamliste li + li { margin-top: 6px; }
+.teamliste, .dokumentliste { list-style: none; margin: 0; padding: 0; }
+.teamliste li + li, .dokumentliste li + li { margin-top: 6px; }
 
-.team {
-  display: grid; grid-template-columns: minmax(0, 13rem) 1fr auto;
+/* Dokumente sehen aus wie Mannschaften: derselbe Zeilenaufbau, dieselbe
+   Reaktion beim Überfahren. Ein weiterführender Link ist ein
+   weiterführender Link, egal ob dahinter eine Tabelle oder ein PDF liegt. */
+.team, .dokument {
+  display: grid; grid-template-columns: minmax(0, 13rem) minmax(0, 1fr) auto;
   align-items: baseline; gap: 8px 20px;
   padding: 15px 20px; border-radius: var(--radius-m);
   border: 1px solid var(--linie); background: var(--karte-flaeche);
   text-decoration: none; color: inherit;
   transition: border-color .18s ease, background .18s ease, transform .18s ease;
 }
-.team:hover {
+.team:hover, .dokument:hover {
   border-color: var(--text-akzent); transform: translateX(3px);
   background: var(--ttc-blau-50);
 }
-.team__name {
+.team__name, .dokument__name {
   font-family: var(--schrift-display); font-weight: 700; font-stretch: 92%;
   font-size: var(--grad-base); letter-spacing: var(--sperr-null);
+  /* «Helfereinsatzreglement» am Stück ist auf 320 px breiter als die
+     Spalte und schob das Dateiformat aus dem Bild. */
+  hyphens: auto; overflow-wrap: break-word;
 }
-.team__liga { font-size: var(--grad-sm); color: var(--text-leise); }
-.team__ziel {
+/* Dokumentnamen sind länger als Mannschaftsnamen — «Helfereinsatzreglement»
+   brach in der 13-rem-Spalte mitten im Wort um. */
+.dokument { grid-template-columns: minmax(0, 16rem) minmax(0, 1fr) auto; }
+
+.team__liga, .dokument__info { font-size: var(--grad-sm); color: var(--text-leise); }
+.team__ziel, .dokument__typ {
   font-family: var(--schrift-display); font-weight: 700; font-size: var(--grad-sm);
   color: var(--text-akzent); white-space: nowrap;
 }
-/* Der Pfeil kündigt an, dass der Link die Seite verlässt. */
+/* Zwei verschiedene Pfeile, weil es zwei verschiedene Dinge sind: die
+   Ligatabelle führt aus der Website hinaus (↗), das Dokument kommt
+   herunter (↓). Seit die Dateien unter site/assets/dokumente/ liegen und
+   nicht mehr auf der bisherigen Website, stimmt der schräge Pfeil bei
+   ihnen nicht mehr. */
 .team__ziel::after { content: "\00a0↗"; display: inline-block; transition: transform .18s ease; }
+.dokument__typ::after { content: "\00a0↓"; display: inline-block; transition: transform .18s ease; }
 .team:hover .team__ziel::after { transform: translate(2px, -2px); }
+a.dokument:hover .dokument__typ::after { transform: translateY(2px); }
+
+/* Noch nicht übertragen: der Eintrag steht da, ist aber kein Verweis.
+   Gestrichelt statt durchgezogen, kein Pfeil, keine Reaktion beim
+   Überfahren — man sieht auf einen Blick, dass hier nichts zu klicken
+   ist, statt es erst durch einen Fehler 404 zu erfahren. */
+.dokument--folgt {
+  border-style: dashed; color: var(--text-leise); cursor: default;
+}
+.dokument--folgt .dokument__name { color: var(--text-leise); }
+.dokument--folgt .dokument__typ {
+  color: var(--text-leise); font-weight: 600;
+  text-transform: uppercase; font-size: var(--grad-xs); letter-spacing: .1em;
+}
+.dokument--folgt .dokument__typ::after { content: none; }
 
 @media (max-width: 640px) {
-  .team { grid-template-columns: 1fr auto; gap: 4px 16px; }
-  .team__name { grid-column: 1; }
-  .team__ziel { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
-  .team__liga { grid-column: 1; }
+  .team, .dokument { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; }
+  .team__name, .dokument__name { grid-column: 1; }
+  .team__ziel, .dokument__typ { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+  .team__liga, .dokument__info { grid-column: 1; }
+}
+
+/* --- Kader ----------------------------------------------------------------
+   Die Aufstellung einer Mannschaft. Bewusst schlicht: eine Liste von
+   Namen, nicht sechs Karten — die Reihenfolge trägt bereits die
+   Information, wer Captain ist steht daneben.                              */
+.kader {
+  list-style: none; margin: 20px 0 0; padding: 0;
+  display: grid; gap: 0;
+}
+.kader li {
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  padding: 11px 0; border-bottom: 1px solid var(--linie);
+}
+.kader li:last-child { border-bottom: 0; }
+.kader b { font-weight: 700; }
+.kader__rolle {
+  font-family: var(--schrift-display); font-size: var(--grad-xs); font-weight: 600;
+  text-transform: uppercase; letter-spacing: var(--sperr-weit);
+  color: var(--text-akzent);
+}
+
+/* --- Ausrüster ------------------------------------------------------------
+   Steht als eigenes Band über dem Sponsorenraster. Als eine Kachel unter
+   zweiundzwanzig ginge er unter — er ist aber keiner von zweiundzwanzig,
+   sondern der eine, bei dem Mitglieder ihr Material holen.              */
+.ausruester {
+  display: grid; gap: 6px 28px; align-items: center;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: "rolle text knopf" "name text knopf";
+  padding: 22px 26px; margin-bottom: 24px;
+  border: 1px solid var(--linie); border-left: 4px solid var(--aktion-flaeche);
+  border-radius: var(--radius-m); background: var(--karte-flaeche);
+}
+.ausruester__rolle { grid-area: rolle; margin: 0; color: var(--text-akzent); }
+.ausruester__name {
+  grid-area: name; margin: 0;
+  font-family: var(--schrift-display); font-weight: 800; font-stretch: 92%;
+  font-size: var(--grad-xl); letter-spacing: var(--sperr-eng);
+}
+.ausruester__name img { max-height: 44px; width: auto; }
+.ausruester__text {
+  grid-area: text; margin: 0;
+  font-size: var(--grad-sm); color: var(--text-leise);
+}
+.ausruester .btn { grid-area: knopf; }
+
+@media (max-width: 760px) {
+  .ausruester {
+    grid-template-columns: 1fr;
+    grid-template-areas: "rolle" "name" "text" "knopf";
+    gap: 8px; justify-items: start;
+  }
+  .ausruester .btn { margin-top: 8px; }
 }
 
 /* --- Sponsoren ------------------------------------------------------------
    Kacheln stehen bereit für die Logos der Partner. Bis die als SVG
    vorliegen, trägt jede Kachel den Firmennamen. Sobald ein Logo da ist,
    kommt es als <img> in die Kachel — das Raster bleibt gleich.            */
-.sponsoren { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 16px; }
-.sponsor {
-  aspect-ratio: 3/2; border: 1px solid var(--linie-hell); border-radius: var(--radius-m);
-  display: grid; place-items: center; background: var(--flaeche-weiss);
-  font-size: var(--grad-xs); color: var(--text-hell-sekundaer);
-  text-align: center; padding: 14px; text-decoration: none; font-weight: 600;
-  line-height: 1.35;
-  transition: border-color .18s ease, color .18s ease, transform .18s ease, background .18s ease;
+.sponsoren {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 192px), 1fr));
+  gap: 14px;
 }
-.sponsor img { max-height: 56%; width: auto; object-fit: contain; }
+/* Auf dem Handy fest zwei Spalten statt auto-fill. Mit 192 px Mindestmass
+   passte dort nur eine Kachel in die Zeile — zweiundzwanzig Logos
+   untereinander, jedes so gross wie eine Handfläche. Zwei Spalten halbieren
+   die Strecke, und ein Logo bleibt bei rund 150 px Breite gut lesbar. */
+@media (max-width: 640px) {
+  .sponsoren { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .sponsor { padding: 8px; }
+}
+.sponsor {
+  aspect-ratio: 8/5; border: 1px solid var(--linie-hell); border-radius: var(--radius-m);
+  display: grid; place-items: center;
+  /* Reines Weiss, nicht --karte-flaeche. Die Hälfte der Logos bringt einen
+     weissen Hintergrund mit, den die Firmen so geliefert haben. Auf reinem
+     Weiss verschwindet er; auf dem leicht blaugrauen --flaeche-hell stünde
+     bei jedem zweiten Partner ein sichtbarer weisser Kasten. */
+  background: var(--flaeche-weiss);
+  font-size: var(--grad-xs); color: var(--text-hell-sekundaer);
+  text-align: center; padding: 12px; text-decoration: none; font-weight: 600;
+  line-height: 1.35;
+  transition: border-color .18s ease, color .18s ease, transform .18s ease;
+}
+
+/* Alle Logodateien haben dieselbe Leinwand (480 × 300) und die Marke darin
+   ist bereits auf gleiche optische Fläche gebracht — siehe sponsoren.py.
+   Deshalb steht hier nur width:100% und kein object-fit-Gehampel: das
+   Ausbalancieren ist beim Aufbereiten passiert, nicht im Stylesheet. */
+.sponsor img { display: block; width: 100%; height: auto; }
+
 a.sponsor:hover {
   border-color: var(--ttc-blau-300); color: var(--ttc-blau-500);
-  background: var(--ttc-blau-50); transform: translateY(-2px);
+  transform: translateY(-2px);
 }
+/* Der Hintergrund bleibt beim Überfahren weiss. Vorher wechselte er auf
+   --ttc-blau-50, und genau dann wären die mitgelieferten weissen Kästen
+   der Logos als Rechtecke aufgeblitzt. Die Kante trägt die Rückmeldung. */
 
 /* --- Termine ------------------------------------------------------------- */
 .termine { display: grid; gap: 12px; margin-top: 8px; }
@@ -469,18 +581,7 @@ a.sponsor:hover {
 .termin__zeit { font-size: var(--grad-sm); color: var(--text-leise); }
 
 /* --- Zeitleiste (Geschichte) --------------------------------------------- */
-.zeitleiste { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-.zeitleiste li {
-  display: grid; grid-template-columns: 92px 1fr; gap: 24px;
-  padding: 22px 0; border-bottom: 1px solid var(--linie);
-}
-.zeitleiste li:last-child { border-bottom: 0; }
-.zeitleiste b {
-  font-family: var(--schrift-display); font-weight: 800; font-stretch: 92%;
-  font-size: var(--grad-xl); letter-spacing: -.03em; color: var(--text-akzent);
-}
-.zeitleiste p { margin: 0; font-size: var(--grad-sm); color: var(--text-leise); }
-.zeitleiste h3 { font-size: var(--grad-base); margin-bottom: 4px; }
+/* Die Zeitleiste steht jetzt im Geschichte-Block am Dateiende. */
 
 /* --- Newsliste ----------------------------------------------------------- */
 .newsliste { display: grid; gap: 16px; }
@@ -490,10 +591,72 @@ a.sponsor:hover {
   background: var(--karte-flaeche); text-decoration: none;
   transition: border-color .18s ease;
 }
-.newseintrag:hover { border-color: var(--text-akzent); }
+a.newseintrag:hover { border-color: var(--text-akzent); }
 .newseintrag time { font-size: var(--grad-xs); color: var(--text-leise); text-transform: uppercase; letter-spacing: .08em; }
 .newseintrag h3 { font-size: var(--grad-lg); margin-bottom: 6px; }
 .newseintrag p { margin: 0; font-size: var(--grad-sm); color: var(--text-leise); }
+/* Siehe .bildkarte--still: ein Beitrag ohne übertragenen Text steht als
+   Meldung da und ist nicht klickbar. Der Rahmen bleibt ruhig. */
+.newseintrag--still { border-style: dashed; }
+
+/* --- Beitragsseite --------------------------------------------------------
+   Erzeugt build.py aus vorlage/news.py. Die Zeile ist bewusst schmal:
+   bei rund 66 Zeichen findet das Auge den Anfang der nächsten Zeile ohne
+   zu suchen, und genau das entscheidet, ob ein langer Spielbericht
+   gelesen oder überflogen wird.                                           */
+.seitenkopf--beitrag h1 { max-width: 22ch; }
+.beitrag__datum {
+  display: block; margin-bottom: 12px;
+  font-family: var(--schrift-display); font-size: var(--grad-xs);
+  font-weight: 600; text-transform: uppercase; letter-spacing: .12em;
+  color: var(--text-akzent);
+}
+.beitrag__herkunft { margin: 18px 0 0; font-size: var(--grad-sm); color: var(--text-dunkel-sekundaer); }
+
+/* Das Bild läuft über die volle Breite und schliesst direkt an den
+   dunklen Kopf an — wie der Filmstreifen auf der Geschichte-Seite. */
+.beitrag__bild { line-height: 0; background: var(--flaeche-dunkel); }
+.beitrag__bild img {
+  width: 100%; height: clamp(220px, 38vw, 460px);
+  object-fit: cover; display: block;
+}
+
+.beitrag__text { max-width: 66ch; }
+.beitrag__text > p { font-size: var(--grad-base); margin: 0 0 20px; }
+.beitrag__text > h2 {
+  font-size: var(--grad-xl); margin: 40px 0 14px;
+}
+.beitrag__text > h2:first-child { margin-top: 0; }
+
+/* Das Zitat rückt nicht ein, sondern bekommt einen Strich links: eingerückt
+   verliert es bei 66 Zeichen zu viel Zeilenbreite. */
+.beitrag__zitat {
+  margin: 28px 0; padding: 4px 0 4px 22px;
+  border-left: 3px solid var(--ttc-blau-300);
+}
+.beitrag__zitat p {
+  font-family: var(--schrift-akzent); font-style: italic;
+  font-size: var(--grad-lg); margin: 0 0 8px;
+}
+.beitrag__zitat cite {
+  font-style: normal; font-family: var(--schrift-display);
+  font-size: var(--grad-sm); font-weight: 600; color: var(--text-leise);
+}
+
+.beitrag__rangliste {
+  margin: 28px 0; padding: 20px 24px;
+  border: 1px solid var(--linie); border-radius: 12px;
+  background: var(--karte-flaeche);
+}
+.beitrag__rangliste .label { margin: 0 0 10px; color: var(--text-akzent); }
+.beitrag__rangliste ol {
+  margin: 0; padding-left: 1.4em;
+  font-size: var(--grad-sm); columns: 2; column-gap: 32px;
+}
+.beitrag__rangliste li { margin-bottom: 4px; break-inside: avoid; }
+@media (max-width: 520px) {
+  .beitrag__rangliste ol { columns: 1; }
+}
 
 /* --- Hinweisbox ---------------------------------------------------------- */
 .hinweis {
@@ -545,6 +708,616 @@ a.sponsor:hover {
   }
 }
 @media (max-width: 560px) {
-  .zeitleiste li, .newseintrag { grid-template-columns: 1fr; gap: 8px; }
+  .newseintrag { grid-template-columns: 1fr; gap: 8px; }
   .zahlen { gap: 20px 16px; }
+}
+
+/* ==========================================================================
+   Geschichte — Zeitleiste und Vereinsarchiv
+   ==========================================================================
+
+   Der Entwurfsgedanke der Seite in einem Satz: das Archiv wird als Archiv
+   gezeigt, nicht als Bildergalerie.
+
+   Was im Vereinsschrank liegt, sind keine Fotodateien, sondern Gegenstände
+   — Filmstreifen, Kontaktbögen, Albumblätter, ein Matchprogramm auf Papier.
+   Der naheliegende Weg wäre, sie auf ein einheitliches Kachelmass zu
+   beschneiden. Genau das nähme ihnen aber, was sie sehenswert macht: die
+   Sprossenlöcher, die Bildnummern, «ILFORD HP5 PLUS» am Rand, die
+   Handschrift «Glissahalle, Nov./Dez. 01» auf dem Blatt. Ein Kontaktbogen
+   ist bereits eine Galerie; ihn zu zerschneiden hiesse, eine Galerie in
+   Einzelbilder zu zerlegen, um daraus eine Galerie zu bauen.
+
+   Deshalb behält hier jedes Stück sein eigenes Seitenverhältnis. Das Raster
+   richtet sich nach den Bildern, nicht die Bilder nach dem Raster. Dass die
+   Ebnat-Blätter fast alle bei 1.35 liegen, lässt die Reihen trotzdem ruhig
+   wirken; das eine Hochformat dazwischen ist ein gewollter Bruch.
+
+   Und die Sektion ist dunkel: Filmränder sind schwarz, Albumblätter haben
+   sepiafarbene Ränder. Auf hellem Grund stünden sie als harte Rechtecke
+   herum, auf dunklem gehen sie in die Fläche über.
+   ========================================================================== */
+
+/* --- Auftakt: der Streifen unter dem Seitenkopf ---------------------------
+   Der Kopf endet nicht mit einer Kante, sondern mit einem echten Streifen
+   aus dem Archiv, der rechts aus dem Bild läuft und nach links ins Dunkel
+   ausblendet. Kein Zuschnitt, kein Wiederholen — der Streifen ist so lang,
+   wie er ist, und dass er nicht reicht, ist Teil der Aussage. */
+.seitenkopf--archiv { padding-bottom: 0 !important; }
+.seitenkopf__streifen {
+  margin-top: clamp(36px, 5vw, 60px);
+  height: clamp(104px, 14vw, 196px);
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+.seitenkopf__streifen img {
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: cover;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 62%);
+          mask-image: linear-gradient(90deg, transparent 0%, #000 62%);
+}
+
+/* --- Zeitleiste ----------------------------------------------------------
+   Vorher eine Liste mit Trennlinien. Jetzt eine durchlaufende Spur mit
+   Punkten: fünfzig Jahre sind eine Strecke, keine Tabelle. */
+.zeitleiste { list-style: none; margin: 0; padding: 0; }
+.zeitleiste li {
+  display: grid;
+  grid-template-columns: minmax(56px, max-content) minmax(0, 1fr);
+  column-gap: clamp(18px, 2.5vw, 30px);
+  padding-bottom: clamp(26px, 3.5vw, 40px);
+}
+.zeitleiste li:last-child { padding-bottom: 0; }
+.zeitleiste b {
+  font-family: var(--schrift-display); font-weight: 800; font-stretch: 92%;
+  font-size: var(--grad-xl); letter-spacing: -.03em; color: var(--text-akzent);
+  line-height: 1.15;
+}
+.zeitleiste li > div { position: relative; padding-left: 28px; }
+
+/* Spur und Punkt. Die Spur läuft bis in den Abstand zum nächsten Eintrag
+   hinein, damit sie durchgeht; beim letzten Eintrag hört sie auf. */
+.zeitleiste li > div::before {
+  content: ""; position: absolute; left: 4px; top: 13px;
+  bottom: calc(-1 * clamp(26px, 3.5vw, 40px)); width: 2px;
+  /* --linie ist #E9EDF4 und lag damit fast auf der Sektionsfläche
+     #F5F7FB — die Spur war da, aber nicht zu sehen. Sie trägt hier
+     Struktur und keine Trennung, also darf sie kräftiger sein. */
+  background: var(--ttc-tinte-200);
+}
+.zeitleiste li:last-child > div::before { display: none; }
+.zeitleiste li > div::after {
+  content: ""; position: absolute; left: 0; top: 9px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--text-akzent);
+}
+.zeitleiste h3 { font-size: var(--grad-base); margin-bottom: 4px; }
+.zeitleiste p { margin: 0; font-size: var(--grad-sm); color: var(--text-leise); }
+
+.zeitleiste__spur {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 12px;
+  font-family: var(--schrift-display); font-size: var(--grad-xs);
+  font-weight: 600; text-transform: uppercase;
+  letter-spacing: var(--sperr-weit);
+  color: var(--text-akzent); text-decoration: none;
+  border-bottom: 1px solid transparent; padding-bottom: 2px;
+}
+.zeitleiste__spur::after { content: "\2193"; font-size: 1.15em; }
+.zeitleiste__spur:hover { border-bottom-color: currentColor; }
+
+/* --- Archiv --------------------------------------------------------------- */
+.archiv__einleitung {
+  max-width: 62ch; margin-top: 14px;
+  font-size: var(--grad-lg); color: var(--text-leise);
+}
+
+.archivkapitel { margin-top: clamp(56px, 8vw, 104px); }
+.archivkapitel__kopf {
+  width: min(1140px, 100% - 48px); margin-inline: auto;
+  max-width: min(1140px, 100% - 48px);
+  margin-bottom: clamp(26px, 4vw, 44px);
+}
+.archivkapitel__kopf h2 { font-size: var(--grad-2xl); }
+.archivkapitel__lead {
+  max-width: 58ch; margin-top: 12px;
+  font-size: var(--grad-lg); line-height: 1.5;
+  color: var(--text-dunkel-primaer);
+}
+
+.archivraster {
+  width: min(1140px, 100% - 48px); margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 2.8vw, 38px);
+  align-items: start;
+}
+
+/* --- Ein einzelnes Stück -------------------------------------------------- */
+.artefakt { margin: 0; min-width: 0; }
+.artefakt__flaeche {
+  display: block; border-radius: var(--radius-m); overflow: hidden;
+  background: var(--flaeche-dunkel-hoch);
+  outline: 1px solid var(--linie); outline-offset: 0;
+  transition: outline-color .18s ease, transform .18s ease;
+}
+.artefakt__flaeche img { display: block; width: 100%; height: auto; }
+a.artefakt__flaeche:hover { outline-color: var(--text-dunkel-akzent); }
+a.artefakt__flaeche:focus-visible { outline: 3px solid var(--fokus); outline-offset: 2px; }
+
+.artefakt figcaption {
+  margin-top: 12px; font-size: var(--grad-sm); line-height: 1.5;
+  color: var(--text-leise);
+}
+.artefakt__nachweis { display: block; margin-top: 4px; font-size: var(--grad-xs); }
+
+/* Streifen und Dokumente laufen über beide Spalten — ein Kontaktbogen in
+   halber Breite wäre nicht mehr zu lesen. */
+.artefakt--streifen, .artefakt--dokument { grid-column: 1 / -1; }
+
+/* --- Filmstreifen ---------------------------------------------------------
+   Bis 4.8:1 breit. Auf grossen Schirmen passt das in die Spalte. Auf dem
+   Handy fiele der Streifen auf rund 70 Pixel Höhe zusammen — die Gesichter
+   wären dann vier Pixel gross. Deshalb bekommt er dort ein eigenes
+   Scrollfenster und behält seine Höhe: man zieht ihn vorbei wie über
+   einem Leuchttisch. */
+.streifenfenster { overflow-x: auto; overflow-y: hidden; border-radius: var(--radius-m); }
+.streifenfenster > .artefakt__flaeche { border-radius: 0; outline: 0; }
+.artefakt--streifen > .streifenfenster { outline: 1px solid var(--linie); }
+.artefakt--streifen:hover > .streifenfenster { outline-color: var(--text-dunkel-akzent); }
+.artefakt__wisch { display: none; }
+
+/* --- Dokument -------------------------------------------------------------
+   Papier will gelesen werden, nicht nur angeschaut. Deshalb steht das
+   Matchprogramm nicht im Raster mit, sondern neben seinem Text. */
+.artefakt--dokument {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+.artefakt--dokument figcaption {
+  margin-top: 0; font-family: var(--schrift-akzent); font-style: italic;
+  font-size: var(--grad-xl); line-height: 1.45;
+  color: var(--text-dunkel-primaer);
+}
+
+/* Zu kleine Vorlage: lieber klein und scharf als gross und matschig.
+   frauen-erfolg.jpg misst 150 × 121 — mehr gibt die Datei nicht her.
+   Statt es auf Zellenbreite hochzurechnen, wird es aufgezogen wie ein
+   kleiner Abzug auf Karton: mittig, mit Rand, in seiner wahren Grösse.
+   So sieht es nach Absicht aus und nicht nach einem Bild, das nicht
+   geladen hat. */
+.artefakt.ist-klein .artefakt__flaeche {
+  display: grid; place-items: center;
+  padding: clamp(30px, 5vw, 58px);
+  background: var(--flaeche-dunkel-hoch);
+}
+.artefakt.ist-klein img { width: auto; max-width: 100%; border-radius: 2px; }
+
+/* --- Meistertitel als Jahresraster ---------------------------------------
+   Vierzehn gegen drei ist eine Aussage. Als Kommaliste sieht man sie nicht,
+   nebeneinander gestellt sofort. */
+.titelbilanz {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(30px, 4vw, 60px);
+}
+.titelreihe__wer { color: var(--text-leise); margin: 0; }
+.titelreihe__zahl {
+  font-family: var(--schrift-display); font-weight: 800; font-stretch: 92%;
+  font-size: var(--grad-4xl); line-height: 1; letter-spacing: -.04em;
+  color: var(--text-akzent); margin: 6px 0 0;
+}
+.titelreihe__wort {
+  font-family: var(--schrift-display); font-weight: 600;
+  font-size: var(--grad-base); margin: 2px 0 0;
+}
+.titeljahre {
+  list-style: none; padding: 0; margin: 18px 0 0;
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.titeljahre li {
+  font-family: var(--schrift-display); font-weight: 600;
+  font-size: var(--grad-xs); font-variant-numeric: tabular-nums;
+  padding: 6px 10px; border-radius: 999px;
+  background: var(--ttc-blau-50); color: var(--ttc-blau-600);
+}
+.titelreihe__text {
+  margin: 16px 0 0; font-size: var(--grad-sm); color: var(--text-leise);
+  max-width: 42ch;
+}
+
+.bildnachweis {
+  margin-top: clamp(44px, 6vw, 72px); padding-top: 22px;
+  border-top: 1px solid var(--linie);
+  font-size: var(--grad-sm); color: var(--text-leise); max-width: 72ch;
+}
+
+/* --- Lupe ----------------------------------------------------------------
+   Ein <dialog> statt eines selbstgebauten Overlays: Fokusfalle, Escape und
+   die Sperre der Seite dahinter bringt der Browser mit. Ohne JavaScript
+   greift die Lupe gar nicht ein — dann ist jedes Stück ein gewöhnlicher
+   Link auf die Bilddatei, und der Browser zeigt sie eben allein an. */
+.lupe {
+  border: 0; padding: 0; max-width: 100vw; max-height: 100dvh;
+  width: 100%; height: 100%;
+  background: var(--schleier-voll); color: var(--text-dunkel-primaer);
+}
+.lupe::backdrop { background: var(--schleier-voll); }
+.lupe__buehne {
+  margin: 0; height: 100%;
+  display: grid; grid-template-rows: minmax(0, 1fr) auto;
+  justify-items: center;
+  gap: 18px; padding: clamp(48px, 7vw, 76px) clamp(16px, 6vw, 88px);
+}
+/* Die Bühne wird ausgefüllt, nicht nur belegt. Ein Filmstreifen ist als
+   Datei nur 768 Pixel breit; in Originalgrösse in der Mitte eines grossen
+   Schirms wäre die Lupe keine Lupe. object-fit hält dabei das
+   Seitenverhältnis, ein hochformatiges Dokument wird also nicht breit
+   gezogen, sondern bleibt so gross, wie die Höhe es zulässt. */
+.lupe__buehne img {
+  width: 100%; height: 100%; object-fit: contain;
+  border-radius: var(--radius-s);
+}
+.lupe__buehne figcaption {
+  font-size: var(--grad-sm); text-align: center; max-width: 70ch;
+  color: var(--text-dunkel-sekundaer);
+}
+.lupe__knopf {
+  position: absolute; z-index: 2;
+  display: grid; place-items: center;
+  width: 46px; height: 46px; border: 1px solid var(--linie-dunkel);
+  border-radius: 50%; cursor: pointer;
+  background: var(--flaeche-dunkel-hoch); color: var(--text-dunkel-primaer);
+  font-size: 22px; line-height: 1;
+}
+.lupe__knopf:hover { background: var(--aktion-dunkel-flaeche); color: var(--aktion-dunkel-text); }
+.lupe__zu      { top: 16px; right: 16px; }
+.lupe__zurueck { top: 50%; left: 16px;  transform: translateY(-50%); }
+.lupe__vor     { top: 50%; right: 16px; transform: translateY(-50%); }
+.lupe__zaehler {
+  position: absolute; top: 22px; left: 50%; transform: translateX(-50%);
+  font-size: var(--grad-xs); color: var(--text-dunkel-sekundaer);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 860px) {
+  /* Der Streifen behält seine Höhe und wird seitlich gezogen. */
+  .streifenfenster > .artefakt__flaeche { width: max-content; }
+  .streifenfenster img { height: clamp(150px, 40vw, 200px); width: auto; max-width: none; }
+  .artefakt__wisch {
+    display: inline; margin-left: 6px; color: var(--text-dunkel-akzent);
+  }
+  .artefakt--dokument { grid-template-columns: minmax(0, 1fr); }
+  .artefakt--dokument .artefakt__flaeche { max-width: 340px; }
+  .artefakt--dokument figcaption { font-size: var(--grad-lg); }
+}
+
+@media (max-width: 720px) {
+  .archivraster { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .zeitleiste li { grid-template-columns: minmax(0, 1fr); row-gap: 2px; }
+  /* Einspaltig sitzt die Jahreszahl über dem Text; Spur und Punkt würden
+     dann neben der Jahreszahl ins Leere laufen. Also weg damit. */
+  .zeitleiste li > div { padding-left: 0; }
+  .zeitleiste li > div::before,
+  .zeitleiste li > div::after { display: none; }
+  .zeitleiste li { border-left: 2px solid var(--linie); padding-left: 18px; }
+  .zeitleiste li:last-child { border-left-color: transparent; }
+  .lupe__zurueck { top: auto; bottom: 16px; left: 16px;  transform: none; }
+  .lupe__vor     { top: auto; bottom: 16px; right: 16px; transform: none; }
+}
+
+/* ==========================================================================
+   Auftakt — die Bildfolge, durch die man scrollt
+   ==========================================================================
+
+   Fünfzig Einzelbilder einer gezeichneten Kamerafahrt. Beim Scrollen läuft
+   die Folge durch; der Titel steht am Anfang und tritt ab, bevor die Fahrt
+   endet. Danach beginnt die Seite.
+
+   Aufbau: ein knapp drei Bildschirme hoher Abschnitt («Bühne»), darin eine
+   klebende Fläche in Bildschirmhöhe («fest»). Solange man durch die Bühne
+   scrollt, bleibt die Fläche stehen und nur das Bild darin wechselt. Das
+   ist der ganze Trick — kein Framework, keine Bibliothek.
+
+   Der Schleier ist gerechnet, nicht geschätzt: der Textbereich der fünfzig
+   Bilder erreicht im hellsten Halbprozent RGB 234/245/255 (die weissen
+   Tischlinien). Weisse Schrift darauf käme auf 1.1:1. Mit dem Verlauf
+   unten liegt die Deckung dort, wo Text steht, nie unter rund 66 % — das
+   ergibt selbst über der hellsten Linie 5.7:1 und damit AA auch für die
+   kleine Zeile. Nach rechts läuft er aus, damit Schläger und Ball ihre
+   Farbe behalten.                                                          */
+
+/* Von Haus aus aus. Erst JavaScript schaltet ihn ein — ohne das stünde
+   hier eine drei Bildschirme hohe Leere. */
+.auftakt { display: none; padding: 0 !important; }
+
+/* 190vh: bei 100vh klebender Fläche bleiben 90vh Weg für fünfzig Bilder,
+   also rund 1.8vh je Bild — bei 900 px Fenster gut 16 px Scrollweg pro
+   Bild. Zusammen mit der Überblendung im Skript läuft das stufenlos;
+   mit 230vh und ohne Überblendung war es sichtbar stockig. */
+.auftakt__buehne { position: relative; height: 250vh; }
+.auftakt__fest {
+  position: sticky; top: 0; height: 100vh; overflow: hidden;
+  display: grid; align-items: center;
+}
+.auftakt__leinwand {
+  position: absolute; inset: 0; z-index: 0;
+  width: 100%; height: 100%; display: block;
+}
+
+/* Schleier und Text gehen gemeinsam ab: sobald der Titel weg ist, liegt
+   die Fahrt frei. --auftakt-text setzt das Skript beim Scrollen. */
+.auftakt__schleier {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  opacity: var(--auftakt-text, 1);
+  background: linear-gradient(100deg,
+    var(--schleier-stark)  0%,
+    var(--schleier-stark) 34%,
+    /* 66 % ist der gerechnete Mindestwert: darunter fällt weisse Schrift
+       über der hellsten Tischlinie unter 4.5:1. Der Textblock endet bei
+       rund 50 % Breite, deshalb sitzt die Marke hier. */
+    color-mix(in srgb, var(--ttc-tinte-950) 66%, transparent) 52%,
+    var(--schleier-mittel) 64%,
+    var(--schleier-klar)  86%);
+}
+
+/* --- Der Titel auf der Fahrt ---------------------------------------------
+   Er liegt links, weil der Schleier dort am dichtesten ist: die gerechneten
+   66 % Deckung gelten bis rund 52 % der Breite, deshalb sind Titel und Lead
+   in der Breite begrenzt und laufen nicht in den hellen Teil hinein.
+
+   **z-index: 2 ist hier nicht Kosmetik, sondern notwendig.** Die Leinwand
+   liegt absolut positioniert über der Fläche; ein Textblock im normalen
+   Fluss stünde ohne eigene Ebene dahinter und wäre schlicht unsichtbar.
+   Die Reihenfolge der Ebenen lautet: Leinwand 0, Schleier 1, Titel 2,
+   Abblende 3, Schlusskarte 4.
+
+   Beim Abgehen wird der Titel nicht bloss ausgeblendet, er steigt dabei
+   ein Stück — die Fahrt zieht unter ihm weg. Beides hängt an derselben
+   Steuergrösse wie der Schleier, damit Schrift und Untergrund nie
+   auseinanderlaufen und der Text nie auf zu wenig Kontrast stehen bleibt. */
+.auftakt__innen {
+  position: relative; z-index: 2;
+  opacity: var(--auftakt-text, 1);
+  transform: translateY(calc((1 - var(--auftakt-text, 1)) * -34px));
+  will-change: opacity, transform;
+}
+
+/* Der kurze Strich vor «Seit 1975» ist der Anschlag: er setzt die Zeile
+   an eine Kante, statt sie frei im Bild schweben zu lassen. */
+.auftakt__seit {
+  display: flex; align-items: center; gap: 15px;
+  font-size: var(--grad-lg); color: var(--text-akzent);
+  margin: 0 0 18px;
+}
+.auftakt__seit::before {
+  content: ""; flex: none;
+  width: 48px; height: 2px; border-radius: 2px;
+  background: currentColor; opacity: .55;
+}
+
+.auftakt__titel {
+  font-size: var(--grad-5xl); line-height: .98; margin: 0 0 24px;
+  max-width: 13ch; text-wrap: balance;
+  hyphens: auto; overflow-wrap: break-word;
+}
+
+.auftakt__text {
+  font-size: var(--grad-lg); color: var(--text-dunkel-primaer);
+  max-width: 30ch; margin: 0 0 34px;
+}
+
+.auftakt__aktionen { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* Der Hinweis steht unten in der Mitte und nicht im Textblock: er gehört
+   nicht zum Titel, sondern sagt, wie es weitergeht. Der Faden darunter
+   atmet — ohne ihn liest sich «Scrollen» wie eine Bildunterschrift.
+
+   Der Abstand nach unten ist nicht 24 px, sondern die Höhe der Kopfzeile
+   plus 24: die klebende Fläche ist 100vh hoch und beginnt ganz oben auf
+   der Seite **unter** der Kopfzeile — ihr unterer Rand liegt also anfangs
+   um deren Höhe unter der Fensterkante. Mit 24 px stünde der Hinweis
+   genau dann unter dem Fenster, wenn er gebraucht wird. --kopf-hoehe
+   misst das Skript; der Ersatzwert gilt nur für den Wimpernschlag davor. */
+.auftakt__hinweis {
+  position: absolute; z-index: 2; left: 0; right: 0;
+  bottom: calc(var(--kopf-hoehe, 76px) + 24px);
+  margin: 0; text-align: center;
+  font-family: var(--schrift-display); font-size: var(--grad-xs);
+  font-weight: 600; text-transform: uppercase; letter-spacing: .18em;
+  color: var(--text-dunkel-sekundaer);
+  opacity: var(--auftakt-text, 1);
+  pointer-events: none;
+}
+.auftakt__hinweis::after {
+  content: ""; display: block;
+  width: 1px; height: 34px; margin: 12px auto 0;
+  background: linear-gradient(to bottom,
+    currentColor, color-mix(in srgb, currentColor 0%, transparent));
+  animation: auftakt-faden 2.2s ease-in-out infinite;
+}
+@keyframes auftakt-faden {
+  0%, 100% { opacity: .3; transform: translateY(-5px) scaleY(.8); }
+  50%      { opacity: .9; transform: translateY(4px)  scaleY(1);  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .auftakt__hinweis::after { animation: none; }
+}
+
+/* --- Die Abblende --------------------------------------------------------
+   Die Fahrt endet auf fast einfarbigem Hellblau. Die Fläche darüber trägt
+   exakt diese Farbe (im oberen Bilddrittel schwankt sie um weniger als drei
+   Stufen je Kanal) — deshalb hat der Übergang keine sichtbare Kante.
+
+   Sie setzt erst ein, wenn der Ball hinter der Tischkante ist: das ist in
+   Bild 48, gemessen am Gelbanteil der Bilder. Vorher abzublenden hiesse,
+   ihn im Flug abzuschneiden. */
+.auftakt__abblende {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background: var(--auftakt-grund);
+  opacity: var(--auftakt-abblende, 0);
+}
+
+/* --- Die Schlusskarte -----------------------------------------------------
+   Der Ball kommt zurück. Er steigt von unten herein, fährt den Bogen ab,
+   der sich dabei zeichnet, und legt sich über das Vereinszeichen. Darunter
+   wächst ein Strich aus der Mitte, zuletzt kommt die Zeile.
+
+   Alles hängt am Scrollstand, nicht an einer Zeitachse: wer zurückscrollt,
+   sieht es rückwärts. Fünf Steuergrössen, die das Skript setzt — je Teil
+   eine, damit die Staffelung im Skript steht und nicht in verschachtelten
+   calc()-Ausdrücken.                                                      */
+.auftakt__schluss {
+  position: absolute; inset: 0; z-index: 4;
+  display: grid; place-items: center;
+  padding: 0 24px; pointer-events: none;
+}
+
+/* Das Licht ist nicht nur Stimmung. Das Vereinszeichen (#00519E) käme auf
+   der blossen Bildfarbe (#66B2D2) auf 3.32:1 — zu wenig für den kleinen
+   Schriftzug. Mit dem Licht darunter liegt der Grund bei rund 72 % Weiss
+   und der Kontrast über 6:1. */
+.auftakt__licht {
+  position: absolute; inset: 0;
+  opacity: var(--auftakt-licht, 0);
+  background: radial-gradient(ellipse 74% 68% at 50% 48%,
+    color-mix(in srgb, var(--ttc-tinte-0) 86%, transparent)  0%,
+    color-mix(in srgb, var(--ttc-tinte-0) 72%, transparent) 26%,
+    color-mix(in srgb, var(--ttc-tinte-0) 38%, transparent) 56%,
+    color-mix(in srgb, var(--ttc-tinte-0)  0%, transparent) 84%);
+}
+
+.auftakt__karte {
+  position: relative;
+  display: grid; justify-items: center;
+  text-align: center;
+}
+
+/* Der Wurf: SVG und Ball teilen sich dieselbe Fläche von 320 × 140 px,
+   damit der Ball dem Pfad wirklich folgt — offset-path rechnet in Pixeln
+   des Elements, nicht in viewBox-Einheiten. Beide Angaben müssen also
+   übereinstimmen. */
+/* Die Bogenfläche überlappt das Vereinszeichen und liegt dahinter. Der
+   Bogen beginnt dadurch **am Ball der Logofigur**: der fliegende Ball
+   kommt nicht irgendwoher zurück, sondern wird gespielt. Aus dem Zeichen
+   wird damit die Quelle der Bewegung statt bloss eine Marke darunter.
+
+   Der Anfangspunkt (62.9, 215.5) ist gerechnet, nicht geschätzt:
+
+     · Im Logo ist der Ball die einzige freistehende Form — ausgemessen
+       per Zusammenhangskomponente in logo-ttcn.png: x 79–84, y 25–29
+       der Vorlage, Mitte also (81.5, 27.0).
+     · Die Vorlage ist 511 breit und wird 520 breit gezeigt, Faktor
+       1.0176 → (82.9, 27.5) in Anzeigepixeln.
+     · Das 520 breite Logo liegt mittig unter der 480 breiten
+       Bogenfläche, also 20 px links davon, und überlappt sie um 112 px
+       von unten: Logo-Nullpunkt in Bogenkoordinaten (−20, 188).
+     · Macht (−20 + 82.9, 188 + 27.5) = (62.9, 215.5).
+
+   Wer das Logo tauscht oder eine der Breiten ändert, muss den Punkt
+   nachrechnen. Für die Messung reicht ein Flutfüllen der Vorlage.
+
+   480 × 300 steht zweimal: als viewBox im HTML und als Pixelmass hier.
+   Beides muss übereinstimmen, weil offset-path unten in Pixeln des
+   Elements rechnet und nicht in viewBox-Einheiten. */
+.auftakt__wurf {
+  position: relative; z-index: 0;
+  width: 480px; height: 300px; margin-bottom: -112px;
+}
+.auftakt__bogen {
+  position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible;
+  color: color-mix(in srgb, var(--ttc-blau-500) 42%, transparent);
+  /* pathLength="1" macht den Pfad eine Einheit lang — der Strich lässt
+     sich dann direkt aus dem Fortschritt herausziehen, ohne die echte
+     Länge zu kennen. */
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--auftakt-bogen, 0));
+}
+/* Kein Schlagschatten: ein Schatten setzt eine Fläche voraus, und der Ball
+   ist hier in der Luft. Die Plastik kommt aus dem Lichtpunkt im Verlauf. */
+/* Kein Randausgleich: offset-anchor ist von Haus aus «auto» und das
+   heisst transform-origin, also die Mitte des Balls. Die Mitte liegt
+   damit von selbst auf dem Pfad. Ein zusätzliches margin: -18px hätte
+   ihn um genau diese 18 px nach links oben versetzt — der Ball liefe
+   dann neben seinem eigenen Bogen her, und am Ende schaute die
+   Bogenspitze rechts unten unter ihm hervor. */
+.auftakt__ball {
+  position: absolute; left: 0; top: 0;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%,
+    color-mix(in srgb, var(--ttc-tinte-0) 52%, var(--auftakt-ball)) 0%,
+    var(--auftakt-ball) 58%,
+    color-mix(in srgb, var(--ttc-blau-700) 18%, var(--auftakt-ball)) 100%);
+  offset-path: path("M 62.9 215.5 C 104 148, 200 42, 344 78");
+  offset-distance: calc(var(--auftakt-ball-weg, 0) * 100%);
+  offset-rotate: 0deg;
+  opacity: var(--auftakt-ball-da, 0);
+}
+/* Kennt der Browser offset-path nicht, liegt der Ball am Pfadende — das
+   ist der Zustand, in dem die Karte ohnehin stehen bleibt. Hier braucht
+   es den Randausgleich dann doch: left/top setzen die linke obere Ecke,
+   nicht die Mitte. */
+@supports not (offset-path: path("M 0 0 L 1 1")) {
+  .auftakt__ball { left: 344px; top: 78px; margin: -18px 0 0 -18px; }
+}
+
+.auftakt__logo {
+  position: relative; z-index: 1;
+  width: min(520px, 60vw); height: auto; display: block;
+  opacity: var(--auftakt-logo, 0);
+  transform: translateY(calc((1 - var(--auftakt-logo, 0)) * 30px));
+}
+
+.auftakt__strich {
+  display: block; width: 104px; height: 2px; border-radius: 2px;
+  margin: 34px 0 26px;
+  background: color-mix(in srgb, var(--ttc-blau-500) 70%, transparent);
+  transform: scaleX(var(--auftakt-strich, 0));
+}
+
+.auftakt__schlusszeile {
+  margin: 0; font-size: var(--grad-2xl);
+  color: var(--ttc-blau-700);
+  opacity: var(--auftakt-zeile, 0);
+  transform: translateY(calc((1 - var(--auftakt-zeile, 0)) * 16px));
+}
+
+/* Das Zahlenband stand im Hero und schliesst jetzt beide Auftakte ab.
+   Es behält sein knappes Polster — als gewöhnliche Sektion bekäme es über
+   100 px und risse den Anschluss auseinander. */
+.zahlenband { padding: clamp(26px, 3.4vw, 40px) 0 !important; }
+
+/* Nur auf grossen Schirmen, und nur wenn das Skript eingeschaltet hat.
+   Dann tritt der Hero zurück — es soll immer genau ein Auftakt da sein,
+   nie zwei und nie keiner.
+
+   Hier stand einmal zusätzlich `hover: hover`, um Tablets auszuschliessen.
+   Die Bedingung hat den Auftakt auf **Laptops mit Touchscreen**
+   abgeschaltet: Chrome hält dort den Finger für das erste Zeigergerät und
+   meldet `hover: none`, obwohl ein Trackpad danebenliegt. Gemerkt hat es
+   niemand, weil die Seite dann einfach den Hero zeigt und gut aussieht.
+
+   Die Breite allein reicht für das, was verlangt war — «nicht auf dem
+   Handy»: auch das grösste Handy quer misst rund 930 px.
+
+   Derselbe Ausdruck steht ein zweites Mal im Skript (`matchMedia`), weil
+   nur dort die Bilder geladen werden. build.py prüft, dass beide
+   übereinstimmen. */
+@media (min-width: 1024px) {
+  html.auftakt-an .auftakt { display: block; }
+  html.auftakt-an .hero { display: none; }
+}
+
+/* Wer im Betriebssystem gesagt hat, dass Bewegung stört, meint auch diese.
+   Das Skript startet dann gar nicht; die Regel ist das Sicherheitsnetz. */
+@media (prefers-reduced-motion: reduce) {
+  .auftakt { display: none !important; }
+  html.auftakt-an .hero { display: flex !important; }
 }

@@ -55,7 +55,7 @@ NAVIGATION = [
 SEITEN = {
     "index.html": (
         "TTC Neuhausen – Tischtennis für alle, seit 1975",
-        "Tischtennisclub Neuhausen am Rheinfall: Nachwuchsförderung, Breitensport und "
+        "Tischtennisclub Neuhausen: Nachwuchsförderung, Breitensport und "
         "Seniorentraining in der Rhyfallhalle und im TTZ Ebnat. Schnuppern jederzeit möglich.",
         None),
 
@@ -107,11 +107,11 @@ SEITEN = {
         "Training"),
     "training-schnupperpass.html": (
         "Schnupperpass – TTC Neuhausen",
-        "Sechs Monate Tischtennis ohne Mitgliedschaft: der Schnupperpass für Kinder.",
+        "Sechs Monate Tischtennis ohne Mitgliedschaft — für Nachwuchs, Breitensport und Senioren.",
         "Training"),
     "training-breitensport.html": (
         "Breitensport – TTC Neuhausen",
-        "Erwachsenentraining mit einer geführten Stunde, danach freies Spiel.",
+        "Erwachsenentraining: eine halbe Stunde freies Einspielen, danach eine geführte Stunde.",
         "Training"),
     "training-senioren.html": (
         "Senioren und PingPongParkinson – TTC Neuhausen",
@@ -124,7 +124,7 @@ SEITEN = {
         "Training"),
     "training-stuetzpunkt.html": (
         "Stützpunkttraining – TTC Neuhausen",
-        "Der TTC Neuhausen ist anerkannter Stützpunkt von Swiss Table Tennis.",
+        "Der TTC Neuhausen ist anerkannter Stützpunkt des Ostschweizer Tischtennisverbands.",
         "Training"),
     "training-schulen.html": (
         "Für Schulen – TTC Neuhausen",
@@ -175,10 +175,10 @@ SEITEN = {
         None),
     "impressum.html": (
         "Impressum – TTC Neuhausen",
-        "Impressum des Tischtennisclubs Neuhausen am Rheinfall.",
+        "Impressum des Tischtennisclubs Neuhausen.",
         None),
     "datenschutz.html": (
         "Datenschutzerklärung – TTC Neuhausen",
-        "Datenschutzerklärung des Tischtennisclubs Neuhausen am Rheinfall.",
+        "Datenschutzerklärung des Tischtennisclubs Neuhausen.",
         None),
 }

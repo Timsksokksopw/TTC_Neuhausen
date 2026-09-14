@@ -9,7 +9,7 @@
 <script>document.documentElement.className += " js";</script>
 
 <title>Datenschutzerklärung – TTC Neuhausen</title>
-<meta name="description" content="Datenschutzerklärung des Tischtennisclubs Neuhausen am Rheinfall.">
+<meta name="description" content="Datenschutzerklärung des Tischtennisclubs Neuhausen.">
 <link rel="canonical" href="https://www.ttc-neuhausen.ch/datenschutz.html">
 <meta name="theme-color" content="#0A111D">
 
@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="TTC Neuhausen">
 <meta property="og:locale" content="de_CH">
 <meta property="og:title" content="Datenschutzerklärung – TTC Neuhausen">
-<meta property="og:description" content="Datenschutzerklärung des Tischtennisclubs Neuhausen am Rheinfall.">
+<meta property="og:description" content="Datenschutzerklärung des Tischtennisclubs Neuhausen.">
 <meta property="og:url" content="https://www.ttc-neuhausen.ch/datenschutz.html">
 <meta property="og:image" content="https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg">
 <meta property="og:image:width" content="1200">
@@ -40,14 +40,14 @@
 {
   "@context": "https://schema.org",
   "@type": "SportsClub",
-  "name": "Tischtennisclub Neuhausen am Rheinfall",
+  "name": "Tischtennisclub Neuhausen",
   "alternateName": "TTC Neuhausen",
   "url": "https://www.ttc-neuhausen.ch/",
   "logo": "https://www.ttc-neuhausen.ch/assets/img/logo-blau.svg",
   "image": "https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg",
   "foundingDate": "1975",
   "sport": "Tischtennis",
-  "areaServed": "Neuhausen am Rheinfall, Schaffhausen",
+  "areaServed": "Schaffhausen, Neuhausen",
   "sameAs": [
     "https://www.instagram.com/ttcneuhausen/",
     "https://www.facebook.com/ttcnh/"
@@ -117,7 +117,7 @@
 45 -163 93 -258 110 -66 12 -312 13 -394 1z M8473 8281 c-87 -22 -159 -130 -151 -226 6 -67 46 -137 100 -173 36
 -23 51 -27 117 -27 70 0 80 3 125 34 166 115 99 380 -101 396 -32 2 -73 0 -90
 -4z"/></g></svg>
-      <span class="kopf__name">TTC Neuhausen<span>am Rheinfall</span></span>
+      <span class="kopf__name">TTC Neuhausen</span>
     </a>
 
     <nav class="nav" id="hauptnavigation" aria-label="Hauptnavigation" data-offen="false">
@@ -190,13 +190,14 @@
 <section class="sektion--hell">
   <div class="wrap">
     <div class="rechtstext">
-      <p class="hinweis"><strong>Entwurf — noch nicht freigegeben.</strong> Diese Erklärung
-        ist eine Vorlage und muss vor der Aufschaltung an den tatsächlichen technischen
-        Aufbau angepasst und vom Verein geprüft werden. Sie ersetzt keine Rechtsberatung.
-        Massgeblich ist das revidierte Schweizer Datenschutzgesetz (revDSG).</p>
+      <p class="hinweis"><strong>Vom Verein freizugeben.</strong> Der Text beschreibt den
+        tatsächlichen Stand der Website — die aufgeführten Dienste sind am gebauten Stand
+        nachgeprüft. Er ersetzt aber keine Rechtsberatung, und massgeblich ist das
+        revidierte Schweizer Datenschutzgesetz (revDSG). Sobald die Schriften auf dem
+        eigenen Server liegen, ist der Abschnitt «Externe Dienste» nachzuführen.</p>
 
       <h2>Verantwortliche Stelle</h2>
-      <p>Tischtennisclub Neuhausen, [Adresse],
+      <p>Tischtennisclub Neuhausen, 8200 Schaffhausen, Schweiz,
         <a href="mailto:info@ttc-neuhausen.ch">info@ttc-neuhausen.ch</a></p>
 
       <h2>Bearbeitung beim Besuch der Website</h2>
@@ -216,22 +217,38 @@
         der Nachricht. Diese Daten werden ausschliesslich zur Bearbeitung der Anfrage
         verwendet und nicht weitergegeben.</p>
 
+      <!-- Diese Liste beschreibt, was die Seiten beim Aufruf **tatsächlich**
+           nachladen, nicht was einmal geplant war. Zwei Angaben waren
+           falsch: dass die Schriften vom eigenen Server kommen (sie kommen
+           aus dem Prototyp noch von Google) und dass Tabellen vom Verband
+           geladen werden (es wird nichts geladen, es wird verlinkt). Wer
+           hier etwas ändert, prüft es zuerst am gebauten site/. -->
       <h2>Externe Dienste</h2>
-      <p>[Anzupassen. Aktuell im Einsatz oder vorgesehen:]</p>
+      <p>Diese Website lädt beim Aufruf einer Seite genau einen fremden Dienst nach:</p>
       <ul>
-        <li>Schriftarten: Werden auf dem eigenen Server ausgeliefert. Es entsteht keine
-          Verbindung zu Servern Dritter. <em>[Vor Aufschaltung prüfen — im Prototyp läuft
-          noch Google Fonts.]</em></li>
-        <li>click-tt / sportred: Tabellen und Resultate werden vom Verband geladen. Dabei
-          wird eine Verbindung zu deren Server aufgebaut.</li>
-        <li>Kartendienst: [Falls eine Karte eingebunden wird, hier ergänzen.]</li>
-        <li>Helferportal, Anmeldeformulare: Werden von externen Anbietern betrieben; es
-          gelten deren Datenschutzbestimmungen.</li>
+        <li><strong>Google Fonts:</strong> Die Schriften werden von
+          <code>fonts.googleapis.com</code> und <code>fonts.gstatic.com</code> geladen.
+          Dabei erfährt Google die IP-Adresse der Besucherin oder des Besuchers.
+          <em>Vorgesehen ist, die Schriften auf den eigenen Server zu legen; danach
+          entfällt diese Verbindung und dieser Punkt.</em></li>
       </ul>
+      <p>Alles Übrige ist <strong>verlinkt, nicht eingebettet</strong> — es wird also
+        erst aufgerufen, wenn jemand den Link anklickt, und ist dann ein Besuch auf der
+        Website des jeweiligen Anbieters mit dessen Datenschutzbestimmungen:</p>
+      <ul>
+        <li><strong>click-tt</strong> (Swiss Table Tennis / nuLiga) für die
+          Ligatabellen und Spielpläne der Mannschaften</li>
+        <li><strong>Microsoft Forms</strong> für das Anmeldeformular</li>
+        <li><strong>portal.helfereinsatz.ch</strong> für die Helfereinsätze</li>
+        <li><strong>Facebook und Instagram</strong> für die Vereinsseiten</li>
+      </ul>
+      <p>Eine Karte ist nicht eingebunden. Die Anfahrt steht als Text und Adresse auf der
+        Kontaktseite.</p>
 
       <h2>Cookies</h2>
-      <p>Diese Website setzt keine Cookies zu Analyse- oder Werbezwecken. [Anpassen, falls
-        sich das ändert.]</p>
+      <p>Diese Website setzt keine Cookies — weder zu Analyse- noch zu Werbezwecken. Es
+        ist auch keine Besucherstatistik eingebunden. Kommt später eine dazu, gehört sie
+        hier hin.</p>
 
       <h2>Rechte der betroffenen Personen</h2>
       <p>Sie haben das Recht auf Auskunft über die zu Ihrer Person bearbeiteten Daten sowie

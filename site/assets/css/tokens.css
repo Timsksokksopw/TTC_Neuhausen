@@ -82,6 +82,18 @@
   --schleier-leicht: color-mix(in srgb, var(--ttc-tinte-950) 22%, transparent);
   --schleier-klar:   color-mix(in srgb, var(--ttc-tinte-950)  0%, transparent);
 
+  /* --- Auftakt -----------------------------------------------------------
+     Zwei Werte, die nicht aus der Palette kommen, sondern aus dem Material:
+     gemessen am letzten Bild der Startseiten-Fahrt. Die Schlussfläche muss
+     die Bildfarbe exakt treffen, sonst sieht man beim Übergang eine Kante;
+     im oberen Bilddrittel schwankt sie um weniger als drei Stufen je Kanal,
+     eine glatte Fläche passt also nahtlos.
+
+     Der Ball ist derselbe, der eben hinter der Tischkante verschwunden ist —
+     deshalb auch hier seine eigene Farbe und keine aus der Skala.          */
+  --auftakt-grund: #66B2D2;   /* Bild 50, Median der oberen 60 %  */
+  --auftakt-ball:  #EAB713;   /* Bild 46, Median der Ballfläche   */
+
   /* --- Schraffur ----------------------------------------------------------
      Zweite Kodierung neben der Farbe. Im Wochenraster trägt sie die
      Rhyfallhalle, damit die Zuordnung auch ankommt, wo Farbe es nicht tut:

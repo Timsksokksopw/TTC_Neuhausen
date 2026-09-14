@@ -11,3 +11,11 @@ desktop.ini
 ttcn-vorher-*/
 _to_delete/
 *.zip
+
+# Die Einzelbilder des Auftakts im Original (24 MB). Was die Website
+# braucht, liegt aufbereitet unter site/assets/img/auftakt/.
+Frames/
+
+# Hilfsseite zum Nachschauen, ob der Auftakt auf einem Bildschirm läuft.
+# Gehört nicht zur Website und nicht ins Repository.
+auftakt-test.html

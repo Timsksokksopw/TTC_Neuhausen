@@ -64,7 +64,7 @@ ANGEBOTE = {
     "breitensport": {
         "name": "Breitensport",
         "seite": "training-breitensport.html",
-        "notiz": "Jeweils eine Stunde geführt, danach freies Spiel.",
+        "notiz": "Zuerst eine halbe Stunde freies Einspielen, während der Nachwuchs noch am Tisch ist, danach eine Stunde geführt.",
     },
     "senioren": {
         "name": "Senioren",

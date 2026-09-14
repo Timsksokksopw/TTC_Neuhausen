@@ -73,6 +73,18 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* --- Layout ------------------------------------------------------------- */
+/* Sprungziele nicht unter die Kopfzeile schieben.
+   Die Kopfzeile klebt oben (position: sticky, 72 px hoch). Ohne
+   scroll-padding landet jedes Sprungziel — «12 Bilder im Archiv», jeder
+   Anker aus dem Fliesstext — genau darunter, und die Überschrift, zu der
+   man wollte, ist verdeckt. Gilt für die ganze Website, nicht nur für die
+   Geschichte-Seite: der Fehler war überall da, nur ist er bisher niemandem
+   aufgefallen, weil kaum eine Seite Anker hatte.
+
+   scroll-behavior nimmt die Bewegung dazu; bei
+   prefers-reduced-motion: reduce steht sie in tokens.css schon wieder ab. */
+html { scroll-padding-top: 92px; scroll-behavior: smooth; }
+
 .wrap { width: min(1140px, 100% - 48px); margin-inline: auto; }
 /* Nur die Sektionen der Seite selbst, nicht jedes verschachtelte <section>.
    Vorher stand hier ein nacktes `section`. Damit bekam auch jede Tageszeile
@@ -110,6 +122,8 @@ main > .sektion--dunkel + .sektion--dunkel { padding-top: 0; }
 .split > *,
 .sponsoren > *,
 .teams > *,
+.dokumentliste > *,
+.kader > *,
 .termine > *,
 .zahlen > *,
 .zeitleiste > * { min-width: 0; }

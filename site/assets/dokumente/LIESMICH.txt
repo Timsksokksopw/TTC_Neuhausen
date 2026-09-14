@@ -1,0 +1,15 @@
+Hierher gehören die Vereinsdokumente: Statuten, Reglemente, Tarife,
+das Spesenformular und die sieben Beitrittserklärungen.
+
+Welche Dateien, unter welchem Namen und wo sie zurzeit noch liegen,
+steht in  vorlage/dokumente.py.
+
+Holen:    auf Windows hol-dokumente.bat doppelklicken
+          (sonst: python3 hol-dokumente.py)
+Danach:   python3 build.py
+
+Solange eine Datei fehlt, steht ihr Eintrag auf verein-downloads.html
+ohne Verweis da und trägt rechts «folgt». build.py sagt nach jedem Lauf,
+welche noch fehlen.
+
+Diese Datei darf weg, sobald alle vierzehn da sind.

@@ -6,27 +6,14 @@
   </div>
 </section>
 
+<!-- Die Liste kommt aus vorlage/news.py, genau wie die drei Karten auf der
+     Startseite. Vorher stand jeder Beitrag hier und dort abgetippt, und der
+     eigentliche Text lag gar nicht auf dieser Website.
+
+     Ein Eintrag ist klickbar, sobald in news.py Fliesstext dazu steht —
+     dann erzeugt build.py die Beitragsseite gleich mit. -->
 <section class="sektion--hell">
   <div class="wrap">
-    <div class="newsliste">
-      <a class="newseintrag" href="https://www.ttc-neuhausen.ch/2026/07/09/sttl-women-ttc-neuhausen-stellt-sich-nach-umbruch-neu-auf/" target="_blank" rel="noopener">
-        <time datetime="2026-07-09">9. Juli 2026</time>
-        <div><h3>STTL Women: TTC Neuhausen stellt sich nach Umbruch neu auf</h3>
-          <p>Text: Lyo Bührer, Bild: René Zwald</p></div>
-      </a>
-      <a class="newseintrag" href="https://www.ttc-neuhausen.ch/2026/06/22/finalrunde-nachwuchs-alle-drei-sprachregionen-holen-titel-in-neuhausen/" target="_blank" rel="noopener">
-        <time datetime="2026-06-22">22. Juni 2026</time>
-        <div><h3>Finalrunde Nachwuchs: Alle drei Sprachregionen holen Titel in Neuhausen</h3>
-          <p>Text: Lyo Bührer, Bilder: Andrii Lukatskyi</p></div>
-      </a>
-      <a class="newseintrag" href="https://www.ttc-neuhausen.ch/2026/06/22/sttl-men-ttc-neuhausen-stellt-weichen-nach-schwierigem-jahr-neu/" target="_blank" rel="noopener">
-        <time datetime="2026-06-22">22. Juni 2026</time>
-        <div><h3>STTL Men: TTC Neuhausen stellt Weichen nach schwierigem Jahr neu</h3>
-          <p>Text: Lyo Bührer, Bild: Ranil Jayanetti</p></div>
-      </a>
-    </div>
-    <p class="hinweis" style="margin-top:32px"><strong>Noch einzurichten:</strong> Die
-      Beiträge werden aus dem CMS geladen, sobald die Inhalte übertragen sind. Bis dahin
-      verweisen die Einträge auf die bestehende Website.</p>
+    {{newsliste}}
   </div>
 </section>

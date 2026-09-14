@@ -1,3 +1,99 @@
+<!-- ==========================================================================
+     Auftakt: die Bildfolge, durch die man scrollt
+     ==========================================================================
+
+     Fünfzig Einzelbilder einer gezeichneten Kamerafahrt über den Tisch.
+     Beim Scrollen läuft die Folge durch, danach beginnt die Seite.
+
+     Drei Dinge sind hier Absicht und keine Sparmassnahme:
+
+     · **Der Abschnitt ist von Haus aus versteckt.** Sichtbar wird er erst,
+       wenn JavaScript ihn einschaltet. Ohne JavaScript stünde hier sonst
+       eine knapp drei Bildschirme hohe Leere, durch die man scrollt, ohne
+       dass sich etwas ändert — schlimmer als gar kein Effekt.
+
+     · **Nur auf grossen Schirmen mit Zeiger.** Auf dem Handy ist die
+       Fahrt eher im Weg, und niemand soll dort 1.3 MB Bilder laden, die
+       er nie sieht. Geladen wird erst, wenn die Bedingung stimmt.
+
+     · **Bei `prefers-reduced-motion` bleibt sie aus.** Wer im
+       Betriebssystem gesagt hat, dass Bewegung stört, meint auch diese.
+
+     In allen drei Fällen übernimmt der Hero darunter, der auf dem Laptop
+     sonst ausgeblendet ist. Es ist also immer genau ein Auftakt da.
+
+     data-bilder trägt die Anzahl; build.py zählt die Dateien selbst und
+     prüft, dass die Folge keine Lücke hat.                                -->
+<section class="auftakt" data-auftakt data-bilder="{{auftaktbilder}}" hidden>
+  <div class="auftakt__buehne">
+    <!-- sektion--dunkel setzt hier nicht die Fläche, sondern den Kontext:
+         daraus holen sich Knopf, Linien und Nebentexte ihre Werte. Ohne
+         das stand der Knopf als blosser Text ohne Fläche da. -->
+    <div class="auftakt__fest sektion--dunkel">
+      <canvas class="auftakt__leinwand"></canvas>
+      <div class="auftakt__schleier" aria-hidden="true"></div>
+      <div class="auftakt__abblende" aria-hidden="true"></div>
+
+      <div class="wrap auftakt__innen">
+        <p class="auftakt__seit akzent">Seit 1975</p>
+        <h1 class="auftakt__titel">Komm an den Tisch.</h1>
+        <p class="auftakt__text">Von 7 bis 85. Schläger leihen wir dir.</p>
+        <div class="auftakt__aktionen">
+          <a class="btn" href="verein-mitglied-werden.html">Schnuppertraining besuchen</a>
+        </div>
+      </div>
+
+      <p class="auftakt__hinweis" aria-hidden="true">Scrollen</p>
+
+      <!-- ====================================================================
+           Der Schluss
+           ====================================================================
+
+           Erst verschwindet der Ball hinter der Tischkante — das passiert
+           im Bild 48, gemessen, nicht geschätzt. Danach steht die Fläche
+           einen Moment leer. Und dann kommt der Ball zurück: er steigt von
+           unten herein, zieht seinen Bogen und legt sich über das
+           Vereinszeichen.
+
+           Der Bogen ist kein Zierrat, sondern das Leitmotiv, das die
+           Website ohnehin führt. Hier zeichnet er sich, während der Ball
+           ihn abfährt.
+
+           Die Fläche trägt die exakte Farbe des letzten Bildes
+           (--auftakt-grund), damit der Übergang keine Kante hat. Darüber
+           liegt ein weiches Licht — das ist nicht nur Stimmung: das
+           Vereinszeichen käme auf der blossen Bildfarbe nur auf 3.3:1,
+           mit dem Licht auf über 6:1.                                   -->
+      <div class="auftakt__schluss">
+        <div class="auftakt__licht" aria-hidden="true"></div>
+
+        <div class="auftakt__karte">
+          <div class="auftakt__wurf" aria-hidden="true">
+            <!-- Der Bogen beginnt am Ball der Logofigur: er kommt nicht
+                 irgendwoher zurück, sondern wird gespielt. Der
+                 Anfangspunkt ist ausgemessen, nicht geschätzt — die
+                 Rechnung steht im Kommentar bei .auftakt__wurf.
+
+                 Derselbe Pfad steht ein zweites Mal als offset-path im
+                 CSS. Wer ihn ändert, ändert beide. -->
+            <svg class="auftakt__bogen" viewBox="0 0 480 300" fill="none">
+              <path d="M 62.9 215.5 C 104 148, 200 42, 344 78"
+                    pathLength="1" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+            </svg>
+            <span class="auftakt__ball"></span>
+          </div>
+
+          <img class="auftakt__logo" src="assets/img/logo-ttcn.png"
+               alt="Tischtennisclub Neuhausen" width="511" height="120">
+          <span class="auftakt__strich" aria-hidden="true"></span>
+          <p class="auftakt__schlusszeile akzent">Seit 1975 in Neuhausen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="hero sektion--dunkel">
   <!-- Das Hero-Foto. fetchpriority="high" holt es vor allen anderen Bildern,
        weil es das Erste ist, was jemand sieht. Kein loading="lazy" hier:
@@ -5,8 +101,9 @@
        nur später erscheinen lassen. alt bleibt leer — das Bild ist
        Stimmung, der Inhalt steht daneben im Text. -->
   <div class="hero__bild">
-    <img src="assets/img/fotos/hero-halle.jpg" alt="" width="2400" height="1350"
-         fetchpriority="high" decoding="async">
+    <img src="assets/img/fotos/hero-halle.jpg"
+         alt="Volle Halle: an einem Dutzend Tischen wird gespielt"
+         width="1600" height="720" fetchpriority="high" decoding="async">
   </div>
 
   <div class="wrap hero__innen">
@@ -20,19 +117,55 @@
     </div>
   </div>
 
-  <div class="hero__band">
-    <div class="wrap">
-      <div class="zahlen">
-        <div class="reveal"><div class="zahl__wert" data-ziel="51" data-seit="1975">51</div><div class="zahl__label">Jahre Verein</div></div>
-        <div class="reveal"><div class="zahl__wert" data-ziel="150">0</div><div class="zahl__label">Mitglieder</div></div>
-        <div class="reveal"><div class="zahl__wert" data-ziel="12">0</div><div class="zahl__label">Tische im TTZ Ebnat</div></div>
-        <div class="reveal"><div class="zahl__wert" data-ziel="35">0</div><div class="zahl__label">Trainingsstunden pro Woche</div></div>
-      </div>
+</section>
+
+<!-- Das Zahlenband stand bis jetzt im Hero. Seit es zwei Auftakte gibt —
+     die Bildfolge auf dem Laptop, den Hero auf dem Handy — schliesst es
+     beide ab und steht deshalb für sich.
+
+     Hell, nicht dunkel: der Auftakt endet neu auf heller Fläche mit dem
+     Vereinszeichen. Ein dunkles Band direkt danach wäre eine Wand mitten
+     in der Ankunft. Auf dem Handy folgt es weiterhin auf den dunklen
+     Hero — dort ist der Wechsel gewollt. -->
+<section class="zahlenband sektion--weiss">
+  <div class="wrap">
+    <div class="zahlen">
+      <div class="reveal"><div class="zahl__wert" data-ziel="51" data-seit="1975">51</div><div class="zahl__label">Jahre Verein</div></div>
+      <div class="reveal"><div class="zahl__wert" data-ziel="150">0</div><div class="zahl__label">Mitglieder</div></div>
+      <div class="reveal"><div class="zahl__wert" data-ziel="12">0</div><div class="zahl__label">Tische im TTZ Ebnat</div></div>
+      <div class="reveal"><div class="zahl__wert" data-ziel="35">0</div><div class="zahl__label">Trainingsstunden pro Woche</div></div>
     </div>
   </div>
 </section>
 
+<!-- Direkt unter dem Hero: eine Vereinsseite ohne Aktuelles zuoberst
+     wirkt stillgelegt, auch wenn viel los ist. Deshalb stehen die drei
+     letzten Beiträge vor allem anderen. -->
 <section class="sektion--hell">
+  <div class="wrap">
+    <div class="sektionskopf">
+      <div>
+        <p class="eyebrow label">Aus dem Verein</p>
+        <h2>Zuletzt passiert</h2>
+      </div>
+      <p class="intro">Spielberichte, Resultate und Anlässe — geschrieben von Leuten,
+        die dabei waren.</p>
+    </div>
+
+    <!-- Die drei Karten kommen aus vorlage/news.py, genau wie die Liste
+         auf news.html. Eine Karte ist klickbar, sobald dort Fliesstext zum
+         Beitrag steht — dann erzeugt build.py die Beitragsseite gleich mit.
+         Ohne Text bleibt sie eine Meldung ohne Verweis: besser als ein
+         Klick, der ins Leere oder auf die alte Website führt. -->
+    {{newskarten}}
+
+    <div class="btn-reihe">
+      <a class="btn btn--leise" href="news.html">Alle News</a>
+    </div>
+  </div>
+</section>
+
+<section class="sektion--weiss">
   <div class="wrap">
     <div class="sektionskopf">
       <div>
@@ -62,7 +195,7 @@
         </div>
         <div class="bildkarte__text">
           <h3>Breitensport</h3>
-          <p>Erwachsene, dreimal pro Woche, jeweils eine geführte Stunde und danach freies Spiel.</p>
+          <p>Erwachsene, dreimal pro Woche: eine halbe Stunde freies Einspielen, danach eine geführte Stunde.</p>
           <span class="bildkarte__mehr">Zum Breitensport</span>
         </div>
       </a>
@@ -181,95 +314,21 @@
   </div>
 </section>
 
-<!-- Neu auf der Startseite: die drei letzten Beiträge. Eine Vereinsseite
-     ohne Aktuelles auf der Startseite wirkt stillgelegt, auch wenn viel
-     los ist. -->
 <section class="sektion--hell">
-  <div class="wrap">
-    <div class="sektionskopf">
-      <div>
-        <p class="eyebrow label">Aus dem Verein</p>
-        <h2>Zuletzt passiert</h2>
-      </div>
-      <p class="intro">Spielberichte, Resultate und Anlässe — geschrieben von Leuten,
-        die dabei waren.</p>
-    </div>
-
-    <div class="bildraster">
-      <a class="bildkarte reveal" href="https://www.ttc-neuhausen.ch/2026/07/09/sttl-women-ttc-neuhausen-stellt-sich-nach-umbruch-neu-auf/" target="_blank" rel="noopener">
-        <div class="foto foto--16x9">
-          <img src="assets/img/fotos/news-1.jpg" alt="" width="900" height="506" loading="lazy" decoding="async">
-        </div>
-        <div class="bildkarte__text">
-          <time datetime="2026-07-09">9. Juli 2026</time>
-          <h3>STTL Women: neu aufgestellt nach dem Umbruch</h3>
-          <p>Text: Lyo Bührer, Bild: René Zwald</p>
-          <span class="bildkarte__mehr">Bericht lesen</span>
-        </div>
-      </a>
-      <a class="bildkarte reveal" href="https://www.ttc-neuhausen.ch/2026/06/22/finalrunde-nachwuchs-alle-drei-sprachregionen-holen-titel-in-neuhausen/" target="_blank" rel="noopener">
-        <div class="foto foto--16x9">
-          <img src="assets/img/fotos/news-2.jpg" alt="" width="900" height="506" loading="lazy" decoding="async">
-        </div>
-        <div class="bildkarte__text">
-          <time datetime="2026-06-22">22. Juni 2026</time>
-          <h3>Finalrunde Nachwuchs: alle drei Sprachregionen holen Titel</h3>
-          <p>Text: Lyo Bührer, Bilder: Andrii Lukatskyi</p>
-          <span class="bildkarte__mehr">Bericht lesen</span>
-        </div>
-      </a>
-      <a class="bildkarte reveal" href="https://www.ttc-neuhausen.ch/2026/06/22/sttl-men-ttc-neuhausen-stellt-weichen-nach-schwierigem-jahr-neu/" target="_blank" rel="noopener">
-        <div class="foto foto--16x9">
-          <img src="assets/img/fotos/news-3.jpg" alt="" width="900" height="506" loading="lazy" decoding="async">
-        </div>
-        <div class="bildkarte__text">
-          <time datetime="2026-06-22">22. Juni 2026</time>
-          <h3>STTL Men: Weichen nach schwierigem Jahr neu gestellt</h3>
-          <p>Text: Lyo Bührer, Bild: Ranil Jayanetti</p>
-          <span class="bildkarte__mehr">Bericht lesen</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="btn-reihe">
-      <a class="btn btn--leise" href="news.html">Alle News</a>
-    </div>
-  </div>
-</section>
-
-<section class="sektion--weiss">
   <div class="wrap">
     <div class="sektionskopf">
       <div>
         <p class="eyebrow label">Partner</p>
         <h2>Wer uns trägt</h2>
       </div>
-      <p class="intro">21 Unternehmen aus Neuhausen, Schaffhausen und der Region ermöglichen
-        Halle, Nachwuchsförderung und Spielbetrieb.</p>
+      <p class="intro">{{sponsorenzahl}} Unternehmen aus Neuhausen, Schaffhausen und der
+        Region ermöglichen Halle, Nachwuchsförderung und Spielbetrieb.</p>
     </div>
-    <div class="sponsoren">
-      <div class="sponsor">Klingler</div>
-      <a class="sponsor" href="https://druckwerk-sh.ch/" target="_blank" rel="noopener">Druckwerk</a>
-      <a class="sponsor" href="https://www.gvs-weine.ch/home.html" target="_blank" rel="noopener">GVS</a>
-      <div class="sponsor">Johnson &amp; Johnson</div>
-      <a class="sponsor" href="https://www.iseli-albrecht.ch/" target="_blank" rel="noopener">Iseli und Albrecht</a>
-      <a class="sponsor" href="https://sasag.ch/" target="_blank" rel="noopener">sasag</a>
-      <div class="sponsor">Girsberger</div>
-      <a class="sponsor" href="https://www.immobag.ch/" target="_blank" rel="noopener">Graf und Partner</a>
-      <div class="sponsor">Wenger-Wirz</div>
-      <a class="sponsor" href="http://www.duxmode.com/trio" target="_blank" rel="noopener">Dux</a>
-      <a class="sponsor" href="https://www.georgfischer.com/de.html" target="_blank" rel="noopener">Georg Fischer</a>
-      <a class="sponsor" href="https://www.remondis.ch/de/startseite/" target="_blank" rel="noopener">Remondis</a>
-      <a class="sponsor" href="https://www.sauterag.ch/" target="_blank" rel="noopener">Radio TV Sauter</a>
-      <a class="sponsor" href="https://shop.falken.ch/" target="_blank" rel="noopener">Brauerei Falken</a>
-      <div class="sponsor">Volksapotheke Schaffhausen</div>
-      <a class="sponsor" href="http://www.hair-design-niggli.ch/" target="_blank" rel="noopener">Bruno Niggli</a>
-      <a class="sponsor" href="https://www.sigareal.ch/" target="_blank" rel="noopener">SIG</a>
-      <a class="sponsor" href="https://steinemann-sh.ch/metamenu/home/" target="_blank" rel="noopener">Steinemann Taxi</a>
-      <a class="sponsor" href="https://www.iwc.com/ch/de/home.html" target="_blank" rel="noopener">IWC</a>
-      <a class="sponsor" href="https://www.shpower.ch/" target="_blank" rel="noopener">SH Power</a>
-      <a class="sponsor" href="https://bsb.clientis.ch/de/" target="_blank" rel="noopener">Clientis BS Bank Schaffhausen</a>
-    </div>
+
+{{ausruester}}
+
+{{sponsoren}}
+
     <div class="btn-reihe">
       <a class="btn btn--leise" href="partner.html">Partner werden</a>
     </div>
