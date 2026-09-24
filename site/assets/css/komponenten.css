@@ -483,7 +483,7 @@ a.meldung:hover h3, a.newskarte:hover h3, a.newseintrag:hover h3 { color: var(--
   display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 5fr) auto; gap: 20px var(--spalt); align-items: end;
   padding-bottom: 40px; border-bottom: 1px solid var(--linie);
 }
-.fuss__logo { width: min(100%, 380px); }
+.fuss__logo { width: min(100%, 380px); height: auto; filter: brightness(0) invert(1); }   /* blaues Logo weiss auf Nachtblau */
 .fuss__satz { margin: 0; font: 400 var(--t-l)/1.35 var(--f-lead); color: var(--nacht-text); max-width: 26em; }
 .fuss .knopf { text-decoration: none; }
 .fuss__raster { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px var(--spalt); padding: 40px 0; }
