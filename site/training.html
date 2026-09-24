@@ -1,41 +1,35 @@
 <!doctype html>
-<html lang="de">
+<!-- Erzeugt von build.py – nicht hier ändern.
+     Inhalt: inhalt/training.html · Rahmen: vorlage/layout.html · Menü: vorlage/seiten.py
+     Bilder und Dokumente unter site/assets/ werden nicht erzeugt:
+     Datei mit gleichem Namen ersetzen genügt. -->
+<html lang="de-CH">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Setzt die Klasse, bevor CSS greift. Nur wenn sie da ist, werden
-     .reveal-Elemente versteckt — ohne JavaScript bleibt alles sichtbar. -->
-<script>document.documentElement.className += " js";</script>
-
+<script>document.documentElement.classList.add("js")</script>
 <title>Trainingszeiten – TTC Neuhausen</title>
-<meta name="description" content="Alle Trainingszeiten des TTC Neuhausen für Nachwuchs, Breitensport und Senioren, mit Halle und Trainer.">
+<meta name="description" content="Der Wochenplan des TTC Neuhausen: Nachwuchs, Breitensport und Senioren in der Rhyfallhalle und im TTZ Ebnat.">
 <link rel="canonical" href="https://www.ttc-neuhausen.ch/training.html">
-<meta name="theme-color" content="#0A111D">
-
-<!-- Vorschau beim Teilen: WhatsApp, Instagram, Facebook, LinkedIn. -->
+<meta name="theme-color" content="#F3F0E8">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TTC Neuhausen">
 <meta property="og:locale" content="de_CH">
 <meta property="og:title" content="Trainingszeiten – TTC Neuhausen">
-<meta property="og:description" content="Alle Trainingszeiten des TTC Neuhausen für Nachwuchs, Breitensport und Senioren, mit Halle und Trainer.">
+<meta property="og:description" content="Der Wochenplan des TTC Neuhausen: Nachwuchs, Breitensport und Senioren in der Rhyfallhalle und im TTZ Ebnat.">
 <meta property="og:url" content="https://www.ttc-neuhausen.ch/training.html">
 <meta property="og:image" content="https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="TTC Neuhausen — Tischtennis für alle, seit 1975">
 <meta name="twitter:card" content="summary_large_image">
-
 <link rel="icon" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,88..112,400..800;1,88..112,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/sofia-sans-xc.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/komponenten.css">
 <link rel="stylesheet" href="assets/css/seiten.css">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -47,22 +41,17 @@
   "image": "https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg",
   "foundingDate": "1975",
   "sport": "Tischtennis",
-  "areaServed": "Schaffhausen, Neuhausen",
-  "sameAs": [
-    "https://www.instagram.com/ttcneuhausen/",
-    "https://www.facebook.com/ttcnh/"
-  ]
+  "sameAs": ["https://www.instagram.com/ttcneuhausen/", "https://www.facebook.com/ttcnh/"]
 }
 </script>
 </head>
-<body>
+<body class="seite-training">
+<a class="skip-link" href="#inhalt">Zum Inhalt</a>
 
-<a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
-
-<header class="kopf sektion--dunkel">
+<header class="kopf" data-kopf>
   <div class="wrap kopf__innen">
-    <a class="kopf__logo logo" href="index.html" aria-label="Startseite TTC Neuhausen">
-      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377" role="img" aria-label="TTC Neuhausen"><title>TTC Neuhausen</title><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
+    <a class="kopf__marke" href="index.html">
+      <svg class="kopf__signet" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377"><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
 -31 -73 -67 -291 -54 -327 3 -7 9 -52 14 -99 8 -73 15 -94 42 -132 27 -39 33
 -58 39 -126 5 -58 15 -95 34 -132 14 -28 26 -60 26 -70 0 -23 27 -79 38 -79 4
 0 18 -10 32 -23 23 -21 25 -29 22 -100 l-4 -77 -36 -19 c-20 -10 -71 -28 -112
@@ -117,10 +106,9 @@
 45 -163 93 -258 110 -66 12 -312 13 -394 1z M8473 8281 c-87 -22 -159 -130 -151 -226 6 -67 46 -137 100 -173 36
 -23 51 -27 117 -27 70 0 80 3 125 34 166 115 99 380 -101 396 -32 2 -73 0 -90
 -4z"/></g></svg>
-      <span class="kopf__name">TTC Neuhausen</span>
+      <span class="kopf__name">TTC Neuhausen <span>Tischtennis seit 1975</span></span>
     </a>
-
-    <nav class="nav" id="hauptnavigation" aria-label="Hauptnavigation" data-offen="false">
+    <nav class="nav" id="navigation" aria-label="Hauptnavigation">
       <ul class="nav__liste">
         <li class="nav__punkt">
           <a class="nav__link" href="verein.html">Verein</a>
@@ -128,19 +116,19 @@
             <li><a href="verein.html">Über den Verein</a></li>
             <li><a href="verein-vorstand.html">Vorstand</a></li>
             <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+            <li><a href="verein-geschichte.html">Geschichte</a></li>
             <li><a href="verein-jahresprogramm.html">Jahresprogramm</a></li>
             <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
             <li><a href="verein-helfereinsatz.html">Helfereinsatz</a></li>
             <li><a href="verein-downloads.html">Downloads</a></li>
-            <li><a href="verein-geschichte.html">Geschichte</a></li>
           </ul>
         </li>
-        <li class="nav__punkt nav__punkt--aktiv">
+        <li class="nav__punkt ist-aktiv">
           <a class="nav__link" href="training.html" aria-current="page">Training</a>
           <ul class="nav__unter">
             <li><a href="training.html" aria-current="page">Trainingszeiten</a></li>
+            <li><a href="training-schnupperpass.html">Schnuppern &amp; Schnupperpass</a></li>
             <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
-            <li><a href="training-schnupperpass.html">Schnupperpass</a></li>
             <li><a href="training-breitensport.html">Breitensport</a></li>
             <li><a href="training-senioren.html">Senioren &amp; PingPongParkinson</a></li>
             <li><a href="training-einzeltraining.html">Einzeltraining</a></li>
@@ -157,365 +145,354 @@
             <li><a href="hallen.html">Übersicht</a></li>
             <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
             <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-            <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
+            <li><a href="hallen-neue-halle.html">Hallensportzentrum</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="news.html">News</a>
         </li>
       </ul>
+      <p class="nav__fuss">
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a>
+      </p>
     </nav>
-
-    <a class="btn btn--klein" href="verein-mitglied-werden.html">Schnuppern</a>
-
-    <button class="menu-knopf" type="button" aria-label="Menü öffnen"
-            aria-controls="hauptnavigation" aria-expanded="false">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M3 6h18M3 12h18M3 18h18"/>
-      </svg>
+    <a class="knopf knopf--orange kopf__aktion" href="training-schnupperpass.html">Schnuppern</a>
+    <button class="kopf__menue" type="button" aria-expanded="false" aria-controls="navigation">
+      <span class="kopf__menue-striche" aria-hidden="true"></span><span class="kopf__menue-text">Menü</span>
     </button>
   </div>
 </header>
 
 <main id="inhalt">
-<section class="seitenkopf sektion--dunkel">
-  <div class="wrap">
-    <ul class="brotkrumen"><li><a href="index.html">Start</a></li><li>Training</li></ul>
-    <h1>Trainingszeiten</h1>
-    <p class="seitenkopf__lead">35 Trainingsstunden pro Woche in zwei Hallen. Einsteigen geht
-      das ganze Jahr über — auch mitten in der Saison.</p>
+<header class="aufmacher">
+  <div class="wrap aufmacher__raster">
+    <div class="aufmacher__text">
+      <nav class="brotkrumen" aria-label="Brotkrumen"><a href="index.html">Start</a><span aria-current="page">Training</span></nav>
+      <p class="rubrik">Training</p>
+      <h1>Trainings&shy;zeiten</h1>
+      <p class="lead">14 Trainings an 5 Tagen, in zwei Hallen. Vormittags spielen die Senioren,
+        am Abend Nachwuchs und Erwachsene. Einsteigen geht das ganze Jahr, auch mitten in der Saison.</p>
+    </div>
+    <aside class="aufmacher__bild heutetafel" aria-labelledby="heute-titel">
+      <h2 class="heutetafel__titel" id="heute-titel">Heute in der Halle</h2>
+      <ol class="heutetafel__liste" data-heute-liste>
+        <li class="heutetafel__leer">Die ganze Woche steht im Plan unten.</li>
+      </ol>
+      <p class="heutetafel__fuss">Zum Schnuppern einfach vorbeikommen, Kinder am besten kurz beim Trainerteam melden. Hallenschuhe und Sportkleider mitnehmen, den Schläger leihen wir.</p>
+    </aside>
   </div>
-</section>
+</header>
 
-<!-- Das Wochenraster wird von build.py aus vorlage/trainingszeiten.py
-     erzeugt — Raster, Notizen und Tabelle stammen aus derselben Quelle. -->
-<section class="sektion--hell">
+<section class="flaeche--weiss" id="wochenplan">
   <div class="wrap">
-    <div class="sektionskopf">
-      <div>
-        <p class="eyebrow label">Die Woche</p>
-        <h2>Wann wo gespielt wird</h2>
-      </div>
-      <p class="intro">Vormittags die Senioren, abends Nachwuchs und Breitensport.
-        Wähle ein Angebot, um nur dessen Zeiten hervorzuheben.</p>
+    <div class="abschnittskopf">
+      <h2>Die Woche</h2>
+      <p class="lead">Farbe steht für die Halle, ein Klick auf eine Einheit führt zum Angebot.
+        Mit den Knöpfen lässt sich ein Angebot hervorheben.</p>
     </div>
-
-<div class="woche" data-filter="alle" style="--spalten:repeat(10, 1fr) var(--bruch) repeat(30, 1fr)">
-  <div class="woche__steuerung">
-    <div class="filter" role="group" aria-label="Wochenplan nach Angebot filtern">
-      <button class="filter__knopf" type="button" data-zeigt="alle" aria-pressed="true">Alle</button>
-      <button class="filter__knopf" type="button" data-zeigt="nachwuchs" aria-pressed="false">Nachwuchs</button>
-      <button class="filter__knopf" type="button" data-zeigt="breitensport" aria-pressed="false">Breitensport</button>
-      <button class="filter__knopf" type="button" data-zeigt="senioren" aria-pressed="false">Senioren</button>
+    <div class="plan" data-plan data-filter="alle">
+  <div class="plan__steuerung">
+    <div class="plan__filter" role="group" aria-label="Nach Angebot hervorheben">
+      <button type="button" data-zeigt="alle" aria-pressed="true">Alle</button>
+      <button type="button" data-zeigt="nachwuchs" aria-pressed="false">Nachwuchs</button>
+      <button type="button" data-zeigt="breitensport" aria-pressed="false">Breitensport</button>
+      <button type="button" data-zeigt="senioren" aria-pressed="false">Senioren</button>
     </div>
-    <ul class="legende">
-      <li><span class="legende__probe legende__probe--ebnat"></span>TTZ Ebnat</li>
-      <li><span class="legende__probe legende__probe--rhyfall"></span>Rhyfallhalle</li>
+    <ul class="plan__legende">
+      <li><i class="halle-marke halle-marke--ebnat"></i>TTZ Ebnat</li>
+      <li><i class="halle-marke halle-marke--rhyfall"></i>Rhyfallhalle</li>
     </ul>
   </div>
-  <div class="woche__rollen">
-    <div class="woche__innen">
-      <div class="skala" aria-hidden="true">
-        <div class="skala__spur">
-          <span class="skala__marke" style="--pos:3">09</span>
-          <span class="skala__marke" style="--pos:7">10</span>
-          <span class="skala__marke" style="--pos:14">15</span>
-          <span class="skala__marke" style="--pos:18">16</span>
-          <span class="skala__marke" style="--pos:22">17</span>
-          <span class="skala__marke" style="--pos:26">18</span>
-          <span class="skala__marke" style="--pos:30">19</span>
-          <span class="skala__marke" style="--pos:34">20</span>
-          <span class="skala__marke" style="--pos:38">21</span>
-          <span class="skala__bruch" style="--pos:11">···</span>
-        </div>
+  <div class="plan__raster" style="--zeilen:41">
+    <div class="plan__achse" aria-hidden="true">
+      <span style="--z:3">09:00</span>
+      <span style="--z:7">10:00</span>
+      <span style="--z:14">15:00</span>
+      <span style="--z:18">16:00</span>
+      <span style="--z:22">17:00</span>
+      <span style="--z:26">18:00</span>
+      <span style="--z:30">19:00</span>
+      <span style="--z:34">20:00</span>
+      <span style="--z:38">21:00</span>
+      <span class="plan__bruch" style="--z:11">Mittag</span>
+    </div>
+    <section class="plan__tag" data-tag="Mo" style="--bahnen:1">
+      <h3 class="plan__tagname">Montag<span class="plan__heute">Heute</span></h3>
+      <div class="plan__spalte">
+        <i class="plan__bruchlinie" style="--z:11" aria-hidden="true"></i>
+        <a class="einheit einheit--ebnat" href="training-senioren.html" data-angebot="senioren" style="--von:3;--bis:9;--bahn:1">
+          <span class="einheit__zeit">09:00–10:30</span>
+          <span class="einheit__gruppe">Freies Spielen</span>
+          <span class="einheit__halle">Ebnat</span>
+        </a>
+        <a class="einheit einheit--ebnat" href="training-nachwuchs.html" data-angebot="nachwuchs" style="--von:26;--bis:34;--bahn:1">
+          <span class="einheit__zeit">18:00–20:00</span>
+          <span class="einheit__gruppe">Förderkader</span>
+          <span class="einheit__halle">Ebnat</span>
+        </a>
       </div>
-      <section class="wochentag" style="--bahnen:1">
-        <h3 class="wochentag__name">Montag</h3>
-        <div class="wochentag__flaeche">
-          <div class="stundenlinien" aria-hidden="true">
-            <i style="--pos:3"></i>
-            <i style="--pos:7"></i>
-            <i style="--pos:14"></i>
-            <i style="--pos:18"></i>
-            <i style="--pos:22"></i>
-            <i style="--pos:26"></i>
-            <i style="--pos:30"></i>
-            <i style="--pos:34"></i>
-            <i style="--pos:38"></i>
-            <i class="bruch" style="--pos:11"></i>
-          </div>
-          <a class="einheit einheit--ebnat" href="training-senioren.html" data-angebot="senioren"
-             style="--von:3;--bis:9;--bahn:1">
-            <span class="einheit__gruppe">Freies Spielen</span>
-            <span class="einheit__zeit">09:00 – 10:30</span>
-            <span class="einheit__halle">TTZ Ebnat</span>
-          </a>
-          <a class="einheit einheit--ebnat" href="training-nachwuchs.html" data-angebot="nachwuchs"
-             style="--von:26;--bis:34;--bahn:1">
-            <span class="einheit__gruppe">Förderkader</span>
-            <span class="einheit__zeit">18:00 – 20:00</span>
-            <span class="einheit__halle">TTZ Ebnat</span>
-          </a>
-        </div>
-      </section>
-      <section class="wochentag" style="--bahnen:2">
-        <h3 class="wochentag__name">Dienstag</h3>
-        <div class="wochentag__flaeche">
-          <div class="stundenlinien" aria-hidden="true">
-            <i style="--pos:3"></i>
-            <i style="--pos:7"></i>
-            <i style="--pos:14"></i>
-            <i style="--pos:18"></i>
-            <i style="--pos:22"></i>
-            <i style="--pos:26"></i>
-            <i style="--pos:30"></i>
-            <i style="--pos:34"></i>
-            <i style="--pos:38"></i>
-            <i class="bruch" style="--pos:11"></i>
-          </div>
-          <a class="einheit einheit--ebnat" href="training-senioren.html" data-angebot="senioren"
-             style="--von:3;--bis:9;--bahn:1">
-            <span class="einheit__gruppe">Geleitetes Training</span>
-            <span class="einheit__zeit">09:00 – 10:30</span>
-            <span class="einheit__halle">TTZ Ebnat</span>
-          </a>
-          <a class="einheit einheit--rhyfall" href="training-nachwuchs.html" data-angebot="nachwuchs"
-             style="--von:23;--bis:28;--bahn:1">
-            <span class="einheit__gruppe">Schnuppern / Anfänger</span>
-            <span class="einheit__zeit">17:15 – 18:30</span>
-            <span class="einheit__halle">Rhyfallhalle</span>
-          </a>
-          <a class="einheit einheit--rhyfall" href="training-nachwuchs.html" data-angebot="nachwuchs"
-             style="--von:28;--bis:36;--bahn:1">
-            <span class="einheit__gruppe">Nachwuchs</span>
-            <span class="einheit__zeit">18:30 – 20:30</span>
-            <span class="einheit__halle">Rhyfallhalle</span>
-          </a>
-          <a class="einheit einheit--rhyfall" href="training-breitensport.html" data-angebot="breitensport"
-             style="--von:34;--bis:41;--bahn:2">
-            <span class="einheit__gruppe">Erwachsene / Breitensport</span>
-            <span class="einheit__zeit">20:00 – 21:45</span>
-            <span class="einheit__halle">Rhyfallhalle</span>
-          </a>
-        </div>
-      </section>
-      <section class="wochentag" style="--bahnen:1">
-        <h3 class="wochentag__name">Mittwoch</h3>
-        <div class="wochentag__flaeche">
-          <div class="stundenlinien" aria-hidden="true">
-            <i style="--pos:3"></i>
-            <i style="--pos:7"></i>
-            <i style="--pos:14"></i>
-            <i style="--pos:18"></i>
-            <i style="--pos:22"></i>
-            <i style="--pos:26"></i>
-            <i style="--pos:30"></i>
-            <i style="--pos:34"></i>
-            <i style="--pos:38"></i>
-            <i class="bruch" style="--pos:11"></i>
-          </div>
-          <a class="einheit einheit--ebnat" href="training-nachwuchs.html" data-angebot="nachwuchs"
-             style="--von:14;--bis:20;--bahn:1">
-            <span class="einheit__gruppe">Schnuppern / Anfänger</span>
-            <span class="einheit__zeit">15:00 – 16:30</span>
-            <span class="einheit__halle">TTZ Ebnat</span>
-          </a>
-          <a class="einheit einheit--ebnat" href="training-nachwuchs.html" data-angebot="nachwuchs"
-             style="--von:26;--bis:36;--bahn:1">
-            <span class="einheit__gruppe">OTTV Stützpunkt</span>
-            <span class="einheit__zeit">18:00 – 20:30</span>
-            <span class="einheit__halle">TTZ Ebnat</span>
-          </a>
-        </div>
-      </section>
-      <section class="wochentag" style="--bahnen:2">
-        <h3 class="wochentag__name">Donnerstag</h3>
-        <div class="wochentag__flaeche">
-          <div class="stundenlinien" aria-hidden="true">
-            <i style="--pos:3"></i>
-            <i style="--pos:7"></i>
-            <i style="--pos:14"></i>
-            <i style="--pos:18"></i>
-            <i style="--pos:22"></i>
-            <i style="--pos:26"></i>
-            <i style="--pos:30"></i>
-            <i style="--pos:34"></i>
-            <i style="--pos:38"></i>
-            <i class="bruch" style="--pos:11"></i>
-          </div>
-          <a class="einheit einheit--ebnat" href="training-senioren.html" data-angebot="senioren"
-             style="--von:3;--bis:9;--bahn:1">
-            <span class="einheit__gruppe">PingPong­Parkinson</span>
-            <span class="einheit__zeit">09:00 – 10:30</span>
-            <span class="einheit__halle">TTZ Ebnat</span>
-          </a>
-          <a class="einheit einheit--ebnat" href="training-nachwuchs.html" data-angebot="nachwuchs"
-             style="--von:28;--bis:36;--bahn:1">
-            <span class="einheit__gruppe">Nachwuchs</span>
-            <span class="einheit__zeit">18:30 – 20:30</span>
-            <span class="einheit__halle">TTZ Ebnat</span>
-          </a>
-          <a class="einheit einheit--ebnat" href="training-breitensport.html" data-angebot="breitensport"
-             style="--von:34;--bis:41;--bahn:2">
-            <span class="einheit__gruppe">Erwachsene / Breitensport</span>
-            <span class="einheit__zeit">20:00 – 21:45</span>
-            <span class="einheit__halle">TTZ Ebnat</span>
-          </a>
-        </div>
-      </section>
-      <section class="wochentag" style="--bahnen:2">
-        <h3 class="wochentag__name">Freitag</h3>
-        <div class="wochentag__flaeche">
-          <div class="stundenlinien" aria-hidden="true">
-            <i style="--pos:3"></i>
-            <i style="--pos:7"></i>
-            <i style="--pos:14"></i>
-            <i style="--pos:18"></i>
-            <i style="--pos:22"></i>
-            <i style="--pos:26"></i>
-            <i style="--pos:30"></i>
-            <i style="--pos:34"></i>
-            <i style="--pos:38"></i>
-            <i class="bruch" style="--pos:11"></i>
-          </div>
-          <a class="einheit einheit--ebnat" href="training-senioren.html" data-angebot="senioren"
-             style="--von:3;--bis:9;--bahn:1">
-            <span class="einheit__gruppe">Geleitetes Training</span>
-            <span class="einheit__zeit">09:00 – 10:30</span>
-            <span class="einheit__halle">TTZ Ebnat</span>
-          </a>
-          <a class="einheit einheit--rhyfall" href="training-nachwuchs.html" data-angebot="nachwuchs"
-             style="--von:26;--bis:36;--bahn:1">
-            <span class="einheit__gruppe">OTTV Stützpunkt</span>
-            <span class="einheit__zeit">18:00 – 20:30</span>
-            <span class="einheit__halle">Rhyfallhalle</span>
-          </a>
-          <a class="einheit einheit--rhyfall" href="training-breitensport.html" data-angebot="breitensport"
-             style="--von:34;--bis:41;--bahn:2">
-            <span class="einheit__gruppe">Erwachsene / Breitensport</span>
-            <span class="einheit__zeit">20:00 – 21:45</span>
-            <span class="einheit__halle">Rhyfallhalle</span>
-          </a>
-        </div>
-      </section>
-      <section class="wochentag wochentag--leer">
-        <h3 class="wochentag__name">Samstag</h3>
-        <div class="wochentag__flaeche"><p class="wochentag__frei">Kein Training</p></div>
-      </section>
-      <section class="wochentag wochentag--leer">
-        <h3 class="wochentag__name">Sonntag</h3>
-        <div class="wochentag__flaeche"><p class="wochentag__frei">Kein Training</p></div>
-      </section>
-    </div>
+    </section>
+    <section class="plan__tag" data-tag="Di" style="--bahnen:2">
+      <h3 class="plan__tagname">Dienstag<span class="plan__heute">Heute</span></h3>
+      <div class="plan__spalte">
+        <i class="plan__bruchlinie" style="--z:11" aria-hidden="true"></i>
+        <a class="einheit einheit--ebnat" href="training-senioren.html" data-angebot="senioren" style="--von:3;--bis:9;--bahn:1">
+          <span class="einheit__zeit">09:00–10:30</span>
+          <span class="einheit__gruppe">Geleitetes Training</span>
+          <span class="einheit__halle">Ebnat</span>
+        </a>
+        <a class="einheit einheit--rhyfall" href="training-nachwuchs.html" data-angebot="nachwuchs" style="--von:23;--bis:28;--bahn:1">
+          <span class="einheit__zeit">17:15–18:30</span>
+          <span class="einheit__gruppe">Schnuppern / Anfänger</span>
+          <span class="einheit__halle">Rhyfall</span>
+        </a>
+        <a class="einheit einheit--rhyfall" href="training-nachwuchs.html" data-angebot="nachwuchs" style="--von:28;--bis:36;--bahn:1">
+          <span class="einheit__zeit">18:30–20:30</span>
+          <span class="einheit__gruppe">Nachwuchs</span>
+          <span class="einheit__halle">Rhyfall</span>
+        </a>
+        <a class="einheit einheit--rhyfall" href="training-breitensport.html" data-angebot="breitensport" style="--von:34;--bis:41;--bahn:2">
+          <span class="einheit__zeit">20:00–21:45</span>
+          <span class="einheit__gruppe">Erwachsene / Breitensport</span>
+          <span class="einheit__halle">Rhyfall</span>
+        </a>
+      </div>
+    </section>
+    <section class="plan__tag" data-tag="Mi" style="--bahnen:1">
+      <h3 class="plan__tagname">Mittwoch<span class="plan__heute">Heute</span></h3>
+      <div class="plan__spalte">
+        <i class="plan__bruchlinie" style="--z:11" aria-hidden="true"></i>
+        <a class="einheit einheit--ebnat" href="training-nachwuchs.html" data-angebot="nachwuchs" style="--von:14;--bis:20;--bahn:1">
+          <span class="einheit__zeit">15:00–16:30</span>
+          <span class="einheit__gruppe">Schnuppern / Anfänger</span>
+          <span class="einheit__halle">Ebnat</span>
+        </a>
+        <a class="einheit einheit--ebnat" href="training-nachwuchs.html" data-angebot="nachwuchs" style="--von:26;--bis:36;--bahn:1">
+          <span class="einheit__zeit">18:00–20:30</span>
+          <span class="einheit__gruppe">OTTV Stützpunkt</span>
+          <span class="einheit__halle">Ebnat</span>
+        </a>
+      </div>
+    </section>
+    <section class="plan__tag" data-tag="Do" style="--bahnen:2">
+      <h3 class="plan__tagname">Donnerstag<span class="plan__heute">Heute</span></h3>
+      <div class="plan__spalte">
+        <i class="plan__bruchlinie" style="--z:11" aria-hidden="true"></i>
+        <a class="einheit einheit--ebnat" href="training-senioren.html" data-angebot="senioren" style="--von:3;--bis:9;--bahn:1">
+          <span class="einheit__zeit">09:00–10:30</span>
+          <span class="einheit__gruppe">PingPong­Parkinson</span>
+          <span class="einheit__halle">Ebnat</span>
+        </a>
+        <a class="einheit einheit--ebnat" href="training-nachwuchs.html" data-angebot="nachwuchs" style="--von:28;--bis:36;--bahn:1">
+          <span class="einheit__zeit">18:30–20:30</span>
+          <span class="einheit__gruppe">Nachwuchs</span>
+          <span class="einheit__halle">Ebnat</span>
+        </a>
+        <a class="einheit einheit--ebnat" href="training-breitensport.html" data-angebot="breitensport" style="--von:34;--bis:41;--bahn:2">
+          <span class="einheit__zeit">20:00–21:45</span>
+          <span class="einheit__gruppe">Erwachsene / Breitensport</span>
+          <span class="einheit__halle">Ebnat</span>
+        </a>
+      </div>
+    </section>
+    <section class="plan__tag" data-tag="Fr" style="--bahnen:2">
+      <h3 class="plan__tagname">Freitag<span class="plan__heute">Heute</span></h3>
+      <div class="plan__spalte">
+        <i class="plan__bruchlinie" style="--z:11" aria-hidden="true"></i>
+        <a class="einheit einheit--ebnat" href="training-senioren.html" data-angebot="senioren" style="--von:3;--bis:9;--bahn:1">
+          <span class="einheit__zeit">09:00–10:30</span>
+          <span class="einheit__gruppe">Geleitetes Training</span>
+          <span class="einheit__halle">Ebnat</span>
+        </a>
+        <a class="einheit einheit--rhyfall" href="training-nachwuchs.html" data-angebot="nachwuchs" style="--von:26;--bis:36;--bahn:1">
+          <span class="einheit__zeit">18:00–20:30</span>
+          <span class="einheit__gruppe">OTTV Stützpunkt</span>
+          <span class="einheit__halle">Rhyfall</span>
+        </a>
+        <a class="einheit einheit--rhyfall" href="training-breitensport.html" data-angebot="breitensport" style="--von:34;--bis:41;--bahn:2">
+          <span class="einheit__zeit">20:00–21:45</span>
+          <span class="einheit__gruppe">Erwachsene / Breitensport</span>
+          <span class="einheit__halle">Rhyfall</span>
+        </a>
+      </div>
+    </section>
   </div>
-  <p class="woche__stand" role="status" aria-live="polite"></p>
-  <p class="woche__fussnote">Am Samstag und Sonntag ist kein Training angesetzt. Die Hallen stehen Mitgliedern mit Hallenbeitrag trotzdem offen.</p>
-  <ul class="notizen">
-    <li><b>Nachwuchs</b> Anmeldung beim Trainerteam: <a href="mailto:trainer@ttc-neuhausen.ch">trainer@ttc-neuhausen.ch</a></li>
-    <li><b>Breitensport</b> Zuerst eine halbe Stunde freies Einspielen, während der Nachwuchs noch am Tisch ist, danach eine Stunde geführt.</li>
-    <li><b>Senioren</b> Auskunft bei Urs Schärrer sen., <a href="tel:+41526245265">052 624 52 65</a> oder <a href="mailto:seniorentraining@ttc-neuhausen.ch">seniorentraining@ttc-neuhausen.ch</a></li>
-  </ul>
-  <details class="volltabelle">
-    <summary>Alle Angaben als Tabelle, mit Trainerinnen und Trainern</summary>
-    <div class="tabelle-huelle">
-      <table class="daten">
-        <thead><tr><th>Tag</th><th>Zeit</th><th>Angebot</th><th>Gruppe</th><th>Halle</th><th>Trainer</th></tr></thead>
-        <tbody>
-          <tr><td class="tag">Montag</td><td class="zeit">09:00 – 10:30</td><td>Senioren</td><td>Freies Spielen</td><td><span class="halle halle--ebnat">TTZ Ebnat</span></td><td>—</td></tr>
-          <tr><td class="tag">Montag</td><td class="zeit">18:00 – 20:00</td><td>Nachwuchs</td><td>Förderkader</td><td><span class="halle halle--ebnat">TTZ Ebnat</span></td><td>Pekka Pelz</td></tr>
-          <tr><td class="tag">Dienstag</td><td class="zeit">09:00 – 10:30</td><td>Senioren</td><td>Geleitetes Training</td><td><span class="halle halle--ebnat">TTZ Ebnat</span></td><td>Pekka Pelz</td></tr>
-          <tr><td class="tag">Dienstag</td><td class="zeit">17:15 – 18:30</td><td>Nachwuchs</td><td>Schnuppertraining / Anfänger</td><td><span class="halle halle--rhyfall">Rhyfallhalle</span></td><td>Pekka Pelz</td></tr>
-          <tr><td class="tag">Dienstag</td><td class="zeit">18:30 – 20:30</td><td>Nachwuchs</td><td>Nachwuchs</td><td><span class="halle halle--rhyfall">Rhyfallhalle</span></td><td>Pekka Pelz</td></tr>
-          <tr><td class="tag">Dienstag</td><td class="zeit">20:00 – 21:45</td><td>Breitensport</td><td>Erwachsene / Breitensport</td><td><span class="halle halle--rhyfall">Rhyfallhalle</span></td><td>Pekka Pelz</td></tr>
-          <tr><td class="tag">Mittwoch</td><td class="zeit">15:00 – 16:30</td><td>Nachwuchs</td><td>Schnuppertraining / Anfänger</td><td><span class="halle halle--ebnat">TTZ Ebnat</span></td><td>Pekka Pelz</td></tr>
-          <tr><td class="tag">Mittwoch</td><td class="zeit">18:00 – 20:30</td><td>Nachwuchs</td><td>OTTV Stützpunkt</td><td><span class="halle halle--ebnat">TTZ Ebnat</span></td><td>Pekka Pelz, Lyo Bührer</td></tr>
-          <tr><td class="tag">Donnerstag</td><td class="zeit">09:00 – 10:30</td><td>Senioren</td><td>Schnuppertraining / Geleitet / PingPongParkinson</td><td><span class="halle halle--ebnat">TTZ Ebnat</span></td><td>Johann Schuler</td></tr>
-          <tr><td class="tag">Donnerstag</td><td class="zeit">18:30 – 20:30</td><td>Nachwuchs</td><td>Nachwuchs</td><td><span class="halle halle--ebnat">TTZ Ebnat</span></td><td>Pekka Pelz</td></tr>
-          <tr><td class="tag">Donnerstag</td><td class="zeit">20:00 – 21:45</td><td>Breitensport</td><td>Erwachsene / Breitensport</td><td><span class="halle halle--ebnat">TTZ Ebnat</span></td><td>Pekka Pelz</td></tr>
-          <tr><td class="tag">Freitag</td><td class="zeit">09:00 – 10:30</td><td>Senioren</td><td>Geleitetes Training</td><td><span class="halle halle--ebnat">TTZ Ebnat</span></td><td>Pekka Pelz</td></tr>
-          <tr><td class="tag">Freitag</td><td class="zeit">18:00 – 20:30</td><td>Nachwuchs</td><td>OTTV Stützpunkt</td><td><span class="halle halle--rhyfall">Rhyfallhalle</span></td><td>Pekka Pelz, Lyo Bührer</td></tr>
-          <tr><td class="tag">Freitag</td><td class="zeit">20:00 – 21:45</td><td>Breitensport</td><td>Erwachsene / Breitensport</td><td><span class="halle halle--rhyfall">Rhyfallhalle</span></td><td>Pekka Pelz</td></tr>
-        </tbody>
-      </table>
-    </div>
+  <p class="plan__frei">Samstag und Sonntag: kein angesetztes Training. Mitglieder mit Hallenbeitrag spielen im TTZ Ebnat trotzdem – die Halle ist rund um die Uhr offen.</p>
+  <p class="sr-only" data-plan-stand role="status" aria-live="polite"></p>
+  <details class="plan__tabelle">
+    <summary>Alle Einheiten als Liste, mit Trainerinnen und Trainern</summary>
+<div class="tabelle"><table>
+  <thead><tr><th>Tag</th><th>Zeit</th><th>Gruppe</th><th>Halle</th><th>Leitung</th></tr></thead>
+  <tbody>
+    <tr data-tag="Mo"><th scope="row">Montag</th><td class="zahl">09:00–10:30</td><td>Freies Spielen</td><td><a href="hallen-ttz-ebnat.html"><i class="halle-marke halle-marke--ebnat"></i>TTZ Ebnat</a></td><td>–</td></tr>
+    <tr data-tag="Mo"><th scope="row"></th><td class="zahl">18:00–20:00</td><td>Förderkader</td><td><a href="hallen-ttz-ebnat.html"><i class="halle-marke halle-marke--ebnat"></i>TTZ Ebnat</a></td><td>Pekka Pelz</td></tr>
+    <tr data-tag="Di"><th scope="row">Dienstag</th><td class="zahl">09:00–10:30</td><td>Geleitetes Training</td><td><a href="hallen-ttz-ebnat.html"><i class="halle-marke halle-marke--ebnat"></i>TTZ Ebnat</a></td><td>Pekka Pelz</td></tr>
+    <tr data-tag="Di"><th scope="row"></th><td class="zahl">17:15–18:30</td><td>Schnuppertraining / Anfänger</td><td><a href="hallen-rhyfallhalle.html"><i class="halle-marke halle-marke--rhyfall"></i>Rhyfallhalle</a></td><td>Pekka Pelz</td></tr>
+    <tr data-tag="Di"><th scope="row"></th><td class="zahl">18:30–20:30</td><td>Nachwuchs</td><td><a href="hallen-rhyfallhalle.html"><i class="halle-marke halle-marke--rhyfall"></i>Rhyfallhalle</a></td><td>Pekka Pelz</td></tr>
+    <tr data-tag="Di"><th scope="row"></th><td class="zahl">20:00–21:45</td><td>Erwachsene / Breitensport</td><td><a href="hallen-rhyfallhalle.html"><i class="halle-marke halle-marke--rhyfall"></i>Rhyfallhalle</a></td><td>Pekka Pelz</td></tr>
+    <tr data-tag="Mi"><th scope="row">Mittwoch</th><td class="zahl">15:00–16:30</td><td>Schnuppertraining / Anfänger</td><td><a href="hallen-ttz-ebnat.html"><i class="halle-marke halle-marke--ebnat"></i>TTZ Ebnat</a></td><td>Pekka Pelz</td></tr>
+    <tr data-tag="Mi"><th scope="row"></th><td class="zahl">18:00–20:30</td><td>OTTV Stützpunkt</td><td><a href="hallen-ttz-ebnat.html"><i class="halle-marke halle-marke--ebnat"></i>TTZ Ebnat</a></td><td>Pekka Pelz, Lyo Bührer</td></tr>
+    <tr data-tag="Do"><th scope="row">Donnerstag</th><td class="zahl">09:00–10:30</td><td>Schnuppertraining / Geleitet / PingPongParkinson</td><td><a href="hallen-ttz-ebnat.html"><i class="halle-marke halle-marke--ebnat"></i>TTZ Ebnat</a></td><td>Johann Schuler</td></tr>
+    <tr data-tag="Do"><th scope="row"></th><td class="zahl">18:30–20:30</td><td>Nachwuchs</td><td><a href="hallen-ttz-ebnat.html"><i class="halle-marke halle-marke--ebnat"></i>TTZ Ebnat</a></td><td>Pekka Pelz</td></tr>
+    <tr data-tag="Do"><th scope="row"></th><td class="zahl">20:00–21:45</td><td>Erwachsene / Breitensport</td><td><a href="hallen-ttz-ebnat.html"><i class="halle-marke halle-marke--ebnat"></i>TTZ Ebnat</a></td><td>Pekka Pelz</td></tr>
+    <tr data-tag="Fr"><th scope="row">Freitag</th><td class="zahl">09:00–10:30</td><td>Geleitetes Training</td><td><a href="hallen-ttz-ebnat.html"><i class="halle-marke halle-marke--ebnat"></i>TTZ Ebnat</a></td><td>Pekka Pelz</td></tr>
+    <tr data-tag="Fr"><th scope="row"></th><td class="zahl">18:00–20:30</td><td>OTTV Stützpunkt</td><td><a href="hallen-rhyfallhalle.html"><i class="halle-marke halle-marke--rhyfall"></i>Rhyfallhalle</a></td><td>Pekka Pelz, Lyo Bührer</td></tr>
+    <tr data-tag="Fr"><th scope="row"></th><td class="zahl">20:00–21:45</td><td>Erwachsene / Breitensport</td><td><a href="hallen-rhyfallhalle.html"><i class="halle-marke halle-marke--rhyfall"></i>Rhyfallhalle</a></td><td>Pekka Pelz</td></tr>
+  </tbody>
+</table></div>
   </details>
 </div>
   </div>
 </section>
 
-<section class="sektion--weiss">
+<section class="flaeche--papier">
   <div class="wrap">
-    <p class="eyebrow label">Angebote im Detail</p>
-    <h2>Welches Training passt?</h2>
-    <div class="karten">
-      <a class="karte" href="training-nachwuchs.html"><h3>Nachwuchs</h3>
-        <p>Geleitetes Training ab 5 Jahren, Förderkader für Fortgeschrittene.</p></a>
-      <a class="karte" href="training-schnupperpass.html"><h3>Schnupperpass</h3>
-        <p>Sechs Monate mittrainieren, ohne Mitglied zu werden.</p></a>
-      <a class="karte" href="training-breitensport.html"><h3>Breitensport</h3>
-        <p>Erwachsene: eine halbe Stunde freies Einspielen, danach eine geführte Stunde.</p></a>
-      <a class="karte" href="training-senioren.html"><h3>Senioren &amp; PingPongParkinson</h3>
-        <p>Vormittagstraining, über fünfzig aktive Seniorinnen und Senioren.</p></a>
-      <a class="karte" href="training-einzeltraining.html"><h3>Einzeltraining</h3>
-        <p>Individuelle Stunden mit den professionellen Trainern.</p></a>
-      <a class="karte" href="training-stuetzpunkt.html"><h3>Stützpunkt</h3>
-        <p>Anerkannter Stützpunkt des Ostschweizer Tischtennisverbands.</p></a>
+    <div class="abschnittskopf">
+      <h2>Welches Training passt zu mir?</h2>
+      <p class="lead">Sieben Situationen, sieben Antworten. Wer unsicher ist, fragt das Trainerteam: <a class="lauftext" href="mailto:trainer@ttc-neuhausen.ch">trainer@ttc-neuhausen.ch</a>.</p>
+    </div>
+    <ol class="wege">
+      <li>
+        <p class="wege__wer">Kind oder jugendlich, hat noch nie gespielt</p>
+        <p class="wege__was"><b>Schnuppertraining für Anfänger</b>
+          Dienstag 17:15 in der Rhyfallhalle oder Mittwoch 15:00 im TTZ Ebnat.</p>
+        <a class="pfeil-link" href="training-schnupperpass.html">Schnuppern <span class="pfeil" aria-hidden="true"></span></a>
+      </li>
+      <li>
+        <p class="wege__wer">Kind oder jugendlich, spielt schon</p>
+        <p class="wege__was"><b>Nachwuchstraining</b>
+          Dienstag in der Rhyfallhalle, Donnerstag im TTZ Ebnat, jeweils ab 18:30.</p>
+        <a class="pfeil-link" href="training-nachwuchs.html">Nachwuchs <span class="pfeil" aria-hidden="true"></span></a>
+      </li>
+      <li>
+        <p class="wege__wer">Jugendlich, will weiterkommen</p>
+        <p class="wege__was"><b>Förderkader und Stützpunkt</b>
+          Förderkader am Montag, OTTV-Stützpunkt am Mittwoch und Freitag – nach Absprache mit dem Trainerteam.</p>
+        <a class="pfeil-link" href="training-stuetzpunkt.html">Stützpunkt <span class="pfeil" aria-hidden="true"></span></a>
+      </li>
+      <li>
+        <p class="wege__wer">Erwachsen, Anfängerin, Wiedereinsteiger oder Ligaspieler</p>
+        <p class="wege__was"><b>Breitensport</b>
+          Dienstag, Donnerstag und Freitag ab 20:00. Erst frei einspielen, dann eine Stunde mit Trainer.</p>
+        <a class="pfeil-link" href="training-breitensport.html">Breitensport <span class="pfeil" aria-hidden="true"></span></a>
+      </li>
+      <li>
+        <p class="wege__wer">Am Vormittag Zeit</p>
+        <p class="wege__was"><b>Seniorentraining</b>
+          Montag, Dienstag, Donnerstag und Freitag ab 09:00 im TTZ Ebnat, drei davon mit Trainer.</p>
+        <a class="pfeil-link" href="training-senioren.html">Senioren <span class="pfeil" aria-hidden="true"></span></a>
+      </li>
+      <li>
+        <p class="wege__wer">Lebt mit Parkinson</p>
+        <p class="wege__was"><b>PingPongParkinson</b>
+          Donnerstag ab 09:00 im TTZ Ebnat, geleitet von Johann Schuler.</p>
+        <a class="pfeil-link" href="training-senioren.html#pingpongparkinson">PingPongParkinson <span class="pfeil" aria-hidden="true"></span></a>
+      </li>
+      <li>
+        <p class="wege__wer">Unterrichtet eine Klasse</p>
+        <p class="wege__was"><b>Schulsport, SwissPing, School Trophy</b>
+          Zehn Wochen Tischtennis für die 1. bis 3. Klasse, das Lehrmittel von Swiss Table Tennis und ein Turnier.</p>
+        <a class="pfeil-link" href="training-schulen.html">Für Schulen <span class="pfeil" aria-hidden="true"></span></a>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="flaeche--papier2">
+  <div class="wrap">
+    <div class="abschnittskopf">
+      <h2>Gut zu wissen</h2>
+    </div>
+    <div class="spalten3">
+      <div>
+        <h3>Ferien</h3>
+        <p>In den Schulferien fällt das geführte Breitensporttraining in der Regel aus.
+          Die Seniorinnen und Senioren machen von Juli bis Mitte August Sommerpause.</p>
+      </div>
+      <div>
+        <h3>Wenn die Rhyfallhalle belegt ist</h3>
+        <p>Die Rhyfallhalle gehört nicht dem Verein und ist ab und zu besetzt. Das Training findet dann
+          im TTZ Ebnat statt – im Zweifel beim Trainerteam nachfragen.</p>
+      </div>
+      <div>
+        <h3>Freies Spielen</h3>
+        <p>Mitglieder mit Hallenbeitrag spielen im TTZ Ebnat, wann sie wollen: rund um die Uhr,
+          auch am Wochenende. Den Zugang gibt es über
+          <a class="lauftext" href="mailto:info@ttc-neuhausen.ch">info@ttc-neuhausen.ch</a>.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<section class="flaeche--papier">
+  <div class="wrap">
+    <div class="abschnittskopf"><h2>Die Angebote im Detail</h2></div>
+    <ul class="weiter">
+      <li><a href="training-schnupperpass.html"><b>Schnuppern</b><span>Erstes Training gratis, dann sechs Monate Pass.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+      <li><a href="training-nachwuchs.html"><b>Nachwuchs</b><span>Ab 5 Jahren, bis zum Förderkader.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+      <li><a href="training-breitensport.html"><b>Breitensport</b><span>Erwachsene, drei Abende pro Woche.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+      <li><a href="training-senioren.html"><b>Senioren</b><span>Vier Vormittage, dazu PingPongParkinson.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+      <li><a href="training-einzeltraining.html"><b>Einzeltraining</b><span>Eine Stunde, ein Trainer, ein Tisch.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+      <li><a href="training-stuetzpunkt.html"><b>Stützpunkt</b><span>Leistungstraining des Ostschweizer Verbands.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+    </ul>
+  </div>
+</section>
+
+<script type="application/json" id="trainingsdaten">[{"tag": "Mo", "von": "09:00", "bis": "10:30", "gruppe": "Freies Spielen", "halle": "TTZ Ebnat", "seite": "training-senioren.html"}, {"tag": "Mo", "von": "18:00", "bis": "20:00", "gruppe": "Förderkader", "halle": "TTZ Ebnat", "seite": "training-nachwuchs.html"}, {"tag": "Di", "von": "09:00", "bis": "10:30", "gruppe": "Geleitetes Training", "halle": "TTZ Ebnat", "seite": "training-senioren.html"}, {"tag": "Di", "von": "17:15", "bis": "18:30", "gruppe": "Schnuppern / Anfänger", "halle": "Rhyfallhalle", "seite": "training-nachwuchs.html"}, {"tag": "Di", "von": "18:30", "bis": "20:30", "gruppe": "Nachwuchs", "halle": "Rhyfallhalle", "seite": "training-nachwuchs.html"}, {"tag": "Di", "von": "20:00", "bis": "21:45", "gruppe": "Erwachsene / Breitensport", "halle": "Rhyfallhalle", "seite": "training-breitensport.html"}, {"tag": "Mi", "von": "15:00", "bis": "16:30", "gruppe": "Schnuppern / Anfänger", "halle": "TTZ Ebnat", "seite": "training-nachwuchs.html"}, {"tag": "Mi", "von": "18:00", "bis": "20:30", "gruppe": "OTTV Stützpunkt", "halle": "TTZ Ebnat", "seite": "training-nachwuchs.html"}, {"tag": "Do", "von": "09:00", "bis": "10:30", "gruppe": "PingPongParkinson", "halle": "TTZ Ebnat", "seite": "training-senioren.html"}, {"tag": "Do", "von": "18:30", "bis": "20:30", "gruppe": "Nachwuchs", "halle": "TTZ Ebnat", "seite": "training-nachwuchs.html"}, {"tag": "Do", "von": "20:00", "bis": "21:45", "gruppe": "Erwachsene / Breitensport", "halle": "TTZ Ebnat", "seite": "training-breitensport.html"}, {"tag": "Fr", "von": "09:00", "bis": "10:30", "gruppe": "Geleitetes Training", "halle": "TTZ Ebnat", "seite": "training-senioren.html"}, {"tag": "Fr", "von": "18:00", "bis": "20:30", "gruppe": "OTTV Stützpunkt", "halle": "Rhyfallhalle", "seite": "training-nachwuchs.html"}, {"tag": "Fr", "von": "20:00", "bis": "21:45", "gruppe": "Erwachsene / Breitensport", "halle": "Rhyfallhalle", "seite": "training-breitensport.html"}]</script>
+
 </main>
 
-<footer class="fuss sektion--dunkel">
+<footer class="fuss flaeche--nacht">
   <div class="wrap">
+    <div class="fuss__oben">
+      <img class="fuss__logo" src="assets/img/logo-weiss.svg" width="1459" height="352" alt="Tischtennisclub Neuhausen">
+      <p class="fuss__satz">Tischtennis von 7 bis 85, seit 1975. In der Rhyfallhalle Neuhausen und im Tischtenniszentrum Ebnat.</p>
+      <a class="knopf knopf--orange" href="training-schnupperpass.html">Schnuppertraining</a>
+    </div>
     <div class="fuss__raster">
-      <div class="fuss__logo">
-        <img src="assets/img/logo-weiss.svg" width="1459" height="352"
-             alt="Tischtennisclub Neuhausen">
-        <p class="leise" style="font-size:var(--grad-sm);max-width:34ch">
-          Gegründet 1975. Training in der Rhyfallhalle Neuhausen und im
-          Tischtenniszentrum Ebnat in Schaffhausen.
-        </p>
-      </div>
       <div>
-        <h4>Verein</h4>
+        <h2 class="fuss__titel">Verein</h2>
         <ul>
           <li><a href="verein.html">Über den Verein</a></li>
           <li><a href="verein-vorstand.html">Vorstand</a></li>
           <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+          <li><a href="verein-geschichte.html">Geschichte</a></li>
           <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Hallen</h4>
-        <ul>
-          <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
-          <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-          <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Kontakt</h4>
-        <ul>
-          <li><a href="kontakt.html">Kontakt</a></li>
           <li><a href="partner.html">Für Partner</a></li>
-          <li><a href="https://www.instagram.com/ttcneuhausen/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.facebook.com/ttcnh/" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Training</h2>
+        <ul>
+          <li><a href="training.html">Trainingszeiten</a></li>
+          <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
+          <li><a href="training-breitensport.html">Breitensport</a></li>
+          <li><a href="training-senioren.html">Senioren</a></li>
+          <li><a href="teams.html">Teams</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Hallen</h2>
+        <p><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a><br>Rheingoldstrasse 11<br>8212 Neuhausen am Rheinfall</p>
+        <p><a href="hallen-ttz-ebnat.html">Tischtenniszentrum Ebnat</a><br>Ebnatstrasse 35<br>8200 Schaffhausen</p>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Kontakt</h2>
+        <p><a href="mailto:info@ttc-neuhausen.ch">info@ttc-neuhausen.ch</a><br>
+          <a href="mailto:trainer@ttc-neuhausen.ch">trainer@ttc-neuhausen.ch</a></p>
+        <p><a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a><br>
+          <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a></p>
       </div>
     </div>
-    <div class="fuss__klein">
-      <span>&copy; <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
-      <span>
-        <a href="impressum.html">Impressum</a> &nbsp;·&nbsp;
-        <a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp;
-        Gestaltung und Umsetzung: Wendico
-      </span>
+    <div class="fuss__unten">
+      <span>© <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Gestaltung und Umsetzung: Wendico</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

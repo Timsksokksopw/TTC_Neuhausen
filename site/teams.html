@@ -1,41 +1,35 @@
 <!doctype html>
-<html lang="de">
+<!-- Erzeugt von build.py – nicht hier ändern.
+     Inhalt: inhalt/teams.html · Rahmen: vorlage/layout.html · Menü: vorlage/seiten.py
+     Bilder und Dokumente unter site/assets/ werden nicht erzeugt:
+     Datei mit gleichem Namen ersetzen genügt. -->
+<html lang="de-CH">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Setzt die Klasse, bevor CSS greift. Nur wenn sie da ist, werden
-     .reveal-Elemente versteckt — ohne JavaScript bleibt alles sichtbar. -->
-<script>document.documentElement.className += " js";</script>
-
+<script>document.documentElement.classList.add("js")</script>
 <title>Teams – TTC Neuhausen</title>
-<meta name="description" content="Herren und Damen in der Swiss Table Tennis League, dazu Regional- und Jugendmannschaften. Tabellen direkt aus click-tt.">
+<meta name="description" content="Herren und Damen in der Swiss Table Tennis League, dazu die OTTV-Mannschaften. Tabellen und Resultate direkt bei click-tt.">
 <link rel="canonical" href="https://www.ttc-neuhausen.ch/teams.html">
-<meta name="theme-color" content="#0A111D">
-
-<!-- Vorschau beim Teilen: WhatsApp, Instagram, Facebook, LinkedIn. -->
+<meta name="theme-color" content="#F3F0E8">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TTC Neuhausen">
 <meta property="og:locale" content="de_CH">
 <meta property="og:title" content="Teams – TTC Neuhausen">
-<meta property="og:description" content="Herren und Damen in der Swiss Table Tennis League, dazu Regional- und Jugendmannschaften. Tabellen direkt aus click-tt.">
+<meta property="og:description" content="Herren und Damen in der Swiss Table Tennis League, dazu die OTTV-Mannschaften. Tabellen und Resultate direkt bei click-tt.">
 <meta property="og:url" content="https://www.ttc-neuhausen.ch/teams.html">
 <meta property="og:image" content="https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="TTC Neuhausen — Tischtennis für alle, seit 1975">
 <meta name="twitter:card" content="summary_large_image">
-
 <link rel="icon" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,88..112,400..800;1,88..112,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/sofia-sans-xc.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/komponenten.css">
 <link rel="stylesheet" href="assets/css/seiten.css">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -47,22 +41,17 @@
   "image": "https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg",
   "foundingDate": "1975",
   "sport": "Tischtennis",
-  "areaServed": "Schaffhausen, Neuhausen",
-  "sameAs": [
-    "https://www.instagram.com/ttcneuhausen/",
-    "https://www.facebook.com/ttcnh/"
-  ]
+  "sameAs": ["https://www.instagram.com/ttcneuhausen/", "https://www.facebook.com/ttcnh/"]
 }
 </script>
 </head>
-<body>
+<body class="seite-teams">
+<a class="skip-link" href="#inhalt">Zum Inhalt</a>
 
-<a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
-
-<header class="kopf sektion--dunkel">
+<header class="kopf" data-kopf>
   <div class="wrap kopf__innen">
-    <a class="kopf__logo logo" href="index.html" aria-label="Startseite TTC Neuhausen">
-      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377" role="img" aria-label="TTC Neuhausen"><title>TTC Neuhausen</title><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
+    <a class="kopf__marke" href="index.html">
+      <svg class="kopf__signet" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377"><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
 -31 -73 -67 -291 -54 -327 3 -7 9 -52 14 -99 8 -73 15 -94 42 -132 27 -39 33
 -58 39 -126 5 -58 15 -95 34 -132 14 -28 26 -60 26 -70 0 -23 27 -79 38 -79 4
 0 18 -10 32 -23 23 -21 25 -29 22 -100 l-4 -77 -36 -19 c-20 -10 -71 -28 -112
@@ -117,10 +106,9 @@
 45 -163 93 -258 110 -66 12 -312 13 -394 1z M8473 8281 c-87 -22 -159 -130 -151 -226 6 -67 46 -137 100 -173 36
 -23 51 -27 117 -27 70 0 80 3 125 34 166 115 99 380 -101 396 -32 2 -73 0 -90
 -4z"/></g></svg>
-      <span class="kopf__name">TTC Neuhausen</span>
+      <span class="kopf__name">TTC Neuhausen <span>Tischtennis seit 1975</span></span>
     </a>
-
-    <nav class="nav" id="hauptnavigation" aria-label="Hauptnavigation" data-offen="false">
+    <nav class="nav" id="navigation" aria-label="Hauptnavigation">
       <ul class="nav__liste">
         <li class="nav__punkt">
           <a class="nav__link" href="verein.html">Verein</a>
@@ -128,19 +116,19 @@
             <li><a href="verein.html">Über den Verein</a></li>
             <li><a href="verein-vorstand.html">Vorstand</a></li>
             <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+            <li><a href="verein-geschichte.html">Geschichte</a></li>
             <li><a href="verein-jahresprogramm.html">Jahresprogramm</a></li>
             <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
             <li><a href="verein-helfereinsatz.html">Helfereinsatz</a></li>
             <li><a href="verein-downloads.html">Downloads</a></li>
-            <li><a href="verein-geschichte.html">Geschichte</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="training.html">Training</a>
           <ul class="nav__unter">
             <li><a href="training.html">Trainingszeiten</a></li>
+            <li><a href="training-schnupperpass.html">Schnuppern &amp; Schnupperpass</a></li>
             <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
-            <li><a href="training-schnupperpass.html">Schnupperpass</a></li>
             <li><a href="training-breitensport.html">Breitensport</a></li>
             <li><a href="training-senioren.html">Senioren &amp; PingPongParkinson</a></li>
             <li><a href="training-einzeltraining.html">Einzeltraining</a></li>
@@ -148,7 +136,7 @@
             <li><a href="training-schulen.html">Für Schulen</a></li>
           </ul>
         </li>
-        <li class="nav__punkt nav__punkt--aktiv">
+        <li class="nav__punkt ist-aktiv">
           <a class="nav__link" href="teams.html" aria-current="page">Teams</a>
         </li>
         <li class="nav__punkt">
@@ -157,224 +145,205 @@
             <li><a href="hallen.html">Übersicht</a></li>
             <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
             <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-            <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
+            <li><a href="hallen-neue-halle.html">Hallensportzentrum</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="news.html">News</a>
         </li>
       </ul>
+      <p class="nav__fuss">
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a>
+      </p>
     </nav>
-
-    <a class="btn btn--klein" href="verein-mitglied-werden.html">Schnuppern</a>
-
-    <button class="menu-knopf" type="button" aria-label="Menü öffnen"
-            aria-controls="hauptnavigation" aria-expanded="false">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M3 6h18M3 12h18M3 18h18"/>
-      </svg>
+    <a class="knopf knopf--orange kopf__aktion" href="training-schnupperpass.html">Schnuppern</a>
+    <button class="kopf__menue" type="button" aria-expanded="false" aria-controls="navigation">
+      <span class="kopf__menue-striche" aria-hidden="true"></span><span class="kopf__menue-text">Menü</span>
     </button>
   </div>
 </header>
 
 <main id="inhalt">
-<section class="seitenkopf sektion--dunkel">
+<header class="aufmacher">
+  <div class="wrap aufmacher__raster">
+    <div class="aufmacher__text">
+      <nav class="brotkrumen" aria-label="Brotkrumen"><a href="index.html">Start</a><span aria-current="page">Teams</span></nav>
+      <p class="rubrik">Saison 2026/27</p>
+      <h1>Teams</h1>
+      <p class="lead">Damen und Herren in der Swiss Table Tennis League, dazu Herrenteams von der 2. bis zur 6. Liga, die
+        Veteranen und zwei Jugendteams: 10 Mannschaften in der Meisterschaft, dazu der Cup.</p>
+      <div class="knoepfe">
+        <a class="knopf" href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/clubMeetings?club=33244" rel="noopener">Resultate bei click-tt <span class="pfeil" aria-hidden="true"></span></a>
+      </div>
+    </div>
+    <figure class="aufmacher__bild bild">
+      <img src="assets/img/fotos/sttl-women.jpg" alt="Eine Spielerin im blauen Trikot ballt nach einem Punkt die Faust"
+           width="880" height="556" fetchpriority="high">
+      <figcaption>STTL Women: vierzehn Meistertitel seit 2005. <span class="nachweis">Bild: René Zwald</span></figcaption>
+    </figure>
+  </div>
+</header>
+
+<section class="flaeche--nacht">
   <div class="wrap">
-    <ul class="brotkrumen"><li><a href="index.html">Start</a></li><li>Teams</li></ul>
-    <h1>Teams</h1>
-    <p class="seitenkopf__lead">Herren und Damen spielen in der Swiss Table Tennis League.
-      Dazu kommen Mannschaften von der 2. bis zur 6. Liga, die Veteranen und zwei
-      Jugendteams — zwölf Mannschaften in der Saison 2026/27.</p>
+    <p class="rubrik">Swiss Table Tennis League</p>
+    <h2>Die beiden Kader in der höchsten Liga</h2>
+    <div class="kader">
+      <article class="kader__team">
+        <h3>STTL Women</h3>
+        <p>Das Damenteam holte 2005 seinen ersten Meistertitel, als jüngstes Meisterteam der Geschichte. Dreizehn weitere
+          folgten – seither ist es das erfolgreichste Damenteam der Schweiz.</p>
+        <ol class="kader__liste">
+          <li><b>Laura Robertson</b><span>Captain</span></li>
+          <li><b>Ana Tofant</b></li>
+          <li><b>Melanie Merk</b></li>
+          <li><b>Livia Drotarova</b></li>
+        </ol>
+      </article>
+      <article class="kader__team">
+        <h3>STTL Men</h3>
+        <p>Vierzehn Jahre in der höchsten Spielklasse, Schweizer Meister 1996, 1998 und 2000. Nach dem Abstieg 2015 folgte
+          2019 die Rückkehr – seither spielen die Herren wieder in der STTL.</p>
+        <ol class="kader__liste">
+          <li><b>Pekka Pelz</b><span>Captain</span></li>
+          <li><b>Adam Robertson</b></li>
+          <li><b>Marius Henninger</b></li>
+          <li><b>Marcel Neumaier</b></li>
+          <li><b>Raffael Turrini</b></li>
+        </ol>
+      </article>
+    </div>
+    <figure class="bild kader__bild">
+      <img src="assets/img/fotos/sttl-men.jpg" alt="Ein Spieler streckt sich beim Ballwechsel über den Tisch" width="1600" height="942" loading="lazy" decoding="async">
+      <figcaption>STTL Men. <span class="nachweis">Bild: Ranil Jayanetti</span></figcaption>
+    </figure>
   </div>
 </section>
 
-<!-- Die Mannschaftsübersicht wird von build.py aus vorlage/mannschaften.py
-     erzeugt. Zum Saisonwechsel nur diese Datei nachführen. -->
-<section class="sektion--weiss">
+<section class="flaeche--weiss">
   <div class="wrap">
-    <div class="sektionskopf">
-      <div>
-        <p class="eyebrow label">Tabellen und Resultate</p>
-        <h2>Alles steht bei click-tt</h2>
-      </div>
-      <p class="intro">Ranglisten, Spielpläne und Resultate führt der Verband. Jede
-        Mannschaft hier führt direkt auf ihre Tabelle — die Zahlen dort stimmen immer,
-        weil sie von dort kommen.</p>
+    <div class="abschnittskopf">
+      <h2>Alle Mannschaften</h2>
+      <p class="lead">Tabellen, Spielpläne und Resultate führt der Verband auf click-tt. Jede Zeile führt direkt zur offiziellen
+        Tabelle – die Zahlen dort stimmen immer.</p>
     </div>
-
-<div class="teams">
-  <section class="teamgruppe">
-    <h3 class="teamgruppe__titel">Nationalliga</h3>
-    <p class="teamgruppe__unter">Swiss Table Tennis League</p>
-    <ul class="teamliste">
-      <li><a class="team" href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=STT+26%2F27&amp;group=219264" target="_blank" rel="noopener">
-        <span class="team__name">STTL Men</span>
-        <span class="team__liga">Swiss Table Tennis League Men</span>
-        <span class="team__ziel">Tabelle</span>
-      </a></li>
-      <li><a class="team" href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=STT+26%2F27&amp;group=219291" target="_blank" rel="noopener">
-        <span class="team__name">STTL Women</span>
-        <span class="team__liga">Swiss Table Tennis League Women</span>
-        <span class="team__ziel">Tabelle</span>
-      </a></li>
-    </ul>
+    <div class="ligen">
+  <section class="liga">
+    <h3 class="liga__titel">Nationalliga <span>Swiss Table Tennis League</span></h3>
+    <ol class="liga__liste">
+      <li><a href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=STT+26%2F27&amp;group=219264" rel="noopener"><b>STTL Men</b><span>Swiss Table Tennis League Men</span><em>Tabelle<span class="pfeil" aria-hidden="true"></span></em></a></li>
+      <li><a href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=STT+26%2F27&amp;group=219291" rel="noopener"><b>STTL Women</b><span>Swiss Table Tennis League Women</span><em>Tabelle<span class="pfeil" aria-hidden="true"></span></em></a></li>
+    </ol>
   </section>
-  <section class="teamgruppe">
-    <h3 class="teamgruppe__titel">OTTV-Mannschaftsmeisterschaft</h3>
-    <p class="teamgruppe__unter">Ostschweizer Tischtennisverband</p>
-    <ul class="teamliste">
-      <li><a class="team" href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+26%2F27&amp;group=219465" target="_blank" rel="noopener">
-        <span class="team__name">Herren II</span>
-        <span class="team__liga">2. Liga Herren, Gruppe 2</span>
-        <span class="team__ziel">Tabelle</span>
-      </a></li>
-      <li><a class="team" href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+26%2F27&amp;group=219527" target="_blank" rel="noopener">
-        <span class="team__name">Herren III</span>
-        <span class="team__liga">3. Liga Herren, Gruppe 2</span>
-        <span class="team__ziel">Tabelle</span>
-      </a></li>
-      <li><a class="team" href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+26%2F27&amp;group=219551" target="_blank" rel="noopener">
-        <span class="team__name">Herren IV</span>
-        <span class="team__liga">4. Liga Herren, Gruppe 3</span>
-        <span class="team__ziel">Tabelle</span>
-      </a></li>
-      <li><a class="team" href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+26%2F27&amp;group=219566" target="_blank" rel="noopener">
-        <span class="team__name">Herren V</span>
-        <span class="team__liga">5. Liga Herren, Gruppe 3</span>
-        <span class="team__ziel">Tabelle</span>
-      </a></li>
-      <li><a class="team" href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+26%2F27&amp;group=219590" target="_blank" rel="noopener">
-        <span class="team__name">Herren VI</span>
-        <span class="team__liga">6. Liga Herren, Gruppe 3</span>
-        <span class="team__ziel">Tabelle</span>
-      </a></li>
-      <li><a class="team" href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+26%2F27&amp;group=219604" target="_blank" rel="noopener">
-        <span class="team__name">Veteranen O50</span>
-        <span class="team__liga">1. Liga O50, Gruppe 1</span>
-        <span class="team__ziel">Tabelle</span>
-      </a></li>
-      <li><a class="team" href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+26%2F27&amp;group=220426" target="_blank" rel="noopener">
-        <span class="team__name">Jugend</span>
-        <span class="team__liga">Jugend 2. Liga, Gruppe 6</span>
-        <span class="team__ziel">Tabelle</span>
-      </a></li>
-      <li><a class="team" href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+26%2F27&amp;group=220424" target="_blank" rel="noopener">
-        <span class="team__name">Jugend II</span>
-        <span class="team__liga">Jugend 2. Liga, Gruppe 3</span>
-        <span class="team__ziel">Tabelle</span>
-      </a></li>
-    </ul>
+  <section class="liga">
+    <h3 class="liga__titel">OTTV-Mannschaftsmeisterschaft <span>Ostschweizer Tischtennisverband</span></h3>
+    <ol class="liga__liste">
+      <li><a href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+26%2F27&amp;group=219465" rel="noopener"><b>Herren II</b><span>2. Liga Herren, Gruppe 2</span><em>Tabelle<span class="pfeil" aria-hidden="true"></span></em></a></li>
+      <li><a href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+26%2F27&amp;group=219527" rel="noopener"><b>Herren III</b><span>3. Liga Herren, Gruppe 2</span><em>Tabelle<span class="pfeil" aria-hidden="true"></span></em></a></li>
+      <li><a href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+26%2F27&amp;group=219551" rel="noopener"><b>Herren IV</b><span>4. Liga Herren, Gruppe 3</span><em>Tabelle<span class="pfeil" aria-hidden="true"></span></em></a></li>
+      <li><a href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+26%2F27&amp;group=219566" rel="noopener"><b>Herren V</b><span>5. Liga Herren, Gruppe 3</span><em>Tabelle<span class="pfeil" aria-hidden="true"></span></em></a></li>
+      <li><a href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+26%2F27&amp;group=219590" rel="noopener"><b>Herren VI</b><span>6. Liga Herren, Gruppe 3</span><em>Tabelle<span class="pfeil" aria-hidden="true"></span></em></a></li>
+      <li><a href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+26%2F27&amp;group=219604" rel="noopener"><b>Veteranen O50</b><span>1. Liga O50, Gruppe 1</span><em>Tabelle<span class="pfeil" aria-hidden="true"></span></em></a></li>
+      <li><a href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+26%2F27&amp;group=220426" rel="noopener"><b>Jugend</b><span>Jugend 2. Liga, Gruppe 6</span><em>Tabelle<span class="pfeil" aria-hidden="true"></span></em></a></li>
+      <li><a href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+26%2F27&amp;group=220424" rel="noopener"><b>Jugend II</b><span>Jugend 2. Liga, Gruppe 3</span><em>Tabelle<span class="pfeil" aria-hidden="true"></span></em></a></li>
+    </ol>
   </section>
-  <section class="teamgruppe">
-    <h3 class="teamgruppe__titel">Cup</h3>
-    <p class="teamgruppe__unter">Schweizer Cup und OTTV-Cup</p>
-    <ul class="teamliste">
-      <li><a class="team" href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=Schweizer+Cup+26%2F27&amp;group=219172" target="_blank" rel="noopener">
-        <span class="team__name">Schweizer Cup</span>
-        <span class="team__liga">Herren, 3. Hauptrunde Zone 2</span>
-        <span class="team__ziel">Tabelle</span>
-      </a></li>
-      <li><a class="team" href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+Cup+26%2F27&amp;group=219222" target="_blank" rel="noopener">
-        <span class="team__name">OTTV-Cup</span>
-        <span class="team__liga">Achtelfinal</span>
-        <span class="team__ziel">Tabelle</span>
-      </a></li>
-    </ul>
+  <section class="liga">
+    <h3 class="liga__titel">Cup <span>Schweizer Cup und OTTV-Cup</span></h3>
+    <ol class="liga__liste">
+      <li><a href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=Schweizer+Cup+26%2F27&amp;group=219172" rel="noopener"><b>Schweizer Cup</b><span>Herren, 3. Hauptrunde Zone 2</span><em>Tabelle<span class="pfeil" aria-hidden="true"></span></em></a></li>
+      <li><a href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/groupPage?championship=OTTV+Cup+26%2F27&amp;group=219222" rel="noopener"><b>OTTV-Cup</b><span>Achtelfinal</span><em>Tabelle<span class="pfeil" aria-hidden="true"></span></em></a></li>
+    </ol>
   </section>
 </div>
-
-    <div class="btn-reihe">
-      <a class="btn" href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/clubMeetings?club=33244" target="_blank" rel="noopener">Alle Resultate</a>
-      <a class="btn btn--leise" href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/clubTeams?club=33244" target="_blank" rel="noopener">Vereinsseite bei click-tt</a>
-    </div>
+    <p class="tabelle__notiz abstand-oben"><a class="lauftext" href="https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/clubTeams?club=33244" rel="noopener">Alle Mannschaften des TTC Neuhausen bei click-tt</a></p>
   </div>
 </section>
 
-<section class="sektion--dunkel">
-  <div class="wrap">
-    <p class="eyebrow label">Nationalliga</p>
-    <h2>Die beiden STTL-Kader</h2>
-    <div class="split">
-      <div>
-        <h3>STTL Men</h3>
-        <p class="leise">Die Herren waren vierzehn Jahre in der höchsten Spielklasse, wurden
-          1996, 1998 und 2000 Schweizer Meister und spielen nach dem Wiederaufstieg 2019
-          erneut in der STTL.</p>
-        <ul class="kader">
-          <li><b>Pekka Pelz</b> <span class="kader__rolle">Captain</span></li>
-          <li>Adam Robertson</li>
-          <li>Marius Henninger</li>
-          <li>Marcel Neumaier</li>
-          <li>Raffael Turrini</li>
-        </ul>
-      </div>
-      <div>
-        <h3>STTL Women</h3>
-        <p class="leise">Das Damenteam ist mit vierzehn Meistertiteln seit 2005 das
-          erfolgreichste der Schweiz.</p>
-        <ul class="kader">
-          <li><b>Laura Robertson</b> <span class="kader__rolle">Captain</span></li>
-          <li>Ana Tofant</li>
-          <li>Melanie Merk</li>
-          <li>Livia Drotarova</li>
-        </ul>
-      </div>
+<section class="flaeche--papier">
+  <div class="wrap raster zweispalter">
+    <div class="zweispalter__links text">
+      <h2>So funktioniert der Spielbetrieb</h2>
+      <p>Ganz oben steht die <b>Swiss Table Tennis League</b>, die höchste Liga der Schweiz. Darunter folgen weitere
+        Nationalligen und die Meisterschaft des Ostschweizer Tischtennisverbands bis hinunter zur 6. Liga. Dazu kommen
+        eigene Ligen für Veteranen ab 50 und für Jugendliche.</p>
+      <p>Neben der Meisterschaft laufen zwei Cups: der Schweizer Cup und der OTTV-Cup. Wer in der Meisterschaft spielen
+        will, braucht eine Lizenz des Verbands. Möglich ist das mit der Mitgliedschaft AktivPlus oder Aktive.</p>
     </div>
+    <ol class="pyramide zweispalter__rechts" aria-label="Die Ligen, in denen der TTC Neuhausen spielt">
+      <li style="--b:34%"><b>STTL</b><span>Damen und Herren</span></li>
+      <li style="--b:52%"><b>2. und 3. Liga</b><span>Herren II, III</span></li>
+      <li style="--b:70%"><b>4. bis 6. Liga</b><span>Herren IV, V, VI</span></li>
+      <li style="--b:86%"><b>O50 · Jugend</b><span>Veteranen, zwei Jugendteams</span></li>
+      <li style="--b:100%"><b>Cup</b><span>Schweizer Cup, OTTV-Cup</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="flaeche--weiss">
+  <div class="wrap">
+    <div class="abschnittskopf"><h2>Weiter</h2></div>
+    <ul class="weiter">
+      <li><a href="verein-geschichte.html"><b>Geschichte</b><span>Siebzehn Titel und wie sie zustande kamen.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+      <li><a href="training-stuetzpunkt.html"><b>Stützpunkt</b><span>Wo die nächste Generation trainiert.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+      <li><a href="news.html"><b>News</b><span>Spielberichte und Saisonvorschau.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+    </ul>
   </div>
 </section>
 
 </main>
 
-<footer class="fuss sektion--dunkel">
+<footer class="fuss flaeche--nacht">
   <div class="wrap">
+    <div class="fuss__oben">
+      <img class="fuss__logo" src="assets/img/logo-weiss.svg" width="1459" height="352" alt="Tischtennisclub Neuhausen">
+      <p class="fuss__satz">Tischtennis von 7 bis 85, seit 1975. In der Rhyfallhalle Neuhausen und im Tischtenniszentrum Ebnat.</p>
+      <a class="knopf knopf--orange" href="training-schnupperpass.html">Schnuppertraining</a>
+    </div>
     <div class="fuss__raster">
-      <div class="fuss__logo">
-        <img src="assets/img/logo-weiss.svg" width="1459" height="352"
-             alt="Tischtennisclub Neuhausen">
-        <p class="leise" style="font-size:var(--grad-sm);max-width:34ch">
-          Gegründet 1975. Training in der Rhyfallhalle Neuhausen und im
-          Tischtenniszentrum Ebnat in Schaffhausen.
-        </p>
-      </div>
       <div>
-        <h4>Verein</h4>
+        <h2 class="fuss__titel">Verein</h2>
         <ul>
           <li><a href="verein.html">Über den Verein</a></li>
           <li><a href="verein-vorstand.html">Vorstand</a></li>
           <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+          <li><a href="verein-geschichte.html">Geschichte</a></li>
           <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Hallen</h4>
-        <ul>
-          <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
-          <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-          <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Kontakt</h4>
-        <ul>
-          <li><a href="kontakt.html">Kontakt</a></li>
           <li><a href="partner.html">Für Partner</a></li>
-          <li><a href="https://www.instagram.com/ttcneuhausen/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.facebook.com/ttcnh/" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Training</h2>
+        <ul>
+          <li><a href="training.html">Trainingszeiten</a></li>
+          <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
+          <li><a href="training-breitensport.html">Breitensport</a></li>
+          <li><a href="training-senioren.html">Senioren</a></li>
+          <li><a href="teams.html">Teams</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Hallen</h2>
+        <p><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a><br>Rheingoldstrasse 11<br>8212 Neuhausen am Rheinfall</p>
+        <p><a href="hallen-ttz-ebnat.html">Tischtenniszentrum Ebnat</a><br>Ebnatstrasse 35<br>8200 Schaffhausen</p>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Kontakt</h2>
+        <p><a href="mailto:info@ttc-neuhausen.ch">info@ttc-neuhausen.ch</a><br>
+          <a href="mailto:trainer@ttc-neuhausen.ch">trainer@ttc-neuhausen.ch</a></p>
+        <p><a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a><br>
+          <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a></p>
       </div>
     </div>
-    <div class="fuss__klein">
-      <span>&copy; <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
-      <span>
-        <a href="impressum.html">Impressum</a> &nbsp;·&nbsp;
-        <a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp;
-        Gestaltung und Umsetzung: Wendico
-      </span>
+    <div class="fuss__unten">
+      <span>© <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Gestaltung und Umsetzung: Wendico</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

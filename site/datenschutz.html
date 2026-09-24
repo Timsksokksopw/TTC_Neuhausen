@@ -1,41 +1,35 @@
 <!doctype html>
-<html lang="de">
+<!-- Erzeugt von build.py – nicht hier ändern.
+     Inhalt: inhalt/datenschutz.html · Rahmen: vorlage/layout.html · Menü: vorlage/seiten.py
+     Bilder und Dokumente unter site/assets/ werden nicht erzeugt:
+     Datei mit gleichem Namen ersetzen genügt. -->
+<html lang="de-CH">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Setzt die Klasse, bevor CSS greift. Nur wenn sie da ist, werden
-     .reveal-Elemente versteckt — ohne JavaScript bleibt alles sichtbar. -->
-<script>document.documentElement.className += " js";</script>
-
-<title>Datenschutzerklärung – TTC Neuhausen</title>
+<script>document.documentElement.classList.add("js")</script>
+<title>Datenschutz – TTC Neuhausen</title>
 <meta name="description" content="Datenschutzerklärung des Tischtennisclubs Neuhausen.">
 <link rel="canonical" href="https://www.ttc-neuhausen.ch/datenschutz.html">
-<meta name="theme-color" content="#0A111D">
-
-<!-- Vorschau beim Teilen: WhatsApp, Instagram, Facebook, LinkedIn. -->
+<meta name="theme-color" content="#F3F0E8">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TTC Neuhausen">
 <meta property="og:locale" content="de_CH">
-<meta property="og:title" content="Datenschutzerklärung – TTC Neuhausen">
+<meta property="og:title" content="Datenschutz – TTC Neuhausen">
 <meta property="og:description" content="Datenschutzerklärung des Tischtennisclubs Neuhausen.">
 <meta property="og:url" content="https://www.ttc-neuhausen.ch/datenschutz.html">
 <meta property="og:image" content="https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="TTC Neuhausen — Tischtennis für alle, seit 1975">
 <meta name="twitter:card" content="summary_large_image">
-
 <link rel="icon" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,88..112,400..800;1,88..112,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/sofia-sans-xc.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/komponenten.css">
 <link rel="stylesheet" href="assets/css/seiten.css">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -47,22 +41,17 @@
   "image": "https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg",
   "foundingDate": "1975",
   "sport": "Tischtennis",
-  "areaServed": "Schaffhausen, Neuhausen",
-  "sameAs": [
-    "https://www.instagram.com/ttcneuhausen/",
-    "https://www.facebook.com/ttcnh/"
-  ]
+  "sameAs": ["https://www.instagram.com/ttcneuhausen/", "https://www.facebook.com/ttcnh/"]
 }
 </script>
 </head>
-<body>
+<body class="seite-datenschutz">
+<a class="skip-link" href="#inhalt">Zum Inhalt</a>
 
-<a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
-
-<header class="kopf sektion--dunkel">
+<header class="kopf" data-kopf>
   <div class="wrap kopf__innen">
-    <a class="kopf__logo logo" href="index.html" aria-label="Startseite TTC Neuhausen">
-      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377" role="img" aria-label="TTC Neuhausen"><title>TTC Neuhausen</title><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
+    <a class="kopf__marke" href="index.html">
+      <svg class="kopf__signet" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377"><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
 -31 -73 -67 -291 -54 -327 3 -7 9 -52 14 -99 8 -73 15 -94 42 -132 27 -39 33
 -58 39 -126 5 -58 15 -95 34 -132 14 -28 26 -60 26 -70 0 -23 27 -79 38 -79 4
 0 18 -10 32 -23 23 -21 25 -29 22 -100 l-4 -77 -36 -19 c-20 -10 -71 -28 -112
@@ -117,10 +106,9 @@
 45 -163 93 -258 110 -66 12 -312 13 -394 1z M8473 8281 c-87 -22 -159 -130 -151 -226 6 -67 46 -137 100 -173 36
 -23 51 -27 117 -27 70 0 80 3 125 34 166 115 99 380 -101 396 -32 2 -73 0 -90
 -4z"/></g></svg>
-      <span class="kopf__name">TTC Neuhausen</span>
+      <span class="kopf__name">TTC Neuhausen <span>Tischtennis seit 1975</span></span>
     </a>
-
-    <nav class="nav" id="hauptnavigation" aria-label="Hauptnavigation" data-offen="false">
+    <nav class="nav" id="navigation" aria-label="Hauptnavigation">
       <ul class="nav__liste">
         <li class="nav__punkt">
           <a class="nav__link" href="verein.html">Verein</a>
@@ -128,19 +116,19 @@
             <li><a href="verein.html">Über den Verein</a></li>
             <li><a href="verein-vorstand.html">Vorstand</a></li>
             <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+            <li><a href="verein-geschichte.html">Geschichte</a></li>
             <li><a href="verein-jahresprogramm.html">Jahresprogramm</a></li>
             <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
             <li><a href="verein-helfereinsatz.html">Helfereinsatz</a></li>
             <li><a href="verein-downloads.html">Downloads</a></li>
-            <li><a href="verein-geschichte.html">Geschichte</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="training.html">Training</a>
           <ul class="nav__unter">
             <li><a href="training.html">Trainingszeiten</a></li>
+            <li><a href="training-schnupperpass.html">Schnuppern &amp; Schnupperpass</a></li>
             <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
-            <li><a href="training-schnupperpass.html">Schnupperpass</a></li>
             <li><a href="training-breitensport.html">Breitensport</a></li>
             <li><a href="training-senioren.html">Senioren &amp; PingPongParkinson</a></li>
             <li><a href="training-einzeltraining.html">Einzeltraining</a></li>
@@ -157,161 +145,167 @@
             <li><a href="hallen.html">Übersicht</a></li>
             <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
             <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-            <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
+            <li><a href="hallen-neue-halle.html">Hallensportzentrum</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="news.html">News</a>
         </li>
       </ul>
+      <p class="nav__fuss">
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a>
+      </p>
     </nav>
-
-    <a class="btn btn--klein" href="verein-mitglied-werden.html">Schnuppern</a>
-
-    <button class="menu-knopf" type="button" aria-label="Menü öffnen"
-            aria-controls="hauptnavigation" aria-expanded="false">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M3 6h18M3 12h18M3 18h18"/>
-      </svg>
+    <a class="knopf knopf--orange kopf__aktion" href="training-schnupperpass.html">Schnuppern</a>
+    <button class="kopf__menue" type="button" aria-expanded="false" aria-controls="navigation">
+      <span class="kopf__menue-striche" aria-hidden="true"></span><span class="kopf__menue-text">Menü</span>
     </button>
   </div>
 </header>
 
 <main id="inhalt">
-<section class="seitenkopf sektion--dunkel">
-  <div class="wrap">
-    <ul class="brotkrumen"><li><a href="index.html">Start</a></li><li>Datenschutzerklärung</li></ul>
-    <h1>Datenschutzerklärung</h1>
-    <p class="seitenkopf__lead">Wie diese Website mit personenbezogenen Daten umgeht.</p>
+<header class="aufmacher aufmacher--schmal">
+  <div class="wrap aufmacher__raster">
+    <div class="aufmacher__text">
+      <nav class="brotkrumen" aria-label="Brotkrumen"><a href="index.html">Start</a><span aria-current="page">Datenschutz</span></nav>
+      <p class="rubrik">Rechtliches</p>
+      <h1>Datenschutz</h1>
+      <p class="lead">Wie diese Website mit Personendaten umgeht. Kurz gesagt: keine Cookies, keine Statistik, keine
+        eingebetteten Dienste von Dritten.</p>
+    </div>
   </div>
-</section>
+</header>
 
-<section class="sektion--hell">
-  <div class="wrap">
-    <div class="rechtstext">
-      <p class="hinweis"><strong>Vom Verein freizugeben.</strong> Der Text beschreibt den
-        tatsächlichen Stand der Website — die aufgeführten Dienste sind am gebauten Stand
-        nachgeprüft. Er ersetzt aber keine Rechtsberatung, und massgeblich ist das
-        revidierte Schweizer Datenschutzgesetz (revDSG). Sobald die Schriften auf dem
-        eigenen Server liegen, ist der Abschnitt «Externe Dienste» nachzuführen.</p>
+<!-- VOR DEM AUFSCHALTEN vom Verein freigeben lassen. Der Text beschreibt den
+     tatsächlichen Stand der Website, er ersetzt aber keine Rechtsberatung;
+     massgeblich ist das Schweizer Datenschutzgesetz (DSG).
 
-      <h2>Verantwortliche Stelle</h2>
+     Die Liste «Was nachgeladen wird» beschreibt, was die Seiten beim Aufruf
+     TATSÄCHLICH laden. Seit die Schriften auf dem eigenen Server liegen,
+     ist das nichts mehr von Dritten. Wer hier etwas ändert – etwa eine
+     Besucherstatistik oder eine eingebettete Karte einbaut –, prüft es
+     zuerst am gebauten site/ und führt diesen Text nach. -->
+<section class="flaeche--weiss">
+  <div class="wrap rechtstext">
+    <div class="rechtstext__block">
+      <h2>Verantwortlich</h2>
       <p>Tischtennisclub Neuhausen, 8200 Schaffhausen, Schweiz,
         <a href="mailto:info@ttc-neuhausen.ch">info@ttc-neuhausen.ch</a></p>
+    </div>
 
-      <h2>Bearbeitung beim Besuch der Website</h2>
-      <p>Beim Aufruf dieser Website werden durch den Hosting-Anbieter technische Daten in
-        Server-Logfiles gespeichert. Dazu gehören in der Regel:</p>
+    <div class="rechtstext__block">
+      <h2>Beim Besuch der Website</h2>
+      <p>Beim Aufruf dieser Website speichert der Hosting-Anbieter technische Daten in Server-Logfiles. Dazu gehören in der
+        Regel:</p>
       <ul>
-        <li>gekürzte IP-Adresse</li>
+        <li>IP-Adresse, gegebenenfalls gekürzt</li>
         <li>Datum und Uhrzeit des Zugriffs</li>
         <li>aufgerufene Seite</li>
         <li>Browsertyp und Betriebssystem</li>
       </ul>
-      <p>Diese Daten dienen dem sicheren Betrieb der Website und werden nicht mit anderen
-        Datenquellen zusammengeführt.</p>
+      <p>Diese Daten dienen dem sicheren Betrieb der Website und werden nicht mit anderen Datenquellen zusammengeführt.</p>
+    </div>
 
-      <h2>Kontaktaufnahme</h2>
-      <p>Wer uns per E-Mail schreibt, übermittelt uns damit seine Adresse und die Angaben aus
-        der Nachricht. Diese Daten werden ausschliesslich zur Bearbeitung der Anfrage
-        verwendet und nicht weitergegeben.</p>
+    <div class="rechtstext__block">
+      <h2>Was nachgeladen wird</h2>
+      <p>Nichts von Dritten. Schriften, Bilder, Dokumente und Skripte liegen auf demselben Server wie die Seiten. Beim
+        Aufruf einer Seite wird keine Verbindung zu Google, Facebook oder einem anderen fremden Dienst aufgebaut.</p>
+    </div>
 
-      <!-- Diese Liste beschreibt, was die Seiten beim Aufruf **tatsächlich**
-           nachladen, nicht was einmal geplant war. Zwei Angaben waren
-           falsch: dass die Schriften vom eigenen Server kommen (sie kommen
-           aus dem Prototyp noch von Google) und dass Tabellen vom Verband
-           geladen werden (es wird nichts geladen, es wird verlinkt). Wer
-           hier etwas ändert, prüft es zuerst am gebauten site/. -->
-      <h2>Externe Dienste</h2>
-      <p>Diese Website lädt beim Aufruf einer Seite genau einen fremden Dienst nach:</p>
+    <div class="rechtstext__block">
+      <h2>Verlinkt, nicht eingebettet</h2>
+      <p>Einige Angebote liegen bei anderen Anbietern. Sie werden erst aufgerufen, wenn jemand den Link anklickt – dann ist
+        es ein Besuch auf der Website des jeweiligen Anbieters, mit dessen Datenschutzbestimmungen:</p>
       <ul>
-        <li><strong>Google Fonts:</strong> Die Schriften werden von
-          <code>fonts.googleapis.com</code> und <code>fonts.gstatic.com</code> geladen.
-          Dabei erfährt Google die IP-Adresse der Besucherin oder des Besuchers.
-          <em>Vorgesehen ist, die Schriften auf den eigenen Server zu legen; danach
-          entfällt diese Verbindung und dieser Punkt.</em></li>
-      </ul>
-      <p>Alles Übrige ist <strong>verlinkt, nicht eingebettet</strong> — es wird also
-        erst aufgerufen, wenn jemand den Link anklickt, und ist dann ein Besuch auf der
-        Website des jeweiligen Anbieters mit dessen Datenschutzbestimmungen:</p>
-      <ul>
-        <li><strong>click-tt</strong> (Swiss Table Tennis / nuLiga) für die
-          Ligatabellen und Spielpläne der Mannschaften</li>
+        <li><strong>click-tt</strong> (Swiss Table Tennis, nuLiga) für Tabellen, Spielpläne und Resultate</li>
         <li><strong>Microsoft Forms</strong> für das Anmeldeformular</li>
         <li><strong>portal.helfereinsatz.ch</strong> für die Helfereinsätze</li>
-        <li><strong>Facebook und Instagram</strong> für die Vereinsseiten</li>
+        <li><strong>Google Maps</strong> für die Routenplanung zu den Hallen</li>
+        <li><strong>Instagram und Facebook</strong> für die Vereinsseiten</li>
       </ul>
-      <p>Eine Karte ist nicht eingebunden. Die Anfahrt steht als Text und Adresse auf der
-        Kontaktseite.</p>
+      <p>Eine Karte ist nicht eingebunden. Die Adressen der Hallen stehen als Text auf der
+        <a href="kontakt.html">Kontaktseite</a>.</p>
+    </div>
 
-      <h2>Cookies</h2>
-      <p>Diese Website setzt keine Cookies — weder zu Analyse- noch zu Werbezwecken. Es
-        ist auch keine Besucherstatistik eingebunden. Kommt später eine dazu, gehört sie
-        hier hin.</p>
+    <div class="rechtstext__block">
+      <h2>E-Mail</h2>
+      <p>Wer dem Verein per E-Mail schreibt, übermittelt damit seine Adresse und die Angaben aus der Nachricht. Diese Daten
+        werden ausschliesslich zur Bearbeitung der Anfrage verwendet und nicht weitergegeben.</p>
+    </div>
 
-      <h2>Rechte der betroffenen Personen</h2>
-      <p>Sie haben das Recht auf Auskunft über die zu Ihrer Person bearbeiteten Daten sowie
-        auf Berichtigung oder Löschung. Wenden Sie sich dafür an die oben genannte Adresse.</p>
+    <div class="rechtstext__block">
+      <h2>Cookies und Statistik</h2>
+      <p>Diese Website setzt keine Cookies und speichert nichts im Browser, weder zu Analyse- noch zu Werbezwecken. Es ist
+        keine Besucherstatistik eingebunden.</p>
+    </div>
 
+    <div class="rechtstext__block">
+      <h2>Ihre Rechte</h2>
+      <p>Sie haben das Recht auf Auskunft über die zu Ihrer Person bearbeiteten Daten sowie auf Berichtigung oder Löschung.
+        Wenden Sie sich dafür an die oben genannte Adresse.</p>
+    </div>
+
+    <div class="rechtstext__block">
       <h2>Änderungen</h2>
-      <p>Diese Erklärung kann angepasst werden, wenn sich die Website oder die
-        Rechtsgrundlagen ändern. Massgeblich ist die jeweils hier veröffentlichte Fassung.</p>
+      <p>Diese Erklärung kann angepasst werden, wenn sich die Website oder die Rechtsgrundlagen ändern. Massgeblich ist die
+        jeweils hier veröffentlichte Fassung.</p>
     </div>
   </div>
 </section>
 
 </main>
 
-<footer class="fuss sektion--dunkel">
+<footer class="fuss flaeche--nacht">
   <div class="wrap">
+    <div class="fuss__oben">
+      <img class="fuss__logo" src="assets/img/logo-weiss.svg" width="1459" height="352" alt="Tischtennisclub Neuhausen">
+      <p class="fuss__satz">Tischtennis von 7 bis 85, seit 1975. In der Rhyfallhalle Neuhausen und im Tischtenniszentrum Ebnat.</p>
+      <a class="knopf knopf--orange" href="training-schnupperpass.html">Schnuppertraining</a>
+    </div>
     <div class="fuss__raster">
-      <div class="fuss__logo">
-        <img src="assets/img/logo-weiss.svg" width="1459" height="352"
-             alt="Tischtennisclub Neuhausen">
-        <p class="leise" style="font-size:var(--grad-sm);max-width:34ch">
-          Gegründet 1975. Training in der Rhyfallhalle Neuhausen und im
-          Tischtenniszentrum Ebnat in Schaffhausen.
-        </p>
-      </div>
       <div>
-        <h4>Verein</h4>
+        <h2 class="fuss__titel">Verein</h2>
         <ul>
           <li><a href="verein.html">Über den Verein</a></li>
           <li><a href="verein-vorstand.html">Vorstand</a></li>
           <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+          <li><a href="verein-geschichte.html">Geschichte</a></li>
           <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Hallen</h4>
-        <ul>
-          <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
-          <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-          <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Kontakt</h4>
-        <ul>
-          <li><a href="kontakt.html">Kontakt</a></li>
           <li><a href="partner.html">Für Partner</a></li>
-          <li><a href="https://www.instagram.com/ttcneuhausen/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.facebook.com/ttcnh/" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Training</h2>
+        <ul>
+          <li><a href="training.html">Trainingszeiten</a></li>
+          <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
+          <li><a href="training-breitensport.html">Breitensport</a></li>
+          <li><a href="training-senioren.html">Senioren</a></li>
+          <li><a href="teams.html">Teams</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Hallen</h2>
+        <p><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a><br>Rheingoldstrasse 11<br>8212 Neuhausen am Rheinfall</p>
+        <p><a href="hallen-ttz-ebnat.html">Tischtenniszentrum Ebnat</a><br>Ebnatstrasse 35<br>8200 Schaffhausen</p>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Kontakt</h2>
+        <p><a href="mailto:info@ttc-neuhausen.ch">info@ttc-neuhausen.ch</a><br>
+          <a href="mailto:trainer@ttc-neuhausen.ch">trainer@ttc-neuhausen.ch</a></p>
+        <p><a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a><br>
+          <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a></p>
       </div>
     </div>
-    <div class="fuss__klein">
-      <span>&copy; <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
-      <span>
-        <a href="impressum.html">Impressum</a> &nbsp;·&nbsp;
-        <a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp;
-        Gestaltung und Umsetzung: Wendico
-      </span>
+    <div class="fuss__unten">
+      <span>© <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Gestaltung und Umsetzung: Wendico</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

@@ -1,41 +1,35 @@
 <!doctype html>
-<html lang="de">
+<!-- Erzeugt von build.py – nicht hier ändern.
+     Inhalt: inhalt/verein-mitglied-werden.html · Rahmen: vorlage/layout.html · Menü: vorlage/seiten.py
+     Bilder und Dokumente unter site/assets/ werden nicht erzeugt:
+     Datei mit gleichem Namen ersetzen genügt. -->
+<html lang="de-CH">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Setzt die Klasse, bevor CSS greift. Nur wenn sie da ist, werden
-     .reveal-Elemente versteckt — ohne JavaScript bleibt alles sichtbar. -->
-<script>document.documentElement.className += " js";</script>
-
+<script>document.documentElement.classList.add("js")</script>
 <title>Mitglied werden – TTC Neuhausen</title>
-<meta name="description" content="Mitgliederkategorien und Beiträge des TTC Neuhausen. Schnuppertraining ist kostenlos, Schläger können ausgeliehen werden.">
+<meta name="description" content="Mitgliederkategorien, Beiträge und Anmeldung beim TTC Neuhausen. Mit Beitragsrechner. Zuerst schnuppern ist kostenlos.">
 <link rel="canonical" href="https://www.ttc-neuhausen.ch/verein-mitglied-werden.html">
-<meta name="theme-color" content="#0A111D">
-
-<!-- Vorschau beim Teilen: WhatsApp, Instagram, Facebook, LinkedIn. -->
+<meta name="theme-color" content="#F3F0E8">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TTC Neuhausen">
 <meta property="og:locale" content="de_CH">
 <meta property="og:title" content="Mitglied werden – TTC Neuhausen">
-<meta property="og:description" content="Mitgliederkategorien und Beiträge des TTC Neuhausen. Schnuppertraining ist kostenlos, Schläger können ausgeliehen werden.">
+<meta property="og:description" content="Mitgliederkategorien, Beiträge und Anmeldung beim TTC Neuhausen. Mit Beitragsrechner. Zuerst schnuppern ist kostenlos.">
 <meta property="og:url" content="https://www.ttc-neuhausen.ch/verein-mitglied-werden.html">
 <meta property="og:image" content="https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="TTC Neuhausen — Tischtennis für alle, seit 1975">
 <meta name="twitter:card" content="summary_large_image">
-
 <link rel="icon" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,88..112,400..800;1,88..112,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/sofia-sans-xc.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/komponenten.css">
 <link rel="stylesheet" href="assets/css/seiten.css">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -47,22 +41,17 @@
   "image": "https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg",
   "foundingDate": "1975",
   "sport": "Tischtennis",
-  "areaServed": "Schaffhausen, Neuhausen",
-  "sameAs": [
-    "https://www.instagram.com/ttcneuhausen/",
-    "https://www.facebook.com/ttcnh/"
-  ]
+  "sameAs": ["https://www.instagram.com/ttcneuhausen/", "https://www.facebook.com/ttcnh/"]
 }
 </script>
 </head>
-<body>
+<body class="seite-verein-mitglied-werden">
+<a class="skip-link" href="#inhalt">Zum Inhalt</a>
 
-<a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
-
-<header class="kopf sektion--dunkel">
+<header class="kopf" data-kopf>
   <div class="wrap kopf__innen">
-    <a class="kopf__logo logo" href="index.html" aria-label="Startseite TTC Neuhausen">
-      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377" role="img" aria-label="TTC Neuhausen"><title>TTC Neuhausen</title><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
+    <a class="kopf__marke" href="index.html">
+      <svg class="kopf__signet" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377"><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
 -31 -73 -67 -291 -54 -327 3 -7 9 -52 14 -99 8 -73 15 -94 42 -132 27 -39 33
 -58 39 -126 5 -58 15 -95 34 -132 14 -28 26 -60 26 -70 0 -23 27 -79 38 -79 4
 0 18 -10 32 -23 23 -21 25 -29 22 -100 l-4 -77 -36 -19 c-20 -10 -71 -28 -112
@@ -117,30 +106,29 @@
 45 -163 93 -258 110 -66 12 -312 13 -394 1z M8473 8281 c-87 -22 -159 -130 -151 -226 6 -67 46 -137 100 -173 36
 -23 51 -27 117 -27 70 0 80 3 125 34 166 115 99 380 -101 396 -32 2 -73 0 -90
 -4z"/></g></svg>
-      <span class="kopf__name">TTC Neuhausen</span>
+      <span class="kopf__name">TTC Neuhausen <span>Tischtennis seit 1975</span></span>
     </a>
-
-    <nav class="nav" id="hauptnavigation" aria-label="Hauptnavigation" data-offen="false">
+    <nav class="nav" id="navigation" aria-label="Hauptnavigation">
       <ul class="nav__liste">
-        <li class="nav__punkt nav__punkt--aktiv">
+        <li class="nav__punkt ist-aktiv">
           <a class="nav__link" href="verein.html">Verein</a>
           <ul class="nav__unter">
             <li><a href="verein.html">Über den Verein</a></li>
             <li><a href="verein-vorstand.html">Vorstand</a></li>
             <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+            <li><a href="verein-geschichte.html">Geschichte</a></li>
             <li><a href="verein-jahresprogramm.html">Jahresprogramm</a></li>
             <li><a href="verein-mitglied-werden.html" aria-current="page">Mitglied werden</a></li>
             <li><a href="verein-helfereinsatz.html">Helfereinsatz</a></li>
             <li><a href="verein-downloads.html">Downloads</a></li>
-            <li><a href="verein-geschichte.html">Geschichte</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="training.html">Training</a>
           <ul class="nav__unter">
             <li><a href="training.html">Trainingszeiten</a></li>
+            <li><a href="training-schnupperpass.html">Schnuppern &amp; Schnupperpass</a></li>
             <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
-            <li><a href="training-schnupperpass.html">Schnupperpass</a></li>
             <li><a href="training-breitensport.html">Breitensport</a></li>
             <li><a href="training-senioren.html">Senioren &amp; PingPongParkinson</a></li>
             <li><a href="training-einzeltraining.html">Einzeltraining</a></li>
@@ -157,160 +145,210 @@
             <li><a href="hallen.html">Übersicht</a></li>
             <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
             <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-            <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
+            <li><a href="hallen-neue-halle.html">Hallensportzentrum</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="news.html">News</a>
         </li>
       </ul>
+      <p class="nav__fuss">
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a>
+      </p>
     </nav>
-
-    <a class="btn btn--klein" href="verein-mitglied-werden.html">Schnuppern</a>
-
-    <button class="menu-knopf" type="button" aria-label="Menü öffnen"
-            aria-controls="hauptnavigation" aria-expanded="false">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M3 6h18M3 12h18M3 18h18"/>
-      </svg>
+    <a class="knopf knopf--orange kopf__aktion" href="training-schnupperpass.html">Schnuppern</a>
+    <button class="kopf__menue" type="button" aria-expanded="false" aria-controls="navigation">
+      <span class="kopf__menue-striche" aria-hidden="true"></span><span class="kopf__menue-text">Menü</span>
     </button>
   </div>
 </header>
 
 <main id="inhalt">
-<section class="seitenkopf sektion--dunkel">
-  <div class="wrap">
-    <ul class="brotkrumen"><li><a href="index.html">Start</a></li>
-      <li><a href="verein.html">Verein</a></li><li>Mitglied werden</li></ul>
-    <h1>Mitglied werden</h1>
-    <p class="seitenkopf__lead">Komm zuerst zum Schnuppern. Hallenschuhe und Sportkleidung
-      reichen, einen Schläger kannst du bei den ersten Besuchen gratis ausleihen.</p>
-  </div>
-</section>
-
-<section class="sektion--hell">
-  <div class="wrap">
-    <p class="eyebrow label">Das erwartet dich</p>
-    <h2>Was in der Mitgliedschaft steckt</h2>
-    <div class="karten">
-      <div class="karte"><h3>Betreutes Training</h3>
-        <p>Regelmässiges Training mit qualifizierten Trainern, in allen Altersgruppen.</p></div>
-      <div class="karte"><h3>Halle rund um die Uhr</h3>
-        <p>Mit Hallenbeitrag steht das clubeigene TTZ Ebnat 24 Stunden an 365 Tagen offen.</p></div>
-      <div class="karte"><h3>Wettkampf</h3>
-        <p>Von der 6. Liga bis zur STTL, dazu regionale und clubinterne Turniere.</p></div>
-      <div class="karte"><h3>Vergünstigungen</h3>
-        <p>Reduzierte Kursgebühren, Materialrabatte und günstigere Mietkonditionen im TTZ.</p></div>
+<header class="aufmacher">
+  <div class="wrap aufmacher__raster">
+    <div class="aufmacher__text">
+      <nav class="brotkrumen" aria-label="Brotkrumen"><a href="index.html">Start</a><a href="verein.html">Verein</a><span aria-current="page">Mitglied werden</span></nav>
+      <p class="rubrik">Verein</p>
+      <h1>Mitglied werden</h1>
+      <p class="lead">Zuerst schnuppern, dann entscheiden. Wer Mitglied wird, trainiert mit Trainer, spielt Meisterschaft,
+        bekommt Zugang zum TTZ Ebnat – und hat an der Generalversammlung eine Stimme.</p>
+      <div class="knoepfe">
+        <a class="knopf knopf--orange" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=6V37WvpsZEegkDvLYeU-pSaeXtPZeXVBn0ykXpGPbhlUMURBTU0zV1ZMMEZTS0tRMjlJOU9PT1FPSy4u" rel="noopener">Zum Anmeldeformular <span class="pfeil" aria-hidden="true"></span></a>
+        <a class="knopf knopf--rahmen" href="training-schnupperpass.html">Erst schnuppern</a>
+      </div>
     </div>
+    <figure class="aufmacher__bild bild">
+      <img src="assets/img/fotos/senioren-gruppe.jpg" alt="Die Seniorengruppe in Vereinsshirts hinter einem Tisch, darauf Schläger mit den Buchstaben TTC Neuhausen"
+           width="800" height="534" fetchpriority="high">
+      <figcaption>Mitglied sein heisst auch: dazugehören. Die Seniorengruppe im Vereinsshirt.</figcaption>
+    </figure>
+  </div>
+</header>
+
+<section class="flaeche--weiss">
+  <div class="wrap">
+    <div class="abschnittskopf"><h2>Der Weg in den Verein</h2></div>
+    <ol class="schritte">
+      <li><h3>Schnuppern</h3><p>Das erste Training ist gratis. Einfach an einem Trainingstag vorbeikommen.</p></li>
+      <li><h3>Schnupperpass</h3><p>Wer will, trainiert sechs Monate mit, ohne Mitglied zu sein. Kein Muss.</p></li>
+      <li><h3>Anmelden</h3><p>Schriftlich, am einfachsten über das Online-Formular. Unter 18 unterschreibt ein Elternteil.</p></li>
+      <li><h3>Aufgenommen</h3><p>Der Vorstand entscheidet über die Aufnahme. Den Zugang zum TTZ Ebnat gibt es auf Anfrage.</p></li>
+    </ol>
   </div>
 </section>
 
-<section class="sektion--marke">
+<section class="flaeche--papier" id="beitraege">
   <div class="wrap">
-    <p class="eyebrow label">Beiträge</p>
-    <h2>Mitgliederkategorien</h2>
+    <div class="abschnittskopf">
+      <h2>Was es kostet</h2>
+      <p class="lead">Die Beiträge legt die Generalversammlung fest. Für AktivPlus- und Aktivmitglieder kommt der
+        Hallenbeitrag dazu: CHF 18.– im Monat. Er finanziert das TTZ Ebnat und öffnet es rund um die Uhr.</p>
+    </div>
     <div class="beitraege">
-      <table class="daten">
-        <thead><tr><th>Kategorie</th><th class="num">Monat</th><th class="num">Jahr</th></tr></thead>
-        <tbody>
-            <tr><td class="kat">AktivPlus<span class="was">Training, Spielbetrieb, Lizenz möglich</span></td><td class="num">CHF 35.–</td><td class="num">CHF 420.–</td></tr>
-            <tr><td class="kat">AktivPlus Nachwuchs<span class="was">Volles Nachwuchsprogramm mit Trainerbetreuung</span></td><td class="num">CHF 45.–</td><td class="num">CHF 540.–</td></tr>
-            <tr><td class="kat">AktivPlus Studenten & Lehrlinge<span class="was">Gleiche Leistungen, reduzierter Beitrag</span></td><td class="num">CHF 25.–</td><td class="num">CHF 300.–</td></tr>
-            <tr><td class="kat">AktivPlus Senioren<span class="was">Geführtes Seniorentraining inklusive</span></td><td class="num">CHF 22.–</td><td class="num">CHF 264.–</td></tr>
-            <tr><td class="kat">Aktive<span class="was">Spielberechtigung ohne geführtes Training</span></td><td class="num">CHF 10.–</td><td class="num">CHF 120.–</td></tr>
-            <tr><td class="kat">Damenverein<span class="was">Mitgliedschaft ohne Spielbetrieb</span></td><td class="num">CHF 5.–</td><td class="num">CHF 60.–</td></tr>
-            <tr><td class="kat">Passive<span class="was">Unterstützung ohne Spielbetrieb</span></td><td class="num">CHF 5.–</td><td class="num">CHF 60.–</td></tr>
-        </tbody>
-      </table>
-      <p class="beitraege__fuss">Dazu kommt für alle AktivPlus- und Aktivmitglieder der
-        Hallenbeitrag: CHF 18.– im Monat oder CHF 216.– im Jahr. Er finanziert das TTZ Ebnat
-        und schaltet den Zugang rund um die Uhr frei.</p>
-    </div>
-    <div class="btn-reihe">
-      <!-- Das Anmeldeformular läuft über Microsoft Forms. Die Adresse steht
-           in vorlage/dokumente.py — bis jetzt zeigte der Knopf auf die Seite
-           der bisherigen Website, in die dasselbe Formular eingebettet ist.
-           Kein iframe, aus demselben Grund wie bei den Ligatabellen: fremdes
-           Layout, feste Höhe, Cookies Dritter. -->
-      <a class="btn" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=6V37WvpsZEegkDvLYeU-pSaeXtPZeXVBn0ykXpGPbhlUMURBTU0zV1ZMMEZTS0tRMjlJOU9PT1FPSy4u" target="_blank" rel="noopener">Zum Anmeldeformular</a>
-      <a class="btn btn--leise" href="kontakt.html">Fragen? Kontakt</a>
+      <div class="tabelle beitraege__tabelle">
+        <table>
+          <thead><tr><th>Kategorie</th><th class="rechts">Monat</th><th class="rechts">Jahr</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">AktivPlus<span>Training, Spielbetrieb, Lizenz möglich</span></th><td class="rechts zahl">35.–</td><td class="rechts zahl">420.–</td></tr>
+            <tr><th scope="row">AktivPlus Nachwuchs<span>volles Nachwuchsprogramm mit Trainer</span></th><td class="rechts zahl">45.–</td><td class="rechts zahl">540.–</td></tr>
+            <tr><th scope="row">AktivPlus Studenten &amp; Lehrlinge<span>gleiche Leistungen, reduzierter Beitrag</span></th><td class="rechts zahl">25.–</td><td class="rechts zahl">300.–</td></tr>
+            <tr><th scope="row">AktivPlus Senioren<span>geführtes Seniorentraining inklusive</span></th><td class="rechts zahl">22.–</td><td class="rechts zahl">264.–</td></tr>
+            <tr><th scope="row">Aktive<span>Spielberechtigung ohne geführtes Training</span></th><td class="rechts zahl">10.–</td><td class="rechts zahl">120.–</td></tr>
+            <tr><th scope="row">Damenverein<span>Mitgliedschaft ohne Spielbetrieb</span></th><td class="rechts zahl">5.–</td><td class="rechts zahl">60.–</td></tr>
+            <tr><th scope="row">Passive<span>Unterstützung ohne Spielbetrieb</span></th><td class="rechts zahl">5.–</td><td class="rechts zahl">60.–</td></tr>
+            <tr class="beitraege__halle"><th scope="row">Hallenbeitrag<span>für AktivPlus und Aktive</span></th><td class="rechts zahl">18.–</td><td class="rechts zahl">216.–</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <form class="rechner" id="rechner" data-rechner aria-labelledby="rechner-titel">
+        <h3 id="rechner-titel" class="rechner__titel">Beitragsrechner</h3>
+        <fieldset>
+          <legend class="sr-only">Kategorie wählen</legend>
+          <label><input type="radio" name="kategorie" data-monat="35" data-halle="ja" data-legi="ja" checked> AktivPlus</label>
+          <label><input type="radio" name="kategorie" data-monat="45" data-halle="ja"> AktivPlus Nachwuchs</label>
+          <label><input type="radio" name="kategorie" data-monat="25" data-halle="ja"> AktivPlus Studenten &amp; Lehrlinge</label>
+          <label><input type="radio" name="kategorie" data-monat="22" data-halle="ja" data-legi="ja"> AktivPlus Senioren</label>
+          <label><input type="radio" name="kategorie" data-monat="10" data-halle="ja"> Aktive</label>
+          <label><input type="radio" name="kategorie" data-monat="5"> Passive oder Damenverein</label>
+        </fieldset>
+        <label class="rechner__legi"><input type="checkbox" name="kulturlegi"> Ich habe eine KulturLegi</label>
+        <output class="rechner__ergebnis" data-rechner-ergebnis aria-live="polite">Beitrag plus Hallenbeitrag – siehe Tabelle.</output>
+      </form>
     </div>
   </div>
 </section>
 
-<section class="sektion--weiss">
-  <div class="wrap">
-    <div class="split">
-      <div>
-        <h2>Erst schnuppern</h2>
-        <p class="leise">Mit dem Schnupperpass sechs Monate mittrainieren, ohne Mitglied zu
-          werden — für Nachwuchs, Breitensport und Senioren, ab CHF 210.–.</p>
-        <div class="btn-reihe">
-          <a class="btn btn--leise" href="training-schnupperpass.html">Schnupperpass</a>
-        </div>
-      </div>
-      <div>
-        <h2>KulturLegi</h2>
-        <p class="leise">Der TTCN ist Angebotspartner der KulturLegi. Inhaberinnen und Inhaber
-          erhalten 70 % Rabatt auf die Beiträge AktivPlus und AktivPlus Senioren, ohne
-          Hallenbeitrag. Drei Schnuppertrainings sind kostenlos.</p>
+<section class="flaeche--weiss">
+  <div class="wrap artikel">
+    <div class="artikel__haupt">
+      <div class="abschnittskopf"><h2>Was in der Mitgliedschaft steckt</h2></div>
+      <dl class="leistungen">
+        <div><dt>Training mit Trainer</dt><dd>In allen Altersgruppen, mit zwei professionellen Trainern.</dd></div>
+        <div><dt>Das TTZ Ebnat</dt><dd>Mit Hallenbeitrag ist das TTZ Ebnat an 365 Tagen rund um die Uhr offen.</dd></div>
+        <div><dt>Wettkampf</dt><dd>Spielberechtigung und Lizenz, von der 6. Liga bis zur STTL, dazu Turniere.</dd></div>
+        <div><dt>Mitbestimmen</dt><dd>Ab 15 Jahren Stimmrecht an der Generalversammlung.</dd></div>
+        <div><dt>Vergünstigungen</dt><dd>Reduzierte Kursgebühren, Rabatt auf Material und günstigere Mieten im TTZ Ebnat.</dd></div>
+      </dl>
+
+      <div class="abschnittskopf abstand-oben"><h2>Gut zu wissen</h2></div>
+      <div class="fragen">
+        <details>
+          <summary>Wann kann ich wieder austreten?</summary>
+          <div><p>Austritte und Wechsel in eine andere Kategorie sind jeweils auf den 30. Juni möglich, das Ende des
+            Vereinsjahres. Unter dem Jahr geht das nicht.</p></div>
+        </details>
+        <details>
+          <summary>Muss ich mithelfen?</summary>
+          <div><p>Jedes Mitglied wählt zu Beginn des Vereinsjahres: ein paar Stunden Helfereinsatz leisten, etwa an der
+            Altpapiersammlung, oder stattdessen einen Sonderbeitrag bezahlen (CHF 20.– pro Stunde). Bei Kindern können die
+            Eltern übernehmen. Ausgenommen sind unter anderem Passivmitglieder und Mitglieder ab 80.
+            <a class="lauftext" href="verein-helfereinsatz.html">Mehr zum Helfereinsatz</a>.</p></div>
+        </details>
+        <details>
+          <summary>Muss ich an die Generalversammlung?</summary>
+          <div><p>Für Aktivmitglieder ist die Generalversammlung Pflicht. Wer nicht kann, entschuldigt sich beim Vorstand.</p></div>
+        </details>
+        <details>
+          <summary>Was ist, wenn der Beitrag zu hoch ist?</summary>
+          <div><p>Mit der KulturLegi gibt es 70 Prozent Rabatt auf AktivPlus und AktivPlus Senioren (nicht auf den Hallenbeitrag),
+            und drei Schnuppertrainings sind gratis. Ausserdem kann der Vorstand in begründeten Fällen vergünstigte Beiträge
+            festlegen – einfach beim Präsidium nachfragen.</p></div>
+        </details>
+        <details>
+          <summary>Kann ich als Passivmitglied in der Halle spielen?</summary>
+          <div><p>Ja. Wer als Passivmitglied den Hallenbeitrag bezahlt, bekommt die Spielberechtigung im TTZ Ebnat.</p></div>
+        </details>
       </div>
     </div>
+    <aside class="artikel__rand">
+      <div class="steckbrief">
+        <h2 class="steckbrief__titel">Anmelden</h2>
+        <p class="klein">Das Anmeldeformular läuft über Microsoft Forms. Wer lieber Papier hat, findet für jede Kategorie
+          ein Beitrittsformular bei den Downloads.</p>
+        <a class="knopf knopf--orange" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=6V37WvpsZEegkDvLYeU-pSaeXtPZeXVBn0ykXpGPbhlUMURBTU0zV1ZMMEZTS0tRMjlJOU9PT1FPSy4u" rel="noopener">Online anmelden <span class="pfeil" aria-hidden="true"></span></a>
+        <a class="knopf knopf--rahmen" href="verein-downloads.html#beitritt">Formulare als PDF</a>
+        <dl class="abstand-oben">
+          <div><dt>Fragen</dt><dd><a href="mailto:mitgliederverwaltung@ttc-neuhausen.ch">mitgliederverwaltung@ttc-neuhausen.ch</a></dd></div>
+        </dl>
+      </div>
+    </aside>
   </div>
 </section>
 
 </main>
 
-<footer class="fuss sektion--dunkel">
+<footer class="fuss flaeche--nacht">
   <div class="wrap">
+    <div class="fuss__oben">
+      <img class="fuss__logo" src="assets/img/logo-weiss.svg" width="1459" height="352" alt="Tischtennisclub Neuhausen">
+      <p class="fuss__satz">Tischtennis von 7 bis 85, seit 1975. In der Rhyfallhalle Neuhausen und im Tischtenniszentrum Ebnat.</p>
+      <a class="knopf knopf--orange" href="training-schnupperpass.html">Schnuppertraining</a>
+    </div>
     <div class="fuss__raster">
-      <div class="fuss__logo">
-        <img src="assets/img/logo-weiss.svg" width="1459" height="352"
-             alt="Tischtennisclub Neuhausen">
-        <p class="leise" style="font-size:var(--grad-sm);max-width:34ch">
-          Gegründet 1975. Training in der Rhyfallhalle Neuhausen und im
-          Tischtenniszentrum Ebnat in Schaffhausen.
-        </p>
-      </div>
       <div>
-        <h4>Verein</h4>
+        <h2 class="fuss__titel">Verein</h2>
         <ul>
           <li><a href="verein.html">Über den Verein</a></li>
           <li><a href="verein-vorstand.html">Vorstand</a></li>
           <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+          <li><a href="verein-geschichte.html">Geschichte</a></li>
           <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Hallen</h4>
-        <ul>
-          <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
-          <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-          <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Kontakt</h4>
-        <ul>
-          <li><a href="kontakt.html">Kontakt</a></li>
           <li><a href="partner.html">Für Partner</a></li>
-          <li><a href="https://www.instagram.com/ttcneuhausen/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.facebook.com/ttcnh/" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Training</h2>
+        <ul>
+          <li><a href="training.html">Trainingszeiten</a></li>
+          <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
+          <li><a href="training-breitensport.html">Breitensport</a></li>
+          <li><a href="training-senioren.html">Senioren</a></li>
+          <li><a href="teams.html">Teams</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Hallen</h2>
+        <p><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a><br>Rheingoldstrasse 11<br>8212 Neuhausen am Rheinfall</p>
+        <p><a href="hallen-ttz-ebnat.html">Tischtenniszentrum Ebnat</a><br>Ebnatstrasse 35<br>8200 Schaffhausen</p>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Kontakt</h2>
+        <p><a href="mailto:info@ttc-neuhausen.ch">info@ttc-neuhausen.ch</a><br>
+          <a href="mailto:trainer@ttc-neuhausen.ch">trainer@ttc-neuhausen.ch</a></p>
+        <p><a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a><br>
+          <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a></p>
       </div>
     </div>
-    <div class="fuss__klein">
-      <span>&copy; <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
-      <span>
-        <a href="impressum.html">Impressum</a> &nbsp;·&nbsp;
-        <a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp;
-        Gestaltung und Umsetzung: Wendico
-      </span>
+    <div class="fuss__unten">
+      <span>© <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Gestaltung und Umsetzung: Wendico</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

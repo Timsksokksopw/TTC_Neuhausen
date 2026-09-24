@@ -1,49 +1,54 @@
-<!-- Der Seitenkopf endet nicht mit einer Kante, sondern mit einem
-     Filmstreifen, der über die volle Breite läuft und rechts aus dem Bild
-     geht. Die schwarzen Filmränder gehen dabei in die dunkle Sektion über,
-     sodass der Streifen im Dunkeln zu schweben scheint — das ist der
-     Auftakt, der sagt, worum es auf dieser Seite geht: nicht um einen
-     Text über die Vereinsgeschichte, sondern um das, was davon übrig ist. -->
-<section class="seitenkopf seitenkopf--archiv sektion--dunkel">
-  <div class="wrap">
-    <ul class="brotkrumen"><li><a href="index.html">Start</a></li><li><a href="verein.html">Verein</a></li><li>Geschichte</li></ul>
-    <h1>Geschichte</h1>
-    <p class="seitenkopf__lead">Seit 1975. Vierzehn Jahre Nationalliga A, drei Meistertitel bei den Herren, vierzehn bei den Damen — und eine Halle, die der Verein selbst gebaut hat.</p>
+<header class="aufmacher aufmacher--archiv">
+  <div class="wrap aufmacher__raster">
+    <div class="aufmacher__text">
+      <nav class="brotkrumen" aria-label="Brotkrumen"><a href="index.html">Start</a><a href="verein.html">Verein</a><span aria-current="page">Geschichte</span></nav>
+      <p class="rubrik">Verein · seit 1975</p>
+      <h1>Geschichte</h1>
+      <p class="lead">Vier Gründer an einem Schaffhauser Gässchen, fünf Tische in einer Schulturnhalle, 15'000 Franken Budget.
+        Fünfzig Jahre später: siebzehn Schweizer Meistertitel und eine Halle, die der Verein selbst ausgebaut hat.</p>
+    </div>
   </div>
-  <div class="seitenkopf__streifen" aria-hidden="true">
-    <img src="assets/img/archiv/streifen-rhyfallhalle-1.jpg" alt=""
-         width="1024" height="364" fetchpriority="high" decoding="async">
+  <div class="aufmacher__streifen" data-tiefe aria-hidden="true">
+    <img src="assets/img/archiv/streifen-rhyfallhalle-1.jpg" alt="" width="1024" height="364" fetchpriority="high">
+    <img src="assets/img/archiv/streifen-meistertitel-1.jpg" alt="" width="1536" height="323">
   </div>
-</section>
+</header>
 
-<section class="sektion--hell">
+<section class="flaeche--weiss">
   <div class="wrap">
-    <p class="eyebrow label">Zeitleiste</p>
-    <h2>Fünfzig Jahre in {{zeitleistenzahl}} Stationen</h2>
+    <div class="abschnittskopf">
+      <h2>{{zeitleistenzahl}} Stationen</h2>
+      <p class="lead">Die Zeitleiste folgt der Chronik von Pascal Oesch. Wo es Bilder gibt, führt ein Verweis ins Archiv weiter unten.</p>
+    </div>
     {{zeitleiste}}
   </div>
 </section>
 
-<!-- Das Archiv. Dunkel, weil Filmstreifen und Albumblätter ihre eigenen
-     schwarzen und sepiafarbenen Ränder mitbringen: auf Hell stünden sie
-     als Rechtecke herum, auf Dunkel gehen sie in die Fläche über. -->
-<section class="sektion--dunkel archiv">
-  <div class="wrap">
-    <p class="eyebrow label">Aus dem Vereinsarchiv</p>
-    <h2>Was übrig geblieben ist</h2>
-    <p class="archiv__einleitung">Filmstreifen, Albumblätter, ein Matchprogramm.
-      Nichts davon ist zurechtgeschnitten — die Sprossenlöcher, die Bildnummern
-      und die Handschrift auf den Blättern gehören dazu. Ein Klick auf ein
-      Stück zeigt es gross.</p>
+<section class="flaeche--papier2">
+  <div class="wrap raster zweispalter">
+    <div class="zweispalter__links">
+      <div class="abschnittskopf"><h2>Siebzehn Titel</h2></div>
+      <p>Die Herren holten ihre drei Meistertitel in fünf Jahren. Die Damen gewannen ab 2005 vierzehn – und sind damit das
+        erfolgreichste Damenteam der Schweiz. Nebeneinander sieht man, wie sich die Gewichte verschoben haben.</p>
+    </div>
+    <div class="zweispalter__rechts">
+      {{meistertitel}}
+    </div>
   </div>
-  {{archiv}}
 </section>
 
-<section class="sektion--weiss">
+<section class="flaeche--nacht archiv" id="archiv">
   <div class="wrap">
-    <p class="eyebrow label">Palmarès</p>
-    <h2>Meistertitel</h2>
-    {{meistertitel}}
+    <p class="rubrik">Aus dem Vereinsarchiv</p>
+    <h2>Was übrig geblieben ist</h2>
+    <p class="archiv__einleitung">Filmstreifen, Albumblätter, ein Matchprogramm. Nichts davon ist zurechtgeschnitten –
+      die Sprossenlöcher, die Bildnummern und die Handschrift auf den Blättern gehören dazu. Ein Klick auf ein Stück zeigt es gross.</p>
+    {{archiv}}
+  </div>
+</section>
+
+<section class="flaeche--weiss">
+  <div class="wrap">
     <p class="bildnachweis">{{bildnachweis}}</p>
   </div>
 </section>

@@ -1,41 +1,35 @@
 <!doctype html>
-<html lang="de">
+<!-- Erzeugt von build.py – nicht hier ändern.
+     Inhalt: inhalt/hallen-neue-halle.html · Rahmen: vorlage/layout.html · Menü: vorlage/seiten.py
+     Bilder und Dokumente unter site/assets/ werden nicht erzeugt:
+     Datei mit gleichem Namen ersetzen genügt. -->
+<html lang="de-CH">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Setzt die Klasse, bevor CSS greift. Nur wenn sie da ist, werden
-     .reveal-Elemente versteckt — ohne JavaScript bleibt alles sichtbar. -->
-<script>document.documentElement.className += " js";</script>
-
-<title>Neue Halle – TTC Neuhausen</title>
-<meta name="description" content="Projekt Futuro und der Ausbau der BBC-Arena Schaffhausen: der TTC Neuhausen sucht ein neues Trainings- und Spiellokal.">
+<script>document.documentElement.classList.add("js")</script>
+<title>Hallensportzentrum Schaffhausen – TTC Neuhausen</title>
+<meta name="description" content="Stadt und Kanton sagen Ja zum Ausbau des Hallensportzentrums im Schweizersbild. Was das für den TTC Neuhausen bedeutet.">
 <link rel="canonical" href="https://www.ttc-neuhausen.ch/hallen-neue-halle.html">
-<meta name="theme-color" content="#0A111D">
-
-<!-- Vorschau beim Teilen: WhatsApp, Instagram, Facebook, LinkedIn. -->
+<meta name="theme-color" content="#F3F0E8">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TTC Neuhausen">
 <meta property="og:locale" content="de_CH">
-<meta property="og:title" content="Neue Halle – TTC Neuhausen">
-<meta property="og:description" content="Projekt Futuro und der Ausbau der BBC-Arena Schaffhausen: der TTC Neuhausen sucht ein neues Trainings- und Spiellokal.">
+<meta property="og:title" content="Hallensportzentrum Schaffhausen – TTC Neuhausen">
+<meta property="og:description" content="Stadt und Kanton sagen Ja zum Ausbau des Hallensportzentrums im Schweizersbild. Was das für den TTC Neuhausen bedeutet.">
 <meta property="og:url" content="https://www.ttc-neuhausen.ch/hallen-neue-halle.html">
 <meta property="og:image" content="https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="TTC Neuhausen — Tischtennis für alle, seit 1975">
 <meta name="twitter:card" content="summary_large_image">
-
 <link rel="icon" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,88..112,400..800;1,88..112,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/sofia-sans-xc.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/komponenten.css">
 <link rel="stylesheet" href="assets/css/seiten.css">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -47,22 +41,17 @@
   "image": "https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg",
   "foundingDate": "1975",
   "sport": "Tischtennis",
-  "areaServed": "Schaffhausen, Neuhausen",
-  "sameAs": [
-    "https://www.instagram.com/ttcneuhausen/",
-    "https://www.facebook.com/ttcnh/"
-  ]
+  "sameAs": ["https://www.instagram.com/ttcneuhausen/", "https://www.facebook.com/ttcnh/"]
 }
 </script>
 </head>
-<body>
+<body class="seite-hallen-neue-halle">
+<a class="skip-link" href="#inhalt">Zum Inhalt</a>
 
-<a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
-
-<header class="kopf sektion--dunkel">
+<header class="kopf" data-kopf>
   <div class="wrap kopf__innen">
-    <a class="kopf__logo logo" href="index.html" aria-label="Startseite TTC Neuhausen">
-      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377" role="img" aria-label="TTC Neuhausen"><title>TTC Neuhausen</title><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
+    <a class="kopf__marke" href="index.html">
+      <svg class="kopf__signet" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377"><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
 -31 -73 -67 -291 -54 -327 3 -7 9 -52 14 -99 8 -73 15 -94 42 -132 27 -39 33
 -58 39 -126 5 -58 15 -95 34 -132 14 -28 26 -60 26 -70 0 -23 27 -79 38 -79 4
 0 18 -10 32 -23 23 -21 25 -29 22 -100 l-4 -77 -36 -19 c-20 -10 -71 -28 -112
@@ -117,10 +106,9 @@
 45 -163 93 -258 110 -66 12 -312 13 -394 1z M8473 8281 c-87 -22 -159 -130 -151 -226 6 -67 46 -137 100 -173 36
 -23 51 -27 117 -27 70 0 80 3 125 34 166 115 99 380 -101 396 -32 2 -73 0 -90
 -4z"/></g></svg>
-      <span class="kopf__name">TTC Neuhausen</span>
+      <span class="kopf__name">TTC Neuhausen <span>Tischtennis seit 1975</span></span>
     </a>
-
-    <nav class="nav" id="hauptnavigation" aria-label="Hauptnavigation" data-offen="false">
+    <nav class="nav" id="navigation" aria-label="Hauptnavigation">
       <ul class="nav__liste">
         <li class="nav__punkt">
           <a class="nav__link" href="verein.html">Verein</a>
@@ -128,19 +116,19 @@
             <li><a href="verein.html">Über den Verein</a></li>
             <li><a href="verein-vorstand.html">Vorstand</a></li>
             <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+            <li><a href="verein-geschichte.html">Geschichte</a></li>
             <li><a href="verein-jahresprogramm.html">Jahresprogramm</a></li>
             <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
             <li><a href="verein-helfereinsatz.html">Helfereinsatz</a></li>
             <li><a href="verein-downloads.html">Downloads</a></li>
-            <li><a href="verein-geschichte.html">Geschichte</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="training.html">Training</a>
           <ul class="nav__unter">
             <li><a href="training.html">Trainingszeiten</a></li>
+            <li><a href="training-schnupperpass.html">Schnuppern &amp; Schnupperpass</a></li>
             <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
-            <li><a href="training-schnupperpass.html">Schnupperpass</a></li>
             <li><a href="training-breitensport.html">Breitensport</a></li>
             <li><a href="training-senioren.html">Senioren &amp; PingPongParkinson</a></li>
             <li><a href="training-einzeltraining.html">Einzeltraining</a></li>
@@ -151,124 +139,237 @@
         <li class="nav__punkt">
           <a class="nav__link" href="teams.html">Teams</a>
         </li>
-        <li class="nav__punkt nav__punkt--aktiv">
+        <li class="nav__punkt ist-aktiv">
           <a class="nav__link" href="hallen.html">Hallen</a>
           <ul class="nav__unter">
             <li><a href="hallen.html">Übersicht</a></li>
             <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
             <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-            <li><a href="hallen-neue-halle.html" aria-current="page">Neue Halle</a></li>
+            <li><a href="hallen-neue-halle.html" aria-current="page">Hallensportzentrum</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="news.html">News</a>
         </li>
       </ul>
+      <p class="nav__fuss">
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a>
+      </p>
     </nav>
-
-    <a class="btn btn--klein" href="verein-mitglied-werden.html">Schnuppern</a>
-
-    <button class="menu-knopf" type="button" aria-label="Menü öffnen"
-            aria-controls="hauptnavigation" aria-expanded="false">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M3 6h18M3 12h18M3 18h18"/>
-      </svg>
+    <a class="knopf knopf--orange kopf__aktion" href="training-schnupperpass.html">Schnuppern</a>
+    <button class="kopf__menue" type="button" aria-expanded="false" aria-controls="navigation">
+      <span class="kopf__menue-striche" aria-hidden="true"></span><span class="kopf__menue-text">Menü</span>
     </button>
   </div>
 </header>
 
 <main id="inhalt">
-<section class="seitenkopf sektion--dunkel">
-  <div class="wrap">
-    <ul class="brotkrumen"><li><a href="index.html">Start</a></li><li><a href="hallen.html">Hallen</a></li><li>Neue Halle</li></ul>
-    <h1>Neue Halle</h1>
-    <p class="seitenkopf__lead">Um die Vereinsarbeit langfristig fortzusetzen, sucht der TTC Neuhausen ein neues Trainingsgelände und Spiellokal.</p>
+<header class="aufmacher">
+  <div class="wrap aufmacher__raster">
+    <div class="aufmacher__text">
+      <nav class="brotkrumen" aria-label="Brotkrumen"><a href="index.html">Start</a><a href="hallen.html">Hallen</a><span aria-current="page">Neue Halle</span></nav>
+      <p class="rubrik">Hallen · Projekt Futuro</p>
+      <h1>Neue Halle</h1>
+      <p class="lead">Am 14. Juni 2026 haben Stadt und Kanton Schaffhausen Ja gesagt zur Erweiterung des Hallensportzentrums
+        im Schweizersbild. Für den TTC Neuhausen geht es dabei um die eigene Zukunft: Im geplanten Westtrakt sind
+        Tischtennisräume vorgesehen.</p>
+    </div>
+    <figure class="abstimmung aufmacher__bild">
+      <p class="abstimmung__titel">Volksabstimmung vom 14. Juni 2026</p>
+      <ul class="abstimmung__balken">
+        <li style="--anteil: 73.9%"><b>73,9<small> %</small></b><span>Ja im Kanton Schaffhausen</span></li>
+        <li style="--anteil: 72.3%"><b>72,3<small> %</small></b><span>Ja in der Stadt Schaffhausen</span></li>
+        <li style="--anteil: 100%"><b>26<small> / 26</small></b><span>Gemeinden sagen Ja</span></li>
+      </ul>
+      <figcaption>Vorlage: Erweiterung des Hallensportzentrums Schaffhausen, der heutigen BBC Arena.</figcaption>
+    </figure>
+  </div>
+</header>
+
+<section class="flaeche--weiss">
+  <div class="wrap artikel">
+    <div class="artikel__haupt text">
+      <h2>Zur Halle für alle</h2>
+      <p>So heisst das Projekt auf dem Flyer, und so ist es gemeint. Das Hallensportzentrum im Schweizersbild wird zum
+        zweiten Mal erweitert. Geplant sind zwei zusätzliche Hallen mit Garderoben, eine Indoor-Laufbahn und eine Tiefgarage
+        im Osten – und ein neuer Trakt im Westen mit Tischtennisräumen, Gästezimmern sowie Schulungs- und Infrastrukturräumen.
+        Die Beacharena in der alten Reithalle Hohberg steht schon.</p>
+      <p>Profitieren sollen der Schaffhauser Jugend- und Breitensport und die kantonalen Berufs- und Sonderschulen. Die Liste
+        der Sportarten reicht von Handball, Volleyball und Unihockey über Leichtathletik, Kunstrad und Behindertensport bis
+        zum Tischtennis.</p>
+
+      <h2>Warum der Verein eine neue Halle sucht</h2>
+      <p>Unter dem Namen Projekt Futuro sucht der TTC Neuhausen ein neues Trainingsgelände und Spiellokal – damit die
+        Vereinsarbeit nachhaltig weitergehen kann, vom Breitensport bis zur Nationalliga. Den finanziellen Rahmen dafür
+        hat die Generalversammlung 2013 festgelegt: eine eigene Ersatzlösung in der Region Schaffhausen, offen auch für eine
+        Zusammenarbeit mit anderen Sportarten.</p>
+      <p>Die Standorte in Neuhausen, die der Verein zuerst im Auge hatte, liessen sich nicht verwirklichen. Bis es so weit ist,
+        bleibt er im <a href="hallen-ttz-ebnat.html">TTZ Ebnat</a>, wo er Gastrecht geniesst – länger als ursprünglich gedacht.</p>
+
+      <blockquote class="zitat zitat--auszug">
+        <p>… mit Ja die Zukunft unseres Clubs aktiv mitzugestalten.</p>
+        <cite>Aus dem Aufruf des Vereins zu den Standaktionen, Mai 2026</cite>
+      </blockquote>
+    </div>
+    <aside class="artikel__rand">
+      <div class="steckbrief">
+        <h2 class="steckbrief__titel">Auf einen Blick</h2>
+        <dl>
+          <div><dt>Projekt</dt><dd>Erweiterung Hallensportzentrum Schaffhausen</dd></div>
+          <div><dt>Ort</dt><dd>Schweizersbild, Schaffhausen</dd></div>
+          <div><dt>Trägerin</dt><dd>Gemeinnützige Stiftung Schweizersbild</dd></div>
+          <div><dt>Kosten</dt><dd>CHF 40 Millionen</dd></div>
+          <div><dt>Stand</dt><dd>vom Volk angenommen, als Nächstes drei Baugesuche</dd></div>
+          <div><dt>Fragen</dt><dd>Urs Schärrer, Co-Präsident<br><a href="mailto:praesidium@ttc-neuhausen.ch">praesidium@ttc-neuhausen.ch</a></dd></div>
+        </dl>
+      </div>
+    </aside>
   </div>
 </section>
 
-<section class="sektion--hell">
+<section class="flaeche--papier">
   <div class="wrap">
-    <div class="eng">
-      <h2>Projekt Futuro</h2>
-      <p class="leise">Der TTC Neuhausen ist einer der besten Tischtennisclubs der Schweiz
-        und fördert gezielt den Nachwuchs. Ob Breiten-, Senioren- oder Spitzensport — für
-        alle Spielstärken und Interessen gibt es ein Programm. Damit das so bleibt, braucht
-        der Verein mehr Platz.</p>
-      <h2>Ausbau der BBC-Arena</h2>
-      <p class="leise">Das Ausbauprojekt BBC-Arena Schaffhausen befindet sich in Entwicklung.
-        Eine Medienmitteilung dazu erschien im November 2025. Mitglieder des Vereins leisten
-        regelmässig Helfereinsätze, um das Projekt in der Öffentlichkeit bekannt zu machen.</p>
-      <div class="btn-reihe">
-        <a class="btn" href="verein-helfereinsatz.html">Mithelfen</a>
-        <a class="btn btn--leise" href="kontakt.html">Fragen zum Projekt</a>
-      </div>
+    <div class="abschnittskopf">
+      <h2>Wer die 40 Millionen trägt</h2>
+      <p class="lead">Der grösste Teil kommt von Stiftungen und Privaten. Stadt und Kanton tragen je 6 Millionen Franken –
+        und ihre Parlamente haben dem einstimmig zugestimmt: der Grosse Stadtrat mit 32 zu 0, der Kantonsrat mit 52 zu 0.</p>
+    </div>
+    <figure class="anteile">
+      <ul class="anteile__balken" aria-hidden="true">
+        <li style="--anteil: 38%" class="anteile__teil anteile__teil--1"></li>
+        <li style="--anteil: 20%" class="anteile__teil anteile__teil--2"></li>
+        <li style="--anteil: 15%" class="anteile__teil anteile__teil--3"></li>
+        <li style="--anteil: 15%" class="anteile__teil anteile__teil--4"></li>
+        <li style="--anteil: 6%" class="anteile__teil anteile__teil--5"></li>
+        <li style="--anteil: 6%" class="anteile__teil anteile__teil--6"></li>
+      </ul>
+      <dl class="anteile__legende">
+        <div class="anteile__teil--1"><dt>Jakob und Emma Windler Stiftung</dt><dd>38 %</dd></div>
+        <div class="anteile__teil--2"><dt>Gemeinnützige Stiftung Schweizersbild</dt><dd>20 %</dd></div>
+        <div class="anteile__teil--3"><dt>Stadt Schaffhausen</dt><dd>15 %</dd></div>
+        <div class="anteile__teil--4"><dt>Kanton Schaffhausen</dt><dd>15 %</dd></div>
+        <div class="anteile__teil--5"><dt>Bund, Nationales Sportanlagenkonzept</dt><dd>6 %</dd></div>
+        <div class="anteile__teil--6"><dt>Giorgio Behr</dt><dd>6 %</dd></div>
+      </dl>
+      <figcaption>Anteile laut Abstimmungsflyer; Gesamtkosten laut Medienmitteilung vom 30. März 2026.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="flaeche--weiss">
+  <div class="wrap raster zweispalter">
+    <div class="zweispalter__links">
+      <div class="abschnittskopf"><h2>Der Weg bis hierher</h2></div>
+      <ol class="zeitleiste zeitleiste--kurz">
+        <li class="zeitleiste__eintrag"><p class="zeitleiste__jahr">2013</p><div class="zeitleiste__text">
+          <h3>Der Rahmen steht</h3><p>Die Generalversammlung legt fest, in welchem finanziellen Rahmen eine eigene Ersatzlösung möglich ist.</p></div></li>
+        <li class="zeitleiste__eintrag"><p class="zeitleiste__jahr">2025</p><div class="zeitleiste__text">
+          <h3>Die BBC Arena soll wachsen</h3><p>Am 19. November erscheint eine Medienmitteilung zum Ausbau der BBC Arena.</p></div></li>
+        <li class="zeitleiste__eintrag"><p class="zeitleiste__jahr">30. März 2026</p><div class="zeitleiste__text">
+          <h3>Einstimmig durch die Parlamente</h3><p>Die Stiftung informiert: Grosser Stadtrat 32 zu 0, Kantonsrat 52 zu 0.</p></div></li>
+        <li class="zeitleiste__eintrag"><p class="zeitleiste__jahr">Mai 2026</p><div class="zeitleiste__text">
+          <h3>Zehn Stände</h3><p>Vom 15. bis 30. Mai stehen 18 Helferinnen und Helfer des Vereins in der ganzen Region, mit einem kleinen Tisch zum Mitspielen.</p></div></li>
+        <li class="zeitleiste__eintrag"><p class="zeitleiste__jahr">14. Juni 2026</p><div class="zeitleiste__text">
+          <h3>Ja</h3><p>73,9 Prozent im Kanton, alle 26 Gemeinden dafür, 72,3 Prozent in der Stadt.</p></div></li>
+        <li class="zeitleiste__eintrag zeitleiste__eintrag--offen"><p class="zeitleiste__jahr">Als Nächstes</p><div class="zeitleiste__text">
+          <h3>Drei Baugesuche</h3><p>Die Stiftung will die drei nötigen Baugesuche so rasch wie möglich einreichen.</p></div></li>
+      </ol>
+    </div>
+    <div class="zweispalter__rechts">
+      <div class="abschnittskopf"><h2>Die zehn Stände</h2></div>
+      <ol class="fahrplan" aria-label="Standaktionen im Mai 2026">
+        <li><time datetime="2026-05-15">15.5.</time><b>Neuhausen am Rheinfall</b><span>Platz für Alle</span></li>
+        <li><time datetime="2026-05-16">16.5.</time><b>Hallau</b><span>«Bunter Vogel», Hauptstrasse 59</span></li>
+        <li><time datetime="2026-05-16">16.5.</time><b>Schaffhausen</b><span>Fronwagplatz</span></li>
+        <li><time datetime="2026-05-19">19.5.</time><b>Neunkirch</b><span>Gemeindeverwaltung</span></li>
+        <li><time datetime="2026-05-20">20.5.</time><b>Wilchingen</b><span>Landi</span></li>
+        <li><time datetime="2026-05-22">22.5.</time><b>Stein am Rhein</b><span>Volg</span></li>
+        <li><time datetime="2026-05-23">23.5.</time><b>Beringen</b><span>Coop und Migros</span></li>
+        <li><time datetime="2026-05-23">23.5.</time><b>Schleitheim</b><span>Coop</span></li>
+        <li><time datetime="2026-05-28">28.5.</time><b>Buchberg</b><span>Bushaltestelle</span></li>
+        <li><time datetime="2026-05-30">30.5.</time><b>Schaffhausen</b><span>Fronwagplatz</span></li>
+      </ol>
+      <p class="tabelle__notiz">An den Ständen: Vertreterinnen und Vertreter verschiedener Sportvereine – und ein kleiner
+        Tisch mit Schlägern und Bällen zum Spielen.</p>
     </div>
   </div>
 </section>
 
-<section class="sektion--weiss">
-  <div class="wrap">
-    <div class="eng">
-      <p class="hinweis"><strong>Zusammengelegt:</strong> Diese Seite fasst die
-        bisherigen Seiten «Projekt Futuro» und «Hallensportzentrum» zusammen, die beide
-        dasselbe Vorhaben beschrieben. Der aktuelle Projektstand und die Medienmitteilung
-        sollten hier ergänzt werden.</p>
+<section class="flaeche--blau">
+  <div class="wrap raster zweispalter">
+    <div class="zweispalter__links">
+      <p class="rubrik">Mithelfen</p>
+      <h2>Ein Baustein für die Halle</h2>
+      <p>Die Stiftung sammelt für den Ausbau: ein Baustein kostet CHF 500, ein Balken CHF 5'000. Bezahlt wird erst,
+        wenn die Baubewilligung rechtskräftig ist. Spenden sind steuerlich absetzbar, und pro Spende werden bis zu zwei
+        Namen aufgeführt. Der Zeichnungsschein ist im Flyer.</p>
+      <div class="knoepfe">
+        <a class="knopf knopf--weiss" href="verein-helfereinsatz.html">Im Verein mithelfen <span class="pfeil" aria-hidden="true"></span></a>
+      </div>
+    </div>
+    <div class="zweispalter__rechts">
+      <ul class="dokumente">
+  <li><span class="dokument ist-offen"><b>Flyer zur Abstimmung</b><span>Was gebaut wird und wer es bezahlt</span><em>folgt</em></span></li>
+  <li><span class="dokument ist-offen"><b>Medienmitteilung</b><span>Ausbauprojekt, 30. März 2026</span><em>folgt</em></span></li>
+  <li><span class="dokument ist-offen"><b>Flyer «Baustein 2026»</b><span>Spenden für den Ausbau, mit Zeichnungsschein</span><em>folgt</em></span></li>
+</ul>
     </div>
   </div>
 </section>
 
 </main>
 
-<footer class="fuss sektion--dunkel">
+<footer class="fuss flaeche--nacht">
   <div class="wrap">
+    <div class="fuss__oben">
+      <img class="fuss__logo" src="assets/img/logo-weiss.svg" width="1459" height="352" alt="Tischtennisclub Neuhausen">
+      <p class="fuss__satz">Tischtennis von 7 bis 85, seit 1975. In der Rhyfallhalle Neuhausen und im Tischtenniszentrum Ebnat.</p>
+      <a class="knopf knopf--orange" href="training-schnupperpass.html">Schnuppertraining</a>
+    </div>
     <div class="fuss__raster">
-      <div class="fuss__logo">
-        <img src="assets/img/logo-weiss.svg" width="1459" height="352"
-             alt="Tischtennisclub Neuhausen">
-        <p class="leise" style="font-size:var(--grad-sm);max-width:34ch">
-          Gegründet 1975. Training in der Rhyfallhalle Neuhausen und im
-          Tischtenniszentrum Ebnat in Schaffhausen.
-        </p>
-      </div>
       <div>
-        <h4>Verein</h4>
+        <h2 class="fuss__titel">Verein</h2>
         <ul>
           <li><a href="verein.html">Über den Verein</a></li>
           <li><a href="verein-vorstand.html">Vorstand</a></li>
           <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+          <li><a href="verein-geschichte.html">Geschichte</a></li>
           <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Hallen</h4>
-        <ul>
-          <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
-          <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-          <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Kontakt</h4>
-        <ul>
-          <li><a href="kontakt.html">Kontakt</a></li>
           <li><a href="partner.html">Für Partner</a></li>
-          <li><a href="https://www.instagram.com/ttcneuhausen/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.facebook.com/ttcnh/" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Training</h2>
+        <ul>
+          <li><a href="training.html">Trainingszeiten</a></li>
+          <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
+          <li><a href="training-breitensport.html">Breitensport</a></li>
+          <li><a href="training-senioren.html">Senioren</a></li>
+          <li><a href="teams.html">Teams</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Hallen</h2>
+        <p><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a><br>Rheingoldstrasse 11<br>8212 Neuhausen am Rheinfall</p>
+        <p><a href="hallen-ttz-ebnat.html">Tischtenniszentrum Ebnat</a><br>Ebnatstrasse 35<br>8200 Schaffhausen</p>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Kontakt</h2>
+        <p><a href="mailto:info@ttc-neuhausen.ch">info@ttc-neuhausen.ch</a><br>
+          <a href="mailto:trainer@ttc-neuhausen.ch">trainer@ttc-neuhausen.ch</a></p>
+        <p><a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a><br>
+          <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a></p>
       </div>
     </div>
-    <div class="fuss__klein">
-      <span>&copy; <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
-      <span>
-        <a href="impressum.html">Impressum</a> &nbsp;·&nbsp;
-        <a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp;
-        Gestaltung und Umsetzung: Wendico
-      </span>
+    <div class="fuss__unten">
+      <span>© <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Gestaltung und Umsetzung: Wendico</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

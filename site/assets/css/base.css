@@ -1,227 +1,139 @@
-/* ==========================================================================
-   base.css — Grundlagen
-   Reset, Textfluss, Flächenkontexte. Enthält keine Komponenten.
-   Setzt tokens.css voraus.
-   ========================================================================== */
+/* Grundlagen: Reset, Satz, Raster, Flächen */
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--kopf-hoehe) + 16px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
 
 body {
   margin: 0;
-  background: var(--flaeche-dunkel);
-  font-family: var(--schrift-text);
-  font-size: var(--grad-base);
-  line-height: var(--zeile-text);
+  background: var(--papier);
+  color: var(--tinte);
+  font-family: var(--f-text);
+  font-size: var(--t-m);
+  line-height: 1.6;
+  font-synthesis: none;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: clip;
 }
 
-img, svg, video { display: block; max-width: 100%; }
+img, svg, video { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
-button { font: inherit; }
+button, input, select { font: inherit; color: inherit; }
+a[href^="tel:"] { white-space: nowrap; }
+table { border-collapse: collapse; width: 100%; }
+[hidden] { display: none !important; }
 
-/* Deutsche Komposita sind lang: «OTTV-Mannschaftsmeisterschaft» steht als
-   ein Wort und war auf 320 px breiter als der Bildschirm. hyphens trennt
-   es an einer richtigen Stelle (die Seite ist lang="de"), overflow-wrap
-   fängt ab, was auch damit nicht passt. */
 h1, h2, h3, h4 {
-  font-family: var(--schrift-display);
-  font-weight: 800;
-  line-height: var(--zeile-eng);
-  letter-spacing: var(--sperr-eng);
-  font-stretch: 92%;
+  font-family: var(--f-display);
+  line-height: .95;
+  margin: 0 0 .4em;
   text-wrap: balance;
   hyphens: auto;
   overflow-wrap: break-word;
-  margin: 0 0 16px;
 }
-h1 { font-size: var(--grad-4xl); }
-h2 { font-size: var(--grad-3xl); }
-h3 { font-size: var(--grad-lg); }
-h4 { font-size: var(--grad-base); }
+h1 { font-size: var(--t-h1); font-weight: 850; text-transform: uppercase; letter-spacing: -.01em; line-height: .86; }
+h2 { font-size: var(--t-h2); font-weight: 780; letter-spacing: -.005em; }
+h3 { font-size: var(--t-h3); font-weight: 720; line-height: 1; }
+h4 { font-size: var(--t-l); font-weight: 720; line-height: 1.1; }
 
-p { margin: 0 0 16px; }
-p:last-child { margin-bottom: 0; }
+p, ul, ol, dl, blockquote, figure { margin: 0 0 1em; }
+:is(p, ul, ol, dl):last-child { margin-bottom: 0; }
+ul, ol { padding-left: 1.2em; }
+li + li { margin-top: .35em; }
+b, strong { font-weight: 650; }
 
-/* Die kinetische Zeile: Schrägstellung greift die Haltung der Spielerfigur
-   im Logo auf. Nur im Hero und in Sektionsauftakten. */
-.kinetisch { font-style: italic; }
-
-/* Vereinsgeschichte-Stimme, sparsam. */
-.akzent {
-  font-family: var(--schrift-akzent);
-  font-style: italic;
+.lead {
+  font-family: var(--f-lead);
+  font-size: var(--t-xl);
+  line-height: 1.32;
   font-weight: 400;
-  letter-spacing: var(--sperr-null);
+  color: var(--tinte);
+  max-width: 34em;
+  margin-bottom: 1.1em;
 }
+.klein { font-size: var(--t-s); }
+.leise { color: var(--tinte-2); }
+.zahl { font-variant-numeric: tabular-nums; }
 
-.label {
-  font-family: var(--schrift-display);
-  font-size: var(--grad-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: var(--sperr-weit);
-  font-stretch: 100%;
+/* Fliesstext in Artikeln: Links unterstrichen, Absätze mit Luft */
+.text { max-width: 66ch; }
+.text a,
+a.lauftext,
+.lauftext a {
+  color: var(--blau);
+  text-decoration-thickness: 1px;
+  text-underline-offset: .18em;
 }
+.text a:hover, a.lauftext:hover, .lauftext a:hover { text-decoration-thickness: 2px; }
+.text h2 { font-size: clamp(32px, 24px + 1.6vw, 46px); margin-top: 1.4em; }
+.text h3 { margin-top: 1.4em; }
+.text > :first-child { margin-top: 0; }
 
-/* Ranglisten, Trainingszeiten, Resultate: gleiche Ziffernbreite. */
-.daten, table {
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum" 1;
+/* --- Raster ----------------------------------------------------------- */
+.wrap {
+  width: min(var(--breite), 100% - 2 * var(--rand));
+  margin-inline: auto;
 }
-
-/* --- Layout ------------------------------------------------------------- */
-/* Sprungziele nicht unter die Kopfzeile schieben.
-   Die Kopfzeile klebt oben (position: sticky, 72 px hoch). Ohne
-   scroll-padding landet jedes Sprungziel — «12 Bilder im Archiv», jeder
-   Anker aus dem Fliesstext — genau darunter, und die Überschrift, zu der
-   man wollte, ist verdeckt. Gilt für die ganze Website, nicht nur für die
-   Geschichte-Seite: der Fehler war überall da, nur ist er bisher niemandem
-   aufgefallen, weil kaum eine Seite Anker hatte.
-
-   scroll-behavior nimmt die Bewegung dazu; bei
-   prefers-reduced-motion: reduce steht sie in tokens.css schon wieder ab. */
-html { scroll-padding-top: 92px; scroll-behavior: smooth; }
-
-.wrap { width: min(1140px, 100% - 48px); margin-inline: auto; }
-/* Nur die Sektionen der Seite selbst, nicht jedes verschachtelte <section>.
-   Vorher stand hier ein nacktes `section`. Damit bekam auch jede Tageszeile
-   im Wochenraster und jede Mannschaftsgruppe auf der Teams-Seite über
-   200 px Polster verpasst, weil beide zu Recht <section> sind. Statt das
-   an jeder Stelle einzeln zurückzunehmen, greift die Regel nur noch dort,
-   wo sie gemeint war. */
-main > section { padding: clamp(64px, 9vw, 128px) 0; }
-main > .sektion--dunkel + .sektion--dunkel { padding-top: 0; }
-
-.split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-.eng { max-width: 68ch; }
-
-/* Raster-Kinder dürfen schrumpfen.
-
-   Ein Grid- oder Flex-Element hat von sich aus min-width:auto und wird nie
-   schmaler als sein breitester unteilbarer Inhalt. Steht darin eine
-   Tabelle mit min-width oder ein langes deutsches Kompositum, wächst die
-   Spalte mit — und mit ihr die ganze Seite. Auf dem Handy liess sich die
-   Trainingsseite dadurch seitwärts schieben, statt dass die Tabelle für
-   sich scrollt; auf 320 px sprengte «OTTV-Mannschaftsmeisterschaft» die
-   Teams-Seite. min-width:0 gibt das Schrumpfen wieder frei.
-
-   Die Liste deckt alle Raster des Projekts ab. Wer ein neues anlegt,
-   trägt es hier ein — sonst kommt derselbe Fehler wieder. */
-.bildraster > *,
-.bildsplit > *,
-.fakten > *,
-.fuss__raster > *,
-.karten > *,
-.kontaktliste > *,
-.newsliste > *,
-.personen > *,
-.sektionskopf > *,
-.split > *,
-.sponsoren > *,
-.teams > *,
-.dokumentliste > *,
-.kader > *,
-.termine > *,
-.zahlen > *,
-.zeitleiste > * { min-width: 0; }
-
-/* --- Flächenkontexte ----------------------------------------------------
-   Eine Sektion setzt ihren Kontext, alle Komponenten darin erben ihn.
-   Deshalb braucht kein Button eine eigene Dark-Variante.               */
-
-.sektion--hell {
-  background: var(--flaeche-hell);
-  color: var(--text-hell-primaer);
-  --logo-farbe: var(--ttc-blau-500);
-  --aktion-flaeche: var(--aktion-hell-flaeche);
-  --aktion-flaeche-hover: var(--aktion-hell-flaeche-hover);
-  --aktion-text: var(--aktion-hell-text);
-  --linie: var(--linie-hell);
-  --text-leise: var(--text-hell-sekundaer);
-  --text-akzent: var(--text-hell-marke);
-  --karte-flaeche: var(--flaeche-weiss);
+.raster {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--spalt);
 }
+.raster > * { min-width: 0; }
 
-.sektion--weiss {
-  background: var(--flaeche-weiss);
-  color: var(--text-hell-primaer);
-  --logo-farbe: var(--ttc-blau-500);
-  --aktion-flaeche: var(--aktion-hell-flaeche);
-  --aktion-flaeche-hover: var(--aktion-hell-flaeche-hover);
-  --aktion-text: var(--aktion-hell-text);
-  --linie: var(--linie-hell);
-  --text-leise: var(--text-hell-sekundaer);
-  --text-akzent: var(--text-hell-marke);
-  --karte-flaeche: var(--flaeche-hell);
+main > section { padding-block: var(--abstand); }
+main > section.eng { padding-block: calc(var(--abstand) * .6); }
+main > section.ohne-abstand { padding-block: 0; }
+.flaeche--papier + .flaeche--papier,
+.flaeche--weiss + .flaeche--weiss { padding-top: 0; }
+
+/* Flächen setzen ihren Kontext; Komponenten erben Farbe und Linie. */
+.flaeche--papier { background: var(--papier); --grund: var(--papier); }
+.flaeche--papier2 { background: var(--papier-2); --grund: var(--papier-2); }
+.flaeche--weiss  { background: var(--weiss); --grund: var(--weiss); }
+.flaeche--blau,
+.flaeche--nacht {
+  color: var(--weiss);
+  --linie: color-mix(in srgb, var(--weiss) 22%, transparent);
+  --tinte-2: var(--nacht-text);
+  --tinte-3: var(--nacht-text);
+  --fokus: var(--orange);
 }
+.flaeche--blau  { background: var(--blau); --grund: var(--blau); --tinte-2: var(--blau-text); --tinte-3: var(--blau-text); }
+.flaeche--nacht { background: var(--blau-nacht); --grund: var(--blau-nacht); }
+.flaeche--blau .text a, .flaeche--nacht .text a,
+.flaeche--blau a.lauftext, .flaeche--nacht a.lauftext,
+.flaeche--blau .lauftext a, .flaeche--nacht .lauftext a { color: inherit; }
+main > section.nach-aufmacher { padding-top: 0; }
 
-.sektion--marke {
-  background: var(--flaeche-marke);
-  color: var(--text-auf-marke);
-  --logo-farbe: var(--ttc-tinte-0);
-  --aktion-flaeche: var(--ttc-tinte-0);
-  --aktion-flaeche-hover: var(--ttc-blau-50);
-  --aktion-text: var(--ttc-blau-500);
-  --linie: var(--ttc-blau-400);
-  --text-leise: var(--ttc-blau-100);
-  --text-akzent: var(--ttc-blau-100);
-  --karte-flaeche: rgba(255, 255, 255, .1);
-}
-
-.sektion--dunkel {
-  background: var(--flaeche-dunkel);
-  color: var(--text-dunkel-primaer);
-  --logo-farbe: var(--ttc-tinte-0);
-  --aktion-flaeche: var(--aktion-dunkel-flaeche);
-  --aktion-flaeche-hover: var(--aktion-dunkel-flaeche-hover);
-  --aktion-text: var(--aktion-dunkel-text);
-  --linie: var(--linie-dunkel);
-  --text-leise: var(--text-dunkel-sekundaer);
-  --text-akzent: var(--text-dunkel-akzent);
-  --karte-flaeche: var(--flaeche-dunkel-hoch);
-}
-
-.leise { color: var(--text-leise); }
-
-/* Das Logo-SVG nutzt fill="currentColor" und folgt damit --logo-farbe. */
-.logo { color: var(--logo-farbe); }
-
-/* --- Fokus --------------------------------------------------------------
-   Ein Wert für beide Modi, sichtbar auf Hell wie auf Dunkel.           */
-:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
-  outline: 3px solid var(--fokus);
-  outline-offset: 2px;
-  border-radius: 3px;
+:focus-visible {
+  outline: 3px solid var(--fokus, var(--blau));
+  outline-offset: 3px;
 }
 
 .sr-only {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
-
 .skip-link {
-  position: absolute; left: 12px; top: -60px; z-index: 200;
-  background: var(--ttc-blau-300); color: var(--ttc-tinte-950);
-  padding: 10px 18px; border-radius: 0 0 8px 8px; text-decoration: none;
-  font-weight: 700; transition: top .18s ease;
+  position: absolute; left: 12px; top: -80px; z-index: 300;
+  padding: 12px 18px; background: var(--tinte); color: var(--weiss);
+  font-weight: 650; text-decoration: none; transition: top .2s;
 }
-.skip-link:focus { top: 0; }
+.skip-link:focus { top: 12px; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
-    scroll-behavior: auto !important;
   }
-}
-
-@media (max-width: 860px) {
-  .split { grid-template-columns: 1fr; gap: 32px; }
-}
-@media (max-width: 560px) {
-  .wrap { width: min(1140px, 100% - 32px); }
 }

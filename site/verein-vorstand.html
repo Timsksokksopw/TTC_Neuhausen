@@ -1,41 +1,35 @@
 <!doctype html>
-<html lang="de">
+<!-- Erzeugt von build.py – nicht hier ändern.
+     Inhalt: inhalt/verein-vorstand.html · Rahmen: vorlage/layout.html · Menü: vorlage/seiten.py
+     Bilder und Dokumente unter site/assets/ werden nicht erzeugt:
+     Datei mit gleichem Namen ersetzen genügt. -->
+<html lang="de-CH">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Setzt die Klasse, bevor CSS greift. Nur wenn sie da ist, werden
-     .reveal-Elemente versteckt — ohne JavaScript bleibt alles sichtbar. -->
-<script>document.documentElement.className += " js";</script>
-
+<script>document.documentElement.classList.add("js")</script>
 <title>Vorstand – TTC Neuhausen</title>
-<meta name="description" content="Der Vorstand des TTC Neuhausen mit Zuständigkeiten und Kontaktadressen.">
+<meta name="description" content="Wer den Tischtennisclub Neuhausen führt: Vorstand, erweiterter Vorstand und offene Ämter.">
 <link rel="canonical" href="https://www.ttc-neuhausen.ch/verein-vorstand.html">
-<meta name="theme-color" content="#0A111D">
-
-<!-- Vorschau beim Teilen: WhatsApp, Instagram, Facebook, LinkedIn. -->
+<meta name="theme-color" content="#F3F0E8">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TTC Neuhausen">
 <meta property="og:locale" content="de_CH">
 <meta property="og:title" content="Vorstand – TTC Neuhausen">
-<meta property="og:description" content="Der Vorstand des TTC Neuhausen mit Zuständigkeiten und Kontaktadressen.">
+<meta property="og:description" content="Wer den Tischtennisclub Neuhausen führt: Vorstand, erweiterter Vorstand und offene Ämter.">
 <meta property="og:url" content="https://www.ttc-neuhausen.ch/verein-vorstand.html">
 <meta property="og:image" content="https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="TTC Neuhausen — Tischtennis für alle, seit 1975">
 <meta name="twitter:card" content="summary_large_image">
-
 <link rel="icon" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,88..112,400..800;1,88..112,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/sofia-sans-xc.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/komponenten.css">
 <link rel="stylesheet" href="assets/css/seiten.css">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -47,22 +41,17 @@
   "image": "https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg",
   "foundingDate": "1975",
   "sport": "Tischtennis",
-  "areaServed": "Schaffhausen, Neuhausen",
-  "sameAs": [
-    "https://www.instagram.com/ttcneuhausen/",
-    "https://www.facebook.com/ttcnh/"
-  ]
+  "sameAs": ["https://www.instagram.com/ttcneuhausen/", "https://www.facebook.com/ttcnh/"]
 }
 </script>
 </head>
-<body>
+<body class="seite-verein-vorstand">
+<a class="skip-link" href="#inhalt">Zum Inhalt</a>
 
-<a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
-
-<header class="kopf sektion--dunkel">
+<header class="kopf" data-kopf>
   <div class="wrap kopf__innen">
-    <a class="kopf__logo logo" href="index.html" aria-label="Startseite TTC Neuhausen">
-      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377" role="img" aria-label="TTC Neuhausen"><title>TTC Neuhausen</title><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
+    <a class="kopf__marke" href="index.html">
+      <svg class="kopf__signet" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377"><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
 -31 -73 -67 -291 -54 -327 3 -7 9 -52 14 -99 8 -73 15 -94 42 -132 27 -39 33
 -58 39 -126 5 -58 15 -95 34 -132 14 -28 26 -60 26 -70 0 -23 27 -79 38 -79 4
 0 18 -10 32 -23 23 -21 25 -29 22 -100 l-4 -77 -36 -19 c-20 -10 -71 -28 -112
@@ -117,30 +106,29 @@
 45 -163 93 -258 110 -66 12 -312 13 -394 1z M8473 8281 c-87 -22 -159 -130 -151 -226 6 -67 46 -137 100 -173 36
 -23 51 -27 117 -27 70 0 80 3 125 34 166 115 99 380 -101 396 -32 2 -73 0 -90
 -4z"/></g></svg>
-      <span class="kopf__name">TTC Neuhausen</span>
+      <span class="kopf__name">TTC Neuhausen <span>Tischtennis seit 1975</span></span>
     </a>
-
-    <nav class="nav" id="hauptnavigation" aria-label="Hauptnavigation" data-offen="false">
+    <nav class="nav" id="navigation" aria-label="Hauptnavigation">
       <ul class="nav__liste">
-        <li class="nav__punkt nav__punkt--aktiv">
+        <li class="nav__punkt ist-aktiv">
           <a class="nav__link" href="verein.html">Verein</a>
           <ul class="nav__unter">
             <li><a href="verein.html">Über den Verein</a></li>
             <li><a href="verein-vorstand.html" aria-current="page">Vorstand</a></li>
             <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+            <li><a href="verein-geschichte.html">Geschichte</a></li>
             <li><a href="verein-jahresprogramm.html">Jahresprogramm</a></li>
             <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
             <li><a href="verein-helfereinsatz.html">Helfereinsatz</a></li>
             <li><a href="verein-downloads.html">Downloads</a></li>
-            <li><a href="verein-geschichte.html">Geschichte</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="training.html">Training</a>
           <ul class="nav__unter">
             <li><a href="training.html">Trainingszeiten</a></li>
+            <li><a href="training-schnupperpass.html">Schnuppern &amp; Schnupperpass</a></li>
             <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
-            <li><a href="training-schnupperpass.html">Schnupperpass</a></li>
             <li><a href="training-breitensport.html">Breitensport</a></li>
             <li><a href="training-senioren.html">Senioren &amp; PingPongParkinson</a></li>
             <li><a href="training-einzeltraining.html">Einzeltraining</a></li>
@@ -157,172 +145,212 @@
             <li><a href="hallen.html">Übersicht</a></li>
             <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
             <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-            <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
+            <li><a href="hallen-neue-halle.html">Hallensportzentrum</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="news.html">News</a>
         </li>
       </ul>
+      <p class="nav__fuss">
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a>
+      </p>
     </nav>
-
-    <a class="btn btn--klein" href="verein-mitglied-werden.html">Schnuppern</a>
-
-    <button class="menu-knopf" type="button" aria-label="Menü öffnen"
-            aria-controls="hauptnavigation" aria-expanded="false">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M3 6h18M3 12h18M3 18h18"/>
-      </svg>
+    <a class="knopf knopf--orange kopf__aktion" href="training-schnupperpass.html">Schnuppern</a>
+    <button class="kopf__menue" type="button" aria-expanded="false" aria-controls="navigation">
+      <span class="kopf__menue-striche" aria-hidden="true"></span><span class="kopf__menue-text">Menü</span>
     </button>
   </div>
 </header>
 
 <main id="inhalt">
-<section class="seitenkopf sektion--dunkel">
+<header class="aufmacher aufmacher--schmal">
+  <div class="wrap aufmacher__raster">
+    <div class="aufmacher__text">
+      <nav class="brotkrumen" aria-label="Brotkrumen"><a href="index.html">Start</a><a href="verein.html">Verein</a><span aria-current="page">Vorstand</span></nav>
+      <p class="rubrik">Verein · Stand ab GV vom 15. September 2026</p>
+      <h1>Vorstand</h1>
+      <p class="lead">Seit der Generalversammlung vom 15. September 2026 führen zwei Co-Präsidenten den Verein.
+        Sechs Ämter im Vorstand, drei im erweiterten Vorstand – und zwei davon sind offen. Vielleicht für dich.</p>
+    </div>
+  </div>
+</header>
+
+<section class="flaeche--weiss">
   <div class="wrap">
-    <ul class="brotkrumen"><li><a href="index.html">Start</a></li><li><a href="verein.html">Verein</a></li><li>Vorstand</li></ul>
-    <h1>Vorstand</h1>
-    <p class="seitenkopf__lead">Sechs Ämter im Vorstand, drei im erweiterten Vorstand.
-      Zwei Ressorts sind zurzeit unbesetzt — Meldungen nimmt das Präsidium entgegen.</p>
+    <div class="abschnittskopf"><h2>Der Vorstand</h2></div>
+    <ul class="personen">
+      <li class="person">
+        <img class="person__bild" src="assets/img/personen/urs-schaerrer.jpg" alt="" width="100" height="100" loading="lazy">
+        <p class="person__rolle">Co-Präsident · Finanzchef</p>
+        <h3 class="person__name">Urs Schärrer</h3>
+        <p><a href="tel:+41792463781">+41 79 246 37 81</a></p>
+        <p><a href="mailto:praesidium@ttc-neuhausen.ch">praesidium@ttc-neuhausen.ch</a></p>
+        <p><a href="mailto:finanzen@ttc-neuhausen.ch">finanzen@ttc-neuhausen.ch</a></p>
+      </li>
+      <li class="person">
+        <img class="person__bild" src="assets/img/personen/lyo-buehrer.jpg" alt="" width="100" height="100" loading="lazy">
+        <p class="person__rolle">Co-Präsident · Sportlicher Leiter</p>
+        <h3 class="person__name">Lyo Bührer</h3>
+        <p><a href="tel:+41765292904">+41 76 529 29 04</a></p>
+        <p><a href="mailto:praesidium@ttc-neuhausen.ch">praesidium@ttc-neuhausen.ch</a></p>
+        <p><a href="mailto:sportchef@ttc-neuhausen.ch">sportchef@ttc-neuhausen.ch</a></p>
+      </li>
+      <li class="person">
+        <p class="person__kuerzel" aria-hidden="true">MH</p>
+        <p class="person__rolle">Seniorenvertreter</p>
+        <h3 class="person__name">Martin Hongler</h3>
+        <p><a href="mailto:martin.hongler@gmail.com">martin.hongler@gmail.com</a></p>
+      </li>
+      <li class="person">
+        <p class="person__kuerzel" aria-hidden="true">MH</p>
+        <p class="person__rolle">Buffetchef</p>
+        <h3 class="person__name">Matthias Hablützel</h3>
+        <p><a href="mailto:mhabluetzel@gmail.com">mhabluetzel@gmail.com</a></p>
+      </li>
+      <li class="person person--offen">
+        <p class="person__kuerzel" aria-hidden="true">?</p>
+        <p class="person__rolle">Sponsoring · Events</p>
+        <h3 class="person__name">Offen</h3>
+        <p>Kontakte zu Partnern pflegen, Anlässe mitorganisieren.</p>
+        <p><a href="mailto:praesidium@ttc-neuhausen.ch">Beim Präsidium melden</a></p>
+      </li>
+      <li class="person person--offen">
+        <p class="person__kuerzel" aria-hidden="true">?</p>
+        <p class="person__rolle">Aktuariat</p>
+        <h3 class="person__name">Offen</h3>
+        <p>Protokolle an Sitzungen und an der Generalversammlung.</p>
+        <p><a href="mailto:praesidium@ttc-neuhausen.ch">Beim Präsidium melden</a></p>
+      </li>
+    </ul>
   </div>
 </section>
 
-<section class="sektion--hell">
+<section class="flaeche--papier">
   <div class="wrap">
-    <p class="eyebrow label">Vorstand</p>
-    <h2>Wer den Verein führt</h2>
-    <div class="personen">
-      <div class="person">
-        <img class="person__marke" src="assets/img/personen/urs-schaerrer.jpg" alt="" width="60" height="60" loading="lazy">
-        <div class="person__rolle">Co-Präsident | Finanzchef</div>
-        <div class="person__name">Urs Schärrer</div>
-        <p class="person__zeile"><a href="tel:+41792463781">+41 79 246 37 81</a></p>
-        <p class="person__zeile"><a href="mailto:praesidium@ttc-neuhausen.ch">praesidium@ttc-neuhausen.ch</a></p>
-        <p class="person__zeile"><a href="mailto:finanzen@ttc-neuhausen.ch">finanzen@ttc-neuhausen.ch</a></p>
-      </div>
-      <div class="person">
-        <img class="person__marke" src="assets/img/personen/lyo-buehrer.jpg" alt="" width="60" height="60" loading="lazy">
-        <div class="person__rolle">Co-Präsident | Sportlicher Leiter</div>
-        <div class="person__name">Lyo Bührer</div>
-        <p class="person__zeile"><a href="tel:+41765292904">+41 76 529 29 04</a></p>
-        <p class="person__zeile"><a href="mailto:praesidium@ttc-neuhausen.ch">praesidium@ttc-neuhausen.ch</a></p>
-        <p class="person__zeile"><a href="mailto:sportchef@ttc-neuhausen.ch">sportchef@ttc-neuhausen.ch</a></p>
-      </div>
-      <div class="person">
-        <p class="person__marke" aria-hidden="true">MH</p>
-        <div class="person__rolle">Seniorenvertreter</div>
-        <div class="person__name">Martin Hongler</div>
-        <p class="person__zeile"><a href="mailto:martin.hongler@gmail.com">martin.hongler@gmail.com</a></p>
-      </div>
-      <div class="person">
-        <p class="person__marke" aria-hidden="true">MH</p>
-        <div class="person__rolle">Buffetchef</div>
-        <div class="person__name">Matthias Hablützel</div>
-        <p class="person__zeile"><a href="mailto:mhabluetzel@gmail.com">mhabluetzel@gmail.com</a></p>
-      </div>
-
-      <!-- Unbesetzte Ämter stehen bewusst da, statt zu fehlen: eine Lücke,
-           die man sieht, findet eher jemanden als eine, die man verschweigt. -->
-      <div class="person person--vakant">
-        <p class="person__marke" aria-hidden="true"></p>
-        <div class="person__rolle">Sponsoring | Events</div>
-        <div class="person__name">Vakant</div>
-        <p class="person__zeile">Wir suchen jemanden für dieses Ressort.</p>
-        <p class="person__zeile"><a href="mailto:praesidium@ttc-neuhausen.ch">Beim Präsidium melden</a></p>
-      </div>
-      <div class="person person--vakant">
-        <p class="person__marke" aria-hidden="true"></p>
-        <div class="person__rolle">Aktuariat</div>
-        <div class="person__name">Vakant</div>
-        <p class="person__zeile">Protokollführung an Sitzungen und Generalversammlung.</p>
-        <p class="person__zeile"><a href="mailto:praesidium@ttc-neuhausen.ch">Beim Präsidium melden</a></p>
-      </div>
-    </div>
+    <div class="abschnittskopf"><h2>Erweiterter Vorstand</h2></div>
+    <ul class="personen">
+      <li class="person">
+        <img class="person__bild" src="assets/img/personen/tenzin-gyadhotsang.jpg" alt="" width="100" height="100" loading="lazy">
+        <p class="person__rolle">Webmaster</p>
+        <h3 class="person__name">Tenzin Gyadhotsang</h3>
+        <p><a href="mailto:webmaster@ttc-neuhausen.ch">webmaster@ttc-neuhausen.ch</a></p>
+      </li>
+      <li class="person">
+        <p class="person__kuerzel" aria-hidden="true">RH</p>
+        <p class="person__rolle">Mitgliederverwaltung</p>
+        <h3 class="person__name">Ruth Höner</h3>
+        <p><a href="mailto:mitgliederverwaltung@ttc-neuhausen.ch">mitgliederverwaltung@ttc-neuhausen.ch</a></p>
+      </li>
+      <li class="person">
+        <p class="person__kuerzel" aria-hidden="true">AP</p>
+        <p class="person__rolle">Personal</p>
+        <h3 class="person__name">Anke Pelz</h3>
+        <p><a href="mailto:personal@ttc-neuhausen.ch">personal@ttc-neuhausen.ch</a></p>
+      </li>
+    </ul>
   </div>
 </section>
 
-<section class="sektion--weiss">
+<section class="flaeche--weiss">
   <div class="wrap">
-    <p class="eyebrow label">Erweiterter Vorstand</p>
-    <h2>Wer mitträgt</h2>
-    <div class="personen">
-      <div class="person">
-        <img class="person__marke" src="assets/img/personen/tenzin-gyadhotsang.jpg" alt="" width="60" height="60" loading="lazy">
-        <div class="person__rolle">Webmaster</div>
-        <div class="person__name">Tenzin Gyadhotsang</div>
-        <p class="person__zeile"><a href="mailto:webmaster@ttc-neuhausen.ch">webmaster@ttc-neuhausen.ch</a></p>
-      </div>
-      <div class="person">
-        <p class="person__marke" aria-hidden="true">RH</p>
-        <div class="person__rolle">Mitgliederverwaltung</div>
-        <div class="person__name">Ruth Höner</div>
-        <p class="person__zeile"><a href="mailto:mitgliederverwaltung@ttc-neuhausen.ch">mitgliederverwaltung@ttc-neuhausen.ch</a></p>
-      </div>
-      <div class="person">
-        <p class="person__marke" aria-hidden="true">AP</p>
-        <div class="person__rolle">Personal</div>
-        <div class="person__name">Anke Pelz</div>
-        <p class="person__zeile"><a href="mailto:personal@ttc-neuhausen.ch">personal@ttc-neuhausen.ch</a></p>
-      </div>
+    <div class="abschnittskopf">
+      <h2>Wie der Verein organisiert ist</h2>
+      <p class="lead">Der TTC Neuhausen ist ein Verein nach Schweizer Zivilgesetzbuch, Mitglied des Ostschweizer
+        Tischtennisverbands und damit von Swiss Table Tennis. Das Vereinsjahr läuft vom 1. Juli bis zum 30. Juni.</p>
     </div>
+    <ol class="organigramm">
+      <li class="organigramm__stufe">
+        <h3>Generalversammlung</h3>
+        <p>Das oberste Organ, einmal im Jahr. Wählt Präsidium, Vorstand, erweiterten Vorstand und Revision,
+          genehmigt Budget und Beiträge. Stimmberechtigt sind AktivPlus-, Aktiv-, Frei- und Ehrenmitglieder ab 15 Jahren.</p>
+      </li>
+      <li class="organigramm__stufe">
+        <h3>Vorstand</h3>
+        <p>Leitet den Verein, Amtsdauer zwei Jahre. Entscheidet über Aufnahmen und vertritt den Verein nach aussen.
+          Unterschrieben wird zu zweit, vom Präsidium und einem weiteren Vorstandsmitglied.</p>
+      </li>
+      <li class="organigramm__stufe">
+        <h3>Erweiterter Vorstand</h3>
+        <p>Website, Mitgliederverwaltung und Personal. Ebenfalls von der Generalversammlung gewählt, ohne Unterschrift für den Verein.</p>
+      </li>
+      <li class="organigramm__stufe">
+        <h3>Revision</h3>
+        <p>Zwei Rechnungsrevisorinnen oder -revisoren prüfen die Jahresrechnung und berichten der Generalversammlung.</p>
+      </li>
+    </ol>
+    <p class="hinweis abstand-oben">Getragen wird der Alltag vom Trainerteam und von vielen Helferinnen und Helfern.
+      Alle Regeln stehen in den Statuten bei den <a class="lauftext" href="verein-downloads.html">Downloads</a>.</p>
+  </div>
+</section>
 
-    <p class="hinweis" style="margin-top:32px"><strong>Stand ab der Generalversammlung
-      vom 15. September 2026.</strong> Bis dahin gilt die bisherige Zusammensetzung.</p>
+<section class="flaeche--blau">
+  <div class="wrap raster zweispalter">
+    <div class="zweispalter__links">
+      <p class="rubrik">Offene Ämter</p>
+      <h2>Zwei Stühle sind frei</h2>
+      <p>Für das Ressort Sponsoring und Events und für das Aktuariat sucht der Verein Leute, die mitdenken und
+        mit anpacken. Wer sich das vorstellen kann, meldet sich beim Präsidium.</p>
+    </div>
+    <div class="zweispalter__rechts">
+      <a class="knopf knopf--weiss" href="mailto:praesidium@ttc-neuhausen.ch?subject=Offenes%20Amt">praesidium@ttc-neuhausen.ch <span class="pfeil" aria-hidden="true"></span></a>
+    </div>
   </div>
 </section>
 
 </main>
 
-<footer class="fuss sektion--dunkel">
+<footer class="fuss flaeche--nacht">
   <div class="wrap">
+    <div class="fuss__oben">
+      <img class="fuss__logo" src="assets/img/logo-weiss.svg" width="1459" height="352" alt="Tischtennisclub Neuhausen">
+      <p class="fuss__satz">Tischtennis von 7 bis 85, seit 1975. In der Rhyfallhalle Neuhausen und im Tischtenniszentrum Ebnat.</p>
+      <a class="knopf knopf--orange" href="training-schnupperpass.html">Schnuppertraining</a>
+    </div>
     <div class="fuss__raster">
-      <div class="fuss__logo">
-        <img src="assets/img/logo-weiss.svg" width="1459" height="352"
-             alt="Tischtennisclub Neuhausen">
-        <p class="leise" style="font-size:var(--grad-sm);max-width:34ch">
-          Gegründet 1975. Training in der Rhyfallhalle Neuhausen und im
-          Tischtenniszentrum Ebnat in Schaffhausen.
-        </p>
-      </div>
       <div>
-        <h4>Verein</h4>
+        <h2 class="fuss__titel">Verein</h2>
         <ul>
           <li><a href="verein.html">Über den Verein</a></li>
           <li><a href="verein-vorstand.html">Vorstand</a></li>
           <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+          <li><a href="verein-geschichte.html">Geschichte</a></li>
           <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Hallen</h4>
-        <ul>
-          <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
-          <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-          <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Kontakt</h4>
-        <ul>
-          <li><a href="kontakt.html">Kontakt</a></li>
           <li><a href="partner.html">Für Partner</a></li>
-          <li><a href="https://www.instagram.com/ttcneuhausen/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.facebook.com/ttcnh/" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Training</h2>
+        <ul>
+          <li><a href="training.html">Trainingszeiten</a></li>
+          <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
+          <li><a href="training-breitensport.html">Breitensport</a></li>
+          <li><a href="training-senioren.html">Senioren</a></li>
+          <li><a href="teams.html">Teams</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Hallen</h2>
+        <p><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a><br>Rheingoldstrasse 11<br>8212 Neuhausen am Rheinfall</p>
+        <p><a href="hallen-ttz-ebnat.html">Tischtenniszentrum Ebnat</a><br>Ebnatstrasse 35<br>8200 Schaffhausen</p>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Kontakt</h2>
+        <p><a href="mailto:info@ttc-neuhausen.ch">info@ttc-neuhausen.ch</a><br>
+          <a href="mailto:trainer@ttc-neuhausen.ch">trainer@ttc-neuhausen.ch</a></p>
+        <p><a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a><br>
+          <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a></p>
       </div>
     </div>
-    <div class="fuss__klein">
-      <span>&copy; <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
-      <span>
-        <a href="impressum.html">Impressum</a> &nbsp;·&nbsp;
-        <a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp;
-        Gestaltung und Umsetzung: Wendico
-      </span>
+    <div class="fuss__unten">
+      <span>© <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Gestaltung und Umsetzung: Wendico</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

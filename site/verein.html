@@ -1,41 +1,35 @@
 <!doctype html>
-<html lang="de">
+<!-- Erzeugt von build.py – nicht hier ändern.
+     Inhalt: inhalt/verein.html · Rahmen: vorlage/layout.html · Menü: vorlage/seiten.py
+     Bilder und Dokumente unter site/assets/ werden nicht erzeugt:
+     Datei mit gleichem Namen ersetzen genügt. -->
+<html lang="de-CH">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Setzt die Klasse, bevor CSS greift. Nur wenn sie da ist, werden
-     .reveal-Elemente versteckt — ohne JavaScript bleibt alles sichtbar. -->
-<script>document.documentElement.className += " js";</script>
-
+<script>document.documentElement.classList.add("js")</script>
 <title>Über den Verein – TTC Neuhausen</title>
-<meta name="description" content="Rund 150 Mitglieder, drei Trainer, 35 Trainingsstunden pro Woche. Der TTC Neuhausen bietet Tischtennis vom Anfänger bis zur Nationalliga.">
+<meta name="description" content="Rund 150 Mitglieder, zwei Hallen, Teams von der 6. Liga bis zur Swiss Table Tennis League: der Tischtennisclub Neuhausen im Überblick.">
 <link rel="canonical" href="https://www.ttc-neuhausen.ch/verein.html">
-<meta name="theme-color" content="#0A111D">
-
-<!-- Vorschau beim Teilen: WhatsApp, Instagram, Facebook, LinkedIn. -->
+<meta name="theme-color" content="#F3F0E8">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TTC Neuhausen">
 <meta property="og:locale" content="de_CH">
 <meta property="og:title" content="Über den Verein – TTC Neuhausen">
-<meta property="og:description" content="Rund 150 Mitglieder, drei Trainer, 35 Trainingsstunden pro Woche. Der TTC Neuhausen bietet Tischtennis vom Anfänger bis zur Nationalliga.">
+<meta property="og:description" content="Rund 150 Mitglieder, zwei Hallen, Teams von der 6. Liga bis zur Swiss Table Tennis League: der Tischtennisclub Neuhausen im Überblick.">
 <meta property="og:url" content="https://www.ttc-neuhausen.ch/verein.html">
 <meta property="og:image" content="https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="TTC Neuhausen — Tischtennis für alle, seit 1975">
 <meta name="twitter:card" content="summary_large_image">
-
 <link rel="icon" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,88..112,400..800;1,88..112,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/sofia-sans-xc.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/komponenten.css">
 <link rel="stylesheet" href="assets/css/seiten.css">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -47,22 +41,17 @@
   "image": "https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg",
   "foundingDate": "1975",
   "sport": "Tischtennis",
-  "areaServed": "Schaffhausen, Neuhausen",
-  "sameAs": [
-    "https://www.instagram.com/ttcneuhausen/",
-    "https://www.facebook.com/ttcnh/"
-  ]
+  "sameAs": ["https://www.instagram.com/ttcneuhausen/", "https://www.facebook.com/ttcnh/"]
 }
 </script>
 </head>
-<body>
+<body class="seite-verein">
+<a class="skip-link" href="#inhalt">Zum Inhalt</a>
 
-<a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
-
-<header class="kopf sektion--dunkel">
+<header class="kopf" data-kopf>
   <div class="wrap kopf__innen">
-    <a class="kopf__logo logo" href="index.html" aria-label="Startseite TTC Neuhausen">
-      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377" role="img" aria-label="TTC Neuhausen"><title>TTC Neuhausen</title><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
+    <a class="kopf__marke" href="index.html">
+      <svg class="kopf__signet" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377"><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
 -31 -73 -67 -291 -54 -327 3 -7 9 -52 14 -99 8 -73 15 -94 42 -132 27 -39 33
 -58 39 -126 5 -58 15 -95 34 -132 14 -28 26 -60 26 -70 0 -23 27 -79 38 -79 4
 0 18 -10 32 -23 23 -21 25 -29 22 -100 l-4 -77 -36 -19 c-20 -10 -71 -28 -112
@@ -117,30 +106,29 @@
 45 -163 93 -258 110 -66 12 -312 13 -394 1z M8473 8281 c-87 -22 -159 -130 -151 -226 6 -67 46 -137 100 -173 36
 -23 51 -27 117 -27 70 0 80 3 125 34 166 115 99 380 -101 396 -32 2 -73 0 -90
 -4z"/></g></svg>
-      <span class="kopf__name">TTC Neuhausen</span>
+      <span class="kopf__name">TTC Neuhausen <span>Tischtennis seit 1975</span></span>
     </a>
-
-    <nav class="nav" id="hauptnavigation" aria-label="Hauptnavigation" data-offen="false">
+    <nav class="nav" id="navigation" aria-label="Hauptnavigation">
       <ul class="nav__liste">
-        <li class="nav__punkt nav__punkt--aktiv">
+        <li class="nav__punkt ist-aktiv">
           <a class="nav__link" href="verein.html" aria-current="page">Verein</a>
           <ul class="nav__unter">
             <li><a href="verein.html" aria-current="page">Über den Verein</a></li>
             <li><a href="verein-vorstand.html">Vorstand</a></li>
             <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+            <li><a href="verein-geschichte.html">Geschichte</a></li>
             <li><a href="verein-jahresprogramm.html">Jahresprogramm</a></li>
             <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
             <li><a href="verein-helfereinsatz.html">Helfereinsatz</a></li>
             <li><a href="verein-downloads.html">Downloads</a></li>
-            <li><a href="verein-geschichte.html">Geschichte</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="training.html">Training</a>
           <ul class="nav__unter">
             <li><a href="training.html">Trainingszeiten</a></li>
+            <li><a href="training-schnupperpass.html">Schnuppern &amp; Schnupperpass</a></li>
             <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
-            <li><a href="training-schnupperpass.html">Schnupperpass</a></li>
             <li><a href="training-breitensport.html">Breitensport</a></li>
             <li><a href="training-senioren.html">Senioren &amp; PingPongParkinson</a></li>
             <li><a href="training-einzeltraining.html">Einzeltraining</a></li>
@@ -157,152 +145,225 @@
             <li><a href="hallen.html">Übersicht</a></li>
             <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
             <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-            <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
+            <li><a href="hallen-neue-halle.html">Hallensportzentrum</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="news.html">News</a>
         </li>
       </ul>
+      <p class="nav__fuss">
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a>
+      </p>
     </nav>
-
-    <a class="btn btn--klein" href="verein-mitglied-werden.html">Schnuppern</a>
-
-    <button class="menu-knopf" type="button" aria-label="Menü öffnen"
-            aria-controls="hauptnavigation" aria-expanded="false">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M3 6h18M3 12h18M3 18h18"/>
-      </svg>
+    <a class="knopf knopf--orange kopf__aktion" href="training-schnupperpass.html">Schnuppern</a>
+    <button class="kopf__menue" type="button" aria-expanded="false" aria-controls="navigation">
+      <span class="kopf__menue-striche" aria-hidden="true"></span><span class="kopf__menue-text">Menü</span>
     </button>
   </div>
 </header>
 
 <main id="inhalt">
-<section class="seitenkopf sektion--dunkel">
-  <div class="wrap">
-    <ul class="brotkrumen"><li><a href="index.html">Start</a></li><li>Verein</li></ul>
-    <h1>Über den Verein</h1>
-    <p class="seitenkopf__lead">Rund 150 Mitglieder, drei qualifizierte Trainer, zwei Hallen. Der TTC Neuhausen bietet Tischtennis für Plausch- und Spitzenspieler im Alter von 7 bis 85 Jahren.</p>
+<header class="aufmacher aufmacher--breit">
+  <div class="wrap aufmacher__raster">
+    <div class="aufmacher__text">
+      <nav class="brotkrumen" aria-label="Brotkrumen"><a href="index.html">Start</a><span aria-current="page">Verein</span></nav>
+      <p class="rubrik">Der Verein</p>
+      <h1>Über den Verein</h1>
+      <p class="lead">Rund 150 Mitglieder, davon etwa 120 aktiv. Zwei Hallen, zwei professionelle Trainer,
+        Mannschaften von der 6. Liga bis zur höchsten Schweizer Liga – und ein Vereinsleben, das von Freiwilligen getragen wird.</p>
+    </div>
+    <figure class="aufmacher__bild bild bild--panorama">
+      <img src="assets/img/fotos/breitensport-gruppe.jpg" alt="Rund zwanzig Mitglieder stehen hinter einem Tischtennistisch, am Netz ein Banner des Vereins"
+           width="1600" height="1276" fetchpriority="high" style="object-position: 50% 40%">
+      <figcaption>Mitglieder aus dem Breitensport.</figcaption>
+    </figure>
   </div>
-</section>
+</header>
 
-<section class="sektion--hell">
+<section class="flaeche--weiss">
   <div class="wrap">
-    <div class="split">
-      <div class="eng">
-        <p>Besonders richtet der Verein seine Bemühungen auf eine gezielte Jugendförderung.
-          Drei Trainer leiten wöchentlich 35 Trainingsstunden; zwei davon sind professionelle
-          Tischtennistrainer. Beginner werden ausdrücklich betreut.</p>
-        <p>Auch Breiten- und Seniorensport erhalten wöchentlich drei geführte Trainings.
-          Jeder Verein lebt von der Mitarbeit seiner Mitglieder, Freunde und Bekannten —
-          so auch der TTCN.</p>
-      </div>
-      <dl class="fakten">
-        <div><dt>Gegründet</dt><dd>1975</dd></div>
-        <div><dt>Mitglieder</dt><dd>rund 150</dd></div>
-        <div><dt>davon aktiv</dt><dd>rund 120</dd></div>
-        <div><dt>Trainer</dt><dd>3</dd></div>
-        <div><dt>Trainingsstunden</dt><dd>35 pro Woche</dd></div>
-        <div><dt>Spielbetrieb</dt><dd>STTL bis 6. Liga</dd></div>
-      </dl>
+    <div class="abschnittskopf"><h2>Vier Dinge, die der Verein macht</h2></div>
+    <div class="saeulen">
+      <article>
+        <p class="saeulen__nr">ab 5 <small>Jahren</small></p>
+        <h3>Nachwuchs fördern</h3>
+        <p>Der Schwerpunkt des Vereins. Zwei professionelle Trainer, ein Förderkader, der Stützpunkt des Ostschweizer
+          Verbands und Schulsport seit 2007. Beginner sind jederzeit willkommen.</p>
+        <a class="pfeil-link pfeil-link--klein" href="training-nachwuchs.html">Nachwuchs <span class="pfeil" aria-hidden="true"></span></a>
+      </article>
+      <article>
+        <p class="saeulen__nr">17 <small>Titel</small></p>
+        <h3>Spitzensport</h3>
+        <p>Damen und Herren spielen in der Swiss Table Tennis League. Die Damen gewannen seit 2005 vierzehn Meistertitel,
+          die Herren wurden 1996, 1998 und 2000 Schweizer Meister.</p>
+        <a class="pfeil-link pfeil-link--klein" href="teams.html">Teams <span class="pfeil" aria-hidden="true"></span></a>
+      </article>
+      <article>
+        <p class="saeulen__nr">3× <small>pro Woche</small></p>
+        <h3>Breitensport</h3>
+        <p>Drei Abende pro Woche für Erwachsene, mit und ohne Lizenz. Dazu Herrenteams bis in die 6. Liga
+          und die Veteranen in der O50-Liga.</p>
+        <a class="pfeil-link pfeil-link--klein" href="training-breitensport.html">Breitensport <span class="pfeil" aria-hidden="true"></span></a>
+      </article>
+      <article>
+        <p class="saeulen__nr">50+ <small>Aktive</small></p>
+        <h3>Senioren</h3>
+        <p>Über fünfzig Aktive an vier Vormittagen pro Woche, seit 2004. Am Donnerstag mit der Gruppe PingPongParkinson.</p>
+        <a class="pfeil-link pfeil-link--klein" href="training-senioren.html">Senioren <span class="pfeil" aria-hidden="true"></span></a>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="sektion--weiss">
+<section class="flaeche--papier2">
   <div class="wrap">
-    <div class="split">
-      <div>
-        <h2>Ein Sport fürs ganze Leben</h2>
-        <p class="leise">Tischtennis ist die schnellste Ballsportart der Welt und lässt sich
-          in praktisch jedem Alter und auf jedem Niveau spielen. Spezielle Voraussetzungen
-          braucht es nicht — wer es ernsthaft betreibt, entwickelt Schnelligkeit,
-          Reaktionsfähigkeit, Koordination und ein gutes Auge.</p>
-        <p class="leise">Bereits ab fünf Jahren kann spielerisch gelernt werden, mit dem
-          kleinen Plastikball umzugehen.</p>
-      </div>
-      <div>
-        <h2>Keine teure Ausrüstung</h2>
-        <p class="leise">Wer beim TTCN spielen möchte, braucht Hallenschuhe, Sportkleidung und
-          am besten einen Schläger. Den gibt es im Sporthandel ab rund 50 Franken — und
-          während der ersten Trainingsbesuche leihen wir ihn kostenlos aus.</p>
-        <div class="btn-reihe">
-          <a class="btn" href="verein-mitglied-werden.html">Mitglied werden</a>
-        </div>
-      </div>
-    </div>
+    <div class="abschnittskopf"><h2>Der Verein in Zahlen</h2></div>
+    <dl class="fakten">
+      <div><dt>gegründet in Schaffhausen</dt><dd>1975</dd></div>
+      <div><dt>Mitglieder, rund 120 davon aktiv</dt><dd>150</dd></div>
+      <div><dt>Mannschaften in der Saison 2026/27</dt><dd>10</dd></div>
+      <div><dt>Trainings pro Woche mit Trainer oder in fester Gruppe</dt><dd>14</dd></div>
+      <div><dt>Schweizer Meistertitel, 14 davon die Damen</dt><dd>17</dd></div>
+      <div><dt>Tische im Tischtenniszentrum Ebnat</dt><dd>12</dd></div>
+    </dl>
   </div>
 </section>
 
-<section class="sektion--dunkel">
-  <div class="wrap">
-    <p class="eyebrow label">Der Verein</p>
-    <h2>Mehr erfahren</h2>
-    <div class="karten">
-      <a class="karte" href="verein-vorstand.html"><h3>Vorstand</h3>
-        <p>Wer den Verein führt, und wer wofür zuständig ist.</p></a>
-      <a class="karte" href="verein-trainerteam.html"><h3>Trainerteam</h3>
-        <p>Cheftrainer, sportlicher Leiter und die weiteren Trainer.</p></a>
-      <a class="karte" href="verein-geschichte.html"><h3>Geschichte</h3>
-        <p>Von der Gründung 1975 über 17 Meistertitel bis zur eigenen Halle.</p></a>
-      <a class="karte" href="verein-helfereinsatz.html"><h3>Helfereinsatz</h3>
-        <p>Der Vereinsbetrieb lebt von Freiwilligen. Jede Hand zählt.</p></a>
+<section class="flaeche--weiss">
+  <div class="wrap raster zweispalter">
+    <div class="zweispalter__links text">
+      <h2>Ein Sport fürs ganze Leben</h2>
+      <p>Tischtennis gilt als schnellste Ballsportart der Welt und lässt sich trotzdem in jedem Alter und auf jedem
+        Niveau spielen. Besondere Voraussetzungen braucht es nicht. Wer es ernsthaft betreibt, entwickelt Schnelligkeit,
+        Reaktion, Koordination und ein gutes Auge – ab fünf Jahren lässt sich spielerisch lernen, mit dem kleinen Ball
+        umzugehen.</p>
+      <h3>Keine teure Ausrüstung</h3>
+      <p>Hallenschuhe, Sportkleidung und am besten ein eigener Schläger. Den gibt es im Sporthandel ab rund 50 Franken,
+        und während der ersten Trainings leiht ihn der Verein kostenlos aus.</p>
+      <p><a class="pfeil-link" href="training-schnupperpass.html">Erstes Training <span class="pfeil" aria-hidden="true"></span></a></p>
     </div>
+    <figure class="zweispalter__rechts masse">
+      <svg viewBox="0 0 640 500" role="img" aria-labelledby="masse-titel masse-text">
+        <title id="masse-titel">Der Tisch in Zahlen</title>
+        <desc id="masse-text">Tischtennistisch von oben: 274 Zentimeter lang, 152,5 Zentimeter breit. Von der Seite: 76 Zentimeter hoch, das Netz 15,25 Zentimeter. Der Ball misst 40 Millimeter und wiegt 2,7 Gramm.</desc>
+        <rect class="masse__platte" x="40" y="40" width="356" height="198"/>
+        <rect class="masse__linie" x="42.5" y="42.5" width="351" height="193"/>
+        <line class="masse__mitte" x1="42" y1="139" x2="394" y2="139"/>
+        <line class="masse__netz" x1="218" y1="20" x2="218" y2="258"/>
+        <g class="masse__bemassung">
+          <line x1="40" y1="276" x2="396" y2="276"/><line x1="40" y1="268" x2="40" y2="284"/><line x1="396" y1="268" x2="396" y2="284"/>
+          <text x="218" y="302" text-anchor="middle">274 cm</text>
+          <line x1="424" y1="40" x2="424" y2="238"/><line x1="416" y1="40" x2="432" y2="40"/><line x1="416" y1="238" x2="432" y2="238"/>
+          <text x="440" y="145">152,5 cm</text>
+        </g>
+        <rect class="masse__platte" x="40" y="370" width="356" height="4"/>
+        <rect class="masse__bein" x="76" y="374" width="6" height="95"/>
+        <rect class="masse__bein" x="354" y="374" width="6" height="95"/>
+        <rect class="masse__netzseite" x="216" y="350" width="4" height="20"/>
+        <line class="masse__boden" x1="20" y1="469" x2="410" y2="469"/>
+        <g class="masse__bemassung">
+          <line x1="424" y1="370" x2="424" y2="469"/><line x1="416" y1="370" x2="432" y2="370"/><line x1="416" y1="469" x2="432" y2="469"/>
+          <text x="440" y="425">76 cm</text>
+          <text x="230" y="344">Netz 15,25 cm</text>
+        </g>
+        <g class="masse__ball">
+          <circle cx="560" cy="120" r="30"/>
+          <text x="560" y="182" text-anchor="middle">40 mm</text>
+          <text x="560" y="206" text-anchor="middle">2,7 g</text>
+        </g>
+      </svg>
+      <figcaption>Der Tisch von oben und von der Seite, im selben Massstab. Der Ball ist stark vergrössert.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="flaeche--nacht">
+  <div class="wrap raster zweispalter">
+    <div class="zweispalter__links">
+      <p class="rubrik">Geschichte</p>
+      <h2>Seit 1975</h2>
+      <p>Gegründet von vier Tischtennisbegeisterten an einem Schaffhauser Gässchen, gross geworden in der Rhyfallhalle,
+        selbst ausgebaut im Ebnat. Dazwischen: siebzehn Schweizer Meistertitel und ein Final, der nach Sätzen entschieden wurde.</p>
+      <a class="pfeil-link" href="verein-geschichte.html">Zur Geschichte <span class="pfeil" aria-hidden="true"></span></a>
+    </div>
+    <ol class="kurzchronik zweispalter__rechts">
+      <li><b>1975</b><span>Gründung am Rosentalgässchen 15 in Schaffhausen</span></li>
+      <li><b>1979</b><span>Die Rhyfallhalle wird eröffnet</span></li>
+      <li><b>1996</b><span>Erster Meistertitel der Herren</span></li>
+      <li><b>2002</b><span>Einzug ins TTZ Ebnat</span></li>
+      <li><b>2005</b><span>Erster von vierzehn Titeln der Damen</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="flaeche--papier">
+  <div class="wrap">
+    <div class="abschnittskopf"><h2>Wer den Verein trägt</h2></div>
+    <ul class="weiter">
+      <li><a href="verein-vorstand.html"><b>Vorstand</b><span>Zwei Co-Präsidenten, vier Ressorts, zwei offene Ämter.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+      <li><a href="verein-trainerteam.html"><b>Trainerteam</b><span>Vom Anfängertraining bis zur STTL.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+      <li><a href="verein-helfereinsatz.html"><b>Helferinnen und Helfer</b><span>Altpapier, Anlässe, Standaktionen.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+      <li><a href="partner.html"><b>Partner</b><span>22 Unternehmen aus der Region.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+      <li><a href="verein-mitglied-werden.html"><b>Mitglied werden</b><span>Kategorien, Beiträge, Anmeldung.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+      <li><a href="verein-downloads.html"><b>Downloads</b><span>Statuten, Reglemente, Formulare.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+    </ul>
   </div>
 </section>
 
 </main>
 
-<footer class="fuss sektion--dunkel">
+<footer class="fuss flaeche--nacht">
   <div class="wrap">
+    <div class="fuss__oben">
+      <img class="fuss__logo" src="assets/img/logo-weiss.svg" width="1459" height="352" alt="Tischtennisclub Neuhausen">
+      <p class="fuss__satz">Tischtennis von 7 bis 85, seit 1975. In der Rhyfallhalle Neuhausen und im Tischtenniszentrum Ebnat.</p>
+      <a class="knopf knopf--orange" href="training-schnupperpass.html">Schnuppertraining</a>
+    </div>
     <div class="fuss__raster">
-      <div class="fuss__logo">
-        <img src="assets/img/logo-weiss.svg" width="1459" height="352"
-             alt="Tischtennisclub Neuhausen">
-        <p class="leise" style="font-size:var(--grad-sm);max-width:34ch">
-          Gegründet 1975. Training in der Rhyfallhalle Neuhausen und im
-          Tischtenniszentrum Ebnat in Schaffhausen.
-        </p>
-      </div>
       <div>
-        <h4>Verein</h4>
+        <h2 class="fuss__titel">Verein</h2>
         <ul>
           <li><a href="verein.html">Über den Verein</a></li>
           <li><a href="verein-vorstand.html">Vorstand</a></li>
           <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+          <li><a href="verein-geschichte.html">Geschichte</a></li>
           <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Hallen</h4>
-        <ul>
-          <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
-          <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-          <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Kontakt</h4>
-        <ul>
-          <li><a href="kontakt.html">Kontakt</a></li>
           <li><a href="partner.html">Für Partner</a></li>
-          <li><a href="https://www.instagram.com/ttcneuhausen/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.facebook.com/ttcnh/" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Training</h2>
+        <ul>
+          <li><a href="training.html">Trainingszeiten</a></li>
+          <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
+          <li><a href="training-breitensport.html">Breitensport</a></li>
+          <li><a href="training-senioren.html">Senioren</a></li>
+          <li><a href="teams.html">Teams</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Hallen</h2>
+        <p><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a><br>Rheingoldstrasse 11<br>8212 Neuhausen am Rheinfall</p>
+        <p><a href="hallen-ttz-ebnat.html">Tischtenniszentrum Ebnat</a><br>Ebnatstrasse 35<br>8200 Schaffhausen</p>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Kontakt</h2>
+        <p><a href="mailto:info@ttc-neuhausen.ch">info@ttc-neuhausen.ch</a><br>
+          <a href="mailto:trainer@ttc-neuhausen.ch">trainer@ttc-neuhausen.ch</a></p>
+        <p><a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a><br>
+          <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a></p>
       </div>
     </div>
-    <div class="fuss__klein">
-      <span>&copy; <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
-      <span>
-        <a href="impressum.html">Impressum</a> &nbsp;·&nbsp;
-        <a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp;
-        Gestaltung und Umsetzung: Wendico
-      </span>
+    <div class="fuss__unten">
+      <span>© <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Gestaltung und Umsetzung: Wendico</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

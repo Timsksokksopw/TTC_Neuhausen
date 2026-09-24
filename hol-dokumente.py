@@ -33,7 +33,7 @@ from pathlib import Path
 WURZEL = Path(__file__).resolve().parent
 sys.path.insert(0, str(WURZEL / "vorlage"))
 
-from dokumente import BEITRITTSFORMULARE, DOKUMENTE  # noqa: E402
+from dokumente import BEITRITTSFORMULARE, DOKUMENTE, HALLENPROJEKT  # noqa: E402
 
 ZIEL = WURZEL / "site" / "assets" / "dokumente"
 
@@ -81,7 +81,7 @@ def main():
         return 2
 
     alle = "--alle" in schalter
-    eintraege = DOKUMENTE + BEITRITTSFORMULARE
+    eintraege = DOKUMENTE + BEITRITTSFORMULARE + HALLENPROJEKT
 
     print("Vereinsdokumente nach site/assets/dokumente/")
     print("%d Dateien%s\n" % (len(eintraege), ", alle neu" if alle else ""))

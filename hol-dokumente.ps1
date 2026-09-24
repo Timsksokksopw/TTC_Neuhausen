@@ -29,6 +29,9 @@ $dateien = @(
   @{ name = 'beitritt-aktiv.pdf'; url = 'https://www.ttc-neuhausen.ch/wp-content/uploads/2025/10/Beitrittserklaerungen-Aktiv.pdf' }
   @{ name = 'beitritt-damenverein.pdf'; url = 'https://www.ttc-neuhausen.ch/wp-content/uploads/2025/10/Beitrittserklaerungen-Damenverein.pdf' }
   @{ name = 'beitritt-passive.pdf'; url = 'https://www.ttc-neuhausen.ch/wp-content/uploads/2025/10/Beitrittserklaerungen-Passive.pdf' }
+  @{ name = 'hallensportzentrum-flyer.pdf'; url = 'https://www.ttc-neuhausen.ch/wp-content/uploads/2026/04/Flyer_Erweiterung_Hallensportzentrum-1.pdf' }
+  @{ name = 'hallensportzentrum-medienmitteilung.pdf'; url = 'https://www.ttc-neuhausen.ch/wp-content/uploads/2026/04/MM-Ausbauprojekt-1.pdf' }
+  @{ name = 'hallensportzentrum-baustein.pdf'; url = 'https://www.ttc-neuhausen.ch/wp-content/uploads/2026/04/Flyer-Baustein-2026_compressed.pdf' }
 )
 
 Write-Host "Vereinsdokumente nach site\assets\dokumente\"

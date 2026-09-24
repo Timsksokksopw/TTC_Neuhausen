@@ -1,19 +1,17 @@
 <!doctype html>
-<html lang="de">
+<!-- Erzeugt von build.py – nicht hier ändern.
+     Inhalt: inhalt/impressum.html · Rahmen: vorlage/layout.html · Menü: vorlage/seiten.py
+     Bilder und Dokumente unter site/assets/ werden nicht erzeugt:
+     Datei mit gleichem Namen ersetzen genügt. -->
+<html lang="de-CH">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Setzt die Klasse, bevor CSS greift. Nur wenn sie da ist, werden
-     .reveal-Elemente versteckt — ohne JavaScript bleibt alles sichtbar. -->
-<script>document.documentElement.className += " js";</script>
-
+<script>document.documentElement.classList.add("js")</script>
 <title>Impressum – TTC Neuhausen</title>
 <meta name="description" content="Impressum des Tischtennisclubs Neuhausen.">
 <link rel="canonical" href="https://www.ttc-neuhausen.ch/impressum.html">
-<meta name="theme-color" content="#0A111D">
-
-<!-- Vorschau beim Teilen: WhatsApp, Instagram, Facebook, LinkedIn. -->
+<meta name="theme-color" content="#F3F0E8">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TTC Neuhausen">
 <meta property="og:locale" content="de_CH">
@@ -23,19 +21,15 @@
 <meta property="og:image" content="https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="TTC Neuhausen — Tischtennis für alle, seit 1975">
 <meta name="twitter:card" content="summary_large_image">
-
 <link rel="icon" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,88..112,400..800;1,88..112,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/sofia-sans-xc.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/komponenten.css">
 <link rel="stylesheet" href="assets/css/seiten.css">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -47,22 +41,17 @@
   "image": "https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg",
   "foundingDate": "1975",
   "sport": "Tischtennis",
-  "areaServed": "Schaffhausen, Neuhausen",
-  "sameAs": [
-    "https://www.instagram.com/ttcneuhausen/",
-    "https://www.facebook.com/ttcnh/"
-  ]
+  "sameAs": ["https://www.instagram.com/ttcneuhausen/", "https://www.facebook.com/ttcnh/"]
 }
 </script>
 </head>
-<body>
+<body class="seite-impressum">
+<a class="skip-link" href="#inhalt">Zum Inhalt</a>
 
-<a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
-
-<header class="kopf sektion--dunkel">
+<header class="kopf" data-kopf>
   <div class="wrap kopf__innen">
-    <a class="kopf__logo logo" href="index.html" aria-label="Startseite TTC Neuhausen">
-      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377" role="img" aria-label="TTC Neuhausen"><title>TTC Neuhausen</title><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
+    <a class="kopf__marke" href="index.html">
+      <svg class="kopf__signet" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377"><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
 -31 -73 -67 -291 -54 -327 3 -7 9 -52 14 -99 8 -73 15 -94 42 -132 27 -39 33
 -58 39 -126 5 -58 15 -95 34 -132 14 -28 26 -60 26 -70 0 -23 27 -79 38 -79 4
 0 18 -10 32 -23 23 -21 25 -29 22 -100 l-4 -77 -36 -19 c-20 -10 -71 -28 -112
@@ -117,10 +106,9 @@
 45 -163 93 -258 110 -66 12 -312 13 -394 1z M8473 8281 c-87 -22 -159 -130 -151 -226 6 -67 46 -137 100 -173 36
 -23 51 -27 117 -27 70 0 80 3 125 34 166 115 99 380 -101 396 -32 2 -73 0 -90
 -4z"/></g></svg>
-      <span class="kopf__name">TTC Neuhausen</span>
+      <span class="kopf__name">TTC Neuhausen <span>Tischtennis seit 1975</span></span>
     </a>
-
-    <nav class="nav" id="hauptnavigation" aria-label="Hauptnavigation" data-offen="false">
+    <nav class="nav" id="navigation" aria-label="Hauptnavigation">
       <ul class="nav__liste">
         <li class="nav__punkt">
           <a class="nav__link" href="verein.html">Verein</a>
@@ -128,19 +116,19 @@
             <li><a href="verein.html">Über den Verein</a></li>
             <li><a href="verein-vorstand.html">Vorstand</a></li>
             <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+            <li><a href="verein-geschichte.html">Geschichte</a></li>
             <li><a href="verein-jahresprogramm.html">Jahresprogramm</a></li>
             <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
             <li><a href="verein-helfereinsatz.html">Helfereinsatz</a></li>
             <li><a href="verein-downloads.html">Downloads</a></li>
-            <li><a href="verein-geschichte.html">Geschichte</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="training.html">Training</a>
           <ul class="nav__unter">
             <li><a href="training.html">Trainingszeiten</a></li>
+            <li><a href="training-schnupperpass.html">Schnuppern &amp; Schnupperpass</a></li>
             <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
-            <li><a href="training-schnupperpass.html">Schnupperpass</a></li>
             <li><a href="training-breitensport.html">Breitensport</a></li>
             <li><a href="training-senioren.html">Senioren &amp; PingPongParkinson</a></li>
             <li><a href="training-einzeltraining.html">Einzeltraining</a></li>
@@ -157,157 +145,157 @@
             <li><a href="hallen.html">Übersicht</a></li>
             <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
             <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-            <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
+            <li><a href="hallen-neue-halle.html">Hallensportzentrum</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="news.html">News</a>
         </li>
       </ul>
+      <p class="nav__fuss">
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a>
+      </p>
     </nav>
-
-    <a class="btn btn--klein" href="verein-mitglied-werden.html">Schnuppern</a>
-
-    <button class="menu-knopf" type="button" aria-label="Menü öffnen"
-            aria-controls="hauptnavigation" aria-expanded="false">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M3 6h18M3 12h18M3 18h18"/>
-      </svg>
+    <a class="knopf knopf--orange kopf__aktion" href="training-schnupperpass.html">Schnuppern</a>
+    <button class="kopf__menue" type="button" aria-expanded="false" aria-controls="navigation">
+      <span class="kopf__menue-striche" aria-hidden="true"></span><span class="kopf__menue-text">Menü</span>
     </button>
   </div>
 </header>
 
 <main id="inhalt">
-<section class="seitenkopf sektion--dunkel">
-  <div class="wrap">
-    <ul class="brotkrumen"><li><a href="index.html">Start</a></li><li>Impressum</li></ul>
-    <h1>Impressum</h1>
-    <p class="seitenkopf__lead">Angaben zum Betreiber dieser Website.</p>
+<header class="aufmacher aufmacher--schmal">
+  <div class="wrap aufmacher__raster">
+    <div class="aufmacher__text">
+      <nav class="brotkrumen" aria-label="Brotkrumen"><a href="index.html">Start</a><span aria-current="page">Impressum</span></nav>
+      <p class="rubrik">Rechtliches</p>
+      <h1>Impressum</h1>
+      <p class="lead">Wer hinter dieser Website steht.</p>
+    </div>
   </div>
-</section>
+</header>
 
-<section class="sektion--hell">
-  <div class="wrap">
-    <div class="rechtstext">
-      <p class="hinweis"><strong>Vom Verein freizugeben.</strong> Die bisherige Website
-        hatte kein Impressum. Offen ist nur noch, ob der Verein im Handelsregister
-        eingetragen ist — falls ja, gehört die UID unter «Rechtsform». Dieser Text ist
-        keine Rechtsberatung.</p>
-
+<!-- VOR DEM AUFSCHALTEN vom Verein freigeben lassen. Die bisherige Website
+     hatte kein Impressum. Offen ist nur, ob der Verein im Handelsregister
+     eingetragen ist – falls ja, gehört die UID unter «Rechtsform». Solange
+     das nicht geklärt ist, steht hier keine Nummer: eine geratene wäre
+     schlimmer als gar keine. Dieser Text ist keine Rechtsberatung. -->
+<section class="flaeche--weiss">
+  <div class="wrap rechtstext">
+    <div class="rechtstext__block">
       <h2>Verantwortlich für den Inhalt</h2>
-      <p>Tischtennisclub Neuhausen<br>
-        8200 Schaffhausen<br>
-        Schweiz</p>
-      <p class="leise" style="font-size:var(--grad-sm)">Der Verein hat an dieser Adresse
-        keine Strassenadresse; die Post erreicht ihn über Ort und Postleitzahl. Die Hallen
-        liegen an der Ebnatstrasse 35 in Schaffhausen und an der Rheingoldstrasse 11 in
-        Neuhausen.</p>
+      <p>Tischtennisclub Neuhausen<br>8200 Schaffhausen<br>Schweiz</p>
+      <p>E-Mail: <a href="mailto:info@ttc-neuhausen.ch">info@ttc-neuhausen.ch</a></p>
+      <p class="klein">Trainiert wird im TTZ Ebnat, Ebnatstrasse 35, 8200 Schaffhausen, und in der Rhyfallhalle,
+        Rheingoldstrasse 11, 8212 Neuhausen am Rheinfall.</p>
+    </div>
 
-      <h2>Kontakt</h2>
-      <p>E-Mail: <a href="mailto:info@ttc-neuhausen.ch">info@ttc-neuhausen.ch</a><br>
-        Website: www.ttc-neuhausen.ch</p>
-
-      <!-- Ein Verein ohne kaufmännischen Betrieb muss sich nicht ins
-           Handelsregister eintragen; viele tun es trotzdem. Solange das
-           nicht geklärt ist, steht hier keine Nummer — eine geratene
-           wäre schlimmer als gar keine, und eine fehlende ist der
-           Normalfall. -->
+    <div class="rechtstext__block">
       <h2>Rechtsform</h2>
-      <p>Verein nach Art. 60 ff. ZGB, gegründet 1975.<br>
-        Vereinsnummer bei Swiss Table Tennis: 70086</p>
+      <p>Verein nach Art. 60 ff. ZGB, gegründet 1975.<br>Vereinsnummer bei Swiss Table Tennis: 70086</p>
+    </div>
 
-      <h2>Vertretungsberechtigte Personen</h2>
-      <p>Zeichnungsberechtigt sind die Mitglieder des Vorstands. Der erweiterte Vorstand
-        ist davon ausgenommen. Wer dem Vorstand angehört, steht auf der Seite
-        <a href="verein-vorstand.html">Vorstand</a>.</p>
+    <div class="rechtstext__block">
+      <h2>Vertretung</h2>
+      <p>Zeichnungsberechtigt sind die Mitglieder des Vorstands; der erweiterte Vorstand ist davon ausgenommen. Wer dem
+        Vorstand angehört, steht auf der Seite <a href="verein-vorstand.html">Vorstand</a>.</p>
+    </div>
 
-      <!-- Übernommen vom Impressum auf wendico.ch, Stand 14. September 2026.
-           Trotzdem gegenlesen — es sind eure eigenen Angaben. -->
+    <!-- Übernommen vom Impressum auf wendico.ch, Stand 14. September 2026. -->
+    <div class="rechtstext__block">
       <h2>Gestaltung und Umsetzung</h2>
-      <p>WENDICO KLG<br>
-        Im Hofacker 3<br>
-        8478 Thalheim an der Thur<br>
-        Schweiz</p>
+      <p>WENDICO KLG<br>Im Hofacker 3<br>8478 Thalheim an der Thur<br>Schweiz</p>
       <p>E-Mail: <a href="mailto:info@wendico.ch">info@wendico.ch</a><br>
-        Website: <a href="https://wendico.ch/" target="_blank" rel="noopener">wendico.ch</a><br>
+        Website: <a href="https://wendico.ch/" rel="noopener">wendico.ch</a><br>
         UID: CHE-298.049.775</p>
+    </div>
 
-      <h2>Bildnachweise</h2>
-      <p>Die Archivbilder stammen aus dem Vereinsarchiv; die Rechte liegen beim Verein.
-        Neuere Aufnahmen mit freundlicher Genehmigung von Pascal Oesch. Weitere Bilder von
-        Andrii Lukatskyi, René Zwald, Nora Grütter / magyarpictures.ch, Ranil Jayanetti und
-        dem Stadtarchiv Schaffhausen; die Zuordnung zu den einzelnen Bildern wird ergänzt,
-        sobald die Fotos eingesetzt sind.</p>
+    <div class="rechtstext__block">
+      <h2>Bilder</h2>
+      <p>Die Archivbilder stammen aus dem Vereinsarchiv; die Rechte liegen beim Verein. Neuere Aufnahmen mit freundlicher
+        Genehmigung von Pascal Oesch. Weitere Bilder von Andrii Lukatskyi, René Zwald, Nora Grütter / magyarpictures.ch,
+        Ranil Jayanetti und dem Stadtarchiv Schaffhausen. Wo bekannt, steht der Name direkt beim Bild.</p>
+    </div>
 
+    <div class="rechtstext__block">
+      <h2>Schriften</h2>
+      <p>Sofia Sans Extra Condensed, Schibsted Grotesk und Newsreader, alle unter der SIL Open Font License 1.1. Sie liegen
+        auf demselben Server wie die Website.</p>
+    </div>
+
+    <div class="rechtstext__block">
       <h2>Haftung für Inhalte</h2>
-      <p>Die Inhalte dieser Website werden mit Sorgfalt erstellt. Für Richtigkeit,
-        Vollständigkeit und Aktualität wird keine Gewähr übernommen.</p>
+      <p>Die Inhalte dieser Website werden mit Sorgfalt erstellt. Für Richtigkeit, Vollständigkeit und Aktualität wird keine
+        Gewähr übernommen.</p>
+    </div>
 
+    <div class="rechtstext__block">
       <h2>Haftung für Links</h2>
-      <p>Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte kein
-        Einfluss besteht. Für diese Inhalte ist jeweils der Anbieter der verlinkten Seite
-        verantwortlich.</p>
+      <p>Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte kein Einfluss besteht. Für diese Inhalte
+        ist jeweils der Anbieter der verlinkten Seite verantwortlich.</p>
+    </div>
 
+    <div class="rechtstext__block">
       <h2>Urheberrecht</h2>
-      <p>Die auf dieser Website veröffentlichten Inhalte unterliegen dem schweizerischen
-        Urheberrecht. Eine Vervielfältigung oder Verwendung ausserhalb der gesetzlich
-        erlaubten Fälle bedarf der vorherigen schriftlichen Zustimmung.</p>
+      <p>Die auf dieser Website veröffentlichten Inhalte unterliegen dem schweizerischen Urheberrecht. Eine Vervielfältigung
+        oder Verwendung ausserhalb der gesetzlich erlaubten Fälle bedarf der vorherigen schriftlichen Zustimmung.</p>
     </div>
   </div>
 </section>
 
 </main>
 
-<footer class="fuss sektion--dunkel">
+<footer class="fuss flaeche--nacht">
   <div class="wrap">
+    <div class="fuss__oben">
+      <img class="fuss__logo" src="assets/img/logo-weiss.svg" width="1459" height="352" alt="Tischtennisclub Neuhausen">
+      <p class="fuss__satz">Tischtennis von 7 bis 85, seit 1975. In der Rhyfallhalle Neuhausen und im Tischtenniszentrum Ebnat.</p>
+      <a class="knopf knopf--orange" href="training-schnupperpass.html">Schnuppertraining</a>
+    </div>
     <div class="fuss__raster">
-      <div class="fuss__logo">
-        <img src="assets/img/logo-weiss.svg" width="1459" height="352"
-             alt="Tischtennisclub Neuhausen">
-        <p class="leise" style="font-size:var(--grad-sm);max-width:34ch">
-          Gegründet 1975. Training in der Rhyfallhalle Neuhausen und im
-          Tischtenniszentrum Ebnat in Schaffhausen.
-        </p>
-      </div>
       <div>
-        <h4>Verein</h4>
+        <h2 class="fuss__titel">Verein</h2>
         <ul>
           <li><a href="verein.html">Über den Verein</a></li>
           <li><a href="verein-vorstand.html">Vorstand</a></li>
           <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+          <li><a href="verein-geschichte.html">Geschichte</a></li>
           <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Hallen</h4>
-        <ul>
-          <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
-          <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-          <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Kontakt</h4>
-        <ul>
-          <li><a href="kontakt.html">Kontakt</a></li>
           <li><a href="partner.html">Für Partner</a></li>
-          <li><a href="https://www.instagram.com/ttcneuhausen/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.facebook.com/ttcnh/" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Training</h2>
+        <ul>
+          <li><a href="training.html">Trainingszeiten</a></li>
+          <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
+          <li><a href="training-breitensport.html">Breitensport</a></li>
+          <li><a href="training-senioren.html">Senioren</a></li>
+          <li><a href="teams.html">Teams</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Hallen</h2>
+        <p><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a><br>Rheingoldstrasse 11<br>8212 Neuhausen am Rheinfall</p>
+        <p><a href="hallen-ttz-ebnat.html">Tischtenniszentrum Ebnat</a><br>Ebnatstrasse 35<br>8200 Schaffhausen</p>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Kontakt</h2>
+        <p><a href="mailto:info@ttc-neuhausen.ch">info@ttc-neuhausen.ch</a><br>
+          <a href="mailto:trainer@ttc-neuhausen.ch">trainer@ttc-neuhausen.ch</a></p>
+        <p><a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a><br>
+          <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a></p>
       </div>
     </div>
-    <div class="fuss__klein">
-      <span>&copy; <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
-      <span>
-        <a href="impressum.html">Impressum</a> &nbsp;·&nbsp;
-        <a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp;
-        Gestaltung und Umsetzung: Wendico
-      </span>
+    <div class="fuss__unten">
+      <span>© <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Gestaltung und Umsetzung: Wendico</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

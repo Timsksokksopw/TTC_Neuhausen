@@ -1,41 +1,35 @@
 <!doctype html>
-<html lang="de">
+<!-- Erzeugt von build.py – nicht hier ändern.
+     Inhalt: inhalt/partner.html · Rahmen: vorlage/layout.html · Menü: vorlage/seiten.py
+     Bilder und Dokumente unter site/assets/ werden nicht erzeugt:
+     Datei mit gleichem Namen ersetzen genügt. -->
+<html lang="de-CH">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Setzt die Klasse, bevor CSS greift. Nur wenn sie da ist, werden
-     .reveal-Elemente versteckt — ohne JavaScript bleibt alles sichtbar. -->
-<script>document.documentElement.className += " js";</script>
-
+<script>document.documentElement.classList.add("js")</script>
 <title>Für Partner – TTC Neuhausen</title>
-<meta name="description" content="Sponsoring, Firmenevents und Hallenmiete beim TTC Neuhausen. Unsere Partner und was sie ermöglichen.">
+<meta name="description" content="Sponsoring, Firmenanlässe im TTZ Ebnat und die Partner des TTC Neuhausen.">
 <link rel="canonical" href="https://www.ttc-neuhausen.ch/partner.html">
-<meta name="theme-color" content="#0A111D">
-
-<!-- Vorschau beim Teilen: WhatsApp, Instagram, Facebook, LinkedIn. -->
+<meta name="theme-color" content="#F3F0E8">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TTC Neuhausen">
 <meta property="og:locale" content="de_CH">
 <meta property="og:title" content="Für Partner – TTC Neuhausen">
-<meta property="og:description" content="Sponsoring, Firmenevents und Hallenmiete beim TTC Neuhausen. Unsere Partner und was sie ermöglichen.">
+<meta property="og:description" content="Sponsoring, Firmenanlässe im TTZ Ebnat und die Partner des TTC Neuhausen.">
 <meta property="og:url" content="https://www.ttc-neuhausen.ch/partner.html">
 <meta property="og:image" content="https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="TTC Neuhausen — Tischtennis für alle, seit 1975">
 <meta name="twitter:card" content="summary_large_image">
-
 <link rel="icon" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,88..112,400..800;1,88..112,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/sofia-sans-xc.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/komponenten.css">
 <link rel="stylesheet" href="assets/css/seiten.css">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -47,22 +41,17 @@
   "image": "https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg",
   "foundingDate": "1975",
   "sport": "Tischtennis",
-  "areaServed": "Schaffhausen, Neuhausen",
-  "sameAs": [
-    "https://www.instagram.com/ttcneuhausen/",
-    "https://www.facebook.com/ttcnh/"
-  ]
+  "sameAs": ["https://www.instagram.com/ttcneuhausen/", "https://www.facebook.com/ttcnh/"]
 }
 </script>
 </head>
-<body>
+<body class="seite-partner">
+<a class="skip-link" href="#inhalt">Zum Inhalt</a>
 
-<a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
-
-<header class="kopf sektion--dunkel">
+<header class="kopf" data-kopf>
   <div class="wrap kopf__innen">
-    <a class="kopf__logo logo" href="index.html" aria-label="Startseite TTC Neuhausen">
-      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377" role="img" aria-label="TTC Neuhausen"><title>TTC Neuhausen</title><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
+    <a class="kopf__marke" href="index.html">
+      <svg class="kopf__signet" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377"><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
 -31 -73 -67 -291 -54 -327 3 -7 9 -52 14 -99 8 -73 15 -94 42 -132 27 -39 33
 -58 39 -126 5 -58 15 -95 34 -132 14 -28 26 -60 26 -70 0 -23 27 -79 38 -79 4
 0 18 -10 32 -23 23 -21 25 -29 22 -100 l-4 -77 -36 -19 c-20 -10 -71 -28 -112
@@ -117,10 +106,9 @@
 45 -163 93 -258 110 -66 12 -312 13 -394 1z M8473 8281 c-87 -22 -159 -130 -151 -226 6 -67 46 -137 100 -173 36
 -23 51 -27 117 -27 70 0 80 3 125 34 166 115 99 380 -101 396 -32 2 -73 0 -90
 -4z"/></g></svg>
-      <span class="kopf__name">TTC Neuhausen</span>
+      <span class="kopf__name">TTC Neuhausen <span>Tischtennis seit 1975</span></span>
     </a>
-
-    <nav class="nav" id="hauptnavigation" aria-label="Hauptnavigation" data-offen="false">
+    <nav class="nav" id="navigation" aria-label="Hauptnavigation">
       <ul class="nav__liste">
         <li class="nav__punkt">
           <a class="nav__link" href="verein.html">Verein</a>
@@ -128,19 +116,19 @@
             <li><a href="verein.html">Über den Verein</a></li>
             <li><a href="verein-vorstand.html">Vorstand</a></li>
             <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+            <li><a href="verein-geschichte.html">Geschichte</a></li>
             <li><a href="verein-jahresprogramm.html">Jahresprogramm</a></li>
             <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
             <li><a href="verein-helfereinsatz.html">Helfereinsatz</a></li>
             <li><a href="verein-downloads.html">Downloads</a></li>
-            <li><a href="verein-geschichte.html">Geschichte</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="training.html">Training</a>
           <ul class="nav__unter">
             <li><a href="training.html">Trainingszeiten</a></li>
+            <li><a href="training-schnupperpass.html">Schnuppern &amp; Schnupperpass</a></li>
             <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
-            <li><a href="training-schnupperpass.html">Schnupperpass</a></li>
             <li><a href="training-breitensport.html">Breitensport</a></li>
             <li><a href="training-senioren.html">Senioren &amp; PingPongParkinson</a></li>
             <li><a href="training-einzeltraining.html">Einzeltraining</a></li>
@@ -157,159 +145,215 @@
             <li><a href="hallen.html">Übersicht</a></li>
             <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
             <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-            <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
+            <li><a href="hallen-neue-halle.html">Hallensportzentrum</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="news.html">News</a>
         </li>
       </ul>
+      <p class="nav__fuss">
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a>
+      </p>
     </nav>
-
-    <a class="btn btn--klein" href="verein-mitglied-werden.html">Schnuppern</a>
-
-    <button class="menu-knopf" type="button" aria-label="Menü öffnen"
-            aria-controls="hauptnavigation" aria-expanded="false">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M3 6h18M3 12h18M3 18h18"/>
-      </svg>
+    <a class="knopf knopf--orange kopf__aktion" href="training-schnupperpass.html">Schnuppern</a>
+    <button class="kopf__menue" type="button" aria-expanded="false" aria-controls="navigation">
+      <span class="kopf__menue-striche" aria-hidden="true"></span><span class="kopf__menue-text">Menü</span>
     </button>
   </div>
 </header>
 
 <main id="inhalt">
-<section class="seitenkopf sektion--dunkel">
-  <div class="wrap">
-    <ul class="brotkrumen"><li><a href="index.html">Start</a></li><li>Für Partner</li></ul>
-    <h1>Für Partner</h1>
-    <p class="seitenkopf__lead">Sponsoring, Firmenanlässe und Hallenmiete. Was der Verein bietet — und was 22 Partner bereits ermöglichen.</p>
+<header class="aufmacher aufmacher--breit">
+  <div class="wrap aufmacher__raster">
+    <div class="aufmacher__text">
+      <nav class="brotkrumen" aria-label="Brotkrumen"><a href="index.html">Start</a><span aria-current="page">Partner</span></nav>
+      <p class="rubrik">Für Partner</p>
+      <h1>Partner</h1>
+      <p class="lead">22 Unternehmen aus der Region stehen hinter dem TTC Neuhausen. Ihre Unterstützung ermöglicht
+        ein professionelles Umfeld: eine eigene Tischtennishalle und zwei festangestellte Trainer.</p>
+      <div class="knoepfe">
+        <a class="knopf knopf--orange" href="mailto:sponsoring@ttc-neuhausen.ch">Sponsoring anfragen <span class="pfeil" aria-hidden="true"></span></a>
+        <a class="knopf knopf--rahmen" href="#anlass">Firmenanlass im TTZ</a>
+      </div>
+    </div>
+    <figure class="aufmacher__bild bild bild--panorama">
+      <img src="assets/img/fotos/ttz-ebnat.jpg" alt="Die Halle im TTZ Ebnat, an den Wänden die Werbetafeln der Partner"
+           width="1600" height="1200" fetchpriority="high" style="object-position: 50% 38%">
+      <figcaption>Im TTZ Ebnat hängen die Tafeln der Partner an der Wand – bei jedem Training im Blick.</figcaption>
+    </figure>
   </div>
-</section>
+</header>
 
-<section class="sektion--hell">
-  <div class="wrap">
-    <div class="split">
-      <div>
-        <h2>Warum Sponsoring beim TTCN wirkt</h2>
-        <p class="leise">Tischtennis gehört in der Schweiz nicht zu den medial breit
-          vertretenen Sportarten. Dennoch beläuft sich der Wert der jährlichen regionalen
-          Berichterstattung in den Printmedien auf geschätzte rund CHF 100'000 — das
-          entspricht drei Vierteln des Vereinsbudgets.</p>
-        <p class="leise">Die finanzielle Unterstützung ermöglicht ein professionelles Umfeld
-          mit einer eigenen Tischtennishalle und zwei festangestellten Trainern. Dazu kommen
-          unzählige Arbeitsstunden von Freiwilligen.</p>
-        <div class="btn-reihe">
-          <a class="btn" href="mailto:sponsoring@ttc-neuhausen.ch">Sponsoring anfragen</a>
-        </div>
-      </div>
-      <div>
-        <h2>Anlässe im TTZ Ebnat</h2>
-        <p class="leise">Suchen Sie eine Idee für den nächsten Mitarbeiteranlass, für Kunden
-          oder für eine Geburtstagsfeier? Wir organisieren im Tischtenniszentrum Ebnat ein
-          Plauschturnier — auf Wunsch mit Apéro, Snacks und gemütlichem Hock.</p>
-        <div class="btn-reihe">
-          <a class="btn btn--leise" href="mailto:praesidium@ttc-neuhausen.ch">Anlass anfragen</a>
-          <a class="btn btn--leise" href="verein-downloads.html">Hallentarife</a>
-        </div>
-      </div>
+<section class="flaeche--nacht">
+  <div class="wrap raster zweispalter">
+    <div class="zweispalter__links">
+      <p class="rubrik">Medienwert</p>
+      <p class="grosszahl">CHF 100'000</p>
+      <p>So viel ist die regionale Berichterstattung in den Printmedien über den TTC Neuhausen geschätzt wert – jedes Jahr.
+        Das entspricht drei Vierteln des Vereinsbudgets.</p>
+    </div>
+    <div class="zweispalter__rechts">
+      <p>Tischtennis gehört in der Schweiz nicht zu den medial breit vertretenen Sportarten. Der TTC Neuhausen ist
+        dank seiner kontinuierlichen und erfolgreichen Nachwuchsarbeit trotzdem in den Blickpunkt der Schweizer
+        Tischtennisszene gerückt.</p>
+      <p>Seine jungen Spielerinnen und Spieler gehören national zur Spitze, einige haben auch international den Anschluss an
+        die erweiterte europäische Spitze geschafft. Dazu kommen zwei Teams in der Swiss Table Tennis League und siebzehn
+        Schweizer Meistertitel.</p>
     </div>
   </div>
 </section>
 
-<section class="sektion--weiss">
+<section class="flaeche--weiss">
   <div class="wrap">
-    <p class="eyebrow label">Unsere Partner</p>
-    <h2>22 Unternehmen aus der Region</h2>
-
-<div class="ausruester">
-  <p class="ausruester__rolle label">Offizieller Ausrüster</p>
-  <p class="ausruester__name">TT-Store.ch</p>
-  <p class="ausruester__text">Trikots, Hölzer und Beläge für Mitglieder des TTC Neuhausen.</p>
-  <a class="btn btn--klein" href="https://www.tt-store.ch/" target="_blank" rel="noopener">Zum Shop</a>
-</div>
-
-    <div class="sponsoren">
-  <a class="sponsor" href="https://www.klingler-heizung-sanitaer.ch/" target="_blank" rel="noopener"><img src="assets/img/partner/klingler.png" alt="Klingler" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://druckwerk-sh.ch/" target="_blank" rel="noopener"><img src="assets/img/partner/druckwerk.png" alt="Druckwerk" width="480" height="300" loading="lazy" decoding="async"></a>
-  <div class="sponsor">Johnson &amp; Johnson</div>
-  <a class="sponsor" href="https://www.iseli-albrecht.ch/" target="_blank" rel="noopener"><img src="assets/img/partner/iseli-albrecht.png" alt="Iseli und Albrecht" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://sasag.ch/" target="_blank" rel="noopener"><img src="assets/img/partner/sasag.png" alt="sasag" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://www.girsberger-storen.ch/" target="_blank" rel="noopener"><img src="assets/img/partner/girsberger.png" alt="Girsberger Sonnen- und Wetterschutz" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://www.immobag.ch/" target="_blank" rel="noopener"><img src="assets/img/partner/graf-partner.png" alt="Graf und Partner" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://wenger-wirz.ch/" target="_blank" rel="noopener"><img src="assets/img/partner/wenger-wirz.png" alt="Wenger + Wirz" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="http://www.duxmode.com/trio" target="_blank" rel="noopener"><img src="assets/img/partner/dux.png" alt="Dux" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://www.georgfischer.com/de.html" target="_blank" rel="noopener"><img src="assets/img/partner/georg-fischer.png" alt="Georg Fischer" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://www.remondis.ch/de/startseite/" target="_blank" rel="noopener"><img src="assets/img/partner/remondis.png" alt="Remondis" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://www.sauterag.ch/" target="_blank" rel="noopener"><img src="assets/img/partner/sauter.png" alt="Radio TV Sauter" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://shop.falken.ch/" target="_blank" rel="noopener"><img src="assets/img/partner/falken.png" alt="Brauerei Falken" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://volksapotheke.ch/" target="_blank" rel="noopener"><img src="assets/img/partner/volksapotheke.png" alt="Volksapotheke Schaffhausen" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://www.sigareal.ch/" target="_blank" rel="noopener"><img src="assets/img/partner/sig.png" alt="SIG" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://steinemann-sh.ch/metamenu/home/" target="_blank" rel="noopener"><img src="assets/img/partner/steinemann.png" alt="Steinemann" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://www.shpower.ch/" target="_blank" rel="noopener"><img src="assets/img/partner/sh-power.png" alt="SH Power" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://bsb.clientis.ch/de/" target="_blank" rel="noopener"><img src="assets/img/partner/clientis.png" alt="Clientis BS Bank Schaffhausen" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://sulzberger.com/" target="_blank" rel="noopener"><img src="assets/img/partner/reisebuero-sulzberger.png" alt="Reisebüro Sulzberger" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://daniele.shop/" target="_blank" rel="noopener"><img src="assets/img/partner/daniele.png" alt="Daniele Gaumenschmaus" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://schuetzenhaus.ch/" target="_blank" rel="noopener"><img src="assets/img/partner/schuetzenhaus.png" alt="Restaurant zum alten Schützenhaus" width="480" height="300" loading="lazy" decoding="async"></a>
-  <a class="sponsor" href="https://wendico.ch/" target="_blank" rel="noopener"><img src="assets/img/partner/wendico.png" alt="Wendico" width="480" height="300" loading="lazy" decoding="async"></a>
-</div>
-    <p class="hinweis" style="margin-top:32px"><strong>Noch zu ergänzen:</strong> Von
-      Johnson &amp; Johnson fehlen Logo und Adresse. Alle übrigen Kacheln führen auf die
-      Website des Partners.</p>
+    <div class="abschnittskopf">
+      <h2>Was die Unterstützung möglich macht</h2>
+      <p class="lead">Ein professionelles Umfeld – und daneben unzählige Arbeitsstunden von Freiwilligen, ohne die es nicht ginge.</p>
+    </div>
+    <div class="saeulen saeulen--drei">
+      <article>
+        <p class="saeulen__nr">12<small> Tische</small></p>
+        <h3>Eine eigene Halle</h3>
+        <p>Das TTZ Ebnat: zwölf Tische auf einem Boden nur für Tischtennis, für Mitglieder rund um die Uhr offen.</p>
+        <a class="pfeil-link pfeil-link--klein" href="hallen-ttz-ebnat.html">Zum TTZ Ebnat <span class="pfeil" aria-hidden="true"></span></a>
+      </article>
+      <article>
+        <p class="saeulen__nr">2<small> Trainer</small></p>
+        <h3>Festangestellt</h3>
+        <p>Zwei Profis und das Trainerteam begleiten alle, vom Schnuppertraining bis zur Nationalliga.</p>
+        <a class="pfeil-link pfeil-link--klein" href="verein-trainerteam.html">Zum Trainerteam <span class="pfeil" aria-hidden="true"></span></a>
+      </article>
+      <article>
+        <p class="saeulen__nr">14<small> Trainings</small></p>
+        <h3>Jede Woche</h3>
+        <p>An 5 Tagen in zwei Hallen: Nachwuchs, Stützpunkt, Breitensport und Senioren.</p>
+        <a class="pfeil-link pfeil-link--klein" href="training.html">Zum Training <span class="pfeil" aria-hidden="true"></span></a>
+      </article>
+    </div>
   </div>
 </section>
 
+<section class="flaeche--papier">
+  <div class="wrap">
+    <div class="ausruester">
+  <p class="rubrik">Offizieller Ausrüster</p>
+  <p class="ausruester__name">TT-Store.ch</p>
+  <p class="ausruester__text">Ab der Saison 2026/27 rüstet der Schweizer JOOLA-Vertriebspartner den ganzen Verein aus – vom Nachwuchs bis zu den STTL-Teams.</p>
+  <a class="pfeil-link" href="https://www.tt-store.ch/" rel="noopener">Zum Shop<span class="pfeil" aria-hidden="true"></span></a>
+</div>
+    <p class="klein leise">Hinter TT-Store.ch steht Christian Hotz, mehrfacher Schweizer Meister. Der Verein nennt die
+      Partnerschaft einen weiteren wichtigen Schritt in seiner Entwicklung. <a class="lauftext" href="news.html">Zu den News</a></p>
+  </div>
+</section>
+
+<section class="flaeche--blau" id="anlass">
+  <div class="wrap raster zweispalter">
+    <div class="zweispalter__links">
+      <p class="rubrik">Firmenanlass</p>
+      <h2>Ein Plauschturnier im TTZ</h2>
+      <p>Eine Idee für den nächsten Mitarbeiteranlass, einen Abend mit Kundinnen und Kunden oder eine Geburtstagsfeier: Der
+        Verein organisiert im TTZ Ebnat ein Tischtennis-Plauschturnier – auf Wunsch mit Apéro, Snacks und gemütlichem Hock.</p>
+      <div class="knoepfe">
+        <a class="knopf knopf--weiss" href="mailto:praesidium@ttc-neuhausen.ch?subject=Plauschturnier%20im%20TTZ%20Ebnat">Anlass anfragen <span class="pfeil" aria-hidden="true"></span></a>
+      </div>
+    </div>
+    <ul class="weiter zweispalter__rechts">
+      <li><a href="verein-downloads.html"><b>Hallentarife</b><span>Was die Miete des TTZ kostet, Stand Mai 2024.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+      <li><a href="hallen-ttz-ebnat.html"><b>Die Halle</b><span>Zwölf Tische, 400 m², Ebnatstrasse 35.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+      <li><a href="verein-helfereinsatz.html#spenden"><b>Spenden</b><span>Für Privatpersonen: über die Gemeinnützige Stiftung Schweizersbild.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="flaeche--weiss">
+  <div class="wrap">
+    <div class="abschnittskopf abschnittskopf--zeile">
+      <h2>22 Partner</h2>
+      <p class="lead">Der TTC Neuhausen bedankt sich herzlich bei seinen Sponsoren. Ein Klick auf ein Logo führt zum Unternehmen.</p>
+    </div>
+    <ul class="partnerwand">
+  <li><a href="https://www.klingler-heizung-sanitaer.ch/" rel="noopener"><img src="assets/img/partner/klingler.png" alt="Klingler" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://druckwerk-sh.ch/" rel="noopener"><img src="assets/img/partner/druckwerk.png" alt="Druckwerk" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><span><span class="partnerwand__name">Johnson &amp; Johnson</span></span></li>
+  <li><a href="https://www.iseli-albrecht.ch/" rel="noopener"><img src="assets/img/partner/iseli-albrecht.png" alt="Iseli und Albrecht" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://sasag.ch/" rel="noopener"><img src="assets/img/partner/sasag.png" alt="sasag" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://www.girsberger-storen.ch/" rel="noopener"><img src="assets/img/partner/girsberger.png" alt="Girsberger Sonnen- und Wetterschutz" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://www.immobag.ch/" rel="noopener"><img src="assets/img/partner/graf-partner.png" alt="Graf und Partner" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://wenger-wirz.ch/" rel="noopener"><img src="assets/img/partner/wenger-wirz.png" alt="Wenger + Wirz" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="http://www.duxmode.com/trio" rel="noopener"><img src="assets/img/partner/dux.png" alt="Dux" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://www.georgfischer.com/de.html" rel="noopener"><img src="assets/img/partner/georg-fischer.png" alt="Georg Fischer" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://www.remondis.ch/de/startseite/" rel="noopener"><img src="assets/img/partner/remondis.png" alt="Remondis" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://www.sauterag.ch/" rel="noopener"><img src="assets/img/partner/sauter.png" alt="Radio TV Sauter" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://shop.falken.ch/" rel="noopener"><img src="assets/img/partner/falken.png" alt="Brauerei Falken" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://volksapotheke.ch/" rel="noopener"><img src="assets/img/partner/volksapotheke.png" alt="Volksapotheke Schaffhausen" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://www.sigareal.ch/" rel="noopener"><img src="assets/img/partner/sig.png" alt="SIG" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://steinemann-sh.ch/metamenu/home/" rel="noopener"><img src="assets/img/partner/steinemann.png" alt="Steinemann" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://www.shpower.ch/" rel="noopener"><img src="assets/img/partner/sh-power.png" alt="SH Power" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://bsb.clientis.ch/de/" rel="noopener"><img src="assets/img/partner/clientis.png" alt="Clientis BS Bank Schaffhausen" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://sulzberger.com/" rel="noopener"><img src="assets/img/partner/reisebuero-sulzberger.png" alt="Reisebüro Sulzberger" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://daniele.shop/" rel="noopener"><img src="assets/img/partner/daniele.png" alt="Daniele Gaumenschmaus" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://schuetzenhaus.ch/" rel="noopener"><img src="assets/img/partner/schuetzenhaus.png" alt="Restaurant zum alten Schützenhaus" width="480" height="300" loading="lazy" decoding="async"></a></li>
+  <li><a href="https://wendico.ch/" rel="noopener"><img src="assets/img/partner/wendico.png" alt="Wendico" width="480" height="300" loading="lazy" decoding="async"></a></li>
+</ul>
+    <p class="tabelle__notiz abstand-oben">Partner werden? <a class="lauftext" href="mailto:sponsoring@ttc-neuhausen.ch">sponsoring@ttc-neuhausen.ch</a></p>
+  </div>
+</section>
+<!-- Vor dem Aufschalten: Von Johnson & Johnson fehlen in vorlage/sponsoren.py
+     noch Logo und Adresse. Im TTZ hängt eine Tafel «janssen». -->
+
 </main>
 
-<footer class="fuss sektion--dunkel">
+<footer class="fuss flaeche--nacht">
   <div class="wrap">
+    <div class="fuss__oben">
+      <img class="fuss__logo" src="assets/img/logo-weiss.svg" width="1459" height="352" alt="Tischtennisclub Neuhausen">
+      <p class="fuss__satz">Tischtennis von 7 bis 85, seit 1975. In der Rhyfallhalle Neuhausen und im Tischtenniszentrum Ebnat.</p>
+      <a class="knopf knopf--orange" href="training-schnupperpass.html">Schnuppertraining</a>
+    </div>
     <div class="fuss__raster">
-      <div class="fuss__logo">
-        <img src="assets/img/logo-weiss.svg" width="1459" height="352"
-             alt="Tischtennisclub Neuhausen">
-        <p class="leise" style="font-size:var(--grad-sm);max-width:34ch">
-          Gegründet 1975. Training in der Rhyfallhalle Neuhausen und im
-          Tischtenniszentrum Ebnat in Schaffhausen.
-        </p>
-      </div>
       <div>
-        <h4>Verein</h4>
+        <h2 class="fuss__titel">Verein</h2>
         <ul>
           <li><a href="verein.html">Über den Verein</a></li>
           <li><a href="verein-vorstand.html">Vorstand</a></li>
           <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+          <li><a href="verein-geschichte.html">Geschichte</a></li>
           <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Hallen</h4>
-        <ul>
-          <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
-          <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-          <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Kontakt</h4>
-        <ul>
-          <li><a href="kontakt.html">Kontakt</a></li>
           <li><a href="partner.html">Für Partner</a></li>
-          <li><a href="https://www.instagram.com/ttcneuhausen/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.facebook.com/ttcnh/" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Training</h2>
+        <ul>
+          <li><a href="training.html">Trainingszeiten</a></li>
+          <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
+          <li><a href="training-breitensport.html">Breitensport</a></li>
+          <li><a href="training-senioren.html">Senioren</a></li>
+          <li><a href="teams.html">Teams</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Hallen</h2>
+        <p><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a><br>Rheingoldstrasse 11<br>8212 Neuhausen am Rheinfall</p>
+        <p><a href="hallen-ttz-ebnat.html">Tischtenniszentrum Ebnat</a><br>Ebnatstrasse 35<br>8200 Schaffhausen</p>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Kontakt</h2>
+        <p><a href="mailto:info@ttc-neuhausen.ch">info@ttc-neuhausen.ch</a><br>
+          <a href="mailto:trainer@ttc-neuhausen.ch">trainer@ttc-neuhausen.ch</a></p>
+        <p><a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a><br>
+          <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a></p>
       </div>
     </div>
-    <div class="fuss__klein">
-      <span>&copy; <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
-      <span>
-        <a href="impressum.html">Impressum</a> &nbsp;·&nbsp;
-        <a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp;
-        Gestaltung und Umsetzung: Wendico
-      </span>
+    <div class="fuss__unten">
+      <span>© <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Gestaltung und Umsetzung: Wendico</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

@@ -1,41 +1,35 @@
 <!doctype html>
-<html lang="de">
+<!-- Erzeugt von build.py – nicht hier ändern.
+     Inhalt: inhalt/verein-geschichte.html · Rahmen: vorlage/layout.html · Menü: vorlage/seiten.py
+     Bilder und Dokumente unter site/assets/ werden nicht erzeugt:
+     Datei mit gleichem Namen ersetzen genügt. -->
+<html lang="de-CH">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Setzt die Klasse, bevor CSS greift. Nur wenn sie da ist, werden
-     .reveal-Elemente versteckt — ohne JavaScript bleibt alles sichtbar. -->
-<script>document.documentElement.className += " js";</script>
-
+<script>document.documentElement.classList.add("js")</script>
 <title>Geschichte – TTC Neuhausen</title>
-<meta name="description" content="Seit 1975: 14 Jahre Nationalliga A, drei Meistertitel bei den Herren, 14 bei den Damen, eine eigene Halle.">
+<meta name="description" content="Seit 1975: Gründung in Schaffhausen, drei Meistertitel der Herren, vierzehn der Damen und eine Halle in Eigenleistung. Mit Bildern aus dem Vereinsarchiv.">
 <link rel="canonical" href="https://www.ttc-neuhausen.ch/verein-geschichte.html">
-<meta name="theme-color" content="#0A111D">
-
-<!-- Vorschau beim Teilen: WhatsApp, Instagram, Facebook, LinkedIn. -->
+<meta name="theme-color" content="#F3F0E8">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TTC Neuhausen">
 <meta property="og:locale" content="de_CH">
 <meta property="og:title" content="Geschichte – TTC Neuhausen">
-<meta property="og:description" content="Seit 1975: 14 Jahre Nationalliga A, drei Meistertitel bei den Herren, 14 bei den Damen, eine eigene Halle.">
+<meta property="og:description" content="Seit 1975: Gründung in Schaffhausen, drei Meistertitel der Herren, vierzehn der Damen und eine Halle in Eigenleistung. Mit Bildern aus dem Vereinsarchiv.">
 <meta property="og:url" content="https://www.ttc-neuhausen.ch/verein-geschichte.html">
 <meta property="og:image" content="https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="TTC Neuhausen — Tischtennis für alle, seit 1975">
 <meta name="twitter:card" content="summary_large_image">
-
 <link rel="icon" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,88..112,400..800;1,88..112,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/sofia-sans-xc.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/komponenten.css">
 <link rel="stylesheet" href="assets/css/seiten.css">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -47,22 +41,17 @@
   "image": "https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg",
   "foundingDate": "1975",
   "sport": "Tischtennis",
-  "areaServed": "Schaffhausen, Neuhausen",
-  "sameAs": [
-    "https://www.instagram.com/ttcneuhausen/",
-    "https://www.facebook.com/ttcnh/"
-  ]
+  "sameAs": ["https://www.instagram.com/ttcneuhausen/", "https://www.facebook.com/ttcnh/"]
 }
 </script>
 </head>
-<body>
+<body class="seite-verein-geschichte">
+<a class="skip-link" href="#inhalt">Zum Inhalt</a>
 
-<a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
-
-<header class="kopf sektion--dunkel">
+<header class="kopf" data-kopf>
   <div class="wrap kopf__innen">
-    <a class="kopf__logo logo" href="index.html" aria-label="Startseite TTC Neuhausen">
-      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377" role="img" aria-label="TTC Neuhausen"><title>TTC Neuhausen</title><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
+    <a class="kopf__marke" href="index.html">
+      <svg class="kopf__signet" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377"><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
 -31 -73 -67 -291 -54 -327 3 -7 9 -52 14 -99 8 -73 15 -94 42 -132 27 -39 33
 -58 39 -126 5 -58 15 -95 34 -132 14 -28 26 -60 26 -70 0 -23 27 -79 38 -79 4
 0 18 -10 32 -23 23 -21 25 -29 22 -100 l-4 -77 -36 -19 c-20 -10 -71 -28 -112
@@ -117,30 +106,29 @@
 45 -163 93 -258 110 -66 12 -312 13 -394 1z M8473 8281 c-87 -22 -159 -130 -151 -226 6 -67 46 -137 100 -173 36
 -23 51 -27 117 -27 70 0 80 3 125 34 166 115 99 380 -101 396 -32 2 -73 0 -90
 -4z"/></g></svg>
-      <span class="kopf__name">TTC Neuhausen</span>
+      <span class="kopf__name">TTC Neuhausen <span>Tischtennis seit 1975</span></span>
     </a>
-
-    <nav class="nav" id="hauptnavigation" aria-label="Hauptnavigation" data-offen="false">
+    <nav class="nav" id="navigation" aria-label="Hauptnavigation">
       <ul class="nav__liste">
-        <li class="nav__punkt nav__punkt--aktiv">
+        <li class="nav__punkt ist-aktiv">
           <a class="nav__link" href="verein.html">Verein</a>
           <ul class="nav__unter">
             <li><a href="verein.html">Über den Verein</a></li>
             <li><a href="verein-vorstand.html">Vorstand</a></li>
             <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+            <li><a href="verein-geschichte.html" aria-current="page">Geschichte</a></li>
             <li><a href="verein-jahresprogramm.html">Jahresprogramm</a></li>
             <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
             <li><a href="verein-helfereinsatz.html">Helfereinsatz</a></li>
             <li><a href="verein-downloads.html">Downloads</a></li>
-            <li><a href="verein-geschichte.html" aria-current="page">Geschichte</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="training.html">Training</a>
           <ul class="nav__unter">
             <li><a href="training.html">Trainingszeiten</a></li>
+            <li><a href="training-schnupperpass.html">Schnuppern &amp; Schnupperpass</a></li>
             <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
-            <li><a href="training-schnupperpass.html">Schnupperpass</a></li>
             <li><a href="training-breitensport.html">Breitensport</a></li>
             <li><a href="training-senioren.html">Senioren &amp; PingPongParkinson</a></li>
             <li><a href="training-einzeltraining.html">Einzeltraining</a></li>
@@ -157,343 +145,272 @@
             <li><a href="hallen.html">Übersicht</a></li>
             <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
             <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-            <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
+            <li><a href="hallen-neue-halle.html">Hallensportzentrum</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="news.html">News</a>
         </li>
       </ul>
+      <p class="nav__fuss">
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a>
+      </p>
     </nav>
-
-    <a class="btn btn--klein" href="verein-mitglied-werden.html">Schnuppern</a>
-
-    <button class="menu-knopf" type="button" aria-label="Menü öffnen"
-            aria-controls="hauptnavigation" aria-expanded="false">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M3 6h18M3 12h18M3 18h18"/>
-      </svg>
+    <a class="knopf knopf--orange kopf__aktion" href="training-schnupperpass.html">Schnuppern</a>
+    <button class="kopf__menue" type="button" aria-expanded="false" aria-controls="navigation">
+      <span class="kopf__menue-striche" aria-hidden="true"></span><span class="kopf__menue-text">Menü</span>
     </button>
   </div>
 </header>
 
 <main id="inhalt">
-<!-- Der Seitenkopf endet nicht mit einer Kante, sondern mit einem
-     Filmstreifen, der über die volle Breite läuft und rechts aus dem Bild
-     geht. Die schwarzen Filmränder gehen dabei in die dunkle Sektion über,
-     sodass der Streifen im Dunkeln zu schweben scheint — das ist der
-     Auftakt, der sagt, worum es auf dieser Seite geht: nicht um einen
-     Text über die Vereinsgeschichte, sondern um das, was davon übrig ist. -->
-<section class="seitenkopf seitenkopf--archiv sektion--dunkel">
-  <div class="wrap">
-    <ul class="brotkrumen"><li><a href="index.html">Start</a></li><li><a href="verein.html">Verein</a></li><li>Geschichte</li></ul>
-    <h1>Geschichte</h1>
-    <p class="seitenkopf__lead">Seit 1975. Vierzehn Jahre Nationalliga A, drei Meistertitel bei den Herren, vierzehn bei den Damen — und eine Halle, die der Verein selbst gebaut hat.</p>
+<header class="aufmacher aufmacher--archiv">
+  <div class="wrap aufmacher__raster">
+    <div class="aufmacher__text">
+      <nav class="brotkrumen" aria-label="Brotkrumen"><a href="index.html">Start</a><a href="verein.html">Verein</a><span aria-current="page">Geschichte</span></nav>
+      <p class="rubrik">Verein · seit 1975</p>
+      <h1>Geschichte</h1>
+      <p class="lead">Vier Gründer an einem Schaffhauser Gässchen, fünf Tische in einer Schulturnhalle, 15'000 Franken Budget.
+        Fünfzig Jahre später: siebzehn Schweizer Meistertitel und eine Halle, die der Verein selbst ausgebaut hat.</p>
+    </div>
   </div>
-  <div class="seitenkopf__streifen" aria-hidden="true">
-    <img src="assets/img/archiv/streifen-rhyfallhalle-1.jpg" alt=""
-         width="1024" height="364" fetchpriority="high" decoding="async">
+  <div class="aufmacher__streifen" data-tiefe aria-hidden="true">
+    <img src="assets/img/archiv/streifen-rhyfallhalle-1.jpg" alt="" width="1024" height="364" fetchpriority="high">
+    <img src="assets/img/archiv/streifen-meistertitel-1.jpg" alt="" width="1536" height="323">
   </div>
-</section>
+</header>
 
-<section class="sektion--hell">
+<section class="flaeche--weiss">
   <div class="wrap">
-    <p class="eyebrow label">Zeitleiste</p>
-    <h2>Fünfzig Jahre in neun Stationen</h2>
+    <div class="abschnittskopf">
+      <h2>13 Stationen</h2>
+      <p class="lead">Die Zeitleiste folgt der Chronik von Pascal Oesch. Wo es Bilder gibt, führt ein Verweis ins Archiv weiter unten.</p>
+    </div>
     <ol class="zeitleiste">
-  <li>
-    <b>1975</b>
-    <div>
+  <li class="zeitleiste__eintrag">
+    <p class="zeitleiste__jahr">1975</p>
+    <div class="zeitleiste__text">
       <h3>Gründung</h3>
-      <p>Der Tischtennisclub Neuhausen wird gegründet.</p>
+      <p>Am 20. Juni gründen Josef Mandl, Hermann Brunner, Max Muigg und Willi Borovcnik am Rosentalgässchen 15 in Schaffhausen den Verein. Trainiert wird in der Turnhalle des Schulhauses Gemeindewiesen, an höchstens fünf Tischen, mit einem Budget von 15&#x27;000 Franken.</p>
     </div>
   </li>
-  <li>
-    <b>1979</b>
-    <div>
+  <li class="zeitleiste__eintrag">
+    <p class="zeitleiste__jahr">1979</p>
+    <div class="zeitleiste__text">
       <h3>Die Rhyfallhalle wird eröffnet</h3>
-      <p>Für die nächsten gut zwanzig Jahre die Heimat des Vereins — und bis heute eine seiner beiden Hallen.</p>
-      <a class="zeitleiste__spur" href="#archiv-rhyfallhalle">4 Bilder im Archiv</a>
+      <p>Am 31. August beginnt der Spielbetrieb in der neuen Rhyfallhalle. Der TTC wird zum Verein mit der grössten Hallenbelegung – und die Halle für gut zwanzig Jahre seine Heimat.</p>
+      <a class="pfeil-link pfeil-link--klein" href="#archiv-rhyfallhalle">4 Bilder im Archiv<span class="pfeil" aria-hidden="true"></span></a>
     </div>
   </li>
-  <li>
-    <b>1996</b>
-    <div>
+  <li class="zeitleiste__eintrag">
+    <p class="zeitleiste__jahr">1981</p>
+    <div class="zeitleiste__text">
+      <h3>Aufstieg in die Nationalliga C</h3>
+      <p>Mit Martin Singer, Urs Muigg und Ueli Küng. Vier Jahre später folgt die Nationalliga B.</p>
+    </div>
+  </li>
+  <li class="zeitleiste__eintrag">
+    <p class="zeitleiste__jahr">1996</p>
+    <div class="zeitleiste__text">
       <h3>Erster Meistertitel der Herren</h3>
-      <p>Die Herren werden Schweizer Meister. Weitere Titel folgen 1998 und 2000.</p>
-      <a class="zeitleiste__spur" href="#archiv-titel">4 Bilder im Archiv</a>
+      <p>Am 25. Februar gewinnen Giovanni Gentile, Ivan Jecic, Thierry Miller und Martin Singer den Final gegen CTT Meyrin 6:4, vor 350 Zuschauern in Schaffhausen. Das Hinspiel endete 5:5. Weitere Titel folgen 1998 und 2000.</p>
+      <a class="pfeil-link pfeil-link--klein" href="#archiv-titel">4 Bilder im Archiv<span class="pfeil" aria-hidden="true"></span></a>
     </div>
   </li>
-  <li>
-    <b>2001</b>
-    <div>
+  <li class="zeitleiste__eintrag">
+    <p class="zeitleiste__jahr">2001</p>
+    <div class="zeitleiste__text">
       <h3>Bau des TTZ Ebnat</h3>
-      <p>In rund zwölf Monaten Bauzeit entsteht das Tischtenniszentrum, grösstenteils in Eigenleistung.</p>
-      <a class="zeitleiste__spur" href="#archiv-ebnat">11 Bilder im Archiv</a>
+      <p>In rund zwölf Monaten entsteht aus einer leeren Industriehalle das Tischtenniszentrum: 1200 Stunden Freiwilligenarbeit, 80&#x27;000 Franken Investitionen und 26&#x27;000 Franken für Material.</p>
+      <a class="pfeil-link pfeil-link--klein" href="#archiv-ebnat">11 Bilder im Archiv<span class="pfeil" aria-hidden="true"></span></a>
     </div>
   </li>
-  <li>
-    <b>2002</b>
-    <div>
+  <li class="zeitleiste__eintrag">
+    <p class="zeitleiste__jahr">2002</p>
+    <div class="zeitleiste__text">
       <h3>Einzug ins Tischtenniszentrum</h3>
-      <p>Im Frühling 2002 zieht der Verein in die eigene Halle im Ebnat ein.</p>
-      <a class="zeitleiste__spur" href="#archiv-ebnat">11 Bilder im Archiv</a>
+      <p>Im Frühling zieht der Verein ein: 440 Quadratmeter, anfangs acht Tische, 65 Stufen bis zum Eingang.</p>
+      <a class="pfeil-link pfeil-link--klein" href="#archiv-ebnat">11 Bilder im Archiv<span class="pfeil" aria-hidden="true"></span></a>
     </div>
   </li>
-  <li>
-    <b>2005</b>
-    <div>
-      <h3>Beginn der Dominanz bei den Damen</h3>
-      <p>Der erste von vierzehn Meistertiteln. Seither ist das Damenteam das erfolgreichste der Schweiz.</p>
+  <li class="zeitleiste__eintrag">
+    <p class="zeitleiste__jahr">2004</p>
+    <div class="zeitleiste__text">
+      <h3>Die Seniorengruppe</h3>
+      <p>Urs Schärrer senior und Edmondo Valley gründen die Seniorengruppe. Heute spielen dort über fünfzig Aktive.</p>
     </div>
   </li>
-  <li>
-    <b>2015</b>
-    <div>
+  <li class="zeitleiste__eintrag">
+    <p class="zeitleiste__jahr">2005</p>
+    <div class="zeitleiste__text">
+      <h3>Erster Meistertitel der Damen</h3>
+      <p>Am 16. April schlagen Sonja Führer, Monika Führer, Laura Schärrer und Andrea Stepankova im Final Young Stars Zürich 7:3 – als jüngstes Meisterteam der Geschichte, trainiert von Pavel Rehorek. Es ist der erste von vierzehn Titeln.</p>
+    </div>
+  </li>
+  <li class="zeitleiste__eintrag">
+    <p class="zeitleiste__jahr">2011</p>
+    <div class="zeitleiste__text">
+      <h3>Der Titel nach Sätzen</h3>
+      <p>Alle drei Finalspiele gegen Wädenswil enden 5:5. Entschieden wird nach Sätzen, 18:17 für Neuhausen – nach einem dritten Spiel von über zweieinhalb Stunden. Der sechste Titel der Damen.</p>
+    </div>
+  </li>
+  <li class="zeitleiste__eintrag">
+    <p class="zeitleiste__jahr">2015</p>
+    <div class="zeitleiste__text">
       <h3>Abstieg der Herren</h3>
       <p>Nach vierzehn Jahren in der höchsten Spielklasse geht es in die Nationalliga B.</p>
     </div>
   </li>
-  <li>
-    <b>2019</b>
-    <div>
+  <li class="zeitleiste__eintrag">
+    <p class="zeitleiste__jahr">2019</p>
+    <div class="zeitleiste__text">
       <h3>Rückkehr und neuer Boden</h3>
       <p>Die Herren steigen wieder auf. Im TTZ Ebnat wird ein tischtennisspezifischer Taraflex-Belag verlegt.</p>
     </div>
   </li>
-  <li>
-    <b>2025</b>
-    <div>
+  <li class="zeitleiste__eintrag">
+    <p class="zeitleiste__jahr">2025</p>
+    <div class="zeitleiste__text">
       <h3>50 Jahre TTCN</h3>
       <p>Das Jubiläumsjahr mit Feier, Chronik und Archivbildern.</p>
-      <a class="zeitleiste__spur" href="#archiv-jubilaeum">Ein Bild im Archiv</a>
+      <a class="pfeil-link pfeil-link--klein" href="#archiv-jubilaeum">Ein Bild im Archiv<span class="pfeil" aria-hidden="true"></span></a>
+    </div>
+  </li>
+  <li class="zeitleiste__eintrag">
+    <p class="zeitleiste__jahr">2026</p>
+    <div class="zeitleiste__text">
+      <h3>Ja zum Hallensportzentrum</h3>
+      <p>Stadt und Kanton Schaffhausen stimmen dem Ausbau des Hallensportzentrums im Schweizersbild zu, der Kanton mit 73,9 Prozent. Dort soll der Verein ein neues Zuhause finden.</p>
     </div>
   </li>
 </ol>
   </div>
 </section>
 
-<!-- Das Archiv. Dunkel, weil Filmstreifen und Albumblätter ihre eigenen
-     schwarzen und sepiafarbenen Ränder mitbringen: auf Hell stünden sie
-     als Rechtecke herum, auf Dunkel gehen sie in die Fläche über. -->
-<section class="sektion--dunkel archiv">
-  <div class="wrap">
-    <p class="eyebrow label">Aus dem Vereinsarchiv</p>
-    <h2>Was übrig geblieben ist</h2>
-    <p class="archiv__einleitung">Filmstreifen, Albumblätter, ein Matchprogramm.
-      Nichts davon ist zurechtgeschnitten — die Sprossenlöcher, die Bildnummern
-      und die Handschrift auf den Blättern gehören dazu. Ein Klick auf ein
-      Stück zeigt es gross.</p>
+<section class="flaeche--papier2">
+  <div class="wrap raster zweispalter">
+    <div class="zweispalter__links">
+      <div class="abschnittskopf"><h2>Siebzehn Titel</h2></div>
+      <p>Die Herren holten ihre drei Meistertitel in fünf Jahren. Die Damen gewannen ab 2005 vierzehn – und sind damit das
+        erfolgreichste Damenteam der Schweiz. Nebeneinander sieht man, wie sich die Gewichte verschoben haben.</p>
+    </div>
+    <div class="zweispalter__rechts">
+      <div class="titel">
+  <div class="titel__reihe"><p class="titel__zahl">14</p><div><h3>Damen</h3><p>Seit 2005 das erfolgreichste Damenteam der Schweiz.</p><ul class="titel__jahre"><li>2005</li><li>2006</li><li>2007</li><li>2009</li><li>2010</li><li>2011</li><li>2012</li><li>2015</li><li>2016</li><li>2017</li><li>2018</li><li>2019</li><li>2021</li><li>2022</li></ul></div></div>
+  <div class="titel__reihe"><p class="titel__zahl">3</p><div><h3>Herren</h3><p>Drei Titel in fünf Jahren, dazu vierzehn Jahre Nationalliga A.</p><ul class="titel__jahre"><li>1996</li><li>1998</li><li>2000</li></ul></div></div>
+</div>
+    </div>
   </div>
-  <section class="archivkapitel" id="archiv-rhyfallhalle">
-  <header class="archivkapitel__kopf">
-    <h2>In der Rhyfallhalle</h2>
-    <p class="archivkapitel__lead akzent">1979 eröffnet, und für die nächsten gut zwanzig Jahre die Heimat des Vereins. Zwei Kontaktbögen und eine Aufnahme von der Bühne sind davon übrig.</p>
-  </header>
-  <div class="archivraster">
-  <figure class="artefakt artefakt--streifen">
-    <div class="streifenfenster" tabindex="0" role="group" aria-label="Filmstreifen, seitlich scrollbar"><a class="artefakt__flaeche" href="assets/img/archiv/streifen-rhyfallhalle-1.jpg" data-lupe><img src="assets/img/archiv/streifen-rhyfallhalle-1.jpg" alt="Kontaktbogen mit zwölf Aufnahmen auf Ilford HP5-Plus-Film: Spielerinnen und Spieler am Tisch, zwei Personen im Gespräch, zuletzt mehrere Pokale auf einem Tisch." width="1024" height="364" loading="lazy" decoding="async"></a></div>
-    <figcaption>Ein ganzer Film auf einem Bogen — vom ersten Ballwechsel bis zum Pokaltisch. <span class="artefakt__wisch">Seitlich wischen</span></figcaption>
-  </figure>
-  <figure class="artefakt artefakt--streifen">
-    <div class="streifenfenster" tabindex="0" role="group" aria-label="Filmstreifen, seitlich scrollbar"><a class="artefakt__flaeche" href="assets/img/archiv/streifen-rhyfallhalle-2.jpg" data-lupe><img src="assets/img/archiv/streifen-rhyfallhalle-2.jpg" alt="Filmstreifen auf Kodak-Safety-Film: drei Aufnahmen einer vollen Halle mit einer Vorführung auf dem Hallenboden, Publikum auf der Galerie." width="768" height="235" loading="lazy" decoding="async"></a></div>
-    <figcaption>Die Halle voll, der Boden frei — eine Vorführung vor vollen Rängen. <span class="artefakt__wisch">Seitlich wischen</span></figcaption>
-  </figure>
-  <figure class="artefakt artefakt--blatt">
-    <a class="artefakt__flaeche" href="assets/img/archiv/rhyfallhalle-buehne.jpg" data-lupe><img src="assets/img/archiv/rhyfallhalle-buehne.jpg" alt="Schwarzweissaufnahme: eine Kinderschar singt auf einer Bühne, dahinter die Schweizer Fahne zwischen zwei Wappenfahnen, davor sitzendes Publikum." width="580" height="387" loading="lazy" decoding="async"></a>
-    <figcaption>Auf der Bühne, zwischen Schweizer Fahne und Schaffhauser Wappen.</figcaption>
-  </figure>
-  <figure class="artefakt artefakt--blatt ist-klein">
-    <span class="artefakt__flaeche"><img src="assets/img/archiv/frauen-erfolg.jpg" alt="Vier Spielerinnen mit Medaillen um den Hals vor einer Werbewand." width="150" height="121" loading="lazy" decoding="async"></span>
-    <figcaption>Vier Spielerinnen, vier Medaillen.</figcaption>
-  </figure>
+</section>
+
+<section class="flaeche--nacht archiv" id="archiv">
+  <div class="wrap">
+    <p class="rubrik">Aus dem Vereinsarchiv</p>
+    <h2>Was übrig geblieben ist</h2>
+    <p class="archiv__einleitung">Filmstreifen, Albumblätter, ein Matchprogramm. Nichts davon ist zurechtgeschnitten –
+      die Sprossenlöcher, die Bildnummern und die Handschrift auf den Blättern gehören dazu. Ein Klick auf ein Stück zeigt es gross.</p>
+    <section class="archivkapitel" id="archiv-rhyfallhalle">
+  <header class="archivkapitel__kopf"><h3>In der Rhyfallhalle</h3><p>1979 eröffnet, und für die nächsten gut zwanzig Jahre die Heimat des Vereins. Zwei Kontaktbögen und eine Aufnahme von der Bühne sind davon übrig.</p></header>
+  <div class="archivkapitel__stuecke">
+    <figure class="artefakt artefakt--streifen"><div class="streifen" tabindex="0" role="group" aria-label="Filmstreifen, seitlich scrollbar"><a href="assets/img/archiv/streifen-rhyfallhalle-1.jpg" data-lupe><img src="assets/img/archiv/streifen-rhyfallhalle-1.jpg" alt="Kontaktbogen mit zwölf Aufnahmen auf Ilford HP5-Plus-Film: Spielerinnen und Spieler am Tisch, zwei Personen im Gespräch, zuletzt mehrere Pokale auf einem Tisch." width="1024" height="364" loading="lazy" decoding="async"></a></div><figcaption>Ein ganzer Film auf einem Bogen — vom ersten Ballwechsel bis zum Pokaltisch.</figcaption></figure>
+    <figure class="artefakt artefakt--streifen"><div class="streifen" tabindex="0" role="group" aria-label="Filmstreifen, seitlich scrollbar"><a href="assets/img/archiv/streifen-rhyfallhalle-2.jpg" data-lupe><img src="assets/img/archiv/streifen-rhyfallhalle-2.jpg" alt="Filmstreifen auf Kodak-Safety-Film: drei Aufnahmen einer vollen Halle mit einer Vorführung auf dem Hallenboden, Publikum auf der Galerie." width="768" height="235" loading="lazy" decoding="async"></a></div><figcaption>Die Halle voll, der Boden frei — eine Vorführung vor vollen Rängen.</figcaption></figure>
+    <figure class="artefakt artefakt--blatt"><a href="assets/img/archiv/rhyfallhalle-buehne.jpg" data-lupe><img src="assets/img/archiv/rhyfallhalle-buehne.jpg" alt="Schwarzweissaufnahme: eine Kinderschar singt auf einer Bühne, dahinter die Schweizer Fahne zwischen zwei Wappenfahnen, davor sitzendes Publikum." width="580" height="387" loading="lazy" decoding="async"></a><figcaption>Auf der Bühne, zwischen Schweizer Fahne und Schaffhauser Wappen.</figcaption></figure>
+    <figure class="artefakt artefakt--blatt ist-klein"><img src="assets/img/archiv/frauen-erfolg.jpg" alt="Vier Spielerinnen mit Medaillen um den Hals vor einer Werbewand." width="150" height="121" loading="lazy" decoding="async"><figcaption>Vier Spielerinnen, vier Medaillen.</figcaption></figure>
   </div>
 </section>
 <section class="archivkapitel" id="archiv-titel">
-  <header class="archivkapitel__kopf">
-    <h2>Der erste Titel</h2>
-    <p class="archivkapitel__lead akzent">Am 25. Februar 1996 spielte der TTC Neuhausen in der Dreifachhalle Breite gegen CTT Meyrin um den Schweizer Meistertitel. Vom Tag sind drei Filmstreifen geblieben — und der Coupon, mit dem man gratis hineinkam.</p>
-  </header>
-  <div class="archivraster">
-  <figure class="artefakt artefakt--dokument">
-    <a class="artefakt__flaeche" href="assets/img/archiv/dokument-final-1996.jpg" data-lupe><img src="assets/img/archiv/dokument-final-1996.jpg" alt="Matchprogramm: Tischtennis-NLA-Play-Off-Final, TTC Neuhausen gegen CTT Meyrin, Sonntag, 25. Februar 1996, 13.45 Uhr, Dreifachhalle Breite, Schaffhausen. Darüber ein Foto aus der vollen Halle, unten ein Eintrittscoupon des Sponsors Cilag." width="768" height="1024" loading="lazy" decoding="async"></a>
-    <figcaption>«Besuchen Sie dieses Spiel, denn Zuschauer gehören zu unserem Team!» — der Eintrittscoupon zum Play-Off-Final gegen Meyrin.</figcaption>
-  </figure>
-  <figure class="artefakt artefakt--streifen">
-    <div class="streifenfenster" tabindex="0" role="group" aria-label="Filmstreifen, seitlich scrollbar"><a class="artefakt__flaeche" href="assets/img/archiv/streifen-meistertitel-3.jpg" data-lupe><img src="assets/img/archiv/streifen-meistertitel-3.jpg" alt="Filmstreifen mit vier Aufnahmen aus dem Spiel: Spieler am Tisch vor vollen Rängen, ringsum Bandenwerbung von Tibhar und Joola." width="768" height="170" loading="lazy" decoding="async"></a></div>
-    <figcaption>Volle Ränge rund um den Tisch. <span class="artefakt__wisch">Seitlich wischen</span></figcaption>
-  </figure>
-  <figure class="artefakt artefakt--streifen">
-    <div class="streifenfenster" tabindex="0" role="group" aria-label="Filmstreifen, seitlich scrollbar"><a class="artefakt__flaeche" href="assets/img/archiv/streifen-meistertitel-2.jpg" data-lupe><img src="assets/img/archiv/streifen-meistertitel-2.jpg" alt="Filmstreifen: ein Spieler beim Ballwechsel, dann drei Spieler Arm in Arm, dann einer mit geballten Fäusten." width="768" height="195" loading="lazy" decoding="async"></a></div>
-    <figcaption>Der Moment danach. <span class="artefakt__wisch">Seitlich wischen</span></figcaption>
-  </figure>
-  <figure class="artefakt artefakt--streifen">
-    <div class="streifenfenster" tabindex="0" role="group" aria-label="Filmstreifen, seitlich scrollbar"><a class="artefakt__flaeche" href="assets/img/archiv/streifen-meistertitel-1.jpg" data-lupe><img src="assets/img/archiv/streifen-meistertitel-1.jpg" alt="Filmstreifen mit sechs Aufnahmen: Spieler und Betreuer feiern in der Halle, Umarmungen, ein Glas in der Hand, im Hintergrund Werbetafeln." width="1536" height="323" loading="lazy" decoding="async"></a></div>
-    <figcaption>Sechs Bilder vom Feiern, aufgenommen auf einem einzigen Film. <span class="artefakt__wisch">Seitlich wischen</span></figcaption>
-  </figure>
+  <header class="archivkapitel__kopf"><h3>Der erste Titel</h3><p>Am 25. Februar 1996 spielte der TTC Neuhausen in der Dreifachhalle Breite gegen CTT Meyrin um den Schweizer Meistertitel. Vom Tag sind drei Filmstreifen geblieben — und der Coupon, mit dem man gratis hineinkam.</p></header>
+  <div class="archivkapitel__stuecke">
+    <figure class="artefakt artefakt--dokument"><a href="assets/img/archiv/dokument-final-1996.jpg" data-lupe><img src="assets/img/archiv/dokument-final-1996.jpg" alt="Matchprogramm: Tischtennis-NLA-Play-Off-Final, TTC Neuhausen gegen CTT Meyrin, Sonntag, 25. Februar 1996, 13.45 Uhr, Dreifachhalle Breite, Schaffhausen. Darüber ein Foto aus der vollen Halle, unten ein Eintrittscoupon des Sponsors Cilag." width="768" height="1024" loading="lazy" decoding="async"></a><figcaption>«Besuchen Sie dieses Spiel, denn Zuschauer gehören zu unserem Team!» — der Eintrittscoupon zum Play-Off-Final gegen Meyrin.</figcaption></figure>
+    <figure class="artefakt artefakt--streifen"><div class="streifen" tabindex="0" role="group" aria-label="Filmstreifen, seitlich scrollbar"><a href="assets/img/archiv/streifen-meistertitel-3.jpg" data-lupe><img src="assets/img/archiv/streifen-meistertitel-3.jpg" alt="Filmstreifen mit vier Aufnahmen aus dem Spiel: Spieler am Tisch vor vollen Rängen, ringsum Bandenwerbung von Tibhar und Joola." width="768" height="170" loading="lazy" decoding="async"></a></div><figcaption>Volle Ränge rund um den Tisch.</figcaption></figure>
+    <figure class="artefakt artefakt--streifen"><div class="streifen" tabindex="0" role="group" aria-label="Filmstreifen, seitlich scrollbar"><a href="assets/img/archiv/streifen-meistertitel-2.jpg" data-lupe><img src="assets/img/archiv/streifen-meistertitel-2.jpg" alt="Filmstreifen: ein Spieler beim Ballwechsel, dann drei Spieler Arm in Arm, dann einer mit geballten Fäusten." width="768" height="195" loading="lazy" decoding="async"></a></div><figcaption>Der Moment danach.</figcaption></figure>
+    <figure class="artefakt artefakt--streifen"><div class="streifen" tabindex="0" role="group" aria-label="Filmstreifen, seitlich scrollbar"><a href="assets/img/archiv/streifen-meistertitel-1.jpg" data-lupe><img src="assets/img/archiv/streifen-meistertitel-1.jpg" alt="Filmstreifen mit sechs Aufnahmen: Spieler und Betreuer feiern in der Halle, Umarmungen, ein Glas in der Hand, im Hintergrund Werbetafeln." width="1536" height="323" loading="lazy" decoding="async"></a></div><figcaption>Sechs Bilder vom Feiern, aufgenommen auf einem einzigen Film.</figcaption></figure>
   </div>
 </section>
 <section class="archivkapitel" id="archiv-ebnat">
-  <header class="archivkapitel__kopf">
-    <h2>Die Halle, die der Verein selbst gebaut hat</h2>
-    <p class="archivkapitel__lead akzent">Aus einer leeren Industriehalle im Ebnat wurde in rund zwölf Monaten das Tischtenniszentrum — grösstenteils in Eigenleistung. Die Albumblätter zeigen den Weg dahin: leerer Boden, Zementpaletten, Leitern, und am Ende Tische, auf denen gespielt wird.</p>
-  </header>
-  <div class="archivraster">
-  <figure class="artefakt artefakt--blatt">
-    <a class="artefakt__flaeche" href="assets/img/archiv/ebnat-07.jpg" data-lupe><img src="assets/img/archiv/ebnat-07.jpg" alt="Albumblatt mit vier Aufnahmen einer leeren Industriehalle mit Leitern und Werkzeug. Handschriftlich beschriftet mit «Glissahalle» und «Nov./Dez. 01»." width="768" height="572" loading="lazy" decoding="async"></a>
-    <figcaption>«Glissahalle, Nov./Dez. 01» — so stand sie da, bevor es losging.</figcaption>
-  </figure>
-  <figure class="artefakt artefakt--blatt">
-    <a class="artefakt__flaeche" href="assets/img/archiv/ebnat-03.jpg" data-lupe><img src="assets/img/archiv/ebnat-03.jpg" alt="Die leere Halle, der Boden erst zur Hälfte verlegt." width="768" height="549" loading="lazy" decoding="async"></a>
-    <figcaption>Der Boden, halb verlegt.</figcaption>
-  </figure>
-  <figure class="artefakt artefakt--blatt">
-    <a class="artefakt__flaeche" href="assets/img/archiv/ebnat-04.jpg" data-lupe><img src="assets/img/archiv/ebnat-04.jpg" alt="Zwei Aufnahmen übereinander: der Fuss einer Stütze im frisch vergossenen Boden, darunter Stahlrahmen, die auf einer Plane bereitliegen." width="768" height="1008" loading="lazy" decoding="async"></a>
-    <figcaption>Stützenfuss und Stahlrahmen.</figcaption>
-  </figure>
-  <figure class="artefakt artefakt--blatt">
-    <a class="artefakt__flaeche" href="assets/img/archiv/ebnat-02.jpg" data-lupe><img src="assets/img/archiv/ebnat-02.jpg" alt="Ein Mann kniet auf dem Boden und zieht mit der Kelle Masse ab." width="768" height="570" loading="lazy" decoding="async"></a>
-    <figcaption>Mit der Kelle, von Hand.</figcaption>
-  </figure>
-  <figure class="artefakt artefakt--blatt">
-    <a class="artefakt__flaeche" href="assets/img/archiv/ebnat-11.jpg" data-lupe><img src="assets/img/archiv/ebnat-11.jpg" alt="Albumblatt mit vier Aufnahmen: mehrere Personen tragen gemeinsam eine grosse Platte, Paletten mit Zementsäcken, jemand kniet beim Verlegen, zwei Helfer mit Werkzeug am Fenster." width="1023" height="768" loading="lazy" decoding="async"></a>
-    <figcaption>Getragen, gemischt, verlegt — vier Bilder von einem Samstag.</figcaption>
-  </figure>
-  <figure class="artefakt artefakt--blatt">
-    <a class="artefakt__flaeche" href="assets/img/archiv/ebnat-05.jpg" data-lupe><img src="assets/img/archiv/ebnat-05.jpg" alt="Der Rohbau von innen: Ständerwände, eine Werkstattecke, Farbeimer auf dem Boden." width="768" height="566" loading="lazy" decoding="async"></a>
-    <figcaption>Der Rohbau von innen.</figcaption>
-  </figure>
-  <figure class="artefakt artefakt--blatt">
-    <a class="artefakt__flaeche" href="assets/img/archiv/ebnat-06.jpg" data-lupe><img src="assets/img/archiv/ebnat-06.jpg" alt="Ein rundes Waschbecken mit Mehrfachbrause und ein Heizkörper an der Wand." width="768" height="569" loading="lazy" decoding="async"></a>
-    <figcaption>Auch das gehört dazu: die Nasszelle.</figcaption>
-  </figure>
-  <figure class="artefakt artefakt--blatt">
-    <a class="artefakt__flaeche" href="assets/img/archiv/ebnat-01.jpg" data-lupe><img src="assets/img/archiv/ebnat-01.jpg" alt="Ein junger Mann steht lachend hinter einer frisch montierten Theke in der noch unfertigen Halle." width="1024" height="747" loading="lazy" decoding="async"></a>
-    <figcaption>Die Theke steht.</figcaption>
-  </figure>
-  <figure class="artefakt artefakt--blatt">
-    <a class="artefakt__flaeche" href="assets/img/archiv/ebnat-09.jpg" data-lupe><img src="assets/img/archiv/ebnat-09.jpg" alt="Der fertige Aufenthaltsraum mit Tischen und Stühlen, an der Wand ein Banner mit der Aufschrift «25 Jahre TTC Neuhausen»." width="768" height="574" loading="lazy" decoding="async"></a>
-    <figcaption>Der Aufenthaltsraum, fertig eingerichtet.</figcaption>
-  </figure>
-  <figure class="artefakt artefakt--blatt">
-    <a class="artefakt__flaeche" href="assets/img/archiv/ebnat-08.jpg" data-lupe><img src="assets/img/archiv/ebnat-08.jpg" alt="Albumblatt mit vier Aufnahmen: jemand wischt den fertigen Hallenboden, die Tische stehen bereits, an den Banden das Vereinssignet." width="768" height="579" loading="lazy" decoding="async"></a>
-    <figcaption>Aufgestellt, gewischt, bespielbar.</figcaption>
-  </figure>
-  <figure class="artefakt artefakt--blatt">
-    <a class="artefakt__flaeche" href="assets/img/archiv/ebnat-10.jpg" data-lupe><img src="assets/img/archiv/ebnat-10.jpg" alt="Albumblatt mit vier Aufnahmen: Mitglieder sitzen an Tischen im neuen Aufenthaltsraum, daneben die Halle mit Tischen und einem Töggelikasten." width="768" height="574" loading="lazy" decoding="async"></a>
-    <figcaption>Die ersten Abende im neuen Haus.</figcaption>
-  </figure>
+  <header class="archivkapitel__kopf"><h3>Die Halle, die der Verein selbst ausgebaut hat</h3><p>Aus einer leeren Industriehalle im Ebnat wurde in rund zwölf Monaten das Tischtenniszentrum — grösstenteils in Eigenleistung. Die Albumblätter zeigen den Weg dahin: leerer Boden, Zementpaletten, Leitern, und am Ende Tische, auf denen gespielt wird.</p></header>
+  <div class="archivkapitel__stuecke">
+    <figure class="artefakt artefakt--blatt"><a href="assets/img/archiv/ebnat-07.jpg" data-lupe><img src="assets/img/archiv/ebnat-07.jpg" alt="Albumblatt mit vier Aufnahmen einer leeren Industriehalle mit Leitern und Werkzeug. Handschriftlich beschriftet mit «Glissahalle» und «Nov./Dez. 01»." width="768" height="572" loading="lazy" decoding="async"></a><figcaption>«Glissahalle, Nov./Dez. 01» — so stand sie da, bevor es losging.</figcaption></figure>
+    <figure class="artefakt artefakt--blatt"><a href="assets/img/archiv/ebnat-03.jpg" data-lupe><img src="assets/img/archiv/ebnat-03.jpg" alt="Die leere Halle, der Boden erst zur Hälfte verlegt." width="768" height="549" loading="lazy" decoding="async"></a><figcaption>Der Boden, halb verlegt.</figcaption></figure>
+    <figure class="artefakt artefakt--blatt"><a href="assets/img/archiv/ebnat-04.jpg" data-lupe><img src="assets/img/archiv/ebnat-04.jpg" alt="Zwei Aufnahmen übereinander: der Fuss einer Stütze im frisch vergossenen Boden, darunter Stahlrahmen, die auf einer Plane bereitliegen." width="768" height="1008" loading="lazy" decoding="async"></a><figcaption>Stützenfuss und Stahlrahmen.</figcaption></figure>
+    <figure class="artefakt artefakt--blatt"><a href="assets/img/archiv/ebnat-02.jpg" data-lupe><img src="assets/img/archiv/ebnat-02.jpg" alt="Ein Mann kniet auf dem Boden und zieht mit der Kelle Masse ab." width="768" height="570" loading="lazy" decoding="async"></a><figcaption>Mit der Kelle, von Hand.</figcaption></figure>
+    <figure class="artefakt artefakt--blatt"><a href="assets/img/archiv/ebnat-11.jpg" data-lupe><img src="assets/img/archiv/ebnat-11.jpg" alt="Albumblatt mit vier Aufnahmen: mehrere Personen tragen gemeinsam eine grosse Platte, Paletten mit Zementsäcken, jemand kniet beim Verlegen, zwei Helfer mit Werkzeug am Fenster." width="1023" height="768" loading="lazy" decoding="async"></a><figcaption>Getragen, gemischt, verlegt — vier Bilder von einem Samstag.</figcaption></figure>
+    <figure class="artefakt artefakt--blatt"><a href="assets/img/archiv/ebnat-05.jpg" data-lupe><img src="assets/img/archiv/ebnat-05.jpg" alt="Der Rohbau von innen: Ständerwände, eine Werkstattecke, Farbeimer auf dem Boden." width="768" height="566" loading="lazy" decoding="async"></a><figcaption>Der Rohbau von innen.</figcaption></figure>
+    <figure class="artefakt artefakt--blatt"><a href="assets/img/archiv/ebnat-06.jpg" data-lupe><img src="assets/img/archiv/ebnat-06.jpg" alt="Ein rundes Waschbecken mit Mehrfachbrause und ein Heizkörper an der Wand." width="768" height="569" loading="lazy" decoding="async"></a><figcaption>Auch das gehört dazu: die Nasszelle.</figcaption></figure>
+    <figure class="artefakt artefakt--blatt"><a href="assets/img/archiv/ebnat-01.jpg" data-lupe><img src="assets/img/archiv/ebnat-01.jpg" alt="Ein junger Mann steht lachend hinter einer frisch montierten Theke in der noch unfertigen Halle." width="1024" height="747" loading="lazy" decoding="async"></a><figcaption>Die Theke steht.</figcaption></figure>
+    <figure class="artefakt artefakt--blatt"><a href="assets/img/archiv/ebnat-09.jpg" data-lupe><img src="assets/img/archiv/ebnat-09.jpg" alt="Der fertige Aufenthaltsraum mit Tischen und Stühlen, an der Wand ein Banner mit der Aufschrift «25 Jahre TTC Neuhausen»." width="768" height="574" loading="lazy" decoding="async"></a><figcaption>Der Aufenthaltsraum, fertig eingerichtet.</figcaption></figure>
+    <figure class="artefakt artefakt--blatt"><a href="assets/img/archiv/ebnat-08.jpg" data-lupe><img src="assets/img/archiv/ebnat-08.jpg" alt="Albumblatt mit vier Aufnahmen: jemand wischt den fertigen Hallenboden, die Tische stehen bereits, an den Banden das Vereinssignet." width="768" height="579" loading="lazy" decoding="async"></a><figcaption>Aufgestellt, gewischt, bespielbar.</figcaption></figure>
+    <figure class="artefakt artefakt--blatt"><a href="assets/img/archiv/ebnat-10.jpg" data-lupe><img src="assets/img/archiv/ebnat-10.jpg" alt="Albumblatt mit vier Aufnahmen: Mitglieder sitzen an Tischen im neuen Aufenthaltsraum, daneben die Halle mit Tischen und einem Töggelikasten." width="768" height="574" loading="lazy" decoding="async"></a><figcaption>Die ersten Abende im neuen Haus.</figcaption></figure>
   </div>
 </section>
 <section class="archivkapitel" id="archiv-jubilaeum">
-  <header class="archivkapitel__kopf">
-    <h2>Fünfzig Jahre</h2>
-    <p class="archivkapitel__lead akzent">Von der Gründung 1975 ist kein Bild überliefert. Vom Jubiläum fünfzig Jahre später schon.</p>
-  </header>
-  <div class="archivraster">
-  <figure class="artefakt artefakt--blatt">
-    <a class="artefakt__flaeche" href="assets/img/archiv/anstossen.jpg" data-lupe><img src="assets/img/archiv/anstossen.jpg" alt="Farbaufnahme: fünf Personen stossen im Freien an einem Stehtisch mit Gläsern an, auf dem Tisch ein Zopf und Getränke." width="1024" height="678" loading="lazy" decoding="async"></a>
-    <figcaption>Angestossen auf fünfzig Jahre.</figcaption>
-  </figure>
+  <header class="archivkapitel__kopf"><h3>Fünfzig Jahre</h3><p>Von der Gründung 1975 ist kein Bild überliefert. Vom Jubiläum fünfzig Jahre später schon.</p></header>
+  <div class="archivkapitel__stuecke">
+    <figure class="artefakt artefakt--blatt"><a href="assets/img/archiv/anstossen.jpg" data-lupe><img src="assets/img/archiv/anstossen.jpg" alt="Farbaufnahme: fünf Personen stossen im Freien an einem Stehtisch mit Gläsern an, auf dem Tisch ein Zopf und Getränke." width="1024" height="678" loading="lazy" decoding="async"></a><figcaption>Angestossen auf fünfzig Jahre.</figcaption></figure>
   </div>
 </section>
+  </div>
 </section>
 
-<section class="sektion--weiss">
+<section class="flaeche--weiss">
   <div class="wrap">
-    <p class="eyebrow label">Palmarès</p>
-    <h2>Meistertitel</h2>
-    <div class="titelbilanz">
-  <div class="titelreihe">
-    <p class="titelreihe__wer label">Damen</p>
-    <p class="titelreihe__zahl">14</p>
-    <p class="titelreihe__wort">Meistertitel</p>
-    <ul class="titeljahre">
-      <li>2005</li>
-      <li>2006</li>
-      <li>2007</li>
-      <li>2009</li>
-      <li>2010</li>
-      <li>2011</li>
-      <li>2012</li>
-      <li>2015</li>
-      <li>2016</li>
-      <li>2017</li>
-      <li>2018</li>
-      <li>2019</li>
-      <li>2021</li>
-      <li>2022</li>
-    </ul>
-    <p class="titelreihe__text">Seit 2005 das erfolgreichste Damenteam der Schweiz.</p>
-  </div>
-  <div class="titelreihe">
-    <p class="titelreihe__wer label">Herren</p>
-    <p class="titelreihe__zahl">3</p>
-    <p class="titelreihe__wort">Meistertitel</p>
-    <ul class="titeljahre">
-      <li>1996</li>
-      <li>1998</li>
-      <li>2000</li>
-    </ul>
-    <p class="titelreihe__text">Drei Titel in fünf Jahren, dazu vierzehn Jahre Nationalliga A.</p>
-  </div>
-</div>
     <p class="bildnachweis">Die Archivbilder stammen aus dem Vereinsarchiv. Neuere Aufnahmen sind mit freundlicher Genehmigung von Pascal Oesch, dessen Chronik ausserdem die Grundlage dieser Zeitleiste bildet.</p>
   </div>
 </section>
 
 </main>
 
-<footer class="fuss sektion--dunkel">
+<footer class="fuss flaeche--nacht">
   <div class="wrap">
+    <div class="fuss__oben">
+      <img class="fuss__logo" src="assets/img/logo-weiss.svg" width="1459" height="352" alt="Tischtennisclub Neuhausen">
+      <p class="fuss__satz">Tischtennis von 7 bis 85, seit 1975. In der Rhyfallhalle Neuhausen und im Tischtenniszentrum Ebnat.</p>
+      <a class="knopf knopf--orange" href="training-schnupperpass.html">Schnuppertraining</a>
+    </div>
     <div class="fuss__raster">
-      <div class="fuss__logo">
-        <img src="assets/img/logo-weiss.svg" width="1459" height="352"
-             alt="Tischtennisclub Neuhausen">
-        <p class="leise" style="font-size:var(--grad-sm);max-width:34ch">
-          Gegründet 1975. Training in der Rhyfallhalle Neuhausen und im
-          Tischtenniszentrum Ebnat in Schaffhausen.
-        </p>
-      </div>
       <div>
-        <h4>Verein</h4>
+        <h2 class="fuss__titel">Verein</h2>
         <ul>
           <li><a href="verein.html">Über den Verein</a></li>
           <li><a href="verein-vorstand.html">Vorstand</a></li>
           <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+          <li><a href="verein-geschichte.html">Geschichte</a></li>
           <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Hallen</h4>
-        <ul>
-          <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
-          <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-          <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Kontakt</h4>
-        <ul>
-          <li><a href="kontakt.html">Kontakt</a></li>
           <li><a href="partner.html">Für Partner</a></li>
-          <li><a href="https://www.instagram.com/ttcneuhausen/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.facebook.com/ttcnh/" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Training</h2>
+        <ul>
+          <li><a href="training.html">Trainingszeiten</a></li>
+          <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
+          <li><a href="training-breitensport.html">Breitensport</a></li>
+          <li><a href="training-senioren.html">Senioren</a></li>
+          <li><a href="teams.html">Teams</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Hallen</h2>
+        <p><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a><br>Rheingoldstrasse 11<br>8212 Neuhausen am Rheinfall</p>
+        <p><a href="hallen-ttz-ebnat.html">Tischtenniszentrum Ebnat</a><br>Ebnatstrasse 35<br>8200 Schaffhausen</p>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Kontakt</h2>
+        <p><a href="mailto:info@ttc-neuhausen.ch">info@ttc-neuhausen.ch</a><br>
+          <a href="mailto:trainer@ttc-neuhausen.ch">trainer@ttc-neuhausen.ch</a></p>
+        <p><a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a><br>
+          <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a></p>
       </div>
     </div>
-    <div class="fuss__klein">
-      <span>&copy; <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
-      <span>
-        <a href="impressum.html">Impressum</a> &nbsp;·&nbsp;
-        <a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp;
-        Gestaltung und Umsetzung: Wendico
-      </span>
+    <div class="fuss__unten">
+      <span>© <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Gestaltung und Umsetzung: Wendico</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

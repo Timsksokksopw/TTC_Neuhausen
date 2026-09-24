@@ -1,184 +1,170 @@
 # -*- coding: utf-8 -*-
-"""
-seiten.py — Navigation und Seitenverzeichnis.
+"""Menü, Seitentitel und Beschreibungen. Neue Seite: hier eintragen und
+inhalt/<datei>.html anlegen."""
 
-Einzige Quelle für Menü, Seitentitel und Meta-Beschreibungen.
-Wer eine Seite hinzufügt, trägt sie hier ein und legt die passende
-Datei unter inhalt/ ab. build.py erledigt den Rest.
-"""
-
-# --- Adresse der Website ---------------------------------------------------
-# Gebraucht für canonical, die Teilen-Vorschau (og:url, og:image) und die
-# Vereinsangaben für Google. Diese Angaben müssen absolut sein, relative
-# Pfade funktionieren dort nicht.
-#
-# VOR DER AUFSCHALTUNG PRÜFEN: mit abschliessendem Schrägstrich, und genau
-# die Variante eintragen, auf die der Server am Ende weiterleitet
-# (mit oder ohne www, immer https).
+# Adresse der Website, mit Schrägstrich am Ende (für canonical und Teilen-Vorschau).
 SEITE_URL = "https://www.ttc-neuhausen.ch/"
 
-# --- Navigation ------------------------------------------------------------
-# Struktur laut Beschluss vom 10.08.2026: fünf Punkte plus Button.
 NAVIGATION = [
     ("Verein", "verein.html", [
         ("Über den Verein",   "verein.html"),
         ("Vorstand",          "verein-vorstand.html"),
         ("Trainerteam",       "verein-trainerteam.html"),
+        ("Geschichte",        "verein-geschichte.html"),
         ("Jahresprogramm",    "verein-jahresprogramm.html"),
         ("Mitglied werden",   "verein-mitglied-werden.html"),
         ("Helfereinsatz",     "verein-helfereinsatz.html"),
         ("Downloads",         "verein-downloads.html"),
-        ("Geschichte",        "verein-geschichte.html"),
     ]),
     ("Training", "training.html", [
-        ("Trainingszeiten",             "training.html"),
-        ("Nachwuchs",                   "training-nachwuchs.html"),
-        ("Schnupperpass",               "training-schnupperpass.html"),
-        ("Breitensport",                "training-breitensport.html"),
-        ("Senioren & PingPongParkinson","training-senioren.html"),
-        ("Einzeltraining",              "training-einzeltraining.html"),
-        ("Stützpunkt",                  "training-stuetzpunkt.html"),
-        ("Für Schulen",                 "training-schulen.html"),
+        ("Trainingszeiten",              "training.html"),
+        ("Schnuppern & Schnupperpass",   "training-schnupperpass.html"),
+        ("Nachwuchs",                    "training-nachwuchs.html"),
+        ("Breitensport",                 "training-breitensport.html"),
+        ("Senioren & PingPongParkinson", "training-senioren.html"),
+        ("Einzeltraining",               "training-einzeltraining.html"),
+        ("Stützpunkt",                   "training-stuetzpunkt.html"),
+        ("Für Schulen",                  "training-schulen.html"),
     ]),
     ("Teams", "teams.html", []),
     ("Hallen", "hallen.html", [
-        ("Übersicht",     "hallen.html"),
-        ("TTZ Ebnat",     "hallen-ttz-ebnat.html"),
-        ("Rhyfallhalle",  "hallen-rhyfallhalle.html"),
-        ("Neue Halle",    "hallen-neue-halle.html"),
+        ("Übersicht",                "hallen.html"),
+        ("TTZ Ebnat",                "hallen-ttz-ebnat.html"),
+        ("Rhyfallhalle",             "hallen-rhyfallhalle.html"),
+        ("Hallensportzentrum",       "hallen-neue-halle.html"),
     ]),
     ("News", "news.html", []),
 ]
 
-# --- Seitenverzeichnis -----------------------------------------------------
-# datei: (Browsertitel, Meta-Beschreibung, Rubrik für die Menümarkierung)
+# datei: (Browsertitel, Beschreibung, Rubrik im Menü)
 SEITEN = {
     "index.html": (
-        "TTC Neuhausen – Tischtennis für alle, seit 1975",
-        "Tischtennisclub Neuhausen: Nachwuchsförderung, Breitensport und "
-        "Seniorentraining in der Rhyfallhalle und im TTZ Ebnat. Schnuppern jederzeit möglich.",
+        "TTC Neuhausen – Tischtennis von 7 bis 85, seit 1975",
+        "Tischtennisclub Neuhausen: Nachwuchs, Breitensport, Senioren und Nationalliga. "
+        "Training in der Rhyfallhalle und im TTZ Ebnat. Schnuppern jederzeit.",
         None),
 
     "verein.html": (
         "Über den Verein – TTC Neuhausen",
-        "Rund 150 Mitglieder, drei Trainer, 35 Trainingsstunden pro Woche. "
-        "Der TTC Neuhausen bietet Tischtennis vom Anfänger bis zur Nationalliga.",
+        "Rund 150 Mitglieder, zwei Hallen, Teams von der 6. Liga bis zur Swiss Table Tennis "
+        "League: der Tischtennisclub Neuhausen im Überblick.",
         "Verein"),
     "verein-vorstand.html": (
         "Vorstand – TTC Neuhausen",
-        "Der Vorstand des TTC Neuhausen mit Zuständigkeiten und Kontaktadressen.",
+        "Wer den Tischtennisclub Neuhausen führt: Vorstand, erweiterter Vorstand und offene Ämter.",
         "Verein"),
     "verein-trainerteam.html": (
         "Trainerteam – TTC Neuhausen",
-        "Cheftrainer, sportlicher Leiter und Trainerteam des TTC Neuhausen.",
-        "Verein"),
-    "verein-jahresprogramm.html": (
-        "Jahresprogramm – TTC Neuhausen",
-        "Termine, Anlässe und Turniere des TTC Neuhausen im Vereinsjahr.",
-        "Verein"),
-    "verein-mitglied-werden.html": (
-        "Mitglied werden – TTC Neuhausen",
-        "Mitgliederkategorien und Beiträge des TTC Neuhausen. Schnuppertraining ist "
-        "kostenlos, Schläger können ausgeliehen werden.",
-        "Verein"),
-    "verein-helfereinsatz.html": (
-        "Helfereinsatz – TTC Neuhausen",
-        "Der Vereinsbetrieb lebt von Freiwilligen. Einsätze bei Anlässen, im Training "
-        "und im Hintergrund.",
-        "Verein"),
-    "verein-downloads.html": (
-        "Downloads – TTC Neuhausen",
-        "Hallenreglement, Hallentarife und weitere Dokumente des TTC Neuhausen.",
+        "Cheftrainer Pekka Pelz, der Sportliche Leiter Lyo Bührer und das Trainerteam des TTC Neuhausen.",
         "Verein"),
     "verein-geschichte.html": (
         "Geschichte – TTC Neuhausen",
-        "Seit 1975: 14 Jahre Nationalliga A, drei Meistertitel bei den Herren, "
-        "14 bei den Damen, eine eigene Halle.",
+        "Seit 1975: Gründung in Schaffhausen, drei Meistertitel der Herren, vierzehn der Damen "
+        "und eine Halle in Eigenleistung. Mit Bildern aus dem Vereinsarchiv.",
+        "Verein"),
+    "verein-jahresprogramm.html": (
+        "Jahresprogramm – TTC Neuhausen",
+        "Termine und das Vereinsjahr des TTC Neuhausen: Saison, Generalversammlung, "
+        "Altpapiersammlung, School Trophy.",
+        "Verein"),
+    "verein-mitglied-werden.html": (
+        "Mitglied werden – TTC Neuhausen",
+        "Mitgliederkategorien, Beiträge und Anmeldung beim TTC Neuhausen. "
+        "Mit Beitragsrechner. Zuerst schnuppern ist kostenlos.",
+        "Verein"),
+    "verein-helfereinsatz.html": (
+        "Helfereinsatz – TTC Neuhausen",
+        "Altpapiersammlung, Anlässe, Standaktionen: wo der Verein Hilfe braucht und wie man sich einträgt.",
+        "Verein"),
+    "verein-downloads.html": (
+        "Downloads – TTC Neuhausen",
+        "Statuten, Reglemente, Hallentarife und Beitrittsformulare des TTC Neuhausen.",
         "Verein"),
 
     "training.html": (
         "Trainingszeiten – TTC Neuhausen",
-        "Alle Trainingszeiten des TTC Neuhausen für Nachwuchs, Breitensport und "
-        "Senioren, mit Halle und Trainer.",
+        "Der Wochenplan des TTC Neuhausen: Nachwuchs, Breitensport und Senioren "
+        "in der Rhyfallhalle und im TTZ Ebnat.",
+        "Training"),
+    "training-schnupperpass.html": (
+        "Schnuppern und Schnupperpass – TTC Neuhausen",
+        "Das erste Training ist kostenlos. Danach sechs Monate mittrainieren ohne Mitgliedschaft: "
+        "Schnupperpass für Nachwuchs, Breitensport und Senioren.",
         "Training"),
     "training-nachwuchs.html": (
         "Nachwuchstraining – TTC Neuhausen",
-        "Geleitetes Nachwuchstraining ab 5 Jahren, Förderkader und OTTV-Stützpunkt.",
-        "Training"),
-    "training-schnupperpass.html": (
-        "Schnupperpass – TTC Neuhausen",
-        "Sechs Monate Tischtennis ohne Mitgliedschaft — für Nachwuchs, Breitensport und Senioren.",
+        "Geleitetes Training ab fünf Jahren, Förderkader, OTTV-Stützpunkt und SwissPing "
+        "beim TTC Neuhausen.",
         "Training"),
     "training-breitensport.html": (
         "Breitensport – TTC Neuhausen",
-        "Erwachsenentraining: eine halbe Stunde freies Einspielen, danach eine geführte Stunde.",
+        "Tischtennis für Erwachsene: dreimal pro Woche, erst frei einspielen, dann eine "
+        "Stunde mit Trainer. Einsteigen jederzeit.",
         "Training"),
     "training-senioren.html": (
         "Senioren und PingPongParkinson – TTC Neuhausen",
-        "Vormittagstraining für Seniorinnen und Senioren, dazu das Angebot "
-        "PingPongParkinson.",
+        "Vormittagstraining im TTZ Ebnat für über fünfzig Seniorinnen und Senioren, "
+        "dazu PingPongParkinson am Donnerstag.",
         "Training"),
     "training-einzeltraining.html": (
         "Einzeltraining – TTC Neuhausen",
-        "Individuelle Einzeltrainings mit den professionellen Trainern des TTCN.",
+        "Einzelstunden mit den Trainern des TTC Neuhausen: Preise, Abos und wie man bucht.",
         "Training"),
     "training-stuetzpunkt.html": (
         "Stützpunkttraining – TTC Neuhausen",
-        "Der TTC Neuhausen ist anerkannter Stützpunkt des Ostschweizer Tischtennisverbands.",
+        "Der TTC Neuhausen ist anerkannter Stützpunkt des Ostschweizer Tischtennisverbands (OTTV).",
         "Training"),
     "training-schulen.html": (
         "Für Schulen – TTC Neuhausen",
-        "Schulsport, SwissPing und School Trophy: Tischtennisangebote für Schulklassen "
-        "in Neuhausen und Schaffhausen.",
+        "Schulsport für die 1. bis 3. Klasse, SwissPing und die regionale School Trophy: "
+        "Tischtennis für Schulen in Schaffhausen und Neuhausen.",
         "Training"),
 
     "teams.html": (
         "Teams – TTC Neuhausen",
-        "Herren und Damen in der Swiss Table Tennis League, dazu Regional- und "
-        "Jugendmannschaften. Tabellen direkt aus click-tt.",
+        "Herren und Damen in der Swiss Table Tennis League, dazu die OTTV-Mannschaften. "
+        "Tabellen und Resultate direkt bei click-tt.",
         "Teams"),
 
     "hallen.html": (
         "Hallen – TTC Neuhausen",
-        "Zwei Hallen: die Rhyfallhalle Neuhausen und das clubeigene TTZ Ebnat. "
-        "Dazu das Projekt für eine neue Halle.",
+        "Die Rhyfallhalle in Neuhausen und das Tischtenniszentrum Ebnat in Schaffhausen.",
         "Hallen"),
     "hallen-ttz-ebnat.html": (
         "TTZ Ebnat – TTC Neuhausen",
-        "400 m², zwölf Tische, rund um die Uhr geöffnet: das clubeigene "
-        "Tischtenniszentrum Ebnat in Schaffhausen.",
+        "Das Tischtenniszentrum Ebnat: in Eigenleistung ausgebaut, zwölf Tische, "
+        "für Mitglieder rund um die Uhr offen.",
         "Hallen"),
     "hallen-rhyfallhalle.html": (
         "Rhyfallhalle Neuhausen – TTC Neuhausen",
-        "Die Rhyfallhalle in Neuhausen am Rheinfall: Trainingsort für Nachwuchs und "
-        "Breitensport, Austragungsort grosser Turniere.",
+        "Die Rhyfallhalle in Neuhausen am Rheinfall: seit 1979 Trainingsort und Bühne "
+        "für grosse Turniere.",
         "Hallen"),
     "hallen-neue-halle.html": (
-        "Neue Halle – TTC Neuhausen",
-        "Projekt Futuro und der Ausbau der BBC-Arena Schaffhausen: der TTC Neuhausen "
-        "sucht ein neues Trainings- und Spiellokal.",
+        "Hallensportzentrum Schaffhausen – TTC Neuhausen",
+        "Stadt und Kanton sagen Ja zum Ausbau des Hallensportzentrums im Schweizersbild. "
+        "Was das für den TTC Neuhausen bedeutet.",
         "Hallen"),
 
     "news.html": (
         "News – TTC Neuhausen",
-        "Aktuelles aus dem TTC Neuhausen: Spielberichte, Clubnews und Anlässe.",
+        "Spielberichte, Resultate und Meldungen aus dem TTC Neuhausen.",
         "News"),
 
     "kontakt.html": (
         "Kontakt – TTC Neuhausen",
-        "Kontaktadressen des TTC Neuhausen und Anfahrt zu beiden Hallen.",
+        "Wer beim TTC Neuhausen wofür zuständig ist, und wo die beiden Hallen stehen.",
         None),
     "partner.html": (
         "Für Partner – TTC Neuhausen",
-        "Sponsoring, Firmenevents und Hallenmiete beim TTC Neuhausen. "
-        "Unsere Partner und was sie ermöglichen.",
+        "Sponsoring, Firmenanlässe im TTZ Ebnat und die Partner des TTC Neuhausen.",
         None),
     "impressum.html": (
         "Impressum – TTC Neuhausen",
         "Impressum des Tischtennisclubs Neuhausen.",
         None),
     "datenschutz.html": (
-        "Datenschutzerklärung – TTC Neuhausen",
+        "Datenschutz – TTC Neuhausen",
         "Datenschutzerklärung des Tischtennisclubs Neuhausen.",
         None),
 }

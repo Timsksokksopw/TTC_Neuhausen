@@ -74,49 +74,78 @@ ZEITLEISTE = [
     {
         "jahr": "1975",
         "titel": "Gründung",
-        "text": "Der Tischtennisclub Neuhausen wird gegründet.",
+        "text": "Am 20. Juni gründen Josef Mandl, Hermann Brunner, Max Muigg und Willi "
+                "Borovcnik am Rosentalgässchen 15 in Schaffhausen den Verein. Trainiert wird "
+                "in der Turnhalle des Schulhauses Gemeindewiesen, an höchstens fünf Tischen, "
+                "mit einem Budget von 15'000 Franken.",
         "kapitel": "",
     },
     {
         "jahr": "1979",
         "titel": "Die Rhyfallhalle wird eröffnet",
-        "text": "Für die nächsten gut zwanzig Jahre die Heimat des Vereins — "
-                "und bis heute eine seiner beiden Hallen.",
+        "text": "Am 31. August beginnt der Spielbetrieb in der neuen Rhyfallhalle. Der TTC "
+                "wird zum Verein mit der grössten Hallenbelegung – und die Halle für gut "
+                "zwanzig Jahre seine Heimat.",
         "kapitel": "rhyfallhalle",
+    },
+    {
+        "jahr": "1981",
+        "titel": "Aufstieg in die Nationalliga C",
+        "text": "Mit Martin Singer, Urs Muigg und Ueli Küng. Vier Jahre später folgt die "
+                "Nationalliga B.",
+        "kapitel": "",
     },
     {
         "jahr": "1996",
         "titel": "Erster Meistertitel der Herren",
-        "text": "Die Herren werden Schweizer Meister. Weitere Titel folgen "
-                "1998 und 2000.",
+        "text": "Am 25. Februar gewinnen Giovanni Gentile, Ivan Jecic, Thierry Miller und "
+                "Martin Singer den Final gegen CTT Meyrin 6:4, vor 350 Zuschauern in "
+                "Schaffhausen. Das Hinspiel endete 5:5. Weitere Titel folgen 1998 und 2000.",
         "kapitel": "titel",
     },
     {
         "jahr": "2001",
         "titel": "Bau des TTZ Ebnat",
-        "text": "In rund zwölf Monaten Bauzeit entsteht das "
-                "Tischtenniszentrum, grösstenteils in Eigenleistung.",
+        "text": "In rund zwölf Monaten entsteht aus einer leeren Industriehalle das "
+                "Tischtenniszentrum: 1200 Stunden Freiwilligenarbeit, 80'000 Franken "
+                "Investitionen und 26'000 Franken für Material.",
         "kapitel": "ebnat",
     },
     {
         "jahr": "2002",
         "titel": "Einzug ins Tischtenniszentrum",
-        "text": "Im Frühling 2002 zieht der Verein in die eigene Halle im "
-                "Ebnat ein.",
+        "text": "Im Frühling zieht der Verein ein: 440 Quadratmeter, anfangs acht Tische, "
+                "65 Stufen bis zum Eingang.",
         "kapitel": "ebnat",
     },
     {
+        "jahr": "2004",
+        "titel": "Die Seniorengruppe",
+        "text": "Urs Schärrer senior und Edmondo Valley gründen die Seniorengruppe. Heute "
+                "spielen dort über fünfzig Aktive.",
+        "kapitel": "",
+    },
+    {
         "jahr": "2005",
-        "titel": "Beginn der Dominanz bei den Damen",
-        "text": "Der erste von vierzehn Meistertiteln. Seither ist das "
-                "Damenteam das erfolgreichste der Schweiz.",
+        "titel": "Erster Meistertitel der Damen",
+        "text": "Am 16. April schlagen Sonja Führer, Monika Führer, Laura Schärrer und "
+                "Andrea Stepankova im Final Young Stars Zürich 7:3 – als jüngstes Meisterteam "
+                "der Geschichte, trainiert von Pavel Rehorek. Es ist der erste von vierzehn Titeln.",
+        "kapitel": "",
+    },
+    {
+        "jahr": "2011",
+        "titel": "Der Titel nach Sätzen",
+        "text": "Alle drei Finalspiele gegen Wädenswil enden 5:5. Entschieden wird nach "
+                "Sätzen, 18:17 für Neuhausen – nach einem dritten Spiel von über zweieinhalb "
+                "Stunden. Der sechste Titel der Damen.",
         "kapitel": "",
     },
     {
         "jahr": "2015",
         "titel": "Abstieg der Herren",
-        "text": "Nach vierzehn Jahren in der höchsten Spielklasse geht es "
-                "in die Nationalliga B.",
+        "text": "Nach vierzehn Jahren in der höchsten Spielklasse geht es in die "
+                "Nationalliga B.",
         "kapitel": "",
     },
     {
@@ -131,6 +160,14 @@ ZEITLEISTE = [
         "titel": "50 Jahre TTCN",
         "text": "Das Jubiläumsjahr mit Feier, Chronik und Archivbildern.",
         "kapitel": "jubilaeum",
+    },
+    {
+        "jahr": "2026",
+        "titel": "Ja zum Hallensportzentrum",
+        "text": "Stadt und Kanton Schaffhausen stimmen dem Ausbau des Hallensportzentrums "
+                "im Schweizersbild zu, der Kanton mit 73,9 Prozent. Dort soll der Verein "
+                "ein neues Zuhause finden.",
+        "kapitel": "",
     },
 ]
 
@@ -250,7 +287,7 @@ ARCHIV = [
     },
     {
         "id": "ebnat",
-        "titel": "Die Halle, die der Verein selbst gebaut hat",
+        "titel": "Die Halle, die der Verein selbst ausgebaut hat",
         "lead": "Aus einer leeren Industriehalle im Ebnat wurde in rund "
                 "zwölf Monaten das Tischtenniszentrum — grösstenteils in "
                 "Eigenleistung. Die Albumblätter zeigen den Weg dahin: "

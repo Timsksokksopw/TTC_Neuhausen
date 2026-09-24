@@ -1,336 +1,213 @@
-<!-- ==========================================================================
-     Auftakt: die Bildfolge, durch die man scrollt
-     ==========================================================================
-
-     Fünfzig Einzelbilder einer gezeichneten Kamerafahrt über den Tisch.
-     Beim Scrollen läuft die Folge durch, danach beginnt die Seite.
-
-     Drei Dinge sind hier Absicht und keine Sparmassnahme:
-
-     · **Der Abschnitt ist von Haus aus versteckt.** Sichtbar wird er erst,
-       wenn JavaScript ihn einschaltet. Ohne JavaScript stünde hier sonst
-       eine knapp drei Bildschirme hohe Leere, durch die man scrollt, ohne
-       dass sich etwas ändert — schlimmer als gar kein Effekt.
-
-     · **Nur auf grossen Schirmen mit Zeiger.** Auf dem Handy ist die
-       Fahrt eher im Weg, und niemand soll dort 1.3 MB Bilder laden, die
-       er nie sieht. Geladen wird erst, wenn die Bedingung stimmt.
-
-     · **Bei `prefers-reduced-motion` bleibt sie aus.** Wer im
-       Betriebssystem gesagt hat, dass Bewegung stört, meint auch diese.
-
-     In allen drei Fällen übernimmt der Hero darunter, der auf dem Laptop
-     sonst ausgeblendet ist. Es ist also immer genau ein Auftakt da.
-
-     data-bilder trägt die Anzahl; build.py zählt die Dateien selbst und
-     prüft, dass die Folge keine Lücke hat.                                -->
-<section class="auftakt" data-auftakt data-bilder="{{auftaktbilder}}" hidden>
-  <div class="auftakt__buehne">
-    <!-- sektion--dunkel setzt hier nicht die Fläche, sondern den Kontext:
-         daraus holen sich Knopf, Linien und Nebentexte ihre Werte. Ohne
-         das stand der Knopf als blosser Text ohne Fläche da. -->
-    <div class="auftakt__fest sektion--dunkel">
-      <canvas class="auftakt__leinwand"></canvas>
-      <div class="auftakt__schleier" aria-hidden="true"></div>
-      <div class="auftakt__abblende" aria-hidden="true"></div>
-
-      <div class="wrap auftakt__innen">
-        <p class="auftakt__seit akzent">Seit 1975</p>
-        <h1 class="auftakt__titel">Komm an den Tisch.</h1>
-        <p class="auftakt__text">Von 7 bis 85. Schläger leihen wir dir.</p>
-        <div class="auftakt__aktionen">
-          <a class="btn" href="verein-mitglied-werden.html">Schnuppertraining besuchen</a>
-        </div>
-      </div>
-
-      <p class="auftakt__hinweis" aria-hidden="true">Scrollen</p>
-
-      <!-- ====================================================================
-           Der Schluss
-           ====================================================================
-
-           Erst verschwindet der Ball hinter der Tischkante — das passiert
-           im Bild 48, gemessen, nicht geschätzt. Danach steht die Fläche
-           einen Moment leer. Und dann kommt der Ball zurück: er steigt von
-           unten herein, zieht seinen Bogen und legt sich über das
-           Vereinszeichen.
-
-           Der Bogen ist kein Zierrat, sondern das Leitmotiv, das die
-           Website ohnehin führt. Hier zeichnet er sich, während der Ball
-           ihn abfährt.
-
-           Die Fläche trägt die exakte Farbe des letzten Bildes
-           (--auftakt-grund), damit der Übergang keine Kante hat. Darüber
-           liegt ein weiches Licht — das ist nicht nur Stimmung: das
-           Vereinszeichen käme auf der blossen Bildfarbe nur auf 3.3:1,
-           mit dem Licht auf über 6:1.                                   -->
-      <div class="auftakt__schluss">
-        <div class="auftakt__licht" aria-hidden="true"></div>
-
-        <div class="auftakt__karte">
-          <div class="auftakt__wurf" aria-hidden="true">
-            <!-- Der Bogen beginnt am Ball der Logofigur: er kommt nicht
-                 irgendwoher zurück, sondern wird gespielt. Der
-                 Anfangspunkt ist ausgemessen, nicht geschätzt — die
-                 Rechnung steht im Kommentar bei .auftakt__wurf.
-
-                 Derselbe Pfad steht ein zweites Mal als offset-path im
-                 CSS. Wer ihn ändert, ändert beide. -->
-            <svg class="auftakt__bogen" viewBox="0 0 480 300" fill="none">
-              <path d="M 62.9 215.5 C 104 148, 200 42, 344 78"
-                    pathLength="1" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" vector-effect="non-scaling-stroke"/>
-            </svg>
-            <span class="auftakt__ball"></span>
-          </div>
-
-          <img class="auftakt__logo" src="assets/img/logo-ttcn.png"
-               alt="Tischtennisclub Neuhausen" width="511" height="120">
-          <span class="auftakt__strich" aria-hidden="true"></span>
-          <p class="auftakt__schlusszeile akzent">Seit 1975 in Neuhausen.</p>
-        </div>
+<!-- Auftakt: Titel links, 3D-Tisch rechts. Auf grossen Schirmen dreht sich der
+     Tisch beim Scrollen in die Draufsicht, und seine vier Felder werden zu den
+     vier Angeboten. Ohne JavaScript, auf dem Handy und bei reduzierter Bewegung
+     stehen Titel, Tisch und Angebote einfach untereinander. -->
+<section class="buehne" data-buehne>
+  <div class="buehne__fix">
+    <div class="wrap buehne__text">
+      <p class="rubrik">Tischtennisclub Neuhausen · seit 1975</p>
+      <h1 class="buehne__titel">Komm an <span>den Tisch.</span></h1>
+      <p class="lead">Von 7 bis 85, vom ersten Ballwechsel bis zur Nationalliga. Wir spielen in der
+        Rhyfallhalle Neuhausen und in unserem Tischtenniszentrum im Ebnat – das erste Training ist gratis,
+        den Schläger leihen wir dir.</p>
+      <div class="knoepfe">
+        <a class="knopf knopf--orange" href="training-schnupperpass.html">Schnuppertraining <span class="pfeil" aria-hidden="true"></span></a>
+        <a class="knopf knopf--rahmen" href="training.html">Trainingszeiten</a>
       </div>
     </div>
-  </div>
-</section>
 
-<section class="hero sektion--dunkel">
-  <!-- Das Hero-Foto. fetchpriority="high" holt es vor allen anderen Bildern,
-       weil es das Erste ist, was jemand sieht. Kein loading="lazy" hier:
-       das Bild steht bereits im Blickfeld, verzögertes Laden würde es
-       nur später erscheinen lassen. alt bleibt leer — das Bild ist
-       Stimmung, der Inhalt steht daneben im Text. -->
-  <div class="hero__bild">
-    <img src="assets/img/fotos/hero-halle.jpg"
-         alt="Volle Halle: an einem Dutzend Tischen wird gespielt"
-         width="1600" height="720" fetchpriority="high" decoding="async">
-  </div>
-
-  <div class="wrap hero__innen">
-    <p class="hero__seit akzent">Seit 1975 am Tisch</p>
-    <h1>Von 7 bis 85.<br><em class="kinetisch">Vom Schnuppern bis zur STTL.</em></h1>
-    <p class="hero__text">In derselben Halle, in der Schweizer Meisterinnen trainieren,
-      steht auch der Tisch für dein erstes Match. Schläger leihen wir dir.</p>
-    <div class="hero__aktionen">
-      <a class="btn" href="verein-mitglied-werden.html">Schnuppertraining besuchen</a>
-      <a class="btn btn--leise" href="training.html">Trainingszeiten</a>
-    </div>
-  </div>
-
-</section>
-
-<!-- Das Zahlenband stand bis jetzt im Hero. Seit es zwei Auftakte gibt —
-     die Bildfolge auf dem Laptop, den Hero auf dem Handy — schliesst es
-     beide ab und steht deshalb für sich.
-
-     Hell, nicht dunkel: der Auftakt endet neu auf heller Fläche mit dem
-     Vereinszeichen. Ein dunkles Band direkt danach wäre eine Wand mitten
-     in der Ankunft. Auf dem Handy folgt es weiterhin auf den dunklen
-     Hero — dort ist der Wechsel gewollt. -->
-<section class="zahlenband sektion--weiss">
-  <div class="wrap">
-    <div class="zahlen">
-      <div class="reveal"><div class="zahl__wert" data-ziel="51" data-seit="1975">51</div><div class="zahl__label">Jahre Verein</div></div>
-      <div class="reveal"><div class="zahl__wert" data-ziel="150">0</div><div class="zahl__label">Mitglieder</div></div>
-      <div class="reveal"><div class="zahl__wert" data-ziel="12">0</div><div class="zahl__label">Tische im TTZ Ebnat</div></div>
-      <div class="reveal"><div class="zahl__wert" data-ziel="35">0</div><div class="zahl__label">Trainingsstunden pro Woche</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- Direkt unter dem Hero: eine Vereinsseite ohne Aktuelles zuoberst
-     wirkt stillgelegt, auch wenn viel los ist. Deshalb stehen die drei
-     letzten Beiträge vor allem anderen. -->
-<section class="sektion--hell">
-  <div class="wrap">
-    <div class="sektionskopf">
-      <div>
-        <p class="eyebrow label">Aus dem Verein</p>
-        <h2>Zuletzt passiert</h2>
-      </div>
-      <p class="intro">Spielberichte, Resultate und Anlässe — geschrieben von Leuten,
-        die dabei waren.</p>
-    </div>
-
-    <!-- Die drei Karten kommen aus vorlage/news.py, genau wie die Liste
-         auf news.html. Eine Karte ist klickbar, sobald dort Fliesstext zum
-         Beitrag steht — dann erzeugt build.py die Beitragsseite gleich mit.
-         Ohne Text bleibt sie eine Meldung ohne Verweis: besser als ein
-         Klick, der ins Leere oder auf die alte Website führt. -->
-    {{newskarten}}
-
-    <div class="btn-reihe">
-      <a class="btn btn--leise" href="news.html">Alle News</a>
-    </div>
-  </div>
-</section>
-
-<section class="sektion--weiss">
-  <div class="wrap">
-    <div class="sektionskopf">
-      <div>
-        <p class="eyebrow label">Trainingsbetrieb</p>
-        <h2>Für jedes Alter ein Angebot</h2>
-      </div>
-      <p class="intro">Drei qualifizierte Trainer, zwei Hallen, vom Schnupperkurs bis zum
-        nationalen Stützpunkt. Einsteigen geht das ganze Jahr über.</p>
-    </div>
-
-    <div class="bildraster">
-      <a class="bildkarte reveal" href="training-nachwuchs.html">
-        <div class="foto foto--4x3">
-          <img src="assets/img/fotos/angebot-nachwuchs.jpg" alt="Nachwuchstraining im TTZ Ebnat"
-               width="900" height="675" loading="lazy" decoding="async">
-        </div>
-        <div class="bildkarte__text">
-          <h3>Nachwuchs</h3>
-          <p>Ab 5 Jahren, geleitet, mit Förderkader und Stützpunkttraining für die Stärksten.</p>
-          <span class="bildkarte__mehr">Zum Nachwuchs</span>
-        </div>
-      </a>
-      <a class="bildkarte reveal" href="training-breitensport.html">
-        <div class="foto foto--4x3">
-          <img src="assets/img/fotos/angebot-breitensport.jpg" alt="Breitensporttraining für Erwachsene"
-               width="900" height="675" loading="lazy" decoding="async">
-        </div>
-        <div class="bildkarte__text">
-          <h3>Breitensport</h3>
-          <p>Erwachsene, dreimal pro Woche: eine halbe Stunde freies Einspielen, danach eine geführte Stunde.</p>
-          <span class="bildkarte__mehr">Zum Breitensport</span>
-        </div>
-      </a>
-      <a class="bildkarte reveal" href="training-senioren.html">
-        <div class="foto foto--4x3">
-          <img src="assets/img/fotos/angebot-senioren.jpg" alt="Seniorentraining am Vormittag"
-               width="900" height="675" loading="lazy" decoding="async">
-        </div>
-        <div class="bildkarte__text">
-          <h3>Senioren</h3>
-          <p>Vier Vormittage pro Woche, dazu das Angebot PingPongParkinson.</p>
-          <span class="bildkarte__mehr">Zu den Senioren</span>
-        </div>
-      </a>
-      <a class="bildkarte reveal" href="training-schulen.html">
-        <div class="foto foto--4x3">
-          <img src="assets/img/fotos/angebot-schulen.jpg" alt="Schulklasse beim Tischtennis"
-               width="900" height="675" loading="lazy" decoding="async">
-        </div>
-        <div class="bildkarte__text">
-          <h3>Für Schulen</h3>
-          <p>Schulsport, SwissPing und School Trophy für Klassen aus der Region.</p>
-          <span class="bildkarte__mehr">Für Schulen</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="btn-reihe">
-      <a class="btn" href="training.html">Alle Trainingszeiten</a>
-    </div>
-  </div>
-</section>
-
-<!-- Bildsplit: Das Hallenfoto läuft bis an den Bildschirmrand. Vorher stand
-     hier eine Textspalte und daneben leere Fläche. -->
-<section class="sektion--dunkel sektion--randlos">
-  <div class="bildsplit">
-    <div class="bildsplit__bild foto">
-      <img src="assets/img/fotos/halle-ebnat.jpg" alt="Das Tischtenniszentrum Ebnat mit zwölf Tischen"
-           width="1200" height="1500" loading="lazy" decoding="async">
-    </div>
-    <div class="bildsplit__text">
-      <p class="eyebrow label">Unsere Hallen</p>
-      <h2>Zwei Hallen, <span class="kinetisch">eine davon uns allein</span></h2>
-      <p class="intro">Das Tischtenniszentrum Ebnat gehört dem Verein. Die Tische stehen
-        fest, der Boden ist tischtennisspezifisch, und wer den Hallenbeitrag zahlt,
-        kommt rund um die Uhr rein.</p>
-      <dl class="fakten">
-        <div><dt>Trainingsfläche</dt><dd>400 m²</dd></div>
-        <div><dt>Tische</dt><dd>12</dd></div>
-        <div><dt>Kapazität</dt><dd>24 Personen</dd></div>
-        <div><dt>Boden</dt><dd>Taraflex, seit 2019</dd></div>
-        <div><dt>Verfügbar</dt><dd>24 h, 365 Tage</dd></div>
-      </dl>
-      <div class="btn-reihe">
-        <a class="btn btn--leise" href="hallen.html">Beide Hallen ansehen</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Der Ballbogen: das Leitmotiv der Website. Zeichnet sich beim Scrollen. -->
-<section class="sektion--marke sektion--motiv">
-  <svg class="bogen" viewBox="0 0 1200 160" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <path d="M 0 150 C 320 4, 880 4, 1200 150" pathLength="1"/>
-  </svg>
-  <div class="wrap">
-    <p class="eyebrow label">Mitgliedschaft</p>
-    <h2>Erst spielen, dann entscheiden</h2>
-    <p class="intro">Komm an einem Trainingstag vorbei. Hallenschuhe und Sportkleidung
-      reichen, einen Schläger kannst du bei den ersten Besuchen gratis ausleihen.</p>
-    <div class="btn-reihe" style="margin-top:0">
-      <a class="btn" href="verein-mitglied-werden.html">Beiträge und Anmeldung</a>
-      <a class="btn btn--leise" href="kontakt.html">Kontakt aufnehmen</a>
-    </div>
-  </div>
-</section>
-
-<section class="sektion--dunkel">
-  <div class="wrap">
-    <div class="split">
-      <div>
-        <p class="eyebrow label">Agenda</p>
-        <h2>Als Nächstes</h2>
-        <div class="termine">
-          <div class="termin">
-            <div class="termin__datum"><b>5</b><span>Sep</span></div>
-            <div><div class="termin__titel">Altpapiersammlung Neuhausen</div>
-              <div class="termin__zeit">07:00 – 13:00 Uhr</div></div>
-          </div>
-          <div class="termin">
-            <div class="termin__datum"><b>15</b><span>Sep</span></div>
-            <div><div class="termin__titel">55. TTCN-Generalversammlung</div>
-              <div class="termin__zeit">19:00 – 22:00 Uhr</div></div>
+    <div class="tisch" aria-hidden="true">
+      <div class="tisch__szene">
+        <div class="tisch__koerper">
+          <div class="tisch__boden"></div>
+          <i class="tisch__bein" style="--bx:.1;--by:.12"></i>
+          <i class="tisch__bein" style="--bx:.1;--by:.88"></i>
+          <i class="tisch__bein" style="--bx:.9;--by:.12"></i>
+          <i class="tisch__bein" style="--bx:.9;--by:.88"></i>
+          <i class="tisch__kante tisch__kante--vorn"></i>
+          <i class="tisch__kante tisch__kante--hinten"></i>
+          <i class="tisch__kante tisch__kante--links"></i>
+          <i class="tisch__kante tisch__kante--rechts"></i>
+          <div class="tisch__platte"></div>
+          <div class="tisch__netz"></div>
+          <div class="ball">
+            <i class="ball__schatten"></i>
+            <div class="ball__hoehe"><i class="ball__kugel"></i></div>
           </div>
         </div>
-        <div class="btn-reihe">
-          <a class="btn btn--leise" href="verein-jahresprogramm.html">Jahresprogramm</a>
-        </div>
       </div>
-      <div>
-        <p class="eyebrow label">Mithelfen</p>
-        <h2>Wir brauchen dich</h2>
-        <p class="intro" style="margin-bottom:24px">Der Vereinsbetrieb läuft über Freiwillige —
-          bei Anlässen, im Training oder im Hintergrund. Mitglieder, Angehörige und Freunde
-          sind gleichermassen willkommen.</p>
-        <div class="foto foto--16x9 foto--rund">
-          <img src="assets/img/fotos/helfer.jpg" alt="Helferinnen und Helfer bei einem Vereinsanlass"
-               width="900" height="675" loading="lazy" decoding="async">
-        </div>
-        <div class="btn-reihe">
-          <a class="btn" href="verein-helfereinsatz.html">Helfereinsatz</a>
-        </div>
+    </div>
+
+    <div class="aktuell">
+      <div class="wrap aktuell__innen">
+        {{aktuell}}
+        <p class="aktuell__heute" data-heute hidden></p>
+      </div>
+    </div>
+
+    <div class="angebote" id="angebote">
+      <div class="wrap">
+        <h2 class="angebote__titel">Vier Wege an den Tisch</h2>
+      </div>
+      <div class="angebote__feld">
+        <a class="angebot" href="training-nachwuchs.html">
+          <b>Nachwuchs</b>
+          <span>Ab 5 Jahren. Geleitetes Training, Förderkader und Stützpunkt.</span>
+          <span class="pfeil" aria-hidden="true"></span>
+        </a>
+        <a class="angebot" href="training-breitensport.html">
+          <b>Breitensport</b>
+          <span>Für Erwachsene, dreimal pro Woche am Abend.</span>
+          <span class="pfeil" aria-hidden="true"></span>
+        </a>
+        <a class="angebot" href="training-senioren.html">
+          <b>Senioren</b>
+          <span>Vier Vormittage im TTZ Ebnat, dazu PingPongParkinson.</span>
+          <span class="pfeil" aria-hidden="true"></span>
+        </a>
+        <a class="angebot" href="training-schulen.html">
+          <b>Schulen</b>
+          <span>Schulsport, SwissPing und die School Trophy.</span>
+          <span class="pfeil" aria-hidden="true"></span>
+        </a>
+        <a class="angebote__netz" href="training-schnupperpass.html">Noch unsicher? Schnupperpass: sechs Monate ohne Mitgliedschaft</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sektion--hell">
+<section class="flaeche--papier">
   <div class="wrap">
-    <div class="sektionskopf">
-      <div>
-        <p class="eyebrow label">Partner</p>
-        <h2>Wer uns trägt</h2>
-      </div>
-      <p class="intro">{{sponsorenzahl}} Unternehmen aus Neuhausen, Schaffhausen und der
-        Region ermöglichen Halle, Nachwuchsförderung und Spielbetrieb.</p>
+    <div class="abschnittskopf abschnittskopf--zeile">
+      <h2>Aus dem Verein</h2>
+      <a class="pfeil-link" href="news.html">Alle News <span class="pfeil" aria-hidden="true"></span></a>
     </div>
+    {{news_start}}
+  </div>
+</section>
 
-{{ausruester}}
+<section class="flaeche--weiss">
+  <div class="wrap">
+    <div class="abschnittskopf">
+      <h2>Diese Woche in der Halle</h2>
+      <p class="lead">{{einheiten}} Trainings an {{trainingstage}} Tagen. Wer zum ersten Mal kommt, braucht
+        Hallenschuhe und Sportkleider, sonst nichts.</p>
+    </div>
+    {{woche_kurz}}
+    <p class="woche__fuss"><a class="pfeil-link" href="training.html">Ganzer Wochenplan mit Trainern <span class="pfeil" aria-hidden="true"></span></a></p>
+  </div>
+</section>
 
-{{sponsoren}}
+<section class="flaeche--papier2">
+  <div class="wrap raster stand">
+    <div class="stand__kopf">
+      <p class="rubrik">Spielstand {{jahr}}</p>
+      <h2>{{vereinsalter}} Jahre am Tisch</h2>
+      <p>Gegründet 1975 am Rosentalgässchen in Schaffhausen, heute mit Damen und Herren in der höchsten Schweizer Liga,
+        Mannschaften bis in die 6. Liga und einer Seniorengruppe, die jede Woche über fünfzig Leute an den Tisch bringt.</p>
+      <a class="pfeil-link" href="verein-geschichte.html">Zur Geschichte <span class="pfeil" aria-hidden="true"></span></a>
+    </div>
+    <dl class="tafel stand__tafel" data-tafel>
+      <div><dt>gegründet am 20. Juni in Schaffhausen</dt><dd data-zahl="1975">1975</dd></div>
+      <div><dt>Mitglieder, rund 120 davon spielen aktiv</dt><dd data-zahl="150">150</dd></div>
+      <div><dt>Schweizer Meistertitel: 14 der Damen, 3 der Herren</dt><dd data-zahl="17">17</dd></div>
+      <div><dt>Tische im TTZ Ebnat, offen rund um die Uhr</dt><dd data-zahl="12">12</dd></div>
+    </dl>
+  </div>
+</section>
 
-    <div class="btn-reihe">
-      <a class="btn btn--leise" href="partner.html">Partner werden</a>
+<section class="flaeche--papier">
+  <div class="wrap">
+    <div class="abschnittskopf">
+      <h2>Zwei Hallen, eine davon selbst ausgebaut</h2>
+    </div>
+    <div class="hallenpaar">
+      <a class="hallenkarte" href="hallen-ttz-ebnat.html" data-kippen>
+        <figure class="hallenkarte__bild">
+          <img src="assets/img/fotos/ttz-ebnat.jpg" alt="Die Halle im TTZ Ebnat mit rotem Boden, blauen Tischen und Banden"
+               width="1600" height="1200" loading="lazy" decoding="async">
+        </figure>
+        <p class="rubrik">Schaffhausen</p>
+        <h3>Tischtenniszentrum Ebnat</h3>
+        <p>2001 in rund zwölf Monaten eingerichtet, grösstenteils in Eigenleistung. Zwölf Tische,
+          ein Boden nur für Tischtennis, und für Mitglieder mit Hallenbeitrag rund um die Uhr offen.</p>
+        <span class="pfeil-link">Zum TTZ Ebnat <span class="pfeil" aria-hidden="true"></span></span>
+      </a>
+      <a class="hallenkarte" href="hallen-rhyfallhalle.html" data-kippen>
+        <figure class="hallenkarte__bild hallenkarte__bild--archiv">
+          <img src="assets/img/archiv/streifen-rhyfallhalle-1.jpg" alt="Kontaktbogen mit Aufnahmen aus der Rhyfallhalle"
+               width="1024" height="364" loading="lazy" decoding="async">
+        </figure>
+        <p class="rubrik">Neuhausen am Rheinfall</p>
+        <h3>Rhyfallhalle</h3>
+        <p>Seit 1979 dabei, lange die einzige Heimat des Vereins. Heute trainieren hier Nachwuchs,
+          Stützpunkt und Breitensport – und im Juni 2026 wurden hier Schweizer Nachwuchsmeister gekürt.</p>
+        <span class="pfeil-link">Zur Rhyfallhalle <span class="pfeil" aria-hidden="true"></span></span>
+      </a>
+    </div>
+    <a class="hallenhinweis" href="hallen-neue-halle.html">
+      <b class="zahl">73,9 %</b>
+      <span>Ja zum Ausbau des Hallensportzentrums Schaffhausen am 14. Juni 2026. Was das für den Verein heisst.</span>
+      <span class="pfeil" aria-hidden="true"></span>
+    </a>
+  </div>
+</section>
+
+<section class="flaeche--nacht rueckblick">
+  <div class="wrap raster">
+    <div class="rueckblick__text">
+      <p class="rubrik">Aus dem Vereinsarchiv</p>
+      <h2>Kontaktbögen, Albumblätter, ein Matchprogramm von 1996</h2>
+      <p>Was vom ersten Meistertitel übrig ist, wie aus einer leeren Industriehalle das TTZ Ebnat wurde,
+        und wer 1975 dabei war: die Geschichte des Vereins, erzählt mit dem, was im Schrank lag.</p>
+      <a class="pfeil-link" href="verein-geschichte.html">Zur Geschichte <span class="pfeil" aria-hidden="true"></span></a>
+    </div>
+  </div>
+  <div class="filmstreifen" data-tiefe aria-hidden="true">
+    <div class="filmstreifen__band">
+      <img src="assets/img/archiv/streifen-meistertitel-3.jpg" alt="" width="768" height="170" loading="lazy">
+      <img src="assets/img/archiv/ebnat-08.jpg" alt="" width="768" height="579" loading="lazy">
+      <img src="assets/img/archiv/dokument-final-1996.jpg" alt="" width="768" height="1024" loading="lazy">
+      <img src="assets/img/archiv/streifen-rhyfallhalle-2.jpg" alt="" width="768" height="235" loading="lazy">
     </div>
   </div>
 </section>
+
+<section class="flaeche--blau mitmachen">
+  <div class="wrap raster">
+    <div class="mitmachen__teil">
+      <p class="rubrik">Mitspielen</p>
+      <h2>Erst spielen, dann entscheiden</h2>
+      <p>Komm an einem Trainingsabend vorbei, ohne Anmeldung. Wenn es dir gefällt, trainierst du mit dem
+        Schnupperpass sechs Monate mit – Mitglied wirst du erst danach, wenn überhaupt.</p>
+      <div class="knoepfe">
+        <a class="knopf knopf--weiss" href="training-schnupperpass.html">So läuft Schnuppern</a>
+        <a class="knopf knopf--rahmen" href="verein-mitglied-werden.html">Beiträge</a>
+      </div>
+    </div>
+    <div class="mitmachen__teil">
+      <figure class="bild mitmachen__bild">
+        <img src="assets/img/fotos/helfer-altpapier.jpg" alt="Helfer laden gebündeltes Altpapier in eine Mulde"
+             width="1600" height="1200" loading="lazy" decoding="async">
+      </figure>
+      <p class="rubrik">Mithelfen</p>
+      <h2>Zweimal im Jahr: Altpapier</h2>
+      <p>Die Sammlung in Neuhausen bringt Geld in die Vereinskasse – wenn genug Leute mitmachen.
+        Dazu Turniere, Standaktionen und Aufgaben im Hintergrund.</p>
+      <a class="pfeil-link" href="verein-helfereinsatz.html">Helfereinsatz <span class="pfeil" aria-hidden="true"></span></a>
+    </div>
+  </div>
+</section>
+
+<section class="flaeche--papier">
+  <div class="wrap">
+    <div class="abschnittskopf abschnittskopf--zeile">
+      <h2>{{sponsorenzahl}} Partner aus der Region</h2>
+      <a class="pfeil-link" href="partner.html">Partner werden <span class="pfeil" aria-hidden="true"></span></a>
+    </div>
+    {{ausruester}}
+    {{sponsoren}}
+  </div>
+</section>
+
+{{trainingsdaten}}

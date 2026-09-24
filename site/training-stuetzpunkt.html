@@ -1,41 +1,35 @@
 <!doctype html>
-<html lang="de">
+<!-- Erzeugt von build.py – nicht hier ändern.
+     Inhalt: inhalt/training-stuetzpunkt.html · Rahmen: vorlage/layout.html · Menü: vorlage/seiten.py
+     Bilder und Dokumente unter site/assets/ werden nicht erzeugt:
+     Datei mit gleichem Namen ersetzen genügt. -->
+<html lang="de-CH">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Setzt die Klasse, bevor CSS greift. Nur wenn sie da ist, werden
-     .reveal-Elemente versteckt — ohne JavaScript bleibt alles sichtbar. -->
-<script>document.documentElement.className += " js";</script>
-
+<script>document.documentElement.classList.add("js")</script>
 <title>Stützpunkttraining – TTC Neuhausen</title>
-<meta name="description" content="Der TTC Neuhausen ist anerkannter Stützpunkt des Ostschweizer Tischtennisverbands.">
+<meta name="description" content="Der TTC Neuhausen ist anerkannter Stützpunkt des Ostschweizer Tischtennisverbands (OTTV).">
 <link rel="canonical" href="https://www.ttc-neuhausen.ch/training-stuetzpunkt.html">
-<meta name="theme-color" content="#0A111D">
-
-<!-- Vorschau beim Teilen: WhatsApp, Instagram, Facebook, LinkedIn. -->
+<meta name="theme-color" content="#F3F0E8">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TTC Neuhausen">
 <meta property="og:locale" content="de_CH">
 <meta property="og:title" content="Stützpunkttraining – TTC Neuhausen">
-<meta property="og:description" content="Der TTC Neuhausen ist anerkannter Stützpunkt des Ostschweizer Tischtennisverbands.">
+<meta property="og:description" content="Der TTC Neuhausen ist anerkannter Stützpunkt des Ostschweizer Tischtennisverbands (OTTV).">
 <meta property="og:url" content="https://www.ttc-neuhausen.ch/training-stuetzpunkt.html">
 <meta property="og:image" content="https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="TTC Neuhausen — Tischtennis für alle, seit 1975">
 <meta name="twitter:card" content="summary_large_image">
-
 <link rel="icon" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,88..112,400..800;1,88..112,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/sofia-sans-xc.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/komponenten.css">
 <link rel="stylesheet" href="assets/css/seiten.css">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -47,22 +41,17 @@
   "image": "https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg",
   "foundingDate": "1975",
   "sport": "Tischtennis",
-  "areaServed": "Schaffhausen, Neuhausen",
-  "sameAs": [
-    "https://www.instagram.com/ttcneuhausen/",
-    "https://www.facebook.com/ttcnh/"
-  ]
+  "sameAs": ["https://www.instagram.com/ttcneuhausen/", "https://www.facebook.com/ttcnh/"]
 }
 </script>
 </head>
-<body>
+<body class="seite-training-stuetzpunkt">
+<a class="skip-link" href="#inhalt">Zum Inhalt</a>
 
-<a class="skip-link" href="#inhalt">Direkt zum Inhalt</a>
-
-<header class="kopf sektion--dunkel">
+<header class="kopf" data-kopf>
   <div class="wrap kopf__innen">
-    <a class="kopf__logo logo" href="index.html" aria-label="Startseite TTC Neuhausen">
-      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377" role="img" aria-label="TTC Neuhausen"><title>TTC Neuhausen</title><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
+    <a class="kopf__marke" href="index.html">
+      <svg class="kopf__signet" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377"><g transform="translate(0,377) scale(0.033333,-0.033333)" fill="currentColor"><path d="M3992 10590 c-29 -4 -85 -18 -124 -31 -106 -35 -161 -96 -229 -254
 -31 -73 -67 -291 -54 -327 3 -7 9 -52 14 -99 8 -73 15 -94 42 -132 27 -39 33
 -58 39 -126 5 -58 15 -95 34 -132 14 -28 26 -60 26 -70 0 -23 27 -79 38 -79 4
 0 18 -10 32 -23 23 -21 25 -29 22 -100 l-4 -77 -36 -19 c-20 -10 -71 -28 -112
@@ -117,10 +106,9 @@
 45 -163 93 -258 110 -66 12 -312 13 -394 1z M8473 8281 c-87 -22 -159 -130 -151 -226 6 -67 46 -137 100 -173 36
 -23 51 -27 117 -27 70 0 80 3 125 34 166 115 99 380 -101 396 -32 2 -73 0 -90
 -4z"/></g></svg>
-      <span class="kopf__name">TTC Neuhausen</span>
+      <span class="kopf__name">TTC Neuhausen <span>Tischtennis seit 1975</span></span>
     </a>
-
-    <nav class="nav" id="hauptnavigation" aria-label="Hauptnavigation" data-offen="false">
+    <nav class="nav" id="navigation" aria-label="Hauptnavigation">
       <ul class="nav__liste">
         <li class="nav__punkt">
           <a class="nav__link" href="verein.html">Verein</a>
@@ -128,19 +116,19 @@
             <li><a href="verein.html">Über den Verein</a></li>
             <li><a href="verein-vorstand.html">Vorstand</a></li>
             <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+            <li><a href="verein-geschichte.html">Geschichte</a></li>
             <li><a href="verein-jahresprogramm.html">Jahresprogramm</a></li>
             <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
             <li><a href="verein-helfereinsatz.html">Helfereinsatz</a></li>
             <li><a href="verein-downloads.html">Downloads</a></li>
-            <li><a href="verein-geschichte.html">Geschichte</a></li>
           </ul>
         </li>
-        <li class="nav__punkt nav__punkt--aktiv">
+        <li class="nav__punkt ist-aktiv">
           <a class="nav__link" href="training.html">Training</a>
           <ul class="nav__unter">
             <li><a href="training.html">Trainingszeiten</a></li>
+            <li><a href="training-schnupperpass.html">Schnuppern &amp; Schnupperpass</a></li>
             <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
-            <li><a href="training-schnupperpass.html">Schnupperpass</a></li>
             <li><a href="training-breitensport.html">Breitensport</a></li>
             <li><a href="training-senioren.html">Senioren &amp; PingPongParkinson</a></li>
             <li><a href="training-einzeltraining.html">Einzeltraining</a></li>
@@ -157,107 +145,162 @@
             <li><a href="hallen.html">Übersicht</a></li>
             <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
             <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-            <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
+            <li><a href="hallen-neue-halle.html">Hallensportzentrum</a></li>
           </ul>
         </li>
         <li class="nav__punkt">
           <a class="nav__link" href="news.html">News</a>
         </li>
       </ul>
+      <p class="nav__fuss">
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a>
+      </p>
     </nav>
-
-    <a class="btn btn--klein" href="verein-mitglied-werden.html">Schnuppern</a>
-
-    <button class="menu-knopf" type="button" aria-label="Menü öffnen"
-            aria-controls="hauptnavigation" aria-expanded="false">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M3 6h18M3 12h18M3 18h18"/>
-      </svg>
+    <a class="knopf knopf--orange kopf__aktion" href="training-schnupperpass.html">Schnuppern</a>
+    <button class="kopf__menue" type="button" aria-expanded="false" aria-controls="navigation">
+      <span class="kopf__menue-striche" aria-hidden="true"></span><span class="kopf__menue-text">Menü</span>
     </button>
   </div>
 </header>
 
 <main id="inhalt">
-<section class="seitenkopf sektion--dunkel">
-  <div class="wrap">
-    <ul class="brotkrumen"><li><a href="index.html">Start</a></li><li><a href="training.html">Training</a></li><li>Stützpunkt</li></ul>
-    <h1>Stützpunkttraining</h1>
-    <p class="seitenkopf__lead">Der TTC Neuhausen ist anerkannter Stützpunkt des Ostschweizer
-      Tischtennisverbands. Zweimal pro Woche trainieren hier die stärksten Spielerinnen und
-      Spieler des Clubs und der Region.</p>
+<header class="aufmacher aufmacher--breit">
+  <div class="wrap aufmacher__raster">
+    <div class="aufmacher__text">
+      <nav class="brotkrumen" aria-label="Brotkrumen"><a href="index.html">Start</a><a href="training.html">Training</a><span aria-current="page">Stützpunkt</span></nav>
+      <p class="rubrik">Training · Leistungssport</p>
+      <h1>Stützpunkt</h1>
+      <p class="lead">Der TTC Neuhausen ist offiziell anerkannter Stützpunkt des Ostschweizer Tischtennisverbands (OTTV).
+        Zweimal pro Woche trainieren hier die Kaderspielerinnen und -spieler des Verbands zusammen mit dem Förderkader des Vereins.</p>
+    </div>
+    <figure class="aufmacher__bild bild bild--panorama">
+      <img src="assets/img/fotos/sttl-men.jpg" alt="Ein Spieler streckt sich beim Ballwechsel über den Tisch, im Hintergrund blaue Banden"
+           width="1600" height="942" fetchpriority="high" style="object-position: 50% 30%">
+      <figcaption>Wo der Weg hinführen kann: STTL Men, die höchste Schweizer Liga. <span class="nachweis">Bild: Ranil Jayanetti</span></figcaption>
+    </figure>
+  </div>
+</header>
+
+<section class="flaeche--weiss">
+  <div class="wrap artikel">
+    <div class="artikel__haupt text">
+      <h2>Training auf Kaderniveau</h2>
+      <p>Ein Stützpunkt ist ein regionales Trainingszentrum des Verbands. Die Einheiten richten sich nach dem
+        Leistungsanspruch der Nachwuchstalente. Geleitet werden sie von einem qualifizierten Trainerteam um Cheftrainer Pekka Pelz,
+        STT Trainer A Leistungssport, und Lyo Bührer, der den Stützpunkt Neuhausen leitet.</p>
+      <p>Das Training findet am Mittwochabend im TTZ Ebnat und am Freitagabend in der Rhyfallhalle
+        statt. So kommen die Spielerinnen und Spieler aus dem Verein und aus der Region zweimal pro Woche an
+        dieselben Tische.</p>
+
+      <h2>Wer mittrainiert</h2>
+      <ul>
+        <li>alle aktuellen Kaderspielerinnen und -spieler des OTTV</li>
+        <li>die Spielerinnen und Spieler des Förderkaders des TTC Neuhausen</li>
+      </ul>
+      <p>Der Förderkader trainiert zusätzlich am Montagabend im TTZ Ebnat. Wer dorthin will, fängt im
+        <a href="training-nachwuchs.html">Nachwuchstraining</a> an und spricht mit dem Trainerteam.</p>
+
+      <h2>Schule und Leistungssport</h2>
+      <p>Mit dem Schuljahr 2026/27 startet in Schaffhausen eine Förderklasse auf der Sekundarstufe I. Sie ist für
+        Talente mit Swiss Olympic Talent Card gedacht und lässt Training vor und nach der Schule zu. Tischtennistalente,
+        die sich dafür interessieren, melden sich beim Sportlichen Leiter.</p>
+    </div>
+    <aside class="artikel__rand">
+      <div class="steckbrief">
+        <h2 class="steckbrief__titel">Auf einen Blick</h2>
+        <dl>
+          <div><dt>Stützpunkt</dt><dd>Mi 18:00–20:30, Ebnat<br>Fr 18:00–20:30, Rhyfall</dd></div>
+          <div><dt>Förderkader</dt><dd>Mo 18:00–20:00, Ebnat</dd></div>
+          <div><dt>Leitung</dt><dd>Pekka Pelz, Lyo Bührer</dd></div>
+          <div><dt>Kontakt</dt><dd>Lyo Bührer, Sportlicher Leiter und Leiter Stützpunkt Neuhausen<br>
+            <a href="mailto:sportchef@ttc-neuhausen.ch">sportchef@ttc-neuhausen.ch</a><br>
+            <a href="tel:+41765292904">+41 76 529 29 04</a></dd></div>
+        </dl>
+        <a class="knopf" href="mailto:sportchef@ttc-neuhausen.ch">Kontakt aufnehmen <span class="pfeil" aria-hidden="true"></span></a>
+      </div>
+    </aside>
   </div>
 </section>
 
-<section class="sektion--hell">
+<section class="flaeche--papier">
   <div class="wrap">
-    <div class="eng">
-      <p class="leise">Das Stützpunkttraining findet am Mittwoch im TTZ Ebnat und am Freitag
-        in der Rhyfallhalle statt, geleitet von Pekka Pelz und Lyo Bührer. Teilnehmen können
-        Spielerinnen und Spieler aus dem Verein und aus der Region nach Absprache mit der
-        Stützpunktleitung.</p>
-      <h2>Kontakt</h2>
-      <p class="leise">Lyo Bührer, Sportlicher Leiter | Leiter Stützpunkt Neuhausen<br>
-        <a href="mailto:sportchef@ttc-neuhausen.ch">sportchef@ttc-neuhausen.ch</a><br>
-        <a href="tel:+41765292904">+41 76 529 29 04</a></p>
-      <div class="btn-reihe">
-        <a class="btn btn--leise" href="training.html">Trainingszeiten Stützpunkt</a>
-      </div>
-    </div>
+    <div class="abschnittskopf"><h2>Die Trainings</h2></div>
+    <div class="tabelle"><table>
+  <thead><tr><th>Tag</th><th>Zeit</th><th>Gruppe</th><th>Halle</th></tr></thead>
+  <tbody>
+    <tr data-tag="Mo"><th scope="row">Montag</th><td class="zahl">18:00–20:00</td><td>Förderkader</td><td><a href="hallen-ttz-ebnat.html"><i class="halle-marke halle-marke--ebnat"></i>TTZ Ebnat</a></td></tr>
+    <tr data-tag="Mi"><th scope="row">Mittwoch</th><td class="zahl">18:00–20:30</td><td>OTTV Stützpunkt</td><td><a href="hallen-ttz-ebnat.html"><i class="halle-marke halle-marke--ebnat"></i>TTZ Ebnat</a></td></tr>
+    <tr data-tag="Fr"><th scope="row">Freitag</th><td class="zahl">18:00–20:30</td><td>OTTV Stützpunkt</td><td><a href="hallen-rhyfallhalle.html"><i class="halle-marke halle-marke--rhyfall"></i>Rhyfallhalle</a></td></tr>
+  </tbody>
+</table></div>
+  </div>
+</section>
+
+<section class="flaeche--weiss">
+  <div class="wrap">
+    <div class="abschnittskopf"><h2>Weiter</h2></div>
+    <ul class="weiter">
+      <li><a href="training-nachwuchs.html"><b>Nachwuchs</b><span>Der Weg vom ersten Ball zum Kader.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+      <li><a href="training-einzeltraining.html"><b>Einzeltraining</b><span>Für den Förderkader zum reduzierten Preis.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+      <li><a href="teams.html"><b>Teams</b><span>Von der Jugendliga bis zur STTL.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+      <li><a href="verein-trainerteam.html"><b>Trainerteam</b><span>Wer am Stützpunkt trainiert.</span><span class="pfeil" aria-hidden="true"></span></a></li>
+    </ul>
   </div>
 </section>
 
 </main>
 
-<footer class="fuss sektion--dunkel">
+<footer class="fuss flaeche--nacht">
   <div class="wrap">
+    <div class="fuss__oben">
+      <img class="fuss__logo" src="assets/img/logo-weiss.svg" width="1459" height="352" alt="Tischtennisclub Neuhausen">
+      <p class="fuss__satz">Tischtennis von 7 bis 85, seit 1975. In der Rhyfallhalle Neuhausen und im Tischtenniszentrum Ebnat.</p>
+      <a class="knopf knopf--orange" href="training-schnupperpass.html">Schnuppertraining</a>
+    </div>
     <div class="fuss__raster">
-      <div class="fuss__logo">
-        <img src="assets/img/logo-weiss.svg" width="1459" height="352"
-             alt="Tischtennisclub Neuhausen">
-        <p class="leise" style="font-size:var(--grad-sm);max-width:34ch">
-          Gegründet 1975. Training in der Rhyfallhalle Neuhausen und im
-          Tischtenniszentrum Ebnat in Schaffhausen.
-        </p>
-      </div>
       <div>
-        <h4>Verein</h4>
+        <h2 class="fuss__titel">Verein</h2>
         <ul>
           <li><a href="verein.html">Über den Verein</a></li>
           <li><a href="verein-vorstand.html">Vorstand</a></li>
           <li><a href="verein-trainerteam.html">Trainerteam</a></li>
+          <li><a href="verein-geschichte.html">Geschichte</a></li>
           <li><a href="verein-mitglied-werden.html">Mitglied werden</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Hallen</h4>
-        <ul>
-          <li><a href="hallen-ttz-ebnat.html">TTZ Ebnat</a></li>
-          <li><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a></li>
-          <li><a href="hallen-neue-halle.html">Neue Halle</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Kontakt</h4>
-        <ul>
-          <li><a href="kontakt.html">Kontakt</a></li>
           <li><a href="partner.html">Für Partner</a></li>
-          <li><a href="https://www.instagram.com/ttcneuhausen/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.facebook.com/ttcnh/" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Training</h2>
+        <ul>
+          <li><a href="training.html">Trainingszeiten</a></li>
+          <li><a href="training-nachwuchs.html">Nachwuchs</a></li>
+          <li><a href="training-breitensport.html">Breitensport</a></li>
+          <li><a href="training-senioren.html">Senioren</a></li>
+          <li><a href="teams.html">Teams</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Hallen</h2>
+        <p><a href="hallen-rhyfallhalle.html">Rhyfallhalle</a><br>Rheingoldstrasse 11<br>8212 Neuhausen am Rheinfall</p>
+        <p><a href="hallen-ttz-ebnat.html">Tischtenniszentrum Ebnat</a><br>Ebnatstrasse 35<br>8200 Schaffhausen</p>
+      </div>
+      <div>
+        <h2 class="fuss__titel">Kontakt</h2>
+        <p><a href="mailto:info@ttc-neuhausen.ch">info@ttc-neuhausen.ch</a><br>
+          <a href="mailto:trainer@ttc-neuhausen.ch">trainer@ttc-neuhausen.ch</a></p>
+        <p><a href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a><br>
+          <a href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a></p>
       </div>
     </div>
-    <div class="fuss__klein">
-      <span>&copy; <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
-      <span>
-        <a href="impressum.html">Impressum</a> &nbsp;·&nbsp;
-        <a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp;
-        Gestaltung und Umsetzung: Wendico
-      </span>
+    <div class="fuss__unten">
+      <span>© <span data-jahr>2026</span> Tischtennisclub Neuhausen</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · Gestaltung und Umsetzung: Wendico</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

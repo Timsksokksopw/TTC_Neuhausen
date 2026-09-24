@@ -1,67 +1,45 @@
 # -*- coding: utf-8 -*-
-"""
-news.py — Beiträge aus dem Verein.
+"""News – Startseite, news.html und die Beitragsseiten.
 
-Einzige Quelle für die drei Karten auf der Startseite, die Liste auf
-news.html und die Beitragsseiten selbst. Vorher stand jeder Beitrag
-zweimal abgetippt im HTML — einmal als Karte, einmal als Listeneintrag —
-und der eigentliche Text stand gar nicht auf dieser Website, sondern
-lag auf der alten. Die Karten verwiesen dorthin.
+Je Eintrag:
+    kennung       Dateiname der Beitragsseite: news-<kennung>.html
+    datum         JJJJ-MM-TT
+    titel         volle Überschrift
+    kurztitel     kürzer für Startseite und Karten (leer = titel)
+    anriss        ein Satz für Listen (optional)
+    text          Autorin/Autor (optional)
+    bildnachweis  Fotografin/Fotograf (optional)
+    bild          Datei unter site/assets/img/fotos/ (optional)
+    bildalt       Alternativtext (leer, wenn das Bild nur Stimmung ist)
+    absaetze      Fliesstext. Leer = Meldung ohne eigene Seite.
 
---------------------------------------------------------------------------
-Wie ein Beitrag zu einer Seite wird
---------------------------------------------------------------------------
-Hat ein Beitrag Text (`absaetze` nicht leer), erzeugt build.py daraus die
-Seite `news-<kennung>.html`, und Karte wie Listeneintrag verweisen darauf.
-
-Hat er **keinen** Text, bleibt er als Meldung stehen: Datum, Titel und
-Herkunftsangabe, aber ohne Verweis. Das ist Absicht. Eine Karte, die auf
-eine leere Seite führt, ist schlechter als eine Karte, die nicht klickbar
-ist — und ein Verweis zurück auf die alte Website ist keine Lösung,
-sondern das Problem.
-
-`build.py` zählt nach jedem Lauf, wie viele Beiträge noch ohne Text sind.
-
---------------------------------------------------------------------------
-Je Eintrag
---------------------------------------------------------------------------
-    kennung       Dateiname der Beitragsseite (Kleinbuchstaben, Bindestriche)
-    datum         ISO, also JJJJ-MM-TT — daraus baut build.py die Anzeige
-    titel         volle Überschrift, steht auf der Beitragsseite
-    kurztitel     gekürzt für die Karte auf der Startseite; leer = titel
-    text          wer den Beitrag geschrieben hat
-    bildnachweis  wer die Bilder gemacht hat
-    bild          Datei unter site/assets/img/fotos/
-    bildalt       Alternativtext; leer, solange das Bild nur Stimmung ist
-    absaetze      der Fliesstext, siehe unten
-
---------------------------------------------------------------------------
-Der Fliesstext
---------------------------------------------------------------------------
-`absaetze` ist eine Liste. Jeder Eintrag ist entweder
-
-    "Ein gewöhnlicher Absatz."
-
-oder eines von drei Sonderstücken:
-
+Ein Absatz ist ein Text oder eines von:
     {"art": "titel", "text": "U13"}
-    {"art": "zitat", "text": "Wir wussten früh, dass …", "wer": "Lyo Bührer"}
-    {"art": "liste", "titel": "Rangliste U13", "punkte": ["ZZ-Lancy", …]}
+    {"art": "zitat", "text": "…", "wer": "Lyo Bührer"}
+    {"art": "liste", "titel": "Rangliste U13", "punkte": ["…", "…"]}
 
-Anführungszeichen im Fliesstext bitte als « » setzen, nicht als " " —
-so steht es auf der übrigen Website auch.
+Die Beiträge von Lyo Bührer stehen ohne Fliesstext, bis der Originaltext
+aus dem alten System hierher kopiert ist. Die Anrisse der Meldungen fassen
+nur Fakten zusammen (Stand 23.9.2026, von ttc-neuhausen.ch).
 """
 
-# --------------------------------------------------------------------------
-# Hinweis zu den drei bestehenden Beiträgen
-# --------------------------------------------------------------------------
-# Titel, Datum, Herkunftsangabe und Bild stammen von der bisherigen
-# Website und sind dort nachgeprüft. Der **Fliesstext fehlt noch** und
-# steht deshalb leer: die Beiträge sind von Lyo Bührer geschrieben, und
-# eine nacherzählte Fassung unter seinem Namen wäre keine Übernahme,
-# sondern eine Fälschung. Den Text bitte aus dem alten Redaktionssystem
-# hierher kopieren — dann bauen sich die drei Seiten von selbst.
 BEITRAEGE = [
+    {
+        "kennung": "sttl-saisonvorschau-2026",
+        "datum": "2026-09-21",
+        "titel": "Titelrennen, Playoffkampf und Abstiegssorgen: So schätzt Lyo Bührer die STTL ein",
+        "kurztitel": "So schätzt Lyo Bührer die neue STTL-Saison ein",
+        "anriss": "Der Sportliche Leiter über Favoriten, Playoff-Rennen und Abstiegskampf.",
+        "text": "Lyo Bührer",
+        "absaetze": [],
+    },
+    {
+        "kennung": "altpapier-september-2026",
+        "datum": "2026-08-24",
+        "titel": "Altpapiersammlung 5. September",
+        "anriss": "Treffpunkt um 7 Uhr beim TTZ Ebnat. Gesucht sind 18 Helferinnen und Helfer.",
+        "absaetze": [],
+    },
     {
         "kennung": "sttl-women-nach-dem-umbruch",
         "datum": "2026-07-09",
@@ -70,7 +48,7 @@ BEITRAEGE = [
         "text": "Lyo Bührer",
         "bildnachweis": "René Zwald",
         "bild": "news-1.jpg",
-        "bildalt": "",
+        "bildalt": "Eine Spielerin im blauen Trikot ballt nach einem Punkt die Faust.",
         "absaetze": [],
     },
     {
@@ -92,11 +70,46 @@ BEITRAEGE = [
         "text": "Lyo Bührer",
         "bildnachweis": "Ranil Jayanetti",
         "bild": "news-3.jpg",
-        "bildalt": "",
+        "bildalt": "Ein Spieler streckt sich am Tisch nach dem Ball.",
+        "absaetze": [],
+    },
+    {
+        "kennung": "abstimmung-hallensportzentrum",
+        "datum": "2026-06-15",
+        "titel": "Schaffhausen sagt JA – Ein Sieg für den Hallensport",
+        "anriss": "Alle 26 Gemeinden stimmen dem Ausbau des Hallensportzentrums zu, der Kanton mit 73,9 Prozent.",
+        "text": "Lyo Bührer",
+        "absaetze": [],
+    },
+    {
+        "kennung": "bronze-o40",
+        "datum": "2026-05-19",
+        "titel": "Joachim Klappenecker holt Bronze im O40-Einzel",
+        "anriss": "Medaille an den Schweizer Meisterschaften der Seniorinnen und Senioren in Genf.",
+        "absaetze": [],
+    },
+    {
+        "kennung": "standaktionen-hallensportzentrum",
+        "datum": "2026-05-18",
+        "titel": "Standaktionen für Abstimmung Hallensportzentrum Schaffhausen gestartet",
+        "anriss": "Zehn Stände in der ganzen Region – mit einem kleinen Tisch zum Mitspielen.",
+        "absaetze": [],
+    },
+    {
+        "kennung": "partnerschaft-tt-store",
+        "datum": "2026-05-11",
+        "titel": "TTC Neuhausen geht Partnerschaft mit TT-Store.ch ein",
+        "anriss": "Ab der Saison 2026/27 rüstet TT-Store.ch den ganzen Verein aus, vom Nachwuchs bis zur STTL.",
+        "absaetze": [],
+    },
+    {
+        "kennung": "altpapier-mai-2026",
+        "datum": "2026-05-11",
+        "titel": "Altpapiersammlung vom 9. Mai 2026",
+        "anriss": "15 Helferinnen und Helfer, fünf Fahrzeuge, Sonnenschein.",
         "absaetze": [],
     },
 ]
 
-# Wie viele Beiträge auf der Startseite stehen. Die Liste auf news.html
-# zeigt alle.
-AUF_STARTSEITE = 3
+# Wie viele Meldungen auf der Startseite neben dem grossen Beitrag stehen.
+AUF_STARTSEITE = 4

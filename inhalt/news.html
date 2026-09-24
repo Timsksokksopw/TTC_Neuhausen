@@ -1,19 +1,40 @@
-<section class="seitenkopf sektion--dunkel">
-  <div class="wrap">
-    <ul class="brotkrumen"><li><a href="index.html">Start</a></li><li>News</li></ul>
-    <h1>News</h1>
-    <p class="seitenkopf__lead">Spielberichte, Clubnews und Anlässe aus dem Verein.</p>
+<header class="aufmacher aufmacher--schmal">
+  <div class="wrap aufmacher__raster">
+    <div class="aufmacher__text">
+      <nav class="brotkrumen" aria-label="Brotkrumen"><a href="index.html">Start</a><span aria-current="page">News</span></nav>
+      <p class="rubrik">News · Saison {{saison}}</p>
+      <h1>News</h1>
+      <p class="lead">Spielberichte aus der STTL, Nachrichten aus dem Nachwuchs, Anlässe und was im Verein sonst läuft –
+        das Neueste zuerst.</p>
+    </div>
   </div>
-</section>
+</header>
 
-<!-- Die Liste kommt aus vorlage/news.py, genau wie die drei Karten auf der
-     Startseite. Vorher stand jeder Beitrag hier und dort abgetippt, und der
-     eigentliche Text lag gar nicht auf dieser Website.
-
-     Ein Eintrag ist klickbar, sobald in news.py Fliesstext dazu steht —
-     dann erzeugt build.py die Beitragsseite gleich mit. -->
-<section class="sektion--hell">
-  <div class="wrap">
-    {{newsliste}}
+<!-- Die Liste kommt aus vorlage/news.py, genau wie der Block auf der
+     Startseite. Ein Eintrag wird klickbar, sobald dort Fliesstext steht –
+     build.py erzeugt die Beitragsseite dann gleich mit. -->
+<section class="flaeche--weiss">
+  <div class="wrap artikel artikel--rand-unten">
+    <div class="artikel__haupt">
+      {{newsliste}}
+    </div>
+    <aside class="artikel__rand">
+      <div class="steckbrief">
+        <h2 class="steckbrief__titel">Nächste Termine</h2>
+        {{termine}}
+        <a class="knopf knopf--rahmen" href="verein-jahresprogramm.html">Jahresprogramm</a>
+      </div>
+      <div class="steckbrief steckbrief--leise">
+        <h2 class="steckbrief__titel">Resultate</h2>
+        <p>Tabellen und Resultate aller {{mannschaftszahl}} Mannschaften führt der Verband auf click-tt.</p>
+        <a class="knopf knopf--rahmen" href="{{clicktt:spielbetrieb}}" rel="noopener">Zu click-tt <span class="pfeil" aria-hidden="true"></span></a>
+      </div>
+      <div class="steckbrief steckbrief--leise">
+        <h2 class="steckbrief__titel">Instagram und Facebook</h2>
+        <p>Neuigkeiten und Bilder aus dem Verein.</p>
+        <p><a class="lauftext" href="https://www.instagram.com/ttcneuhausen/" rel="noopener">Instagram</a> ·
+          <a class="lauftext" href="https://www.facebook.com/ttcnh/" rel="noopener">Facebook</a></p>
+      </div>
+    </aside>
   </div>
 </section>

@@ -125,6 +125,27 @@ BEITRITTSFORMULARE = [
                  "Beitrittserklaerungen-Passive.pdf"},
 ]
 
+# Die Unterlagen zum Hallensportzentrum, auf hallen-neue-halle.html.
+# Herausgeberin ist die Gemeinnützige Stiftung Schweizersbild; auf der
+# bisherigen Website standen sie auf der Seite «Hallensportzentrum».
+HALLENPROJEKT = [
+    {"name": "Flyer zur Abstimmung",
+     "info": "Was gebaut wird und wer es bezahlt",
+     "datei": "hallensportzentrum-flyer.pdf",
+     "herkunft": "https://www.ttc-neuhausen.ch/wp-content/uploads/2026/04/"
+                 "Flyer_Erweiterung_Hallensportzentrum-1.pdf"},
+    {"name": "Medienmitteilung",
+     "info": "Ausbauprojekt, 30. März 2026",
+     "datei": "hallensportzentrum-medienmitteilung.pdf",
+     "herkunft": "https://www.ttc-neuhausen.ch/wp-content/uploads/2026/04/"
+                 "MM-Ausbauprojekt-1.pdf"},
+    {"name": "Flyer «Baustein 2026»",
+     "info": "Spenden für den Ausbau, mit Zeichnungsschein",
+     "datei": "hallensportzentrum-baustein.pdf",
+     "herkunft": "https://www.ttc-neuhausen.ch/wp-content/uploads/2026/04/"
+                 "Flyer-Baustein-2026_compressed.pdf"},
+]
+
 # --------------------------------------------------------------------------
 # Das Anmeldeformular
 # --------------------------------------------------------------------------

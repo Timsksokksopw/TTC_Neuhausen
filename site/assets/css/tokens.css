@@ -1,274 +1,97 @@
-/* ==========================================================================
-   TTC Neuhausen – Farb-Tokens
-   Abgeleitet aus dem Vereinslogo. Quellfarbe: #204E94
-   Alle Werte teilen den Farbton 258.8° (OKLCH), damit die Skala
-   in sich stimmig bleibt und nicht aus zufällig gewählten Blautönen besteht.
-   Kontraste sind gegen WCAG 2.1 AA geprüft; Werte stehen als Kommentar dabei.
-   ========================================================================== */
+/* TTC Neuhausen – Gestaltungswerte
+   Die einzige Datei mit Farbwerten. build.py meldet Hex-Werte in anderen Dateien. */
 
-:root {
-  /* --- Markenfarben: Vereinsblau und seine Nachbarn ---------------------- */
-  --ttc-blau-50:   #F0F6FF;
-  --ttc-blau-100:  #DAE8FF;
-  --ttc-blau-200:  #B8D1F9;
-  --ttc-blau-300:  #8CB3F0;   /* Akzent auf dunklem Grund – 8.84 auf --flaeche-dunkel */
-  --ttc-blau-400:  #598CDB;
-  --ttc-blau-500:  #204E94;   /* Vereinsblau, direkt aus dem Logo gemessen */
-  --ttc-blau-600:  #163E7A;   /* Hover für Flächen in Vereinsblau */
-  --ttc-blau-700:  #0F2F5F;
-
-  /* --- Tinte: entsättigte Skala im selben Farbton ------------------------ */
-  --ttc-tinte-0:   #FFFFFF;
-  --ttc-tinte-50:  #F5F7FB;
-  --ttc-tinte-100: #E9EDF4;
-  --ttc-tinte-200: #D5DBE4;
-  --ttc-tinte-500: #979FAB;
-  --ttc-tinte-600: #636974;
-  --ttc-tinte-700: #3B434E;
-  --ttc-tinte-800: #212935;
-  --ttc-tinte-900: #131B28;
-  --ttc-tinte-950: #0A111D;
-
-  /* --- Flächen ----------------------------------------------------------
-     Vier Flächen, mehr nicht. Abwechslung entsteht über den Wechsel
-     zwischen ihnen, nicht über neue Farbwerte.                            */
-  --flaeche-dunkel:      var(--ttc-tinte-950);  /* Hero, Erzählsektionen   */
-  --flaeche-dunkel-hoch: var(--ttc-tinte-900);  /* Karten auf Dunkel       */
-  --flaeche-hell:        var(--ttc-tinte-50);   /* Funktionssektionen      */
-  --flaeche-weiss:       var(--ttc-tinte-0);    /* Sponsorenkacheln, click-tt */
-  --flaeche-marke:       var(--ttc-blau-500);   /* nur in hellen Sektionen */
-
-  /* --- Text auf hellem Grund -------------------------------------------- */
-  --text-hell-primaer:   var(--ttc-tinte-900);  /* 16.11 auf --flaeche-hell */
-  --text-hell-sekundaer: var(--ttc-tinte-700);  /*  9.33                    */
-  --text-hell-marke:     var(--ttc-blau-500);   /*  7.59                    */
-
-  /* --- Text auf dunklem Grund ------------------------------------------- */
-  --text-dunkel-primaer:   var(--ttc-tinte-200); /* 13.58 auf --flaeche-dunkel */
-  --text-dunkel-sekundaer: var(--ttc-tinte-500); /*  7.08                      */
-  --text-dunkel-akzent:    var(--ttc-blau-300);  /*  8.84                      */
-
-  /* --- Text auf Vereinsblau --------------------------------------------- */
-  --text-auf-marke: var(--ttc-tinte-0);          /*  8.14 auf --ttc-blau-500 */
-
-  /* --- Aktionen ---------------------------------------------------------
-     Auf Hell trägt Vereinsblau die Aktion. Auf Dunkel geht das nicht:
-     #204E94 erreicht dort nur 2.32 und wäre als Fläche unsichtbar.
-     Deshalb kehrt sich die Aktion auf Dunkel um – helle Fläche,
-     dunkler Text. Die Hierarchie entsteht über Helligkeit, nicht Farbton. */
-  --aktion-hell-flaeche:       var(--ttc-blau-500);
-  --aktion-hell-flaeche-hover: var(--ttc-blau-600);
-  --aktion-hell-text:          var(--ttc-tinte-0);
-
-  --aktion-dunkel-flaeche:       var(--ttc-blau-300);
-  --aktion-dunkel-flaeche-hover: var(--ttc-blau-200);
-  --aktion-dunkel-text:          var(--ttc-tinte-950); /* 8.84 */
-
-  /* --- Linien ------------------------------------------------------------ */
-  --linie-hell:   var(--ttc-tinte-100);
-  --linie-dunkel: var(--ttc-tinte-800);
-
-  /* --- Schleier über Fotos ------------------------------------------------
-     Fotos aus der Halle sind nie gleich hell. Damit heller Text darauf
-     trotzdem verlässlich lesbar bleibt, liegt immer ein Schleier dazwischen
-     — abgestuft, aber immer aus derselben dunklen Fläche gemischt.
-
-     --schleier-klar ist bewusst kein `transparent`: ein Verlauf nach
-     `transparent` blendet in manchen Browsern über Schwarz aus und
-     hinterlässt einen grauen Schmutzrand.                                  */
-  --schleier-voll:   color-mix(in srgb, var(--ttc-tinte-950) 94%, transparent);
-  --schleier-stark:  color-mix(in srgb, var(--ttc-tinte-950) 76%, transparent);
-  --schleier-mittel: color-mix(in srgb, var(--ttc-tinte-950) 50%, transparent);
-  --schleier-leicht: color-mix(in srgb, var(--ttc-tinte-950) 22%, transparent);
-  --schleier-klar:   color-mix(in srgb, var(--ttc-tinte-950)  0%, transparent);
-
-  /* --- Auftakt -----------------------------------------------------------
-     Zwei Werte, die nicht aus der Palette kommen, sondern aus dem Material:
-     gemessen am letzten Bild der Startseiten-Fahrt. Die Schlussfläche muss
-     die Bildfarbe exakt treffen, sonst sieht man beim Übergang eine Kante;
-     im oberen Bilddrittel schwankt sie um weniger als drei Stufen je Kanal,
-     eine glatte Fläche passt also nahtlos.
-
-     Der Ball ist derselbe, der eben hinter der Tischkante verschwunden ist —
-     deshalb auch hier seine eigene Farbe und keine aus der Skala.          */
-  --auftakt-grund: #66B2D2;   /* Bild 50, Median der oberen 60 %  */
-  --auftakt-ball:  #EAB713;   /* Bild 46, Median der Ballfläche   */
-
-  /* --- Schraffur ----------------------------------------------------------
-     Zweite Kodierung neben der Farbe. Im Wochenraster trägt sie die
-     Rhyfallhalle, damit die Zuordnung auch ankommt, wo Farbe es nicht tut:
-     bei Farbfehlsichtigkeit, im Schwarzweissdruck, im Kontrastmodus.
-     Mischt sich aus einem bestehenden Ton, erfindet also keinen neuen.    */
-  --schraffur: repeating-linear-gradient(135deg,
-    transparent 0 7px,
-    color-mix(in srgb, var(--ttc-tinte-500) 42%, transparent) 7px 8px);
-
-  /* --- Radien -------------------------------------------------------------
-     Vier Stufen. Je grösser die Fläche, desto grösser der Radius.          */
-  --radius-s:  10px;
-  --radius-m:  14px;
-  --radius-l:  20px;
-  --radius-xl: 28px;
-
-  /* --- Fokus -------------------------------------------------------------
-     Ein Wert für beide Modi, sichtbar auf Hell wie auf Dunkel.            */
-  --fokus: var(--ttc-blau-400);
+/* --- Schriften (selbst gehostet, SIL Open Font License, siehe fonts/OFL.txt) --- */
+@font-face {
+  font-family: "Sofia Sans XC";
+  src: url("../fonts/sofia-sans-xc.woff2") format("woff2");
+  font-weight: 1 1000;
+  font-display: swap;
 }
-
-/* Sektionen setzen ihren Kontext, Komponenten darin erben ihn.
-   So braucht kein Button eine Dark-Variante. */
-.sektion--hell {
-  background: var(--flaeche-hell);
-  color: var(--text-hell-primaer);
-  --logo-farbe: var(--ttc-blau-500);
-  --aktion-flaeche: var(--aktion-hell-flaeche);
-  --aktion-flaeche-hover: var(--aktion-hell-flaeche-hover);
-  --aktion-text: var(--aktion-hell-text);
-  --linie: var(--linie-hell);
-}
-
-.sektion--weiss {
-  background: var(--flaeche-weiss);
-  color: var(--text-hell-primaer);
-  --logo-farbe: var(--ttc-blau-500);
-  --aktion-flaeche: var(--aktion-hell-flaeche);
-  --aktion-flaeche-hover: var(--aktion-hell-flaeche-hover);
-  --aktion-text: var(--aktion-hell-text);
-  --linie: var(--linie-hell);
-}
-
-.sektion--marke {
-  background: var(--flaeche-marke);
-  color: var(--text-auf-marke);
-  --logo-farbe: var(--ttc-tinte-0);
-  --aktion-flaeche: var(--ttc-tinte-0);
-  --aktion-flaeche-hover: var(--ttc-blau-50);
-  --aktion-text: var(--ttc-blau-500);
-  --linie: var(--ttc-blau-400);
-}
-
-.sektion--dunkel {
-  background: var(--flaeche-dunkel);
-  color: var(--text-dunkel-primaer);
-  --logo-farbe: var(--ttc-tinte-0);
-  --aktion-flaeche: var(--aktion-dunkel-flaeche);
-  --aktion-flaeche-hover: var(--aktion-dunkel-flaeche-hover);
-  --aktion-text: var(--aktion-dunkel-text);
-  --linie: var(--linie-dunkel);
-}
-
-/* Das Logo-SVG nutzt fill="currentColor" und folgt damit --logo-farbe. */
-.logo { color: var(--logo-farbe); }
-
-/* Sichtbarer Fokus, in beiden Modi. */
-:where(a, button, [tabindex]):focus-visible {
-  outline: 3px solid var(--fokus);
-  outline-offset: 2px;
-}
-
-/* ==========================================================================
-   Typografie
-   Drei Rollen, aus dem Logo begründet:
-
-   Archivo   – Display. Das Logo-Wortzeichen ist eine fette, leicht schmale
-               Grotesk mit echter Schrägstellung. Archivo ist die nächste frei
-               lizenzierte Verwandte davon und bringt eine Breitenachse mit,
-               sodass grosse Zeilen enger laufen können, ohne die Form zu
-               verzerren. Überschriften wirken damit wie aus dem Logo gesetzt.
-
-   Atkinson  – Fliesstext. Bewusst eine Lesbarkeitsschrift: die Leserschaft
-   Hyperlegible reicht vom Jugendtraining bis zu den Senioren. Offene Punzen und
-               unterscheidbare Formen (I/l/1) sind hier kein Verzicht auf
-               Charakter, sondern der Charakter.
-
-   Newsreader – Akzent, kursiv, sparsam. Spiegelt die kursive Serifenzeile im
-               Logo und trägt die Jubiläums- und Vereinsgeschichte-Momente.
-               Nirgends sonst.
-
-   Alle drei sind SIL Open Font License, also selbst hostbar und ohne Kosten –
-   passend zur Vorgabe, keine kostenpflichtigen Abhängigkeiten aufzunehmen.
-   ========================================================================== */
-
-:root {
-  --schrift-display: "Archivo", system-ui, sans-serif;
-  --schrift-text:    "Atkinson Hyperlegible", system-ui, sans-serif;
-  --schrift-akzent:  "Newsreader", Georgia, serif;
-
-  /* Fluide Skala. Unten flach, oben steil – Fliesstext bleibt ruhig,
-     die Display-Grade holen auf grossen Schirmen wirklich aus. */
-  --grad-xs:   clamp(12.5px, 0.75rem + 0.1vw,  13px);
-  --grad-sm:   clamp(14.5px, 0.88rem + 0.1vw,  15px);
-  --grad-base: clamp(17px,   1.02rem + 0.2vw,  18px);
-  --grad-lg:   clamp(19px,   1.12rem + 0.4vw,  21px);
-  --grad-xl:   clamp(22px,   1.26rem + 0.8vw,  26px);
-  --grad-2xl:  clamp(26px,   1.42rem + 1.6vw,  34px);
-  --grad-3xl:  clamp(32px,   1.65rem + 2.8vw,  46px);
-  --grad-4xl:  clamp(40px,   1.90rem + 4.8vw,  64px);
-  /* Der oberste Grad war 92px und die untere Schwelle 48px. Bei 390px Breite
-     ergab das rund 66px, und damit passte «Schnuppern» in der Hero-Zeile
-     nicht mehr in den Bildschirm — das Wort lief rechts aus dem Bild.
-     Flacher gestellt: unten schmaler, oben ruhiger. */
-  --grad-5xl:  clamp(36px,   1.35rem + 7.8vw,  84px);
-
-  --zeile-eng:   1.05;   /* grosse Display-Zeilen */
-  --zeile-knapp: 1.25;
-  --zeile-text:  1.65;   /* Fliesstext, bewusst luftig */
-
-  --sperr-eng:   -0.03em;
-  --sperr-null:  0;
-  --sperr-weit:   0.12em;  /* Kapitälchen-Labels */
-}
-
-body {
-  font-family: var(--schrift-text);
-  font-size: var(--grad-base);
-  line-height: var(--zeile-text);
-  -webkit-font-smoothing: antialiased;
-}
-
-h1, h2, h3, .display {
-  font-family: var(--schrift-display);
-  font-weight: 800;
-  line-height: var(--zeile-eng);
-  letter-spacing: var(--sperr-eng);
-  font-stretch: 92%;          /* Breitenachse leicht eingezogen, wie im Logo */
-  text-wrap: balance;
-}
-
-/* Die kinetische Zeile: Schrägstellung greift die Haltung der Spielerfigur
-   im Logo auf. Nur im Hero und in Sektionsauftakten, sonst wird es Effekt. */
-.kinetisch { font-style: italic; }
-
-/* Sektionslabels. Kein 01 / 02 / 03 – die Sektionen sind keine Reihenfolge. */
-.label {
-  font-family: var(--schrift-display);
-  font-size: var(--grad-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: var(--sperr-weit);
-  font-stretch: 100%;
-}
-
-/* Die Vereinsgeschichte-Stimme. */
-.akzent {
-  font-family: var(--schrift-akzent);
+@font-face {
+  font-family: "Sofia Sans XC";
+  src: url("../fonts/sofia-sans-xc-italic.woff2") format("woff2");
+  font-weight: 1 1000;
   font-style: italic;
-  font-weight: 400;
-  letter-spacing: var(--sperr-null);
+  font-display: swap;
+}
+@font-face {
+  font-family: "Schibsted Grotesk";
+  src: url("../fonts/schibsted-grotesk.woff2") format("woff2");
+  font-weight: 400 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("../fonts/newsreader.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("../fonts/newsreader-italic.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: italic;
+  font-display: swap;
 }
 
-/* Ranglisten, Trainingszeiten, Resultate: gleiche Ziffernbreite, sonst
-   flackern die Spalten. */
-.daten, table {
-  font-variant-numeric: tabular-nums;
-  font-feature-settings: "tnum" 1;
-}
+:root {
+  /* Papier und Tinte. Kontrast auf --papier in Klammern. */
+  --papier:      #F3F0E8;
+  --papier-2:    #E9E4D8;
+  --weiss:       #FFFFFF;
+  --tinte:       #14161B;   /* 15.9 */
+  --tinte-2:     #3E434C;   /*  8.7 */
+  --tinte-3:     #5F636B;   /*  5.3 – Bildlegenden, Nebeninfos */
+  --linie:       #D5CEBF;
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+  /* Vereinsblau aus dem Logo. Auf Papier 7.2, Weiss darauf 8.1. */
+  --blau:        #204E94;
+  --blau-tief:   #173B72;
+  --blau-nacht:  #0E2547;
+  --blau-hell:   #DCE5F2;
+  --blau-text:   #B8C7DF;   /* Nebentext auf Blau, 4.8 */
+  --nacht-text:  #C4CFE0;   /* Nebentext auf Nachtblau, 9.7 */
+
+  /* Der Ball. Auf Papier nur als Fläche, nie als Schrift (2.1).
+     Tinte auf Orange 7.7, Orange auf Nachtblau 6.5. */
+  --orange:      #FF8A3D;
+  --orange-tief: #E86F1F;
+
+  /* Tisch */
+  --tisch:       #204E94;
+  --tisch-kante: #143466;
+  --tisch-bein:  #2A2E36;
+  --tisch-linie: #FFFFFF;
+
+  /* Schatten entstehen aus der Tinte, nicht aus Schwarz. */
+  --schatten:    color-mix(in srgb, var(--tinte) 22%, transparent);
+  --schatten-tief: color-mix(in srgb, var(--tinte) 40%, transparent);
+
+  /* Schrift */
+  --f-display: "Sofia Sans XC", "Arial Narrow", sans-serif;
+  --f-text:    "Schibsted Grotesk", system-ui, sans-serif;
+  --f-lead:    "Newsreader", Georgia, serif;
+
+  --t-xs:  13px;
+  --t-s:   clamp(14px, 13.4px + .15vw, 15px);
+  --t-m:   clamp(17px, 16px + .25vw, 19px);
+  --t-l:   clamp(19px, 17px + .5vw, 22px);
+  --t-xl:  clamp(22px, 18px + 1vw, 28px);
+  --t-h3:  clamp(25px, 20px + 1vw, 32px);
+  --t-h2:  clamp(38px, 26px + 2.6vw, 66px);
+  --t-h1:  clamp(52px, 30px + 6vw, 148px);
+  --t-riesig: clamp(64px, 30px + 9.4vw, 196px);
+
+  /* Raster */
+  --breite: 1320px;
+  --rand: clamp(20px, 4vw, 56px);
+  --spalt: clamp(16px, 2vw, 28px);
+  --abstand: clamp(64px, 9vw, 136px);
+
+  --kopf-hoehe: 72px;
+  --radius: 3px;
+
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --fokus: var(--orange-tief);
 }

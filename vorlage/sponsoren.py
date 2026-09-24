@@ -55,7 +55,10 @@ AUSRUESTER = {
     "name": "TT-Store.ch",
     "url": "https://www.tt-store.ch/",
     "logo": "",
-    "text": "Trikots, Hölzer und Beläge für Mitglieder des TTC Neuhausen.",
+    # Stand der Meldung vom 11. Mai 2026: Ausrüstung ab 2026/27, vom
+    # Nachwuchs bis zu den STTL-Teams. Welches Material genau, sagt sie nicht.
+    "text": "Ab der Saison 2026/27 rüstet der Schweizer JOOLA-Vertriebspartner den ganzen "
+            "Verein aus – vom Nachwuchs bis zu den STTL-Teams.",
 }
 
 SPONSOREN = [
