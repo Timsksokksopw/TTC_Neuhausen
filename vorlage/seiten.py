@@ -59,7 +59,7 @@ SEITEN = {
         "Verein"),
     "verein-geschichte.html": (
         "Geschichte – TTC Neuhausen",
-        "Seit 1975: Gründung in Schaffhausen, drei Meistertitel der Herren, vierzehn der Damen "
+        "Seit 1975: Gründung in Schaffhausen, drei Meistertitel der Herren, fünfzehn der Damen "
         "und eine Halle in Eigenleistung. Mit Bildern aus dem Vereinsarchiv.",
         "Verein"),
     "verein-jahresprogramm.html": (

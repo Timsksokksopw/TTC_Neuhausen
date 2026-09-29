@@ -130,7 +130,7 @@ ZEITLEISTE = [
         "titel": "Erster Meistertitel der Damen",
         "text": "Am 16. April schlagen Sonja Führer, Monika Führer, Laura Schärrer und "
                 "Andrea Stepankova im Final Young Stars Zürich 7:3 – als jüngstes Meisterteam "
-                "der Geschichte, trainiert von Pavel Rehorek. Es ist der erste von vierzehn Titeln.",
+                "der Geschichte, trainiert von Pavel Rehorek. Es ist der erste von fünfzehn Titeln.",
         "kapitel": "",
     },
     {
@@ -426,13 +426,13 @@ ARCHIV = [
 
 
 # --- Meistertitel ---------------------------------------------------------
-# Als Jahresraster statt als Kommaliste: vierzehn gegen drei sieht man,
+# Als Jahresraster statt als Kommaliste: fünfzehn gegen drei sieht man,
 # sobald die Jahre nebeneinander stehen.
 MEISTERTITEL = [
     {
         "wer": "Damen",
         "jahre": [2005, 2006, 2007, 2009, 2010, 2011, 2012,
-                  2015, 2016, 2017, 2018, 2019, 2021, 2022],
+                  2015, 2016, 2017, 2018, 2019, 2021, 2022, 2025],
         "text": "Seit 2005 das erfolgreichste Damenteam der Schweiz.",
     },
     {
