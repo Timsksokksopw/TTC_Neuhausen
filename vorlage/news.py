@@ -6,7 +6,7 @@ Je Eintrag:
     datum         JJJJ-MM-TT
     titel         volle Überschrift
     kurztitel     kürzer für Startseite und Karten (leer = titel)
-    anriss        ein Satz für Listen (optional)
+    anriss        ein Satz für Listen, auf der Beitragsseite Vorspann (optional)
     text          Autorin/Autor (optional)
     bildnachweis  Fotografin/Fotograf (optional)
     bild          Datei unter site/assets/img/fotos/ (optional)
@@ -25,6 +25,22 @@ nur Fakten zusammen (Stand 23.9.2026, von ttc-neuhausen.ch).
 """
 
 BEITRAEGE = [
+    {
+        "kennung": "herbstlehrgang-ttz-ebnat-2026",
+        "datum": "2026-10-22",
+        "titel": "Herbstlehrgang im TTZ Ebnat: 20 Stunden Training mit 32 Teilnehmenden",
+        "kurztitel": "Herbstlehrgang im TTZ Ebnat mit 32 Teilnehmenden",
+        "anriss": "Vier Tage voller Tischtennis mit Spielenden aus der ganzen Region.",
+        "bild": "lehrgang-herbst-2026.jpg",
+        "bildalt": "Trainingseinheit im TTZ Ebnat: Teilnehmende jeden Alters schauen zu, wie an einem Tisch eine Übung vorgezeigt wird.",
+        "absaetze": [
+            "Vier intensive Tage liegen hinter den Teilnehmenden des Herbstlehrgangs vom 15. bis 18. Oktober im Tischtenniszentrum Ebnat. Insgesamt 32 Teilnehmende waren mit viel Freude dabei und in der Halle herrschte eine tolle Stimmung. Von der ersten bis zur letzten Einheit wurde alles gegeben, wobei der Spass nie zu kurz kam.",
+            "Geleitet wurde der Lehrgang an allen vier Tagen von Cheftrainer Pekka Pelz. Unterstützt wurde er dabei teils von Schweizermeister Timothy Falconnier, teils von Eric Miller. Krankheitsbedingt konnte Timothy leider nicht wie geplant alle Einheiten übernehmen.",
+            "Neben Technik, Taktik sowie abwechslungsreichem Systemtraining kam auch die Athletik nicht zu kurz. Ausser zahlreichen Mitgliedern des TTCN waren auch Gäste aus vielen verschiedenen Vereinen der Region dabei. So entstanden immer wieder neue Trainingspaarungen mit ungewohnten Spielsystemen. Zwischen den Einheiten wurden im Tischtennisbeizli warme Mahlzeiten serviert, die für die nötige Energie sorgten.",
+            {"art": "zitat", "text": "Ich bin mit unserem ersten Lehrgang in diesem Format sehr zufrieden. Die Stimmung in der Halle war grossartig, die Teilnehmenden haben vier Tage lang super mitgemacht und sich auch untereinander klasse verstanden. Ich denke, alle hatten eine gute Zeit, ich auf jeden Fall. Wir schauen schon jetzt mit Vorfreude auf die nächsten Lehrgänge.", "wer": "Pekka Pelz, Cheftrainer"},
+            "Herzlichen Dank allen Teilnehmenden für ihren Einsatz, Timothy Falconnier sowie Eric Miller für die Unterstützung in der Halle und dem Team im Tischtennisbeizli für die Verpflegung.",
+        ],
+    },
     {
         "kennung": "medienmitteilung-forfait-sttl-women",
         "datum": "2026-10-19",

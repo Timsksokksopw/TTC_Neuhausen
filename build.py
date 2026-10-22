@@ -472,9 +472,12 @@ def beitrag_html(b):
     bild = ""
     if b.get("bild"):
         breite, hoehe = bildmass(ZIEL / "assets/img/fotos" / b["bild"])
+        legende = ('<figcaption><span class="nachweis">%s</span></figcaption>' % e(_herkunft(b))
+                   if _herkunft(b) else "")
         bild = ('<figure class="bild bild--breit"><img src="assets/img/fotos/%s" alt="%s" width="%d" height="%d">'
-                '<figcaption><span class="nachweis">%s</span></figcaption></figure>'
-                % (e(b["bild"]), e(b.get("bildalt", ""), quote=True), breite, hoehe, e(_herkunft(b))))
+                '%s</figure>' % (e(b["bild"]), e(b.get("bildalt", ""), quote=True), breite, hoehe, legende))
+    # Der Anriss steht als Vorspann unter dem Titel.
+    vorspann = '\n    <p class="lead">%s</p>' % e(b["anriss"]) if b.get("anriss") else ""
     absaetze = "\n".join(_absatz_html(s) for s in b["absaetze"])
     if b.get("pdf"):
         absaetze += ('\n<p><a class="pfeil-link" href="%s/%s">Medienmitteilung als PDF%s</a></p>'
@@ -483,7 +486,7 @@ def beitrag_html(b):
   <div class="wrap">
     <nav class="brotkrumen" aria-label="Brotkrumen"><a href="index.html">Start</a><a href="news.html">News</a><span aria-current="page">Beitrag</span></nav>
     <p class="rubrik"><time datetime="%s">%s</time></p>
-    <h1 class="h1--mittel">%s</h1>
+    <h1 class="h1--mittel">%s</h1>%s
   </div>
 </header>
 <section class="flaeche--papier eng">
@@ -493,7 +496,7 @@ def beitrag_html(b):
     </div>
     <p><a class="pfeil-link" href="news.html">Alle Beiträge%s</a></p>
   </div>
-</section>""" % (b["datum"], datum_lang(b["datum"]), e(b["titel"]), bild, absaetze, PFEIL)
+</section>""" % (b["datum"], datum_lang(b["datum"]), e(b["titel"]), vorspann, bild, absaetze, PFEIL)
 
 
 # --- Termine ----------------------------------------------------------------
