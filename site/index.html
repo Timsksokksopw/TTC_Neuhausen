@@ -8,21 +8,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>document.documentElement.classList.add("js")</script>
-<title>TTC Neuhausen – Tischtennis von 7 bis 85, seit 1975</title>
-<meta name="description" content="Tischtennisclub Neuhausen: Nachwuchs, Breitensport, Senioren und Nationalliga. Training in der Rhyfallhalle und im TTZ Ebnat. Schnuppern jederzeit.">
+<title>TTC Neuhausen – Tischtennis in Schaffhausen, von 7 bis 85</title>
+<meta name="description" content="Tischtennisclub Neuhausen am Rheinfall: Nachwuchs, Breitensport, Senioren und Nationalliga. Training in der Rhyfallhalle und im TTZ Ebnat. Schnuppern jederzeit.">
 <link rel="canonical" href="https://www.ttc-neuhausen.ch/">
 <meta name="theme-color" content="#F3F0E8">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TTC Neuhausen">
 <meta property="og:locale" content="de_CH">
-<meta property="og:title" content="TTC Neuhausen – Tischtennis von 7 bis 85, seit 1975">
-<meta property="og:description" content="Tischtennisclub Neuhausen: Nachwuchs, Breitensport, Senioren und Nationalliga. Training in der Rhyfallhalle und im TTZ Ebnat. Schnuppern jederzeit.">
+<meta property="og:title" content="TTC Neuhausen – Tischtennis in Schaffhausen, von 7 bis 85">
+<meta property="og:description" content="Tischtennisclub Neuhausen am Rheinfall: Nachwuchs, Breitensport, Senioren und Nationalliga. Training in der Rhyfallhalle und im TTZ Ebnat. Schnuppern jederzeit.">
 <meta property="og:url" content="https://www.ttc-neuhausen.ch/">
 <meta property="og:image" content="https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Komm an den Tisch. Tischtennisclub Neuhausen, seit 1975">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="assets/img/favicon-512.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
 <link rel="preload" href="assets/fonts/sofia-sans-xc.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
@@ -32,16 +34,129 @@
 <link rel="stylesheet" href="assets/css/seiten.css">
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "SportsClub",
-  "name": "Tischtennisclub Neuhausen",
-  "alternateName": "TTC Neuhausen",
-  "url": "https://www.ttc-neuhausen.ch/",
-  "logo": "https://www.ttc-neuhausen.ch/assets/img/logo-blau.svg",
-  "image": "https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg",
-  "foundingDate": "1975",
-  "sport": "Tischtennis",
-  "sameAs": ["https://www.instagram.com/ttcneuhausen/", "https://www.facebook.com/ttcnh/"]
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "SportsClub",
+   "@id": "https://www.ttc-neuhausen.ch/#verein",
+   "name": "Tischtennisclub Neuhausen",
+   "alternateName": [
+    "TTC Neuhausen",
+    "TTCN"
+   ],
+   "description": "Tischtennisclub in Neuhausen am Rheinfall und Schaffhausen, gegründet 1975. Nachwuchs, Breitensport, Senioren und Teams in der Swiss Table Tennis League.",
+   "url": "https://www.ttc-neuhausen.ch/",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://www.ttc-neuhausen.ch/assets/img/favicon-512.png",
+    "width": 512,
+    "height": 512
+   },
+   "image": "https://www.ttc-neuhausen.ch/assets/img/og-standard.jpg",
+   "sport": "Tischtennis",
+   "foundingDate": "1975",
+   "email": "info@ttc-neuhausen.ch",
+   "address": {
+    "@type": "PostalAddress",
+    "postalCode": "8200",
+    "addressLocality": "Schaffhausen",
+    "addressRegion": "SH",
+    "addressCountry": "CH"
+   },
+   "location": [
+    {
+     "@id": "https://www.ttc-neuhausen.ch/hallen-ttz-ebnat.html#ort"
+    },
+    {
+     "@id": "https://www.ttc-neuhausen.ch/hallen-rhyfallhalle.html#ort"
+    }
+   ],
+   "areaServed": [
+    "Neuhausen am Rheinfall",
+    "Schaffhausen",
+    "Kanton Schaffhausen"
+   ],
+   "memberOf": {
+    "@type": "SportsOrganization",
+    "name": "Swiss Table Tennis",
+    "url": "https://www.swisstabletennis.ch/"
+   },
+   "sameAs": [
+    "https://www.instagram.com/ttcneuhausen/",
+    "https://www.facebook.com/ttcnh/",
+    "https://www.click-tt.ch/cgi-bin/WebObjects/nuLigaTTCH.woa/wa/clubInfoDisplay?club=33244"
+   ]
+  },
+  {
+   "@type": "SportsActivityLocation",
+   "@id": "https://www.ttc-neuhausen.ch/hallen-ttz-ebnat.html#ort",
+   "name": "Tischtenniszentrum Ebnat",
+   "alternateName": [
+    "TTZ Ebnat"
+   ],
+   "url": "https://www.ttc-neuhausen.ch/hallen-ttz-ebnat.html",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Ebnatstrasse 35",
+    "postalCode": "8200",
+    "addressLocality": "Schaffhausen",
+    "addressRegion": "SH",
+    "addressCountry": "CH"
+   },
+   "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 47.70595,
+    "longitude": 8.6412
+   }
+  },
+  {
+   "@type": "SportsActivityLocation",
+   "@id": "https://www.ttc-neuhausen.ch/hallen-rhyfallhalle.html#ort",
+   "name": "Rhyfallhalle",
+   "alternateName": [
+    "Rheinfallhalle"
+   ],
+   "url": "https://www.ttc-neuhausen.ch/hallen-rhyfallhalle.html",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rheingoldstrasse 11",
+    "postalCode": "8212",
+    "addressLocality": "Neuhausen am Rheinfall",
+    "addressRegion": "SH",
+    "addressCountry": "CH"
+   },
+   "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 47.68055,
+    "longitude": 8.6202
+   }
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://www.ttc-neuhausen.ch/#website",
+   "url": "https://www.ttc-neuhausen.ch/",
+   "name": "TTC Neuhausen",
+   "alternateName": "Tischtennisclub Neuhausen",
+   "inLanguage": "de-CH",
+   "publisher": {
+    "@id": "https://www.ttc-neuhausen.ch/#verein"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://www.ttc-neuhausen.ch/#seite",
+   "url": "https://www.ttc-neuhausen.ch/",
+   "name": "TTC Neuhausen – Tischtennis in Schaffhausen, von 7 bis 85",
+   "description": "Tischtennisclub Neuhausen am Rheinfall: Nachwuchs, Breitensport, Senioren und Nationalliga. Training in der Rhyfallhalle und im TTZ Ebnat. Schnuppern jederzeit.",
+   "inLanguage": "de-CH",
+   "isPartOf": {
+    "@id": "https://www.ttc-neuhausen.ch/#website"
+   },
+   "about": {
+    "@id": "https://www.ttc-neuhausen.ch/#verein"
+   }
+  }
+ ]
 }
 </script>
 </head>
@@ -173,7 +288,7 @@
 <section class="buehne" data-buehne>
   <div class="buehne__fix">
     <div class="wrap buehne__text">
-      <p class="rubrik">Tischtennisclub Neuhausen · seit 1975</p>
+      <p class="rubrik">Tischtennisclub Neuhausen · seit 1967</p>
       <h1 class="buehne__titel">Komm an <span>den Tisch.</span></h1>
       <p class="lead">Von 7 bis 85, vom ersten Ballwechsel bis zur Nationalliga. Wir spielen in der
         Rhyfallhalle Neuhausen und in unserem Tischtenniszentrum im Ebnat – das erste Training ist gratis,
@@ -208,7 +323,7 @@
 
     <div class="aktuell">
       <div class="wrap aktuell__innen">
-        <a class="aktuell__news" href="news.html"><span class="aktuell__marke">Aktuell</span><time datetime="2026-09-21">21. September 2026</time><span class="aktuell__titel">So schätzt Lyo Bührer die neue STTL-Saison ein</span><span class="pfeil" aria-hidden="true"></span></a>
+        <a class="aktuell__news" href="news-medienmitteilung-forfait-sttl-women.html"><span class="aktuell__marke">Aktuell</span><time datetime="2026-10-19">19. Oktober 2026</time><span class="aktuell__titel">STTL-Damen verlieren Forfait – TTCN zieht Entscheid weiter</span><span class="pfeil" aria-hidden="true"></span></a>
         <p class="aktuell__heute" data-heute hidden></p>
       </div>
     </div>
@@ -260,6 +375,12 @@
 </article>
   </div>
   <div class="newsblock__liste">
+<a class="meldung" href="news-medienmitteilung-forfait-sttl-women.html">
+  <time datetime="2026-10-19">19. Oktober 2026</time>
+  <h3>STTL-Damen verlieren Forfait – TTCN zieht Entscheid weiter</h3>
+  <p>Der Verein legt gegen die nachträglichen Forfaitniederlagen Rekurs bei Swiss Table Tennis ein.</p>
+  <span class="pfeil-link">Weiterlesen<span class="pfeil" aria-hidden="true"></span></span>
+</a>
 <article class="meldung">
   <time datetime="2026-09-21">21. September 2026</time>
   <h3>So schätzt Lyo Bührer die neue STTL-Saison ein</h3>
@@ -275,11 +396,6 @@
   <time datetime="2026-06-22">22. Juni 2026</time>
   <h3>Finalrunde Nachwuchs: alle drei Sprachregionen holen Titel</h3>
   <p class="meldung__herkunft">Text: Lyo Bührer · Bild: Andrii Lukatskyi</p>
-</article>
-<article class="meldung">
-  <time datetime="2026-06-22">22. Juni 2026</time>
-  <h3>STTL Men: Weichen nach schwierigem Jahr neu gestellt</h3>
-  <p class="meldung__herkunft">Text: Lyo Bührer · Bild: Ranil Jayanetti</p>
 </article>
   </div>
 </div>

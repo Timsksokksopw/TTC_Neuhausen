@@ -39,9 +39,9 @@ NAVIGATION = [
 # datei: (Browsertitel, Beschreibung, Rubrik im Menü)
 SEITEN = {
     "index.html": (
-        "TTC Neuhausen – Tischtennis von 7 bis 85, seit 1975",
-        "Tischtennisclub Neuhausen: Nachwuchs, Breitensport, Senioren und Nationalliga. "
-        "Training in der Rhyfallhalle und im TTZ Ebnat. Schnuppern jederzeit.",
+        "TTC Neuhausen – Tischtennis in Schaffhausen, von 7 bis 85",
+        "Tischtennisclub Neuhausen am Rheinfall: Nachwuchs, Breitensport, Senioren und "
+        "Nationalliga. Training in der Rhyfallhalle und im TTZ Ebnat. Schnuppern jederzeit.",
         None),
 
     "verein.html": (
@@ -58,7 +58,7 @@ SEITEN = {
         "Cheftrainer Pekka Pelz, der Sportliche Leiter Lyo Bührer und das Trainerteam des TTC Neuhausen.",
         "Verein"),
     "verein-geschichte.html": (
-        "Geschichte – TTC Neuhausen",
+        "Geschichte seit 1975 – TTC Neuhausen",
         "Seit 1975: Gründung in Schaffhausen, drei Meistertitel der Herren, fünfzehn der Damen "
         "und eine Halle in Eigenleistung. Mit Bildern aus dem Vereinsarchiv.",
         "Verein"),
@@ -68,7 +68,7 @@ SEITEN = {
         "Altpapiersammlung, School Trophy.",
         "Verein"),
     "verein-mitglied-werden.html": (
-        "Mitglied werden – TTC Neuhausen",
+        "Mitglied werden: Beiträge und Anmeldung – TTC Neuhausen",
         "Mitgliederkategorien, Beiträge und Anmeldung beim TTC Neuhausen. "
         "Mit Beitragsrechner. Zuerst schnuppern ist kostenlos.",
         "Verein"),
@@ -77,66 +77,66 @@ SEITEN = {
         "Altpapiersammlung, Anlässe, Standaktionen: wo der Verein Hilfe braucht und wie man sich einträgt.",
         "Verein"),
     "verein-downloads.html": (
-        "Downloads – TTC Neuhausen",
+        "Downloads: Statuten und Formulare – TTC Neuhausen",
         "Statuten, Reglemente, Hallentarife und Beitrittsformulare des TTC Neuhausen.",
         "Verein"),
 
     "training.html": (
-        "Trainingszeiten – TTC Neuhausen",
-        "Der Wochenplan des TTC Neuhausen: Nachwuchs, Breitensport und Senioren "
-        "in der Rhyfallhalle und im TTZ Ebnat.",
+        "Trainingszeiten Tischtennis – TTC Neuhausen",
+        "Der Wochenplan des TTC Neuhausen: Nachwuchs, Breitensport und Senioren in der "
+        "Rhyfallhalle Neuhausen und im TTZ Ebnat Schaffhausen.",
         "Training"),
     "training-schnupperpass.html": (
-        "Schnuppern und Schnupperpass – TTC Neuhausen",
+        "Schnuppertraining Tischtennis, kostenlos – TTC Neuhausen",
         "Das erste Training ist kostenlos. Danach sechs Monate mittrainieren ohne Mitgliedschaft: "
         "Schnupperpass für Nachwuchs, Breitensport und Senioren.",
         "Training"),
     "training-nachwuchs.html": (
-        "Nachwuchstraining – TTC Neuhausen",
-        "Geleitetes Training ab fünf Jahren, Förderkader, OTTV-Stützpunkt und SwissPing "
-        "beim TTC Neuhausen.",
+        "Tischtennis für Kinder und Jugendliche – TTC Neuhausen",
+        "Geleitetes Tischtennistraining ab fünf Jahren in Neuhausen und Schaffhausen: "
+        "Förderkader, OTTV-Stützpunkt und SwissPing beim TTC Neuhausen.",
         "Training"),
     "training-breitensport.html": (
-        "Breitensport – TTC Neuhausen",
-        "Tischtennis für Erwachsene: dreimal pro Woche, erst frei einspielen, dann eine "
-        "Stunde mit Trainer. Einsteigen jederzeit.",
+        "Tischtennis für Erwachsene: Breitensport – TTC Neuhausen",
+        "Tischtennis für Erwachsene in Neuhausen und Schaffhausen: dreimal pro Woche, erst frei "
+        "einspielen, dann eine Stunde mit Trainer. Einsteigen jederzeit.",
         "Training"),
     "training-senioren.html": (
-        "Senioren und PingPongParkinson – TTC Neuhausen",
+        "Seniorentraining und PingPongParkinson – TTC Neuhausen",
         "Vormittagstraining im TTZ Ebnat für über fünfzig Seniorinnen und Senioren, "
         "dazu PingPongParkinson am Donnerstag.",
         "Training"),
     "training-einzeltraining.html": (
-        "Einzeltraining – TTC Neuhausen",
+        "Tischtennis-Einzeltraining mit Trainer – TTC Neuhausen",
         "Einzelstunden mit den Trainern des TTC Neuhausen: Preise, Abos und wie man bucht.",
         "Training"),
     "training-stuetzpunkt.html": (
-        "Stützpunkttraining – TTC Neuhausen",
+        "Stützpunkttraining OTTV – TTC Neuhausen",
         "Der TTC Neuhausen ist anerkannter Stützpunkt des Ostschweizer Tischtennisverbands (OTTV).",
         "Training"),
     "training-schulen.html": (
-        "Für Schulen – TTC Neuhausen",
+        "Schulsport, SwissPing und School Trophy – TTC Neuhausen",
         "Schulsport für die 1. bis 3. Klasse, SwissPing und die regionale School Trophy: "
         "Tischtennis für Schulen in Schaffhausen und Neuhausen.",
         "Training"),
 
     "teams.html": (
-        "Teams – TTC Neuhausen",
+        "Teams: STTL Men, STTL Women und OTTV – TTC Neuhausen",
         "Herren und Damen in der Swiss Table Tennis League, dazu die OTTV-Mannschaften. "
         "Tabellen und Resultate direkt bei click-tt.",
         "Teams"),
 
     "hallen.html": (
-        "Hallen – TTC Neuhausen",
+        "Hallen: Rhyfallhalle und TTZ Ebnat – TTC Neuhausen",
         "Die Rhyfallhalle in Neuhausen und das Tischtenniszentrum Ebnat in Schaffhausen.",
         "Hallen"),
     "hallen-ttz-ebnat.html": (
-        "TTZ Ebnat – TTC Neuhausen",
+        "Tischtenniszentrum Ebnat, Schaffhausen – TTC Neuhausen",
         "Das Tischtenniszentrum Ebnat: in Eigenleistung ausgebaut, zwölf Tische, "
         "für Mitglieder rund um die Uhr offen.",
         "Hallen"),
     "hallen-rhyfallhalle.html": (
-        "Rhyfallhalle Neuhausen – TTC Neuhausen",
+        "Rhyfallhalle Neuhausen am Rheinfall – TTC Neuhausen",
         "Die Rhyfallhalle in Neuhausen am Rheinfall: seit 1979 Trainingsort und Bühne "
         "für grosse Turniere.",
         "Hallen"),
@@ -147,21 +147,26 @@ SEITEN = {
         "Hallen"),
 
     "news.html": (
-        "News – TTC Neuhausen",
+        "News: Spielberichte und Resultate – TTC Neuhausen",
         "Spielberichte, Resultate und Meldungen aus dem TTC Neuhausen.",
         "News"),
 
     "kontakt.html": (
-        "Kontakt – TTC Neuhausen",
-        "Wer beim TTC Neuhausen wofür zuständig ist, und wo die beiden Hallen stehen.",
+        "Kontakt und Anfahrt – TTC Neuhausen",
+        "Wer beim TTC Neuhausen wofür zuständig ist, und wo die beiden Hallen stehen: "
+        "Rhyfallhalle Neuhausen und TTZ Ebnat Schaffhausen.",
         None),
     "partner.html": (
-        "Für Partner – TTC Neuhausen",
+        "Sponsoren und Partner – TTC Neuhausen",
         "Sponsoring, Firmenanlässe im TTZ Ebnat und die Partner des TTC Neuhausen.",
         None),
     "impressum.html": (
         "Impressum – TTC Neuhausen",
         "Impressum des Tischtennisclubs Neuhausen.",
+        None),
+    "404.html": (
+        "Seite nicht gefunden – TTC Neuhausen",
+        "Diese Seite gibt es nicht mehr. Trainingszeiten, Teams und News des TTC Neuhausen.",
         None),
     "datenschutz.html": (
         "Datenschutz – TTC Neuhausen",

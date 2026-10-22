@@ -1,0 +1,185 @@
+# .htaccess – ERZEUGT VON build.py, nicht von Hand ändern.
+# Weiterleitungen: vorlage/seo.py. Danach einmal build.py.
+#
+# Gehört in denselben Ordner wie index.html. Beim Hochladen per FTP
+# mitnehmen: viele Programme blenden Dateien mit Punkt vorne aus.
+
+ErrorDocument 404 /404.html
+ErrorDocument 410 /404.html
+AddDefaultCharset utf-8
+AddType font/woff2 .woff2
+AddType image/webp .webp
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Die Fehlerseite, die Apache nach 404 oder 410 intern nachlädt, nicht
+# anfassen – sonst wird aus «410 Gone» eine Weiterleitung auf 404.html.
+RewriteCond %{ENV:REDIRECT_STATUS} ^[45][0-9][0-9]$
+RewriteRule ^ - [L]
+
+# Alte Adressen stehen vor der Regel für https und www: ihr Ziel ist
+# schon absolut, so kommt jede in einem Schritt an.
+
+# Ordner ohne index.html nicht auflisten
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}/index.html !-f
+RewriteRule ^ - [R=404,L]
+
+# --- Vorlagen des alten Themes und WordPress-Technik: 410 Gone
+RewriteRule ^(sample\-page|sample\-page\-2|home\-2|home\-3|home\-4|order\-tracking|about\-us|services|full\-width|shortcodes|pricing\-tables|portfolio|portfolio\-with\-content|portoflio\-with\-slider|scenery\-portfolio|architecture\-portfolio|2\-columns|3\-columns|4\-columns|covid\-19\-massnahmen\-fuer\-nationalliga)/?$ - [G,L]
+RewriteRule ^(portfolio|testimonial|filters|kwlogos-carousel)/ - [G,L]
+RewriteRule ^(wp-admin|wp-includes|wp-json)(/|$) - [G,L]
+RewriteRule ^(wp-login|xmlrpc|wp-cron|wp-signup)\.php$ - [G,L]
+RewriteRule (^|/)(comments/)?feed/?$ - [G,L]
+
+# --- Alte Kurzadressen von WordPress (?p=123, ?page_id=45, Suche)
+RewriteCond %{QUERY_STRING} (^|&)(p|cat|tag|m|author)=
+RewriteRule ^$ https://www.ttc-neuhausen.ch/news.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(page_id|s)=
+RewriteRule ^$ https://www.ttc-neuhausen.ch/? [R=301,L]
+
+# --- Dokumente der alten Website (vorlage/dokumente.py)
+RewriteRule ^wp\-content/uploads/2026/01/Statuten_Ausgabe_2025_12\.pdf$ https://www.ttc-neuhausen.ch/assets/dokumente/statuten.pdf [R=301,L]
+RewriteRule ^_data/pdf/ttcn_spesenreglement_2022\-12\.pdf$ https://www.ttc-neuhausen.ch/assets/dokumente/spesenreglement.pdf [R=301,L]
+RewriteRule ^_data/pdf/ttcn_spesenformular\.xlsx$ https://www.ttc-neuhausen.ch/assets/dokumente/spesenformular.xlsx [R=301,L]
+RewriteRule ^wp\-content/uploads/2024/05/TTZ\-Ebnat\-_Hallentarife\.pdf$ https://www.ttc-neuhausen.ch/assets/dokumente/hallentarife-ttz-ebnat.pdf [R=301,L]
+RewriteRule ^wp\-content/uploads/2026/04/2603\-TTCN\-Hallenreglement\.pdf$ https://www.ttc-neuhausen.ch/assets/dokumente/hallenreglement.pdf [R=301,L]
+RewriteRule ^wp\-content/uploads/2025/10/Helfereinsatz_Reglement_Okt25\.docx$ https://www.ttc-neuhausen.ch/assets/dokumente/helfereinsatzreglement.docx [R=301,L]
+RewriteRule ^wp\-content/uploads/2025/03/MA2024_DiephysikalischeBeschreibungeinesTischtennisschlages_ElioZarotti\.pdf$ https://www.ttc-neuhausen.ch/assets/dokumente/maturaarbeit-tischtennisschlag.pdf [R=301,L]
+RewriteRule ^wp\-content/uploads/2025/10/Beitrittserklaerungen\-AktivPlus\.pdf$ https://www.ttc-neuhausen.ch/assets/dokumente/beitritt-aktivplus.pdf [R=301,L]
+RewriteRule ^wp\-content/uploads/2025/10/Beitrittserklaerungen\-AktivPlus\-Nachwuchs\.pdf$ https://www.ttc-neuhausen.ch/assets/dokumente/beitritt-aktivplus-nachwuchs.pdf [R=301,L]
+RewriteRule ^wp\-content/uploads/2025/10/Beitrittserklaerungen\-AktivPlus\-Studenten\-und\-Lehrling\.pdf$ https://www.ttc-neuhausen.ch/assets/dokumente/beitritt-aktivplus-studenten.pdf [R=301,L]
+RewriteRule ^wp\-content/uploads/2025/10/Beitrittserklaerungen\-AktivPlus\-Senioren\.pdf$ https://www.ttc-neuhausen.ch/assets/dokumente/beitritt-aktivplus-senioren.pdf [R=301,L]
+RewriteRule ^wp\-content/uploads/2025/10/Beitrittserklaerungen\-Aktiv\.pdf$ https://www.ttc-neuhausen.ch/assets/dokumente/beitritt-aktiv.pdf [R=301,L]
+RewriteRule ^wp\-content/uploads/2025/10/Beitrittserklaerungen\-Damenverein\.pdf$ https://www.ttc-neuhausen.ch/assets/dokumente/beitritt-damenverein.pdf [R=301,L]
+RewriteRule ^wp\-content/uploads/2025/10/Beitrittserklaerungen\-Passive\.pdf$ https://www.ttc-neuhausen.ch/assets/dokumente/beitritt-passive.pdf [R=301,L]
+RewriteRule ^wp\-content/uploads/2026/04/Flyer_Erweiterung_Hallensportzentrum\-1\.pdf$ https://www.ttc-neuhausen.ch/hallen-neue-halle.html [R=301,L]
+RewriteRule ^wp\-content/uploads/2026/04/MM\-Ausbauprojekt\-1\.pdf$ https://www.ttc-neuhausen.ch/hallen-neue-halle.html [R=301,L]
+RewriteRule ^wp\-content/uploads/2026/04/Flyer\-Baustein\-2026_compressed\.pdf$ https://www.ttc-neuhausen.ch/hallen-neue-halle.html [R=301,L]
+
+# --- Seiten der alten Website (vorlage/seo.py)
+RewriteRule ^ueber\-den\-verein/?$ https://www.ttc-neuhausen.ch/verein.html [R=301,L,NE,NC]
+RewriteRule ^mission/?$ https://www.ttc-neuhausen.ch/verein.html [R=301,L,NE,NC]
+RewriteRule ^vorstand/?$ https://www.ttc-neuhausen.ch/verein-vorstand.html [R=301,L,NE,NC]
+RewriteRule ^trainerteam/?$ https://www.ttc-neuhausen.ch/verein-trainerteam.html [R=301,L,NE,NC]
+RewriteRule ^mitglied\-werden/?$ https://www.ttc-neuhausen.ch/verein-mitglied-werden.html [R=301,L,NE,NC]
+RewriteRule ^helfereinsatz/?$ https://www.ttc-neuhausen.ch/verein-helfereinsatz.html [R=301,L,NE,NC]
+RewriteRule ^downloads/?$ https://www.ttc-neuhausen.ch/verein-downloads.html [R=301,L,NE,NC]
+RewriteRule ^schutzkonzept\-ttcn/?$ https://www.ttc-neuhausen.ch/verein-downloads.html [R=301,L,NE,NC]
+RewriteRule ^events/?$ https://www.ttc-neuhausen.ch/verein-jahresprogramm.html [R=301,L,NE,NC]
+RewriteRule ^calendar/?$ https://www.ttc-neuhausen.ch/verein-jahresprogramm.html [R=301,L,NE,NC]
+RewriteRule ^50\-jahre\-ttcn/?$ https://www.ttc-neuhausen.ch/verein-geschichte.html [R=301,L,NE,NC]
+RewriteRule ^meilensteine\-2/?$ https://www.ttc-neuhausen.ch/verein-geschichte.html [R=301,L,NE,NC]
+RewriteRule ^archivbilder/?$ https://www.ttc-neuhausen.ch/verein-geschichte.html#archiv [R=301,L,NE,NC]
+RewriteRule ^trainingszeiten/?$ https://www.ttc-neuhausen.ch/training.html [R=301,L,NE,NC]
+RewriteRule ^schnupperpass/?$ https://www.ttc-neuhausen.ch/training-schnupperpass.html [R=301,L,NE,NC]
+RewriteRule ^nachwuchstraining/?$ https://www.ttc-neuhausen.ch/training-nachwuchs.html [R=301,L,NE,NC]
+RewriteRule ^ig\-talentfoerderung/?$ https://www.ttc-neuhausen.ch/training-nachwuchs.html [R=301,L,NE,NC]
+RewriteRule ^breitensporttraining/?$ https://www.ttc-neuhausen.ch/training-breitensport.html [R=301,L,NE,NC]
+RewriteRule ^seniorentraining/?$ https://www.ttc-neuhausen.ch/training-senioren.html [R=301,L,NE,NC]
+RewriteRule ^einzeltraining/?$ https://www.ttc-neuhausen.ch/training-einzeltraining.html [R=301,L,NE,NC]
+RewriteRule ^stuetzpunkttraining/?$ https://www.ttc-neuhausen.ch/training-stuetzpunkt.html [R=301,L,NE,NC]
+RewriteRule ^schulsport/?$ https://www.ttc-neuhausen.ch/training-schulen.html [R=301,L,NE,NC]
+RewriteRule ^swissping/?$ https://www.ttc-neuhausen.ch/training-schulen.html#swissping [R=301,L,NE,NC]
+RewriteRule ^school\-trophy/?$ https://www.ttc-neuhausen.ch/training-schulen.html#school-trophy [R=301,L,NE,NC]
+RewriteRule ^school\-trophy\-anmeldung/?$ https://www.ttc-neuhausen.ch/training-schulen.html#school-trophy [R=301,L,NE,NC]
+RewriteRule ^teams/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^mannschaften/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^swiss\-table\-tennis\-league/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^swiss\-table\-tennis/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^sttl\-men/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^sttl\-women/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^nationalliga\-a\-damen/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^nationalliga\-a\-herren/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^nationalliga\-c/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^1\-liga/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^1\-liga\-2/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^1\-liga\-gruppe\-1a/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^1\-liga\-gruppe\-1b/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^2\-liga/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^2\-liga\-gruppe\-2a/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^2\-liga\-gruppe\-2b/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^3\-liga/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^6\-liga\-herren\-6/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^senioren\-o40/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^nachwuchs\-1\-liga/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^nachwuchs\-2\-liga/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^u13/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^u15/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^u18/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^sportliches\-palmares\-mauro\-schaerrer\-geb\-23\-juli\-2003/?$ https://www.ttc-neuhausen.ch/teams.html [R=301,L,NE,NC]
+RewriteRule ^ttz\-ebnat/?$ https://www.ttc-neuhausen.ch/hallen-ttz-ebnat.html [R=301,L,NE,NC]
+RewriteRule ^ttz\-ebnat\-belegungsplan/?$ https://www.ttc-neuhausen.ch/hallen-ttz-ebnat.html [R=301,L,NE,NC]
+RewriteRule ^hallensportzentrum/?$ https://www.ttc-neuhausen.ch/hallen-neue-halle.html [R=301,L,NE,NC]
+RewriteRule ^projekt\-futuro/?$ https://www.ttc-neuhausen.ch/hallen-neue-halle.html [R=301,L,NE,NC]
+RewriteRule ^news/?$ https://www.ttc-neuhausen.ch/news.html [R=301,L,NE,NC]
+RewriteRule ^clubnews/?$ https://www.ttc-neuhausen.ch/news.html [R=301,L,NE,NC]
+RewriteRule ^blog/?$ https://www.ttc-neuhausen.ch/news.html [R=301,L,NE,NC]
+RewriteRule ^superfinal2022/?$ https://www.ttc-neuhausen.ch/news.html [R=301,L,NE,NC]
+RewriteRule ^top\-16\-montreux\-2022/?$ https://www.ttc-neuhausen.ch/news.html [R=301,L,NE,NC]
+RewriteRule ^sm\-nachwuchs/?$ https://www.ttc-neuhausen.ch/news.html [R=301,L,NE,NC]
+RewriteRule ^sm\-senioren/?$ https://www.ttc-neuhausen.ch/news.html [R=301,L,NE,NC]
+RewriteRule ^sponsoren/?$ https://www.ttc-neuhausen.ch/partner.html [R=301,L,NE,NC]
+RewriteRule ^marketing/?$ https://www.ttc-neuhausen.ch/partner.html [R=301,L,NE,NC]
+RewriteRule ^angebote/?$ https://www.ttc-neuhausen.ch/partner.html [R=301,L,NE,NC]
+RewriteRule ^logos/?$ https://www.ttc-neuhausen.ch/partner.html [R=301,L,NE,NC]
+RewriteRule ^gutscheine\-von\-sponsoren/?$ https://www.ttc-neuhausen.ch/partner.html [R=301,L,NE,NC]
+RewriteRule ^kontakt/?$ https://www.ttc-neuhausen.ch/kontakt.html [R=301,L,NE,NC]
+RewriteRule ^aussichtsturm\-quiz/?$ https://www.ttc-neuhausen.ch/ [R=301,L,NE,NC]
+
+# --- Ganze Bereiche: Beiträge, Archive, Anlässe
+RewriteRule ^(19|20)\d\d/ https://www.ttc-neuhausen.ch/news.html [R=301,L]
+RewriteRule ^(category|tag|author)/ https://www.ttc-neuhausen.ch/news.html [R=301,L]
+RewriteRule ^page/\d+/?$ https://www.ttc-neuhausen.ch/news.html [R=301,L]
+RewriteRule ^event/ https://www.ttc-neuhausen.ch/verein-jahresprogramm.html [R=301,L]
+RewriteRule ^calendar/ https://www.ttc-neuhausen.ch/verein-jahresprogramm.html [R=301,L]
+RewriteRule ^pdfviewer/ https://www.ttc-neuhausen.ch/verein-downloads.html [R=301,L]
+RewriteRule ^wp-sitemap.*\.xml$ https://www.ttc-neuhausen.ch/sitemap.xml [R=301,L]
+
+# --- Eine einzige Adresse: https://www.ttc-neuhausen.ch/
+RewriteCond %{HTTP_HOST} ^ttc\-neuhausen\.ch$ [NC]
+RewriteRule ^ https://www.ttc-neuhausen.ch%{REQUEST_URI} [R=301,L,NE]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTP_HOST} ^www\.ttc\-neuhausen\.ch$ [NC]
+RewriteRule ^ https://www.ttc-neuhausen.ch%{REQUEST_URI} [R=301,L,NE]
+
+# index.html nicht als zweite Adresse der Startseite
+RewriteCond %{THE_REQUEST} ^[A-Z]+\s[^?\s]*/index\.html[?\s]
+RewriteRule ^(.*/)?index\.html$ https://www.ttc-neuhausen.ch/$1 [R=301,L]
+
+# --- /training statt /training.html
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^([a-z0-9-]+)/?$ https://www.ttc-neuhausen.ch/$1.html [R=301,L]
+
+# Browser fragen von sich aus nach /favicon.ico
+RewriteRule ^favicon\.ico$ /assets/img/favicon-512.png [L]
+</IfModule>
+
+# --- Schneller laden: Google misst die Ladezeit mit
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml
+  AddOutputFilterByType DEFLATE application/javascript text/javascript application/json
+  AddOutputFilterByType DEFLATE application/ld+json image/svg+xml
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Seiten, CSS und JavaScript jedes Mal nachfragen (304, wenn unverändert),
+  # damit nach einem neuen Build niemand alte Teile sieht.
+  <FilesMatch "\.(html|css|js|xml|txt)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  # Bilder werden unter gleichem Namen ersetzt – eine Woche.
+  <FilesMatch "\.(jpe?g|png|webp|svg|gif|ico)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+  <FilesMatch "\.woff2$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(pdf|docx|xlsx)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

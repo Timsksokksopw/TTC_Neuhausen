@@ -27,6 +27,8 @@ from geschichte import ARCHIV, MEISTERTITEL, NACHWEIS, ZEITLEISTE  # noqa: E402
 from news import AUF_STARTSEITE, BEITRAEGE  # noqa: E402
 from dokumente import ANMELDEFORMULAR, BEITRITTSFORMULARE, DOKUMENTE, HALLENPROJEKT  # noqa: E402
 from termine import TERMINE  # noqa: E402
+from seo import (HALLENORTE, MUSTER, NEWS_ARCHIV, VEREIN, WEG, WEG_MUSTER,  # noqa: E402
+                 WEITERLEITUNGEN)
 
 ALLE_DOKUMENTE = DOKUMENTE + BEITRITTSFORMULARE + HALLENPROJEKT
 INHALT = WURZEL / "inhalt"
@@ -48,8 +50,16 @@ def _vorschau_adresse():
 
 VORSCHAU_URL = _vorschau_adresse()
 BASIS_URL = VORSCHAU_URL or SEITE_URL
+WURZELPFAD = urllib.parse.urlsplit(BASIS_URL).path   # "/" – auf der Vorschau "/repo/"
 OG_BILD = BASIS_URL + "assets/img/og-standard.jpg"
-ROBOTS_META = '\n<meta name="robots" content="noindex, nofollow">' if VORSCHAU_URL else ""
+# Grosse Bildvorschau und volle Textauszüge in der Google-Suche erlauben.
+ROBOTS_META = ('\n<meta name="robots" content="noindex, nofollow">' if VORSCHAU_URL else
+               '\n<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">')
+ROBOTS_NOINDEX = '\n<meta name="robots" content="noindex, follow">'
+# Seiten, die gebaut, aber nicht gefunden werden sollen: kein Eintrag in der
+# Sitemap, noindex. Die Fehlerseite wird unter jeder Adresse ausgeliefert und
+# setzt ihre Verweise deshalb ab der Wurzel.
+FEHLERSEITE = "404.html"
 
 
 # --- Hilfen -----------------------------------------------------------------
@@ -466,6 +476,9 @@ def beitrag_html(b):
                 '<figcaption><span class="nachweis">%s</span></figcaption></figure>'
                 % (e(b["bild"]), e(b.get("bildalt", ""), quote=True), breite, hoehe, e(_herkunft(b))))
     absaetze = "\n".join(_absatz_html(s) for s in b["absaetze"])
+    if b.get("pdf"):
+        absaetze += ('\n<p><a class="pfeil-link" href="%s/%s">Medienmitteilung als PDF%s</a></p>'
+                     % (DOKUMENTORDNER, e(b["pdf"], quote=True), PFEIL))
     return """<header class="aufmacher aufmacher--schmal">
   <div class="wrap">
     <nav class="brotkrumen" aria-label="Brotkrumen"><a href="index.html">Start</a><a href="news.html">News</a><span aria-current="page">Beitrag</span></nav>
@@ -621,6 +634,131 @@ def dokumente_html(eintraege):
     return "\n".join(z)
 
 
+# --- Strukturdaten (JSON-LD) ------------------------------------------------
+#
+# Ein Block je Seite im <head>: wer der Verein ist, wo er trainiert, wo die
+# Seite in der Website steht. Google zeigt daraus Brotkrumen statt Adresse,
+# die Hallen auf der Karte und den Verein im Wissensfeld rechts.
+
+SEITENTYP = {
+    "kontakt.html": "ContactPage",
+    "verein.html": "AboutPage",
+    "verein-geschichte.html": "AboutPage",
+    "news.html": "CollectionPage",
+}
+
+
+def _adresse(strasse, plz, ort, kanton="SH"):
+    a = {"@type": "PostalAddress"}
+    if strasse:
+        a["streetAddress"] = strasse
+    a.update({"postalCode": plz, "addressLocality": ort, "addressRegion": kanton, "addressCountry": "CH"})
+    return a
+
+
+def _brotkrumen(seite, url, letzter=None):
+    """Die sichtbare Brotkrumen-Navigation der Seite als BreadcrumbList."""
+    m = re.search(r'<nav class="brotkrumen"[^>]*>(.*?)</nav>', seite, re.S)
+    if not m:
+        return None
+    stufen = re.findall(r'<(a|span)\b([^>]*)>(.*?)</\1>', m.group(1), re.S)
+    punkte = []
+    for i, (tag, attribute, name) in enumerate(stufen, 1):
+        ziel = url
+        if tag == "a":
+            href = re.search(r'href="([^"]*)"', attribute).group(1)
+            ziel = BASIS_URL + ("" if href == "index.html" else href)
+        name = html.unescape(re.sub(r"<[^>]+>", "", name)).replace("­", "").strip()
+        if i == len(stufen) and letzter:
+            name = letzter
+        punkte.append({"@type": "ListItem", "position": i, "name": name, "item": ziel})
+    return {"@type": "BreadcrumbList", "@id": url + "#brotkrumen", "itemListElement": punkte}
+
+
+def strukturdaten(datei, titel, beschreibung, url, seite, beitrag=None):
+    verein_id, website_id = BASIS_URL + "#verein", BASIS_URL + "#website"
+    orte = {}
+    for schluessel, o in HALLENORTE.items():
+        adresse = BASIS_URL + HALLEN[schluessel]["seite"]
+        orte[HALLEN[schluessel]["seite"]] = {
+            "@type": "SportsActivityLocation",
+            "@id": adresse + "#ort",
+            "name": o["name"],
+            "alternateName": o["auch"],
+            "url": adresse,
+            "address": _adresse(o["strasse"], o["plz"], o["ort"]),
+            "geo": {"@type": "GeoCoordinates", "latitude": o["geo"][0], "longitude": o["geo"][1]},
+        }
+    breite, hoehe = bildmass(ZIEL / VEREIN["logo"])
+    verband, verband_url = VEREIN["verband"]
+    knoten = [{
+        "@type": "SportsClub",
+        "@id": verein_id,
+        "name": VEREIN["name"],
+        "alternateName": VEREIN["kurzname"],
+        "description": VEREIN["beschreibung"],
+        "url": BASIS_URL,
+        "logo": {"@type": "ImageObject", "url": BASIS_URL + VEREIN["logo"], "width": breite, "height": hoehe},
+        "image": OG_BILD,
+        "sport": "Tischtennis",
+        "foundingDate": VEREIN["gruendung"],
+        "email": VEREIN["email"],
+        "address": _adresse(None, VEREIN["plz"], VEREIN["ort"], VEREIN["kanton"]),
+        "location": [{"@id": o["@id"]} for o in orte.values()],
+        "areaServed": VEREIN["einzugsgebiet"],
+        "memberOf": {"@type": "SportsOrganization", "name": verband, "url": verband_url},
+        "sameAs": VEREIN["profile"] + [VEREINSSEITEN["uebersicht"]],
+    }]
+    knoten += orte.values()
+    knoten.append({
+        "@type": "WebSite",
+        "@id": website_id,
+        "url": BASIS_URL,
+        "name": "TTC Neuhausen",
+        "alternateName": VEREIN["name"],
+        "inLanguage": "de-CH",
+        "publisher": {"@id": verein_id},
+    })
+    webseite = {
+        "@type": SEITENTYP.get(datei, "WebPage"),
+        "@id": url + "#seite",
+        "url": url,
+        "name": titel,
+        "description": beschreibung,
+        "inLanguage": "de-CH",
+        "isPartOf": {"@id": website_id},
+        "about": {"@id": orte[datei]["@id"] if datei in orte else verein_id},
+    }
+    knoten.append(webseite)
+    krumen = _brotkrumen(seite, url, beitrag and (beitrag.get("kurztitel") or beitrag["titel"]))
+    if krumen:
+        webseite["breadcrumb"] = {"@id": krumen["@id"]}
+        knoten.append(krumen)
+    if beitrag:
+        bild = "assets/img/fotos/" + beitrag["bild"] if beitrag.get("bild") else None
+        knoten.append({
+            "@type": "NewsArticle",
+            "@id": url + "#beitrag",
+            "headline": beitrag["titel"][:110],
+            "datePublished": beitrag["datum"],
+            "inLanguage": "de-CH",
+            "mainEntityOfPage": {"@id": url + "#seite"},
+            "image": [BASIS_URL + bild if bild else OG_BILD],
+            "author": ({"@type": "Person", "name": beitrag["text"]} if beitrag.get("text")
+                       else {"@id": verein_id}),
+            "publisher": {"@id": verein_id},
+        })
+    daten = json.dumps({"@context": "https://schema.org", "@graph": knoten}, ensure_ascii=False, indent=1)
+    return '<script type="application/ld+json">\n%s\n</script>' % daten.replace("</", "<\\/")
+
+
+def ab_wurzel(seite):
+    """Relative Verweise ab der Wurzel setzen. Die Fehlerseite wird unter
+    jeder Adresse ausgeliefert, auch unter /2018/02/22/beitrag/ – dort
+    zeigte «assets/css/base.css» ins Leere."""
+    return re.sub(r'(\s(?:src|href)=")(?![a-z][a-z0-9+.-]*:|/|#)', r"\g<1>" + WURZELPFAD, seite)
+
+
 # --- Zusammensetzen ---------------------------------------------------------
 
 def warnhinweis(quelle):
@@ -679,7 +817,7 @@ def main():
     feste, erzeugt = ersetzungen()
     gebaut, fehlend = [], []
 
-    def schreibe(datei, titel, beschreibung, rubrik, inhalt, quelle):
+    def schreibe(datei, titel, beschreibung, rubrik, inhalt, quelle, beitrag=None):
         seite = layout.replace("{{inhalt}}", inhalt)
         for platzhalter, fn in erzeugt.items():
             if platzhalter in seite:
@@ -687,14 +825,26 @@ def main():
         seite = re.sub(r"\{\{zeiten:([^}]+)\}\}", lambda m: zeiten_html(m.group(1)), seite)
         seite = re.sub(r"\{\{kurzzeiten:([^}]+)\}\}", lambda m: kurzzeiten_html(m.group(1)), seite)
         seite = re.sub(r"\{\{trainer:([^}]+)\}\}", lambda m: trainer_zeiten_html(m.group(1)), seite)
+        if datei == FEHLERSEITE:
+            seite = seite.replace("{{robots}}", ROBOTS_NOINDEX)
         for platzhalter, wert in feste.items():
             seite = seite.replace(platzhalter, wert)
+        url = BASIS_URL + ("" if datei == "index.html" else datei)
         seite = (seite.replace("{{titel}}", e(titel))
                  .replace("{{beschreibung}}", e(beschreibung))
                  .replace("{{navigation}}", navigation_html(datei, rubrik))
                  .replace("{{signet}}", signet)
                  .replace("{{seitenname}}", datei[:-5])
-                 .replace("{{url}}", BASIS_URL + ("" if datei == "index.html" else datei)))
+                 .replace("{{url}}", url)
+                 .replace("{{ogtyp}}", "article" if beitrag else "website")
+                 .replace("{{artikel}}", '\n<meta property="article:published_time" content="%s">'
+                          % beitrag["datum"] if beitrag else ""))
+        if datei == FEHLERSEITE:
+            seite = re.sub(r'\n<link rel="canonical"[^>]*>', "", seite.replace("{{strukturdaten}}", ""))
+            seite = ab_wurzel(seite)
+        else:
+            seite = seite.replace("{{strukturdaten}}",
+                                  strukturdaten(datei, titel, beschreibung, url, seite, beitrag))
         rest = re.findall(r"\{\{[^}]+\}\}", seite)
         if rest:
             sys.exit("%s: unbekannte Platzhalter %s" % (datei, ", ".join(sorted(set(rest)))))
@@ -715,7 +865,8 @@ def main():
             ohne_text.append(b)
             continue
         schreibe(news_datei(b), "%s – TTC Neuhausen" % (b.get("kurztitel") or b["titel"]),
-                 b["titel"][:155], "News", beitrag_html(b), "vorlage/news.py (%s)" % b["kennung"])
+                 (b.get("anriss") or b["titel"])[:155], "News", beitrag_html(b),
+                 "vorlage/news.py (%s)" % b["kennung"], beitrag=b)
 
     for alt in ZIEL.glob("news-*.html"):
         if alt.name not in gebaut:
@@ -733,6 +884,7 @@ def main():
     schreibe_serverdateien(gebaut)
     pruefe_farben()
     pruefe_verweise(gebaut)
+    pruefe_weiterleitungen()
     schreibe_powershell()
     melde_dokumente()
     n, tage, stunden = trainingsumfang()
@@ -747,14 +899,154 @@ def schreibe_serverdateien(gebaut):
     if VORSCHAU_URL:
         (ZIEL / "robots.txt").write_text("User-agent: *\nDisallow: /\n", encoding="utf-8")
         (ZIEL / "sitemap.xml").unlink(missing_ok=True)
+        (ZIEL / ".htaccess").unlink(missing_ok=True)
         return
     (ZIEL / "robots.txt").write_text("User-agent: *\nAllow: /\n\nSitemap: %ssitemap.xml\n" % SEITE_URL,
                                      encoding="utf-8")
     z = ['<?xml version="1.0" encoding="UTF-8"?>',
          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    z += ["  <url><loc>%s</loc></url>" % e(BASIS_URL + ("" if d == "index.html" else d)) for d in sorted(gebaut)]
+    z += ["  <url><loc>%s</loc></url>" % e(BASIS_URL + ("" if d == "index.html" else d))
+          for d in sorted(gebaut) if d != FEHLERSEITE]
     z.append("</urlset>\n")
     (ZIEL / "sitemap.xml").write_text("\n".join(z), encoding="utf-8")
+    (ZIEL / ".htaccess").write_text(htaccess(), encoding="utf-8", newline="\n")
+
+
+def _alte_adresse(pfad):
+    """Alte Adresse als Muster für RewriteRule: genau diese, mit oder ohne / am Ende."""
+    return "^%s/?$" % re.escape(pfad.strip("/"))
+
+
+def htaccess():
+    """site/.htaccess für Apache – der Server der bisherigen Website ist einer.
+
+    Nur Anweisungen, die WordPress selbst schon braucht (mod_rewrite und
+    Verwandte, AllowOverride FileInfo). «Options» oder «Expires» würden auf
+    manchem Hosting die ganze Website mit Fehler 500 lahmlegen."""
+    teile = urllib.parse.urlsplit(SEITE_URL)
+    host = teile.hostname
+    ohne_www = host[4:] if host.startswith("www.") else None
+    basis = "https://" + host
+    w = WURZELPFAD
+
+    def ziel(seite):
+        """Absolut mit https und www: eine einzige Weiterleitung, auch wenn der
+        Server hinter einem Proxy selbst nur http sieht."""
+        return basis + w + seite
+
+    z = [
+        "# .htaccess – ERZEUGT VON build.py, nicht von Hand ändern.",
+        "# Weiterleitungen: vorlage/seo.py. Danach einmal build.py.",
+        "#",
+        "# Gehört in denselben Ordner wie index.html. Beim Hochladen per FTP",
+        "# mitnehmen: viele Programme blenden Dateien mit Punkt vorne aus.",
+        "",
+        "ErrorDocument 404 %s%s" % (w, FEHLERSEITE),
+        "ErrorDocument 410 %s%s" % (w, FEHLERSEITE),
+        "AddDefaultCharset utf-8",
+        "AddType font/woff2 .woff2",
+        "AddType image/webp .webp",
+        "",
+        "<IfModule mod_rewrite.c>",
+        "RewriteEngine On",
+        "",
+        "# Die Fehlerseite, die Apache nach 404 oder 410 intern nachlädt, nicht",
+        "# anfassen – sonst wird aus «410 Gone» eine Weiterleitung auf 404.html.",
+        "RewriteCond %{ENV:REDIRECT_STATUS} ^[45][0-9][0-9]$",
+        "RewriteRule ^ - [L]",
+        "",
+        "# Alte Adressen stehen vor der Regel für https und www: ihr Ziel ist",
+        "# schon absolut, so kommt jede in einem Schritt an.",
+        "",
+        "# Ordner ohne index.html nicht auflisten",
+        "RewriteCond %{REQUEST_FILENAME} -d",
+        "RewriteCond %{REQUEST_FILENAME}/index.html !-f",
+        "RewriteRule ^ - [R=404,L]",
+        "",
+        "# --- Vorlagen des alten Themes und WordPress-Technik: 410 Gone",
+        "RewriteRule ^(%s)/?$ - [G,L]" % "|".join(re.escape(p) for p in WEG),
+    ]
+    z += ["RewriteRule %s - [G,L]" % m for m in WEG_MUSTER]
+    z += [
+        "",
+        "# --- Alte Kurzadressen von WordPress (?p=123, ?page_id=45, Suche)",
+        "RewriteCond %{QUERY_STRING} (^|&)(p|cat|tag|m|author)=",
+        "RewriteRule ^$ %s? [R=301,L]" % ziel("news.html"),
+        "RewriteCond %{QUERY_STRING} (^|&)(page_id|s)=",
+        "RewriteRule ^$ %s? [R=301,L]" % ziel(""),
+        "",
+        "# --- Dokumente der alten Website (vorlage/dokumente.py)",
+    ]
+    # Fehlt eine Datei noch, auf die Seite, die sie auflistet.
+    for liste, seite in ((DOKUMENTE + BEITRITTSFORMULARE, "verein-downloads.html"),
+                         (HALLENPROJEKT, "hallen-neue-halle.html")):
+        for x in liste:
+            alt = urllib.parse.urlsplit(x["herkunft"])
+            if alt.hostname not in (host, ohne_www):
+                continue
+            neu = seite if _dokument_fehlt(x) else "%s/%s" % (DOKUMENTORDNER, x["datei"])
+            z.append("RewriteRule ^%s$ %s [R=301,L]"
+                     % (re.escape(urllib.parse.unquote(alt.path).lstrip("/")), ziel(neu)))
+    z += ["", "# --- Seiten der alten Website (vorlage/seo.py)"]
+    for alt, neu in WEITERLEITUNGEN.items():
+        z.append("RewriteRule %s %s [R=301,L,NE,NC]" % (_alte_adresse(alt), ziel(neu)))
+    z += ["", "# --- Ganze Bereiche: Beiträge, Archive, Anlässe"]
+    for muster, neu in MUSTER:
+        if NEWS_ARCHIV and neu == "news.html":
+            z.append("RewriteRule %s %s%%{REQUEST_URI} [R=301,L,NE]" % (muster, NEWS_ARCHIV.rstrip("/")))
+        else:
+            z.append("RewriteRule %s %s [R=301,L]" % (muster, ziel(neu)))
+    z += ["", "# --- Eine einzige Adresse: %s/" % basis]
+    if ohne_www:
+        z += ["RewriteCond %%{HTTP_HOST} ^%s$ [NC]" % re.escape(ohne_www),
+              "RewriteRule ^ %s%%{REQUEST_URI} [R=301,L,NE]" % basis]
+    z += [
+        "RewriteCond %{HTTPS} !=on",
+        "RewriteCond %{HTTP:X-Forwarded-Proto} !https",
+        "RewriteCond %%{HTTP_HOST} ^%s$ [NC]" % re.escape(host),
+        "RewriteRule ^ %s%%{REQUEST_URI} [R=301,L,NE]" % basis,
+        "",
+        "# index.html nicht als zweite Adresse der Startseite",
+        "RewriteCond %{THE_REQUEST} ^[A-Z]+\\s[^?\\s]*/index\\.html[?\\s]",
+        "RewriteRule ^(.*/)?index\\.html$ %s$1 [R=301,L]" % ziel(""),
+        "",
+        "# --- /training statt /training.html",
+        "RewriteCond %{DOCUMENT_ROOT}/$1.html -f",
+        "RewriteRule ^([a-z0-9-]+)/?$ %s$1.html [R=301,L]" % ziel(""),
+        "",
+        "# Browser fragen von sich aus nach /favicon.ico",
+        "RewriteRule ^favicon\\.ico$ %s%s [L]" % (w, VEREIN["logo"]),   # intern, keine Weiterleitung
+        "</IfModule>",
+        "",
+        "# --- Schneller laden: Google misst die Ladezeit mit",
+        "<IfModule mod_deflate.c>",
+        "  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml",
+        "  AddOutputFilterByType DEFLATE application/javascript text/javascript application/json",
+        "  AddOutputFilterByType DEFLATE application/ld+json image/svg+xml",
+        "</IfModule>",
+        "",
+        "<IfModule mod_headers.c>",
+        "  # Seiten, CSS und JavaScript jedes Mal nachfragen (304, wenn unverändert),",
+        "  # damit nach einem neuen Build niemand alte Teile sieht.",
+        '  <FilesMatch "\\.(html|css|js|xml|txt)$">',
+        '    Header set Cache-Control "no-cache"',
+        "  </FilesMatch>",
+        "  # Bilder werden unter gleichem Namen ersetzt – eine Woche.",
+        '  <FilesMatch "\\.(jpe?g|png|webp|svg|gif|ico)$">',
+        '    Header set Cache-Control "public, max-age=604800"',
+        "  </FilesMatch>",
+        '  <FilesMatch "\\.woff2$">',
+        '    Header set Cache-Control "public, max-age=31536000, immutable"',
+        "  </FilesMatch>",
+        '  <FilesMatch "\\.(pdf|docx|xlsx)$">',
+        '    Header set Cache-Control "public, max-age=86400"',
+        "  </FilesMatch>",
+        '  Header always set X-Content-Type-Options "nosniff"',
+        '  Header always set Referrer-Policy "strict-origin-when-cross-origin"',
+        "</IfModule>",
+        "",
+    ]
+    return "\n".join(z)
 
 
 # --- Prüfungen --------------------------------------------------------------
@@ -788,6 +1080,8 @@ def pruefe_verweise(gebaut):
                 pfad = teil.strip().split(" ")[0]
                 if not pfad or re.match(r"^(https?:|mailto:|tel:|data:|//)", pfad):
                     continue
+                if pfad.startswith(WURZELPFAD):          # ab der Wurzel (Fehlerseite)
+                    pfad = pfad[len(WURZELPFAD):] or "index.html"
                 datei, _, anker = pfad.partition("#")
                 datei = datei.split("?")[0] or d
                 if datei.endswith(".html"):
@@ -799,6 +1093,27 @@ def pruefe_verweise(gebaut):
                     probleme.add("%s → %s" % (d, datei))
     print(("Verweise ins Leere:\n  " + "\n  ".join(sorted(probleme))) if probleme
           else "Verweise: alle Seiten, Dateien und Sprungmarken vorhanden.")
+
+
+def pruefe_weiterleitungen():
+    """Jede alte Adresse muss auf eine Seite und Sprungmarke zeigen, die es gibt."""
+    probleme = []
+    for alt, neu in list(WEITERLEITUNGEN.items()) + MUSTER:
+        datei, _, anker = neu.partition("#")
+        if not datei.endswith(".html"):
+            continue
+        if not (ZIEL / datei).exists():
+            probleme.append("%s → %s" % (alt, neu))
+        elif anker and ('id="%s"' % anker) not in (ZIEL / datei).read_text(encoding="utf-8"):
+            probleme.append("%s → %s (Sprungmarke fehlt)" % (alt, neu))
+    doppelt = sorted(set(WEITERLEITUNGEN) & set(WEG))
+    if doppelt:
+        probleme.append("in WEITERLEITUNGEN und WEG zugleich: " + ", ".join(doppelt))
+    if probleme:
+        print("Weiterleitungen ins Leere (vorlage/seo.py):\n  " + "\n  ".join(probleme))
+    else:
+        print("Weiterleitungen: %d alte Seiten, %d Bereiche, %d mit 410 Gone – alle Ziele vorhanden."
+              % (len(WEITERLEITUNGEN), len(MUSTER), len(WEG) + len(WEG_MUSTER)))
 
 
 def schreibe_powershell():

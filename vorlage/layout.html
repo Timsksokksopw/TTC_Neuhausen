@@ -8,7 +8,7 @@
 <meta name="description" content="{{beschreibung}}">
 <link rel="canonical" href="{{url}}">
 <meta name="theme-color" content="#F3F0E8">{{robots}}
-<meta property="og:type" content="website">
+<meta property="og:type" content="{{ogtyp}}">
 <meta property="og:site_name" content="TTC Neuhausen">
 <meta property="og:locale" content="de_CH">
 <meta property="og:title" content="{{titel}}">
@@ -17,8 +17,9 @@
 <meta property="og:image" content="{{ogbild}}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Komm an den Tisch. Tischtennisclub Neuhausen, seit 1975">{{artikel}}
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="assets/img/favicon-512.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
 <link rel="preload" href="assets/fonts/sofia-sans-xc.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
@@ -26,20 +27,7 @@
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/komponenten.css">
 <link rel="stylesheet" href="assets/css/seiten.css">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SportsClub",
-  "name": "Tischtennisclub Neuhausen",
-  "alternateName": "TTC Neuhausen",
-  "url": "{{basisurl}}",
-  "logo": "{{basisurl}}assets/img/logo-blau.svg",
-  "image": "{{ogbild}}",
-  "foundingDate": "1975",
-  "sport": "Tischtennis",
-  "sameAs": ["https://www.instagram.com/ttcneuhausen/", "https://www.facebook.com/ttcnh/"]
-}
-</script>
+{{strukturdaten}}
 </head>
 <body class="seite-{{seitenname}}">
 <a class="skip-link" href="#inhalt">Zum Inhalt</a>

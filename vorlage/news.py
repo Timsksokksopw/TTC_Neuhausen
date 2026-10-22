@@ -12,6 +12,7 @@ Je Eintrag:
     bild          Datei unter site/assets/img/fotos/ (optional)
     bildalt       Alternativtext (leer, wenn das Bild nur Stimmung ist)
     absaetze      Fliesstext. Leer = Meldung ohne eigene Seite.
+    pdf           Datei unter site/assets/dokumente/, verlinkt unter dem Text (optional)
 
 Ein Absatz ist ein Text oder eines von:
     {"art": "titel", "text": "U13"}
@@ -24,6 +25,29 @@ nur Fakten zusammen (Stand 23.9.2026, von ttc-neuhausen.ch).
 """
 
 BEITRAEGE = [
+    {
+        "kennung": "medienmitteilung-forfait-sttl-women",
+        "datum": "2026-10-19",
+        "titel": "Medienmitteilung: STTL-Damen verlieren Forfait – TTCN zieht Entscheid weiter",
+        "kurztitel": "STTL-Damen verlieren Forfait – TTCN zieht Entscheid weiter",
+        "anriss": "Der Verein legt gegen die nachträglichen Forfaitniederlagen Rekurs bei Swiss Table Tennis ein.",
+        "pdf": "medienmitteilung-forfait-sttl-2026.pdf",
+        "absaetze": [
+            "Der TTC Neuhausen wurde am Donnerstagabend darüber informiert, dass der Vorstand der STTL die beiden am ersten Spielwochenende der STTL-Women sportlich gewonnenen Meisterschaftsspiele gegen ZZ-Lancy und Zürich-Affoltern des Vereins nachträglich als Forfaitniederlagen wertet.",
+            "Auslöser des Verfahrens war ein administrativer Fehler im Lizenzierungsprozess. Bei der Erfassung der Spielerin Melanie Merk wurde eine bereits vorhandene und gültig unterzeichnete Doping-Unterstellungserklärung nicht korrekt im System hinterlegt. Diesen Fehler bestreitet der TTC Neuhausen nicht.",
+            "Nicht nachvollziehen kann der Verein hingegen die Schlussfolgerung, wonach Melanie Merk dadurch als nicht spielberechtigt gegolten haben soll.",
+            "Die für STTL-Spielerinnen erforderliche Doping-Unterstellungserklärung wurde von Melanie Merk bereits am 22. Februar 2026 unterzeichnet und lag somit weit vor den betreffenden Meisterschaftsspielen vor. Die Spielerin war folglich bereits vor ihrem Einsatz den geltenden Anti-Doping-Bestimmungen unterstellt.",
+            "Aus Sicht des TTC Neuhausen unterscheidet das einschlägige Reglement klar zwischen Spielerinnen, welche die erforderliche Unterstellungserklärung nicht unterzeichnet haben, und solchen, welche diese unterzeichnet haben. Der vorliegende Fall betrifft keine fehlende Doping-Unterstellung, sondern ausschliesslich einen Fehler bei der administrativen Erfassung einer bereits bestehenden und gültigen Erklärung.",
+            "Nach Auffassung des Vereins findet sich in den massgebenden Reglementen keine Bestimmung, wonach eine Spielerin trotz unterzeichneter Unterstellungserklärung allein deshalb als nicht spielberechtigt gilt, weil die Erklärung zum Zeitpunkt des Einsatzes nicht im System hinterlegt war.",
+            {"art": "zitat", "text": "Wir bestreiten den administrativen Fehler nicht. Wir bestreiten aber ausdrücklich die Auffassung, dass daraus automatisch eine fehlende Spielberechtigung resultiert. Aus unserer Sicht erfüllt Melanie Merk die reglementarischen Voraussetzungen, da die Unterstellungserklärung bereits Monate vor Saisonbeginn unterzeichnet wurde.", "wer": "Lyo Bührer, Co-Präsident und Sportlicher Leiter"},
+            "Der Verein zeigt sich darüber hinaus auch vom Ablauf des Verfahrens enttäuscht. Vor der Beschlussfassung erhielt der TTC Neuhausen keine Möglichkeit, seinen Standpunkt direkt gegenüber dem entscheidenden Organ darzulegen. Zudem wurden die konkreten rechtlichen Grundlagen, auf welche sich der Entscheid stützt, trotz entsprechender Nachfrage erst zusammen mit dem Entscheid selbst kommuniziert. Aus Sicht des Vereins wurde dadurch eine sachgerechte Stellungnahme im Vorfeld unnötig erschwert.",
+            {"art": "zitat", "text": "Unabhängig vom eigentlichen Entscheid hätten wir uns ein transparenteres und faireres Verfahren gewünscht. Zu einem geordneten Verfahren gehört aus unserer Sicht, dass ein betroffener Verein angehört wird und die rechtlichen Grundlagen kennt, bevor über einschneidende Sanktionen entschieden wird. Unsere Interpretation des Reglements wurde den zuständigen Stellen im Vorfeld mitgeteilt, ohne dass wir darauf eine Rückmeldung erhalten haben.", "wer": "Lyo Bührer"},
+            "Der TTC Neuhausen ist überzeugt, dass der vorliegende Fall sowohl in reglementarischer als auch in verfahrensrechtlicher Hinsicht Fragen aufwirft, die einer unabhängigen Überprüfung bedürfen. Der Verein hat die Angelegenheit an seinen Rechtsbeistand übergeben und wird den Entscheid fristgerecht an die Rekurskommission von Swiss Table Tennis weiterziehen.",
+            {"art": "zitat", "text": "Wir respektieren den Entscheid des STTL-Vorstands, teilen ihn aber nicht. Nach eingehender Prüfung sehen wir gute Gründe dafür, dass der Sachverhalt rechtlich und reglementarisch anders zu beurteilen ist. Deshalb werden wir Rekurs einlegen und blicken dem weiteren Verfahren vorsichtig zuversichtlich entgegen.", "wer": "Lyo Bührer"},
+            "Der TTC Neuhausen wird den Rechtsweg nun konsequent weiterverfolgen und die Angelegenheit von der Rekurskommission beurteilen lassen. Fragen zu diesem Fall sind an die Sportliche Leitung des Vereins, Lyo Bührer, zu richten.",
+            "Für den TTC Neuhausen: Lyo Bührer, Co-Präsident | Sportlicher Leiter, und Urs Schärrer, Co-Präsident",
+        ],
+    },
     {
         "kennung": "sttl-saisonvorschau-2026",
         "datum": "2026-09-21",

@@ -46,7 +46,8 @@ TTC_Neuhausen/
 │   ├── sponsoren.py      Partner und Ausrüster
 │   ├── geschichte.py     Zeitleiste, Vereinsarchiv, Meistertitel
 │   ├── news.py           Beiträge – Startseite, News-Liste, Beitragsseiten
-│   └── dokumente.py      Downloads, Beitrittsformulare, Unterlagen Hallensportzentrum
+│   ├── dokumente.py      Downloads, Beitrittsformulare, Unterlagen Hallensportzentrum
+│   └── seo.py            Weiterleitungen der alten Adressen, Verein und Hallen für Google
 ├── inhalt/               Ein Fragment je Seite, nur der Inhalt von <main>
 └── site/                 Erzeugt – das ist die fertige Website
     └── assets/
@@ -258,9 +259,11 @@ Nach jedem Lauf meldet `build.py`:
 - Farbwerte ausserhalb von `tokens.css`
 - Verweise ins Leere: Seiten, Dateien **und Sprungmarken** (`#rechner`)
 - fehlende Dokumente, mit Bezugsadresse
+- Weiterleitungen: jede alte Adresse zeigt auf eine Seite und Sprungmarke,
+  die es gibt
 - Zahl der Einheiten und Stunden im Trainingsplan
 
-Dazu schreibt er `.nojekyll`, `robots.txt`, `sitemap.xml` und
+Dazu schreibt er `.nojekyll`, `robots.txt`, `sitemap.xml`, `.htaccess` und
 `hol-dokumente.ps1`.
 
 ## Vorschau auf GitHub Pages
@@ -270,11 +273,68 @@ python3 build.py --vorschau https://name.github.io/ttcn-vorschau/
 ```
 
 Der Schalter setzt `canonical`, `og:url` und `og:image` auf die
-Vorschauadresse, gibt jeder Seite `noindex` und sperrt Suchmaschinen per
-`robots.txt` aus. Ohne Schalter wird alles zurückgenommen.
+Vorschauadresse, gibt jeder Seite `noindex`, sperrt Suchmaschinen per
+`robots.txt` aus und lässt `sitemap.xml` und `.htaccess` weg. Ohne
+Schalter wird alles zurückgenommen.
 `.github/workflows/vorschau.yml` baut bei jedem Push mit der richtigen
 Adresse und veröffentlicht `site/`. Einrichten: Repository öffentlich,
 unter *Settings → Pages* die Quelle auf **GitHub Actions** stellen.
+
+## Suchmaschinen (SEO)
+
+**Das Wichtigste sind die alten Adressen.** Die bisherige Website hat rund
+2900 Adressen bei Google (89 Seiten, 2577 Beiträge seit 2008, 208 Anlässe).
+Darauf verweisen Google, Verbände, andere Vereine und Zeitungen. Ohne
+Weiterleitung wären das nach der Umstellung 2900 tote Links, und die neue
+Website finge bei Google von vorne an.
+
+`build.py` schreibt deshalb `site/.htaccess` (Apache, wie der bisherige
+Server). Die Liste steht in **`vorlage/seo.py`**:
+
+- `WEITERLEITUNGEN` – jede alte Seite auf ihre neue, z. B. `/trainingszeiten/`
+  → `training.html`, die zwanzig Mannschaftsseiten → `teams.html`
+- `MUSTER` – ganze Bereiche: alle Beiträge `/2018/02/22/…` → `news.html`,
+  Anlässe → Jahresprogramm, Kategorien und Schlagworte → News
+- `WEG` – die Vorlagenseiten des alten Themes («Sample Page», «Portfolio»):
+  «410 Gone», damit Google sie vergisst
+- die Dokumente der alten Website (aus `dokumente.py`) direkt auf die
+  neuen Dateien
+
+Alle Weiterleitungen zeigen absolut auf `https://www.ttc-neuhausen.ch/…`:
+jede alte Adresse kommt in **einem** Schritt an, auch von `http://` oder
+ohne `www`. Geprüft am 5. Oktober 2026 mit Apache 2.4 und allen 2910
+Adressen der alten Sitemap: 2873 landen in einem Schritt auf einer Seite,
+37 melden 410, keine endet im Leeren. Die `.htaccess` braucht nur, was
+WordPress schon brauchte (mod_rewrite); auf Hosting mit «AllowOverride
+FileInfo» läuft sie ohne Fehler 500.
+
+**Die alten Beiträge.** 2577 Berichte gibt es auf der neuen Website nicht;
+sie führen auf `news.html`. Google behandelt das mit der Zeit wie gelöscht.
+Wer sie behalten will: das alte WordPress als Archiv weiterlaufen lassen
+(etwa unter `archiv.ttc-neuhausen.ch`) und die Adresse in `seo.py` bei
+`NEWS_ARCHIV` eintragen. Dann führt jeder alte Beitrag 1:1 ins Archiv.
+
+**Was sonst auf jeder Seite steht**, alles von `build.py` erzeugt:
+
+- Titel und Beschreibung aus `seiten.py`. Titel unter 60 Zeichen, mit dem,
+  was gesucht wird («Tischtennis für Kinder und Jugendliche»), der
+  Vereinsname am Schluss. Beschreibung unter 160 Zeichen.
+- `canonical`, Open Graph (Vorschau auf WhatsApp, Facebook), `robots` mit
+  grosser Bildvorschau
+- **Strukturdaten** (JSON-LD): der Verein als `SportsClub` mit Logo,
+  Gründungsjahr, Verband und Profilen; die beiden Hallen mit Adresse und
+  Koordinaten (für Google Maps); Brotkrumen aus der sichtbaren
+  Navigation; News-Beiträge mit Fliesstext als `NewsArticle`. Prüfen:
+  <https://search.google.com/test/rich-results>
+- `sitemap.xml` und `robots.txt`
+- eine Fehlerseite `404.html` mit den meistgesuchten Seiten, `noindex`
+
+**Nach der Aufschaltung:** In der [Google Search Console](https://search.google.com/search-console)
+die Domain bestätigen, `https://www.ttc-neuhausen.ch/sitemap.xml`
+einreichen und in den ersten Wochen unter «Seiten» nachsehen, ob alte
+Adressen als «Nicht gefunden (404)» auftauchen. Jede davon gehört in
+`seo.py`. Das Google-Unternehmensprofil (Maps) sollte auf die neuen
+Hallenseiten verlinken.
 
 ## Offene Punkte
 
@@ -304,6 +364,10 @@ unter *Settings → Pages* die Quelle auf **GitHub Actions** stellen.
 **Vor der Aufschaltung**
 
 - `SEITE_URL` in `vorlage/seiten.py` auf die endgültige Adresse setzen.
-- Rund 50 alte Adressen per 301 auf die neuen weiterleiten
-  (Zuordnung in `seitenstruktur.xlsx`).
-- Fehlende Dokumente holen (`hol-dokumente.bat`), dann bauen.
+- Fehlende Dokumente holen (`hol-dokumente.bat`), dann bauen – **solange
+  die alte Website noch läuft**, danach sind die Dateien weg.
+- Entscheiden, ob das alte News-Archiv weiterläuft (`NEWS_ARCHIV` in
+  `vorlage/seo.py`, siehe «Suchmaschinen»).
+- Beim Hochladen `site/.htaccess` mitnehmen (versteckte Datei). Danach
+  stichprobenweise alte Adressen aufrufen, z. B. `/trainingszeiten/`.
+- Sitemap in der Google Search Console einreichen.
