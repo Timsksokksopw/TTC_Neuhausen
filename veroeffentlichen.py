@@ -379,4 +379,13 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except SystemExit as ende:
+        # Abbrüche mit Begründung in GitHub als rote Meldung oben im Lauf –
+        # sonst steht der Grund nur tief im Protokoll.
+        if isinstance(ende.code, str):
+            hinweis(ende.code, "error")
+            zusammenfassung("**Abgebrochen:** " + ende.code)
+            sys.exit(1)
+        raise
