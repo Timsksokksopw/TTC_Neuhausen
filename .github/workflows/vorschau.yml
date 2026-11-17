@@ -33,6 +33,17 @@ jobs:
     steps:
       - name: Projekt holen
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      # Die News liegen in einem eigenen Repository (siehe hostpoint.yml).
+      - name: News-Ablage holen
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository }}-News
+          token: ${{ secrets.REDAKTION_SCHLUESSEL }}
+          path: redaktion
+          persist-credentials: false
 
       - name: Python bereitstellen
         uses: actions/setup-python@v5

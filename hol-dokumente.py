@@ -81,7 +81,9 @@ def main():
         return 2
 
     alle = "--alle" in schalter
-    eintraege = DOKUMENTE + BEITRITTSFORMULARE + HALLENPROJEKT
+    # Ohne «herkunft» gab es das Dokument auf der alten Website nie.
+    eintraege = [e for e in DOKUMENTE + BEITRITTSFORMULARE + HALLENPROJEKT
+                 if e.get("herkunft")]
 
     print("Vereinsdokumente nach site/assets/dokumente/")
     print("%d Dateien%s\n" % (len(eintraege), ", alle neu" if alle else ""))

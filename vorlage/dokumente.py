@@ -43,6 +43,13 @@ Je Eintrag:
     herkunft  wo die Datei auf der bisherigen Website liegt. Steht nur
               hier in der Quelldatei, kommt nie ins HTML — sie ist die
               Bezugsquelle, nicht das Ziel des Verweises.
+              Fehlt bei Dokumenten, die es auf der alten Website nie gab:
+              die legt man von Hand nach site/assets/dokumente/.
+
+Die Beitrittsformulare sind seit November 2026 die neuen Fassungen der
+Mitgliederverwaltung (Modellwahl zum Ankreuzen). Sie liegen im Ordner;
+unter `herkunft` steht bei den sieben alten weiterhin die Adresse der
+Vorgängerfassung, damit deren alte Links auf die neue Datei weiterleiten.
 """
 
 # Die Dateiendung entscheidet über das Kürzel auf der Kachel (PDF, XLSX,
@@ -108,6 +115,9 @@ BEITRITTSFORMULARE = [
      "datei": "beitritt-aktivplus-senioren.pdf",
      "herkunft": "https://www.ttc-neuhausen.ch/wp-content/uploads/2025/10/"
                  "Beitrittserklaerungen-AktivPlus-Senioren.pdf"},
+    {"name": "AktivPlus PingPongParkinson",
+     "info": "Für Menschen mit Parkinson, ohne Helferpflicht",
+     "datei": "beitritt-aktivplus-pingpongparkinson.pdf"},
     {"name": "Aktiv",
      "info": "Spielberechtigung ohne geführtes Training",
      "datei": "beitritt-aktiv.pdf",
@@ -123,6 +133,12 @@ BEITRITTSFORMULARE = [
      "datei": "beitritt-passive.pdf",
      "herkunft": "https://www.ttc-neuhausen.ch/wp-content/uploads/2025/10/"
                  "Beitrittserklaerungen-Passive.pdf"},
+    {"name": "Trainingsmitgliedschaft",
+     "info": "Geleitete Trainings für Nachwuchs U19, ohne Lizenz beim TTCN",
+     "datei": "beitritt-trainingsmitgliedschaft.pdf"},
+    {"name": "Schnupperpass",
+     "info": "Sechs Monate mittrainieren, ohne Mitglied zu sein",
+     "datei": "anmeldeformular-schnupperpass.pdf"},
 ]
 
 # Die Unterlagen zum Hallensportzentrum, auf hallen-neue-halle.html.

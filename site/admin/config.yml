@@ -1,0 +1,218 @@
+# ERZEUGT VON build.py aus vorlage/redaktion.yml – dort ändern, dann bauen.
+
+# Redaktion unter /admin (Sveltia CMS): Anmeldung, Ablage, Felder der News.
+#
+# build.py schreibt daraus site/admin/config.yml und setzt dabei für die
+# Platzhalter seite_url und herkunft die Adresse der Website aus
+# vorlage/seiten.py ein. Alle anderen sind Platzhalter von Sveltia CMS selbst.
+#
+# Was die Felder auf der Website ergeben, steht in vorlage/news.py.
+# Doku: https://sveltiacms.app/en/docs
+
+backend:
+  name: github
+  # Die News-Ablage: ein eigenes Repository nur für Beiträge, Bilder und PDFs.
+  # Der Schlüssel der Redaktion gilt nur dafür – an die Website selbst, ihren
+  # Code und den Server kommt damit niemand. Das Haupt-Repository holt die
+  # Ablage beim Bauen als Ordner redaktion/ (build.py, hole_redaktion).
+  repo: Timsksokksopw/TTC_Neuhausen-News
+  branch: main
+  # Anmeldung mit Name und Passwort über site/admin/anmelden.php auf dem
+  # eigenen Server. Der gibt danach den Zugangsschlüssel zu GitHub heraus –
+  # alle speichern also unter demselben Konto, «von wem» sagt der Commit nicht.
+  base_url: 'https://www.ttc-neuhausen.ch'
+  auth_endpoint: admin/anmelden.php
+  commit_messages:
+    create: 'News neu: {{slug}}'
+    update: 'News geändert: {{slug}}'
+    delete: 'News gelöscht: {{slug}}'
+    uploadMedia: 'Datei hochgeladen: {{path}}'
+    deleteMedia: 'Datei gelöscht: {{path}}'
+
+# Speichern veröffentlicht direkt – ohne Entwürfe und Freigabe.
+publish_mode: simple
+site_url: 'https://www.ttc-neuhausen.ch'
+logo:
+  src: /assets/img/logo-blau.svg
+
+# Ordner in der News-Ablage → Adresse auf der Website (build.py spiegelt
+# bilder/ nach site/assets/img/news/ und dokumente/ nach site/assets/dokumente/news/).
+media_folder: /bilder
+public_folder: /assets/img/news
+media_libraries:
+  default:
+    config:
+      max_file_size: 26214400
+      slugify_filename: true
+      # Fotos schon im Browser verkleinern und als WebP speichern, bevor sie ins
+      # Repository kommen – auch HEIC vom iPhone. Was trotzdem gross ankommt,
+      # verkleinert build.py --bilder-verkleinern beim Veröffentlichen.
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 2000
+          height: 2000
+
+# Dateinamen = Adresse der Beitragsseite: nur a–z, 0–9 und Bindestriche.
+slug:
+  encoding: ascii
+  clean_accents: true
+  maxlength: 60
+
+collections:
+  - name: news
+    label: News
+    label_singular: Beitrag
+    description: >-
+      Beiträge für Startseite und News-Liste. **Speichern** stellt den Beitrag
+      online; nach rund zwei Minuten ist er auf der Website.
+    folder: /news
+    format: json
+    extension: json
+    create: true
+    delete: true
+    identifier_field: titel
+    slug: '{{slug}}'
+    summary: "{{datum | date('D.M.YYYY')}} · {{titel}}"
+    sortable_fields:
+      fields: [datum, titel]
+      default:
+        field: datum
+        direction: descending
+    thumbnail: bild
+    preview_path: 'news-{{filename}}.html'
+    fields:
+      - name: titel
+        label: Titel
+        hint: 'Die Überschrift. Konkret ist besser, z. B. «Herbstlehrgang im TTZ Ebnat mit 32 Teilnehmenden».'
+      - name: datum
+        label: Datum
+        widget: datetime
+        type: date
+        default: '{{now}}'
+        hint: 'Die neuesten Beiträge stehen zuoberst.'
+      - name: anriss
+        label: Untertitel
+        widget: text
+        required: false
+        hint: 'Ein Satz, der neugierig macht. Steht unter dem Titel und in der News-Liste.'
+      - name: bild
+        label: Titelbild
+        widget: image
+        required: false
+        choose_url: false
+        accept: 'image/jpeg,image/png,image/webp,image/heic,image/heif'
+        hint: 'Querformat wirkt am besten. Grosse Handyfotos werden automatisch verkleinert.'
+      - name: bildalt
+        label: Was ist auf dem Titelbild zu sehen?
+        required: false
+        hint: 'Ein kurzer Satz für Menschen, die das Bild nicht sehen. Leer lassen, wenn es nur Stimmung zeigt.'
+      - name: ausschnitt
+        label: Wichtiger Bildteil
+        widget: select
+        required: false
+        default: mitte
+        options:
+          - { label: Mitte, value: mitte }
+          - { label: 'Oben – z. B. Köpfe bei einem Hochformat-Foto', value: oben }
+          - { label: Unten, value: unten }
+        hint: 'Auf der Startseite und in der Liste wird das Titelbild zugeschnitten. Hier wählst du, was sichtbar bleibt.'
+      - name: absaetze
+        label: Text
+        label_singular: Block
+        widget: list
+        required: false
+        collapsed: false
+        typeKey: art
+        hint: >-
+          Mit **Block hinzufügen** kommen Absätze, Zwischentitel, Zitate, Bilder und Ranglisten dazu.
+          Leer lassen für eine kurze Meldung ohne eigene Seite.
+        types:
+          - name: absatz
+            label: Absatz
+            summary: '{{fields.text | truncate(80)}}'
+            fields:
+              - name: text
+                label: Text
+                widget: text
+                hint: 'Jede neue Zeile wird ein eigener Absatz.'
+          - name: titel
+            label: Zwischentitel
+            summary: '{{fields.text}}'
+            fields:
+              - name: text
+                label: Zwischentitel
+          - name: zitat
+            label: Zitat
+            summary: '{{fields.text | truncate(70)}}'
+            fields:
+              - name: text
+                label: Zitat
+                widget: text
+                hint: 'Ohne Anführungszeichen – die setzt die Website.'
+              - name: wer
+                label: Wer sagt das?
+                required: false
+                hint: 'z. B. «Pekka Pelz, Cheftrainer»'
+          - name: bild
+            label: Bild im Text
+            summary: '{{fields.beschreibung}}'
+            fields:
+              - name: bild
+                label: Bild
+                widget: image
+                choose_url: false
+                accept: 'image/jpeg,image/png,image/webp,image/heic,image/heif'
+              - name: beschreibung
+                label: Bildlegende
+                required: false
+                hint: 'Steht unter dem Bild.'
+          - name: liste
+            label: Rangliste
+            summary: '{{fields.titel}}'
+            fields:
+              - name: titel
+                label: Überschrift
+                required: false
+                hint: 'z. B. «Rangliste U13»'
+              - name: punkte
+                label: Plätze
+                label_singular: Platz
+                widget: list
+                field:
+                  name: punkt
+                  label: Platz
+                hint: 'Ein Eintrag je Platz, in der richtigen Reihenfolge. Die Nummern setzt die Website.'
+      - name: galerie
+        label: Weitere Bilder
+        widget: image
+        multiple: true
+        required: false
+        choose_url: false
+        accept: 'image/jpeg,image/png,image/webp,image/heic,image/heif'
+        hint: 'Beliebig viele Fotos auf einmal hineinziehen. Sie erscheinen als Galerie unter dem Text; ein Klick vergrössert sie.'
+      - name: autor
+        label: Text von
+        required: false
+        hint: 'Erscheint als «Text: …». Leer lassen, wenn der Verein schreibt.'
+      - name: bildnachweis
+        label: Fotos von
+        required: false
+        hint: 'Erscheint als «Bild: …».'
+      - name: kurztitel
+        label: Kurzer Titel für die Startseite
+        required: false
+        hint: 'Nur nötig, wenn der Titel sehr lang ist.'
+      - name: pdf
+        label: PDF zum Herunterladen
+        widget: file
+        required: false
+        choose_url: false
+        accept: application/pdf
+        media_folder: /dokumente
+        public_folder: /assets/dokumente/news
+      - name: pdf_titel
+        label: Beschriftung für das PDF
+        required: false
+        hint: 'z. B. «Medienmitteilung als PDF». Leer = «Dokument als PDF».'

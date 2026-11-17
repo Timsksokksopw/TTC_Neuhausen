@@ -9,6 +9,7 @@ ErrorDocument 410 /404.html
 AddDefaultCharset utf-8
 AddType font/woff2 .woff2
 AddType image/webp .webp
+AddType text/yaml .yml
 
 <IfModule mod_rewrite.c>
 RewriteEngine On
@@ -17,6 +18,15 @@ RewriteEngine On
 # anfassen – sonst wird aus «410 Gone» eine Weiterleitung auf 404.html.
 RewriteCond %{ENV:REDIRECT_STATUS} ^[45][0-9][0-9]$
 RewriteRule ^ - [L]
+
+# Nie ausliefern: die Zugangsdaten der Redaktions-Anmeldung und den
+# Upload-Stand. Beide legt veroeffentlichen.py auf dem Server an.
+RewriteRule ^(admin/zugang\.php|\.veroeffentlicht\.json)$ - [F,L]
+
+# PHP läuft nur in der Anmeldung der Redaktion. Jede andere solche Datei
+# wird nicht ausgeführt und nicht ausgeliefert, wo immer sie liegt.
+RewriteCond %{REQUEST_URI} \.(php[0-9]?|phtml|phar|pht|cgi|pl|py|sh)(\.|/|$) [NC]
+RewriteRule !^admin/anmelden\.php$ - [F,L]
 
 # Alte Adressen stehen vor der Regel für https und www: ihr Ziel ist
 # schon absolut, so kommt jede in einem Schritt an.
@@ -165,9 +175,9 @@ RewriteRule ^favicon\.ico$ /assets/img/favicon-512.png [L]
 </IfModule>
 
 <IfModule mod_headers.c>
-  # Seiten, CSS und JavaScript jedes Mal nachfragen (304, wenn unverändert),
-  # damit nach einem neuen Build niemand alte Teile sieht.
-  <FilesMatch "\.(html|css|js|xml|txt)$">
+  # Seiten, CSS, JavaScript und die Felder der Redaktion jedes Mal nachfragen
+  # (304, wenn unverändert), damit nach einem neuen Build niemand alte Teile sieht.
+  <FilesMatch "\.(html|css|js|xml|txt|yml)$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
   # Bilder werden unter gleichem Namen ersetzt – eine Woche.

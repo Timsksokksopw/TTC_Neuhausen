@@ -19,3 +19,16 @@ Frames/
 # Hilfsseite zum Nachschauen, ob der Auftakt auf einem Bildschirm läuft.
 # Gehört nicht zur Website und nicht ins Repository.
 auftakt-test.html
+
+# Zugangsdaten der Redaktions-Anmeldung: legt veroeffentlichen.py nur auf
+# dem Server an, aus den GitHub-Secrets. Und die Teilbilder für WhatsApp &
+# Co., die build.py --bilder-verkleinern beim Veröffentlichen rechnet.
+site/admin/zugang.php
+site/assets/img/teilen/
+
+# Die News-Ablage: ein eigenes Repository (Beiträge, Bilder, PDFs der
+# Redaktion), das als Ordner redaktion/ hier liegt. build.py spiegelt seine
+# Bilder und Dokumente bei jedem Lauf in diese beiden Ordner von site/.
+redaktion/
+site/assets/img/news/
+site/assets/dokumente/news/

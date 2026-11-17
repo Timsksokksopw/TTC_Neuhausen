@@ -1,0 +1,162 @@
+# Baut die Website und lädt sie per SFTP auf Hostpoint.
+#
+# Läuft bei jedem Push auf main und nach jedem «Speichern» in der Redaktion
+# (/admin). Die Redaktion schreibt nicht hierher, sondern in die News-Ablage,
+# ein eigenes Repository «<dieses>-News»; dessen Workflow «Website neu bauen»
+# stösst diesen hier an. Hochgeladen wird nur, was sich geändert hat
+# (veroeffentlichen.py), meist in unter einer Minute.
+#
+# Zwei getrennte Schritte, damit sich Inhalt und Serverzugang nie begegnen:
+#   bauen      liest die News-Ablage (fremde Texte und Bilder) und baut site/.
+#              Kennt kein Passwort des Servers.
+#   hochladen  bekommt nur das fertige site/ und lädt es hoch. Führt nichts aus
+#              der News-Ablage aus; lässt nur bekannte Dateiarten durch.
+#
+# Einrichten, einmal: Settings → Secrets and variables → Actions →
+# New repository secret
+#   HOSTPOINT_SERVER      SFTP-Server aus dem Hostpoint Control Panel
+#   HOSTPOINT_BENUTZER    Benutzer des Webhostings (mit SFTP-Zugang)
+#   HOSTPOINT_PASSWORT
+#   HOSTPOINT_ORDNER      Ordner, in dem index.html liegen soll, z. B. www
+#   REDAKTION_SCHLUESSEL  Zugangsschlüssel der Redaktion: Fine-grained token,
+#                         NUR für das Repository «<dieses>-News», Contents
+#                         «Read and write» (GitHub → Settings → Developer
+#                         settings). Damit holt auch dieser Workflow die News.
+#   REDAKTION_PASSWOERTER je Person eine Zeile: die Prüfzeile, die sie sich unter
+#                         /admin/passwort.html selbst erstellt («Name: pbkdf2-sha256$…»)
+# Optional: HOSTPOINT_PORT (sonst 22), HOSTPOINT_HOSTKEY (Server-Schlüssel,
+# steht im Protokoll des ersten Laufs). Fehlen die Hostpoint-Secrets, baut
+# der Lauf trotzdem und meldet nur, dass er nichts hochlädt.
+#
+# Das allererste Mal lädt ein Push nichts hoch, sondern zeigt, was im
+# Ordner liegt und was er hochladen würde. Den ersten Upload startet man
+# von Hand: Actions → «Website auf Hostpoint» → Run workflow.
+
+name: Website auf Hostpoint
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      modus:
+        description: Was soll passieren?
+        type: choice
+        options:
+          - Geändertes hochladen
+          - Nur anzeigen (Probelauf)
+          - Alles neu hochladen
+          - Automatisch (Redaktion)
+        default: Geändertes hochladen
+
+permissions:
+  contents: read
+
+# Immer nur ein Upload gleichzeitig, keiner wird abgebrochen.
+concurrency:
+  group: hostpoint
+  cancel-in-progress: false
+
+jobs:
+  bauen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Zugang zur News-Ablage prüfen
+        env:
+          SCHLUESSEL: ${{ secrets.REDAKTION_SCHLUESSEL }}
+        run: |
+          if [ -z "$SCHLUESSEL" ]; then
+            echo "::error::Das Secret REDAKTION_SCHLUESSEL fehlt. Ohne es kann der Lauf die News nicht holen (Settings → Secrets and variables → Actions)."
+            exit 1
+          fi
+
+      - name: Projekt holen
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: News-Ablage holen
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository }}-News
+          token: ${{ secrets.REDAKTION_SCHLUESSEL }}
+          path: redaktion
+          persist-credentials: false
+
+      - name: Stand der News-Ablage festhalten
+        run: |
+          echo "News-Ablage: Stand $(git -C redaktion log -1 --format='%h vom %cd' --date=format:'%d.%m.%Y %H:%M') UTC" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Python bereitstellen
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Werkzeuge installieren
+        run: python3 -m pip install --disable-pip-version-check pillow==11.3.0 pyyaml==6.0.2
+
+      - name: Website bauen
+        run: python3 build.py --bilder-verkleinern
+
+      - name: Redaktion prüfen
+        run: |
+          python3 -c "import yaml; yaml.safe_load(open('site/admin/config.yml', encoding='utf-8'))" \
+            && echo "site/admin/config.yml ist gültig."
+
+      # Auch .htaccess mitgeben – versteckte Dateien lässt die Aktion sonst weg.
+      - name: Website übergeben
+        uses: actions/upload-artifact@v4
+        with:
+          name: website
+          path: site
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 1
+
+  hochladen:
+    needs: bauen
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Projekt holen
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      # Hochgeladen wird, was «bauen» übergeben hat – nicht das site/ aus dem Repository.
+      - name: Platz für die gebaute Website machen
+        run: rm -rf site redaktion
+
+      - name: Gebaute Website übernehmen
+        uses: actions/download-artifact@v4
+        with:
+          name: website
+          path: site
+
+      - name: Python bereitstellen
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Werkzeuge installieren
+        run: python3 -m pip install --disable-pip-version-check paramiko==3.5.1
+
+      - name: Auf Hostpoint hochladen
+        env:
+          HOSTPOINT_SERVER: ${{ secrets.HOSTPOINT_SERVER }}
+          HOSTPOINT_PORT: ${{ secrets.HOSTPOINT_PORT }}
+          HOSTPOINT_BENUTZER: ${{ secrets.HOSTPOINT_BENUTZER }}
+          HOSTPOINT_PASSWORT: ${{ secrets.HOSTPOINT_PASSWORT }}
+          HOSTPOINT_ORDNER: ${{ secrets.HOSTPOINT_ORDNER }}
+          HOSTPOINT_HOSTKEY: ${{ secrets.HOSTPOINT_HOSTKEY }}
+          REDAKTION_SCHLUESSEL: ${{ secrets.REDAKTION_SCHLUESSEL }}
+          REDAKTION_PASSWOERTER: ${{ secrets.REDAKTION_PASSWOERTER }}
+          MODUS: ${{ inputs.modus }}
+        run: |
+          case "$MODUS" in
+            "Nur anzeigen (Probelauf)") python3 veroeffentlichen.py --probelauf ;;
+            "Alles neu hochladen")      python3 veroeffentlichen.py --freigabe --alles ;;
+            "Geändertes hochladen")     python3 veroeffentlichen.py --freigabe ;;
+            *)                          python3 veroeffentlichen.py ;;
+          esac

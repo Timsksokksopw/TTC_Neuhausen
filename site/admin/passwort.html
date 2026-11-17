@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<!-- Diese Seite darf nichts laden und nichts senden: Das Passwort bleibt im Browser. -->
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Passwort festlegen – Redaktion TTC Neuhausen</title>
+<link rel="icon" type="image/png" sizes="512x512" href="../assets/img/favicon-512.png">
+<style>
+  body { max-width: 30rem; margin: 6vh auto; padding: 0 1.5rem 3rem; background: #F3F0E8; color: #14161B;
+         font: 17px/1.5 system-ui, sans-serif; }
+  h1 { margin: 0 0 .8rem; font-size: 1.5rem; line-height: 1.2; }
+  h2 { margin: 2rem 0 .6rem; font-size: 1.1rem; }
+  label { display: block; margin: 0 0 1rem; font-weight: 600; }
+  input, textarea { display: block; box-sizing: border-box; width: 100%; margin-top: .3rem; padding: .6rem .7rem;
+          border: 1px solid #5F636B; border-radius: 4px; background: #FFFFFF; color: inherit; font: inherit; }
+  textarea { height: 7.5rem; font: 14px/1.4 ui-monospace, Consolas, monospace; word-break: break-all; resize: vertical; }
+  input:focus, textarea:focus, button:focus-visible { outline: 3px solid #FF8A3D; outline-offset: 1px; }
+  button { margin-top: .4rem; padding: .7rem 1.4rem; border: 0; border-radius: 4px; background: #204E94;
+           color: #FFFFFF; font: inherit; font-weight: 700; cursor: pointer; }
+  button[disabled] { opacity: .6; cursor: progress; }
+  .meldung { padding: .6rem .8rem; border-left: 4px solid #FF8A3D; background: #FFFFFF; }
+  .klein { font-size: 15px; color: #3E434C; }
+  ul { margin: .3rem 0 1.2rem; padding-left: 1.2rem; }
+  [hidden] { display: none; }
+</style>
+</head>
+<body>
+<!--
+  Passwort für die Redaktion (/admin) selbst festlegen.
+
+  Die Seite rechnet aus dem Passwort eine Prüfsumme (PBKDF2-SHA256, 600 000
+  Runden, eigenes Zufalls-Salz) – dieselbe, gegen die anmelden.php prüft.
+  Heraus kommt eine Zeile «Name: pbkdf2-sha256$600000$Salz$Summe». Die
+  schickt die Person an den Verwalter; der trägt sie im GitHub-Secret
+  REDAKTION_PASSWOERTER ein (veroeffentlichen.py nimmt dort Prüfzeilen
+  ebenso wie Passwörter). So kennt nur die Person selbst ihr Passwort.
+-->
+<h1>Passwort für die Redaktion festlegen</h1>
+<p>Hier wählst du dein eigenes Passwort. Es bleibt auf diesem Gerät: Die Seite berechnet daraus eine
+  <b>Prüfzeile</b>, und nur diese schickst du an Tim. Aus der Prüfzeile lässt sich dein Passwort nicht herauslesen.</p>
+
+<form id="formular" autocomplete="on">
+  <label>Vorname und Name
+    <input id="name" name="name" autocomplete="username" required></label>
+  <label>Neues Passwort
+    <input id="passwort" name="passwort" type="password" autocomplete="new-password" required></label>
+  <label>Passwort wiederholen
+    <input id="nochmals" name="nochmals" type="password" autocomplete="new-password" required></label>
+  <p class="klein">So muss es sein:</p>
+  <ul class="klein">
+    <li>mindestens 12 Zeichen, zum Beispiel vier zufällige Wörter</li>
+    <li>Buchstaben ohne Umlaute, Zahlen und Zeichen wie <code>- _ . ! ? + %</code></li>
+    <li>ein Passwort, das du sonst nirgends benutzt</li>
+  </ul>
+  <p class="meldung" id="meldung" role="alert" hidden></p>
+  <button type="submit" id="knopf">Prüfzeile erstellen</button>
+</form>
+
+<section id="ergebnis" hidden>
+  <h2>Deine Prüfzeile</h2>
+  <label>Diese Zeile ganz kopieren und an Tim schicken
+    <textarea id="zeile" readonly spellcheck="false"></textarea></label>
+  <button type="button" id="kopieren">Kopieren</button>
+  <p class="klein" id="kopiert" role="status"></p>
+  <p class="klein">Dein Passwort selbst gibst du niemandem, auch Tim nicht. Sobald Tim die Zeile eingetragen hat,
+    meldest du dich unter <b>/admin</b> mit deinem Namen und diesem Passwort an.
+    Passwort vergessen? Einfach hier ein neues festlegen und die neue Zeile schicken.</p>
+</section>
+
+<script>
+(function () {
+  "use strict";
+  var RUNDEN = 600000, MINDESTENS = 12;
+
+  function base64(bytes) {
+    var s = "";
+    for (var i = 0; i < bytes.length; i++) s += String.fromCharCode(bytes[i]);
+    return btoa(s);
+  }
+
+  // «Name: pbkdf2-sha256$Runden$Salz$Summe» – das Format, das anmelden.php prüft.
+  async function pruefzeile(name, passwort) {
+    var salz = crypto.getRandomValues(new Uint8Array(16));
+    var roh = await crypto.subtle.importKey("raw", new TextEncoder().encode(passwort), "PBKDF2", false, ["deriveBits"]);
+    var summe = await crypto.subtle.deriveBits({ name: "PBKDF2", hash: "SHA-256", salt: salz, iterations: RUNDEN }, roh, 256);
+    return name + ": pbkdf2-sha256$" + RUNDEN + "$" + base64(salz) + "$" + base64(new Uint8Array(summe));
+  }
+
+  // Was nicht geht – oder "" für «in Ordnung».
+  function einwand(name, passwort, nochmals) {
+    if (!name) return "Bitte Vorname und Name eintragen.";
+    if (name.indexOf(":") >= 0) return "Im Namen darf kein Doppelpunkt stehen.";
+    if (passwort.length < MINDESTENS) return "Das Passwort ist zu kurz: mindestens " + MINDESTENS + " Zeichen.";
+    if (!/^[\x21-\x7E]([\x20-\x7E]*[\x21-\x7E])?$/.test(passwort))
+      return "Bitte nur Buchstaben ohne Umlaute, Zahlen und gängige Zeichen verwenden, und kein Leerzeichen am Anfang oder Ende.";
+    if (passwort !== nochmals) return "Die beiden Passwörter sind nicht gleich.";
+    var klein = passwort.toLowerCase(), teile = name.toLowerCase().split(" ");
+    for (var i = 0; i < teile.length; i++)
+      if (teile[i].length >= 3 && klein.indexOf(teile[i]) >= 0) return "Das Passwort sollte deinen Namen nicht enthalten.";
+    if (/^(.)\1*$/.test(passwort) || /^(0?1234567890?1?2?|abcdefghijkl.*|passwor[dt].*|qwert[zy].*)$/i.test(passwort))
+      return "Dieses Passwort ist zu leicht zu erraten.";
+    return "";
+  }
+
+  var formular = document.getElementById("formular"), meldung = document.getElementById("meldung"),
+      ergebnis = document.getElementById("ergebnis"), zeile = document.getElementById("zeile"),
+      knopf = document.getElementById("knopf"), kopiert = document.getElementById("kopiert");
+
+  function melden(text) {
+    meldung.textContent = text;
+    meldung.hidden = !text;
+  }
+
+  if (!(window.crypto && crypto.subtle && window.TextEncoder)) {
+    melden("Dieser Browser kann die Prüfzeile nicht berechnen. Bitte die Seite über https:// in einem aktuellen Browser öffnen.");
+    knopf.disabled = true;
+  }
+
+  formular.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var name = document.getElementById("name").value.replace(/\s+/g, " ").trim();
+    var passwort = document.getElementById("passwort").value;
+    var text = einwand(name, passwort, document.getElementById("nochmals").value);
+    ergebnis.hidden = true;
+    zeile.value = "";
+    kopiert.textContent = "";
+    melden(text);
+    if (text) return;
+    knopf.disabled = true;
+    pruefzeile(name, passwort).then(function (fertig) {
+      zeile.value = fertig;
+      ergebnis.hidden = false;
+      ergebnis.scrollIntoView({ block: "nearest" });
+    }, function () {
+      melden("Die Prüfzeile konnte nicht berechnet werden. Bitte einen aktuellen Browser verwenden.");
+    }).then(function () { knopf.disabled = false; });
+  });
+
+  document.getElementById("kopieren").addEventListener("click", function () {
+    zeile.focus();
+    zeile.select();
+    var fertig = function () { kopiert.textContent = "Kopiert."; };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(zeile.value).then(fertig, function () {
+        kopiert.textContent = "Bitte die markierte Zeile von Hand kopieren.";
+      });
+    } else if (document.execCommand && document.execCommand("copy")) {
+      fertig();
+    } else {
+      kopiert.textContent = "Bitte die markierte Zeile von Hand kopieren.";
+    }
+  });
+})();
+</script>
+</body>
+</html>

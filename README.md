@@ -1,7 +1,8 @@
 # TTC Neuhausen — Website
 
-Statische Website des Tischtennisclubs Neuhausen. Stand: 23. September 2026,
-Redesign «Sportmagazin». Gestaltung und Umsetzung: Wendico.
+Statische Website des Tischtennisclubs Neuhausen. Stand: 22. Oktober 2026,
+Redesign «Sportmagazin», mit Redaktion unter /admin und Veröffentlichen
+über GitHub. Gestaltung und Umsetzung: Wendico.
 
 Der Stand vor dem Redesign liegt im Git-Verlauf (Commit «Final_Changes»).
 
@@ -15,8 +16,13 @@ Nein. **Der Ordner `site/` ist die fertige Website** und wird jedes Mal
 fertig gebaut mitgeliefert. Zum Anschauen, Hochladen oder Weitergeben
 braucht es nichts.
 
+**News schreibt man in der Redaktion** unter `www.ttc-neuhausen.ch/admin` –
+ohne Python, ohne HTML, siehe [REDAKTION.md](REDAKTION.md). Und jede
+Änderung, die auf GitHub landet, baut und veröffentlicht GitHub selbst
+(siehe «Veröffentlichen auf Hostpoint»).
+
 `build.py` ist nur nötig, wenn **du selbst** etwas in `inhalt/` oder
-`vorlage/` änderst. Dann:
+`vorlage/` änderst und es vorher anschauen willst. Dann:
 
 1. Python holen, falls nicht vorhanden: <https://www.python.org/downloads/>
    — bei der Installation **«Add Python to PATH» ankreuzen**.
@@ -33,10 +39,12 @@ Hand ändern** — der nächste Lauf überschreibt es.
 ```
 TTC_Neuhausen/
 ├── build.py              Setzt die Seiten zusammen und prüft sie
+├── veroeffentlichen.py   Lädt site/ auf Hostpoint, nur was sich geändert hat
+├── REDAKTION.md          Anleitung für alle, die News schreiben
 ├── hol-dokumente.bat     Holt die Vereinsdokumente – auf Windows doppelklicken
 ├── hol-dokumente.ps1     … dahinter; erzeugt von build.py, nicht von Hand ändern
 ├── hol-dokumente.py      … dasselbe für alle, die Python haben
-├── .github/workflows/    Veröffentlicht die Vorschau auf GitHub Pages
+├── .github/workflows/    hostpoint.yml: echte Website · vorschau.yml: GitHub Pages
 ├── vorlage/
 │   ├── layout.html       Kopfzeile, Fuss, <head> – steht genau einmal im Projekt
 │   ├── seiten.py         Adresse der Website, Menü, Titel und Beschreibung jeder Seite
@@ -45,17 +53,22 @@ TTC_Neuhausen/
 │   ├── mannschaften.py   Die Teams und ihre click-tt-Adressen
 │   ├── sponsoren.py      Partner und Ausrüster
 │   ├── geschichte.py     Zeitleiste, Vereinsarchiv, Meistertitel
-│   ├── news.py           Beiträge – Startseite, News-Liste, Beitragsseiten
+│   ├── news.py           Format der News, Zahl der Meldungen auf der Startseite
+│   ├── redaktion.yml     Felder der Redaktion unter /admin → site/admin/config.yml
 │   ├── dokumente.py      Downloads, Beitrittsformulare, Unterlagen Hallensportzentrum
 │   └── seo.py            Weiterleitungen der alten Adressen, Verein und Hallen für Google
+├── redaktion/            Die News-Ablage: ein EIGENES Repository (…-News), hier nur
+│                         als Ordner eingehängt – news/, bilder/, dokumente/
 ├── inhalt/               Ein Fragment je Seite, nur der Inhalt von <main>
+│   └── news/             Die News, eine .json-Datei je Beitrag
 └── site/                 Erzeugt – das ist die fertige Website
+    ├── admin/            Die Redaktion: Sveltia CMS, Vorschau, Anmeldung (PHP)
     └── assets/
         ├── css/          tokens → base → komponenten → seiten
         ├── fonts/        Die drei Schriften, selbst gehostet, mit OFL.txt
         ├── js/main.js
         ├── dokumente/    Statuten, Reglemente, Formulare, Flyer
-        └── img/          fotos/, archiv/, partner/, personen/, Logo, Signet
+        └── img/          fotos/, news/, archiv/, partner/, personen/, Logo, Signet
 ```
 
 ## Ändern
@@ -156,7 +169,7 @@ ein Knopf braucht keine Dunkel-Variante.
 | `fotos/sttl-women.jpg`, `sttl-men.jpg` | Teams, Stützpunkt |
 | `fotos/detail-ballwechsel.jpg` | Trainerteam, Einzeltraining |
 | `fotos/finalrunde-nachwuchs.jpg` | Nachwuchs, Rhyfallhalle |
-| `fotos/news-1.jpg` … `news-3.jpg` | News, über `vorlage/news.py` |
+| `news/*` | News: Titelbilder, Bilder im Text, Galerien – lädt die Redaktion hoch |
 | `archiv/*` | Geschichte, TTZ Ebnat, Rhyfallhalle, Startseite |
 
 **Austauschen:** gleicher Dateiname, Datei ersetzen, bauen. Die Bildmasse
@@ -181,14 +194,127 @@ die Blöcke rücken dann auf zwei Bahnen.
 
 ## News
 
-**Nur `vorlage/news.py`, dann bauen.** Daraus entstehen der Block auf der
-Startseite, die Zeile «Aktuell» im Tisch, die Liste auf `news.html` und
-die Beitragsseiten.
+**Je Beitrag eine Datei unter `redaktion/news/`**, geschrieben in der
+Redaktion (nächster Abschnitt) oder von Hand; das Format steht in
+`vorlage/news.py`. Daraus entstehen der Block auf der Startseite, die Zeile
+«Aktuell» im Tisch, die Liste auf `news.html` und die Beitragsseiten.
 
-Hat ein Beitrag Fliesstext (`absaetze`), entsteht `news-<kennung>.html`,
-und alles verweist darauf. Hat er keinen, bleibt er eine Meldung ohne
-Verweis. **Die Berichte von Lyo Bührer haben noch keinen Text** – er ist
+`redaktion/` ist die **News-Ablage**, ein eigenes Repository
+(`TTC_Neuhausen-News`, privat) mit `news/`, `bilder/` und `dokumente/`. Es
+gehört als Ordner neben `build.py` und steht hier in der `.gitignore`:
+
+    git clone https://github.com/Timsksokksopw/TTC_Neuhausen-News.git redaktion
+
+Vor dem Arbeiten `git -C redaktion pull`, danach dort committen und pushen –
+News sind also zwei Schritte in zwei Repositories nur dann, wenn sich
+zugleich am Aussehen etwas ändert. `build.py` spiegelt `bilder/` nach
+`site/assets/img/news/` und `dokumente/` nach `site/assets/dokumente/news/`;
+diese beiden Ordner gehören ganz der Ablage. Übernommen werden nur JPEG,
+PNG, WebP und PDF, deren Inhalt zur Endung passt, mit einfachen Dateinamen,
+ohne Unterordner und Verknüpfungen; alles andere steht als Warnung im
+Protokoll. Ein Beitrag kann nur auf Bilder unter `/assets/img/` und PDFs
+unter `/assets/dokumente/` zeigen.
+
+Hat ein Beitrag Text, Bilder oder ein PDF, entsteht `news-<dateiname>.html`,
+und alles verweist darauf. Hat er nichts davon, bleibt er eine Meldung ohne
+Verweis. Den Dateinamen nach dem Veröffentlichen nicht mehr ändern – er ist
+die Adresse. **Die Berichte von Lyo Bührer haben noch keinen Text** – er ist
 aus dem alten Redaktionssystem zu kopieren, nicht nachzuerzählen.
+
+Ein Beitrag kann haben: Titelbild (mit «wichtigem Bildteil» oben, Mitte
+oder unten, wo es zugeschnitten wird), Absätze, Zwischentitel, Zitate,
+Bilder im Text, Ranglisten, eine Galerie und ein PDF. Ein Klick auf ein
+Bild öffnet die Lupe aus der Geschichte. Beim Teilen auf WhatsApp oder
+Facebook erscheint das Titelbild (`assets/img/teilen/`, gerechnet beim
+Veröffentlichen).
+
+## Redaktion (/admin)
+
+`www.ttc-neuhausen.ch/admin` ist [Sveltia CMS](https://sveltiacms.app/en/docs):
+ein Formular für News, deutsch, mit Vorschau im Stil der Website. Wer
+speichert, macht einen Commit in die News-Ablage (`TTC_Neuhausen-News`) –
+**nicht in dieses Repository**; den Rest erledigt GitHub (nächster
+Abschnitt). Anleitung für die Schreibenden: [REDAKTION.md](REDAKTION.md).
+
+- **Warum getrennt:** Nach der Anmeldung liegt der Schlüssel im Browser der
+  Person. Er gilt nur für die News-Ablage. Wer ihn in die Hände bekommt,
+  kann News verfälschen (und das lässt sich zurückholen), aber weder den
+  Code noch die übrigen Seiten ändern noch an das Hostpoint-Passwort kommen.
+
+- **Felder:** `vorlage/redaktion.yml`, daraus schreibt `build.py`
+  `site/admin/config.yml`. Die Vorschau baut `site/admin/vorschau.js` mit
+  den CSS-Dateien der Website nach – ändert sich `beitrag_html()` in
+  `build.py`, gehört es auch dorthin.
+- **Fotos** verkleinert schon der Browser beim Hochladen (WebP, höchstens
+  2000 Pixel, auch HEIC vom iPhone). Was trotzdem gross ankommt, verkleinert
+  `build.py --bilder-verkleinern` vor dem Hochladen auf den Server und
+  entfernt dabei EXIF und Ortsangaben.
+- **Anmeldung:** mit Name und Passwort, ohne GitHub-Konto. Hinter dem
+  Knopf «Anmelden» (`site/admin/index.html` benennt Sveltias «Mit GitHub
+  anmelden» um) steht `site/admin/anmelden.php`: Stimmt das Passwort, gibt
+  es der Redaktion einen Zugangsschlüssel zu GitHub, den nur der Server
+  kennt. Alle speichern damit unter diesem einen Konto.
+  - `REDAKTION_SCHLUESSEL`: Fine-grained token (GitHub → Settings →
+    Developer settings → Personal access tokens → Fine-grained tokens),
+    **nur für `TTC_Neuhausen-News`**, Repository permissions → Contents
+    «Read and write» – sonst nichts, insbesondere nicht «Workflows». Mit
+    ihm holt auch der Workflow die News. Er läuft ab; GitHub mahnt vorher
+    per Mail, dann einen neuen eintragen.
+  - `REDAKTION_PASSWOERTER`: je Person eine Zeile. Die Person erstellt sie
+    selbst unter `/admin/passwort.html` (`Name: pbkdf2-sha256$…`, eine
+    Prüfzeile – ihr Passwort verlässt dabei ihren Browser nicht, auch der
+    Verwalter kennt es nicht). `Name: Passwort` geht ebenfalls (mindestens
+    12 Zeichen). Beim Namen zählt Gross/klein nicht. Das Secret lässt sich
+    nicht auslesen: zum Ändern alle Zeilen neu eintragen, die Liste also
+    aufbewahren (Prüfzeilen sind dafür unbedenklich).
+  - Auf den Server gehen nur bekannte Dateiarten (`veroeffentlichen.py`,
+    `ERLAUBT`); PHP nur `admin/anmelden.php`, und die `.htaccess` sperrt
+    jede andere PHP-Datei. In die Ordner, in die die Redaktion hochlädt,
+    kommen nur Bilder bzw. Dokumente.
+  - `veroeffentlichen.py` legt daraus auf dem Server `admin/zugang.php` an,
+    die Passwörter nur als Prüfsumme (PBKDF2); die `.htaccess` liefert die
+    Datei nie aus. Nach fünf Fehlversuchen sperrt `anmelden.php` die
+    Adresse für 15 Minuten.
+  - **Jemand hört auf:** Zeile löschen, Workflow laufen lassen. Wer noch
+    angemeldet ist, bleibt es aber, bis der Schlüssel wechselt – im
+    Zweifel einen neuen Schlüssel erstellen, den alten löschen; dann melden
+    sich alle neu an.
+- **Version:** fest eingestellt in `site/admin/index.html`, mit
+  `integrity`-Prüfsumme. Für eine neue Version beides zusammen ändern.
+
+## Veröffentlichen auf Hostpoint
+
+`.github/workflows/hostpoint.yml` läuft bei jedem Push auf `main` und nach
+jedem «Speichern» in der Redaktion: holt die News-Ablage, baut mit
+`build.py --bilder-verkleinern` und lädt per SFTP hoch, **nur was sich
+geändert hat** (`veroeffentlichen.py`). Nach ein bis zwei Minuten ist die
+Website aktuell; von Hand hochladen ist nicht mehr nötig.
+
+- **Zwei getrennte Schritte:** «bauen» liest die News-Ablage und kennt kein
+  Passwort des Servers; «hochladen» bekommt nur das fertige `site/` und
+  führt nichts aus der Ablage aus. Es lädt nur bekannte Dateiarten, bricht
+  ab, wenn `site/` unvollständig ist, und löscht nie auf einen Schlag einen
+  grossen Teil der Website ohne Bestätigung von Hand.
+- **Anstoss aus der Redaktion:** In der News-Ablage läuft nach jedem Commit
+  `.github/workflows/melden.yml` und startet den Workflow hier (Secret
+  `WEBSITE_AUSLOESEN` dort: Fine-grained token nur für dieses Repository,
+  Actions «Read and write»).
+
+- **Was oben ist**, steht auf dem Server in `.veroeffentlicht.json`.
+  Gelöscht wird nur, was die Pipeline selbst hochgeladen hat; alles andere
+  im Ordner bleibt liegen.
+- **Das allererste Mal** lädt ein Push nichts hoch, sondern zeigt im
+  Protokoll, was im Zielordner liegt und was er hochladen würde. Stimmt das,
+  startet man den ersten Upload von Hand: Actions → «Website auf Hostpoint»
+  → Run workflow. Dort gibt es auch «Nur anzeigen» und «Alles neu hochladen».
+- **Zugang:** die Secrets `HOSTPOINT_SERVER`, `HOSTPOINT_BENUTZER`,
+  `HOSTPOINT_PASSWORT`, `HOSTPOINT_ORDNER`, dazu für die Redaktion
+  `REDAKTION_SCHLUESSEL` und `REDAKTION_PASSWOERTER` (Settings → Secrets
+  and variables → Actions). Welche, steht oben in `hostpoint.yml`.
+- **`site/` im Repository** kann hinter der Website zurückliegen: der Server
+  bekommt immer den Build von GitHub, nicht die Dateien, die jemand lokal
+  gebaut hat. Wer lokal arbeitet, holt vorher die neuen Commits (Pull) –
+  die Redaktion schreibt ja mit.
 
 ## Termine
 
@@ -368,6 +494,9 @@ Hallenseiten verlinken.
   die alte Website noch läuft**, danach sind die Dateien weg.
 - Entscheiden, ob das alte News-Archiv weiterläuft (`NEWS_ARCHIV` in
   `vorlage/seo.py`, siehe «Suchmaschinen»).
-- Beim Hochladen `site/.htaccess` mitnehmen (versteckte Datei). Danach
-  stichprobenweise alte Adressen aufrufen, z. B. `/trainingszeiten/`.
+- Hochladen erledigt die Pipeline, `.htaccess` inklusive (siehe
+  «Veröffentlichen auf Hostpoint»). Liegt im Zielordner noch das alte
+  WordPress, vorher dessen `index.php` entfernen – sonst kann der Server
+  weiter WordPress statt `index.html` ausliefern. Danach stichprobenweise
+  alte Adressen aufrufen, z. B. `/trainingszeiten/`.
 - Sitemap in der Google Search Console einreichen.

@@ -988,6 +988,27 @@ html.kopf-weg .rechner { top: 24px; }
 .rangliste h3 { font-size: 26px; margin: 0 0 8px; }
 .rangliste ol { margin: 0; padding-left: 1.6em; }
 .rangliste li { margin: 0; padding: 6px 0; border-bottom: 1px solid var(--linie); font-size: 16px; }
+.bild--im-text { margin: 1.8em 0; }
+.bild--im-text a { display: block; text-align: center; background: var(--papier-2); }
+.bild--im-text img { width: auto; max-width: 100%; max-height: 78vh; vertical-align: top; }
+
+/* Bilder mit Lupe (main.js): Titelbild, Bild im Text, Galerie */
+a[data-lupe] { cursor: zoom-in; }
+
+/* Galerie unter dem Text: Zeilen gleicher Höhe, jedes Bild in seinem Format.
+   --r ist Breite/Höhe; Grundbreite und Wachstum folgen ihm, deshalb gleich
+   hohe Zeilen. Das ::after nimmt der letzten Zeile den Rest ab. */
+.galerie { margin: clamp(40px, 6vw, 72px) 0 clamp(32px, 4vw, 48px); padding-top: 12px; border-top: 3px solid var(--tinte); }
+.galerie__titel { display: flex; align-items: baseline; gap: 12px; margin: 0 0 18px; font-size: clamp(32px, 24px + 1.6vw, 46px); }
+.galerie__titel span { font-size: .5em; letter-spacing: .06em; color: var(--blau); }
+.galerie__raster { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.galerie__raster::after { content: ""; flex: 999 1 0; }
+.galerie__raster li { flex: var(--r) 1 calc(var(--r) * clamp(150px, 18vw, 250px)); margin: 0; }
+.galerie__raster figure { margin: 0; }
+.galerie__raster a { display: block; overflow: hidden; background: var(--papier-2); }
+.galerie__raster img { display: block; width: 100%; height: auto; aspect-ratio: var(--r); object-fit: cover; transition: transform .6s var(--ease); }
+.galerie__raster a:hover img, .galerie__raster a:focus-visible img { transform: scale(1.03); }
+@media (prefers-reduced-motion: reduce) { .galerie__raster img { transition: none; } }
 
 .rechtstext__block {
   max-width: 1040px; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 6px var(--spalt);

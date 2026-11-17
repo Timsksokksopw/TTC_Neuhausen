@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Redaktion – TTC Neuhausen</title>
+<link rel="icon" type="image/png" sizes="512x512" href="../assets/img/favicon-512.png">
+</head>
+<body>
+<!-- Redaktion der Website: Sveltia CMS in einer fest eingestellten Version.
+     Felder: vorlage/redaktion.yml (build.py schreibt daraus config.yml),
+     Vorschau: vorschau.js, Anmeldung: anmelden.php.
+     Neue Version: Nummer und integrity (sha384 der Datei) zusammen ändern. -->
+<script>
+// Sveltia CMS beschriftet seinen Anmeldeknopf «Mit GitHub anmelden» –
+// angemeldet wird aber mit Name und Passwort (anmelden.php), ein GitHub-Konto
+// braucht niemand. Darum heisst er hier «Anmelden», und die Anmeldung mit
+// eigenem Zugriffstoken ist ausgeblendet. Deutsch oder Englisch, je nach
+// Browser; um «GitHub» setzt Sveltia unsichtbare Richtungszeichen, die vor
+// dem Vergleich wegfallen. Prüfen, wenn die Version von Sveltia wechselt.
+(function () {
+  "use strict";
+  var NEU = { "Mit GitHub anmelden": "Anmelden", "Sign In with GitHub": "Anmelden" };
+  var WEG = ["Mit Zugriffstoken anmelden", "Sign In Using Access Token"];
+  function pruefen(knoten) {
+    var text = knoten.nodeValue.replace(/[‎‏⁦-⁩]/g, "").trim();
+    var knopf = knoten.parentElement && knoten.parentElement.closest("button, a");
+    if (NEU[text]) {
+      knoten.nodeValue = NEU[text];
+      if (knopf && knopf.hasAttribute("data-label")) knopf.setAttribute("data-label", NEU[text]);
+    } else if (WEG.indexOf(text) >= 0 && knopf) {
+      knopf.style.display = "none";
+    }
+  }
+  function durchgehen(wurzel) {
+    if (wurzel.nodeType === Node.TEXT_NODE) return pruefen(wurzel);
+    if (wurzel.nodeType !== Node.ELEMENT_NODE) return;
+    var gang = document.createTreeWalker(wurzel, NodeFilter.SHOW_TEXT);
+    for (var k = gang.nextNode(); k; k = gang.nextNode()) pruefen(k);
+  }
+  new MutationObserver(function (aenderungen) {
+    aenderungen.forEach(function (a) {
+      if (a.type === "characterData") pruefen(a.target);
+      else a.addedNodes.forEach(durchgehen);
+    });
+  }).observe(document.body, { childList: true, subtree: true, characterData: true });
+})();
+</script>
+<script src="https://unpkg.com/@sveltia/cms@0.227.4/dist/sveltia-cms.js"
+        integrity="sha384-mBcoOD7DR0BbWeYAFwFdECzSv0wajVTPEnBQu5ZOpA2CbqM4ymwUdUq0yXOxOYKE"
+        crossorigin="anonymous"></script>
+<script src="vorschau.js"></script>
+</body>
+</html>

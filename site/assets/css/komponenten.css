@@ -202,6 +202,10 @@ a:hover .pfeil-link > .pfeil { transform: translateX(4px); }
 .bild--breit img { aspect-ratio: 16 / 9; object-fit: cover; }
 .bild--panorama img { aspect-ratio: 21 / 9; object-fit: cover; }
 @media (max-width: 640px) { .bild--panorama img { aspect-ratio: 3 / 2; } }
+/* «Wichtiger Bildteil» der News: welcher Teil beim Zuschneiden sichtbar
+   bleibt. Gleiche Werte wie AUSSCHNITT in build.py (Teilbilder). */
+.ausschnitt--oben { object-position: 50% 25%; }
+.ausschnitt--unten { object-position: 50% 75%; }
 .bildpaar { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spalt); margin: 2em 0; }
 .bildpaar .bild { margin: 0; }
 @media (max-width: 640px) { .bildpaar { grid-template-columns: 1fr; } }
