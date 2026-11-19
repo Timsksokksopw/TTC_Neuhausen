@@ -629,6 +629,8 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js" defer></script>
+<!-- Bewusst ohne «defer»: so läuft main.js erst, wenn das CSS angewendet ist.
+     Safari wartet bei «defer» nicht darauf und misst sonst die ungestaltete Seite. -->
+<script src="assets/js/main.js"></script>
 </body>
 </html>

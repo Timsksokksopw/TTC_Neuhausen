@@ -10,7 +10,7 @@
 html.kopf-weg .kopf { transform: translateY(-101%); }
 .kopf__innen {
   display: flex; align-items: center; gap: clamp(16px, 2.4vw, 40px);
-  height: var(--kopf-hoehe);
+  height: calc(var(--kopf-hoehe) - 1px);   /* 1px: die Linie von .kopf */
 }
 .kopf__marke {
   display: flex; align-items: center; gap: 12px;

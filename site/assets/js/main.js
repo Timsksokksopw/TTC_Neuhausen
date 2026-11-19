@@ -38,12 +38,9 @@
     if (!kopfTick) { kopfTick = true; requestAnimationFrame(kopfPruefen); }
   }, { passive: true });
   if (kopf) kopf.addEventListener("focusin", function () { html.classList.remove("kopf-weg"); });
-
-  function hoeheMelden() {
-    if (kopf) html.style.setProperty("--kopf-hoehe", kopf.offsetHeight + "px");
-  }
-  hoeheMelden();
-  window.addEventListener("resize", hoeheMelden);
+  // Die Höhe der Kopfzeile steht fest in tokens.css (--kopf-hoehe). Nicht
+  // nachmessen: die Kopfzeile ist selbst so hoch wie --kopf-hoehe, jede
+  // Messung schaukelt sich auf (in Safari auf über 2000 px, siehe layout.html).
 
   /* --- Menü auf kleinen Schirmen ---------------------------------------- */
   function menue(auf) {
@@ -70,7 +67,8 @@
       tick = false;
       if (!buehne.classList.contains("ist-aktiv")) return;
       var r = buehne.getBoundingClientRect();
-      var p = begrenzt(-r.top / (r.height - window.innerHeight), 0, 1);
+      var weg = r.height - window.innerHeight;   // 0, solange das CSS fehlt: dann Anfangszustand
+      var p = weg > 0 ? begrenzt(-r.top / weg, 0, 1) : 0;
       var t = weich(stueck(p, .06, .62));
       var s = buehne.style;
       s.setProperty("--rx", mix(58, 0, t).toFixed(2) + "deg");
